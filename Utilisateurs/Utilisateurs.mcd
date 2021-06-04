@@ -1,0 +1,11 @@
+CATÉGORIE: libellé
+EST RESSERVE, 0N ANNONCE, 11 RÉSERVATION
+RÉSERVATION: date de début, date de fin
+
+CORRESPOND A, 11 ANNONCE, 0N CATÉGORIE
+ANNONCE: titre, prix, état du produit, montant de la caution, description, type d'annonce, note produit
+ÉCRIT, 0N UTILISATEUR, 11 ANNONCE
+
+MESSAGE: contenu, timestamptz
+ÉCRIT-RECOIT, 0N UTILISATEUR, 11 MESSAGE
+UTILISATEUR: pseudo, adresse mail, mot de passe, téléphone, recherche sauvegardée, favori, localisation, note
