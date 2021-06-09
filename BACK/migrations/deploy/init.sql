@@ -78,7 +78,6 @@ CREATE TABLE "message" (
 );
 
 CREATE TABLE "bookmark" (
-    "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "ad_id" integer NOT NULL REFERENCES "ad"("id"),
     "user_id" integer NOT NULL REFERENCES "user"("id"),
     "created_at" timestamptz NOT NULL DEFAULT now(),
