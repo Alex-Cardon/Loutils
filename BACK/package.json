@@ -1,0 +1,21 @@
+{
+  "name": "projet-le-bon-outil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node-dev ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Robin/projet-le-bon-outil.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Robin/projet-le-bon-outil/issues"
+  },
+  "homepage": "https://github.com/O-clock-Robin/projet-le-bon-outil#readme"
+}
