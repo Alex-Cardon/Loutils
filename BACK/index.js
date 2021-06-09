@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 
-const apiRouter = require('./app/routers/apiRouter');
+const apiRouter = require('./app/routers/router');
 
 const app = express();
 
@@ -13,7 +13,7 @@ const port = process.env.PORT || `3000`;
 
 app.use(express.json());
 
-app.use(apiRouter);
+app.use('/', router);
 
 app.listen(port, _ => {
    console.log(`http://localhost:${port}`);
