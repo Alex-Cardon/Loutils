@@ -24,7 +24,7 @@ CREATE TABLE "ad" (
     "description" text NOT NULL,
     "ad-type" text NOT NULL,
     "rating"pint,
-    "category_id" integer NOT NULL REFERENCES "category"("id"),
+    "category_id" integer NOT NULL REFERENCES "category"("id") ON DELETE CASCADE,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz,
     "deleted_at" timestamptz
@@ -78,7 +78,6 @@ CREATE TABLE "message" (
 );
 
 CREATE TABLE "bookmark" (
-    "ad_id" integer NOT NULL REFERENCES "ad"("id"),
     "user_id" integer NOT NULL REFERENCES "user"("id"),
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz,
