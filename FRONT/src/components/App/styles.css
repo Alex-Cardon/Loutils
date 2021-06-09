@@ -1,5 +1,9 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 500px;
+  height: 100vh;
   margin: 1em auto;
   text-align: center;
 }
