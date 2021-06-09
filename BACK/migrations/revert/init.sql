@@ -8,13 +8,13 @@ DROP TABLE "message";
 
 DROP TABLE "saved_research";
 
-DROP TABLE "user";
-
 DROP TABLE "booking";
 
 DROP TABLE "ad";
 
 DROP TABLE "category";
+
+DROP TABLE "user";
 
 DROP DOMAIN "pint";
 
