@@ -8,7 +8,7 @@ const errorController = require('../controllers/errorController');
 
 const router = express.Router();
 
-/*Accéder à la liste de mes annonces*/
+/*Accéder à la liste de mes annonces (titre)*/
 router.route('/account/:id/ads')
     .get(adController.getByUserId);
 

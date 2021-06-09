@@ -12,13 +12,13 @@ datavalues = {};
         }
     };
 
-    static async findByFk(id) {
+    static async findByPk(id) {
         const result = await client.query(`SELECT * FROM "ad" WHERE "user_id" = $1`, [id]);
 
-        if (!result.rows[0]) {
+        if (!result.rows) {
             return null;
         }
-        return (result.rows[0]);
+        return (result.rows);
     };
 
 }
