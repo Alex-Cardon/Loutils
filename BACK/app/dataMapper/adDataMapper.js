@@ -13,7 +13,7 @@ datavalues = {};
     };
 
     static async findByFk(id) {
-        const result = await ad.query(`SELECT * FROM "ad" WHERE user_id = $1`, [id]);
+        const result = await client.query(`SELECT * FROM "ad" WHERE "user_id" = $1`, [id]);
 
         if (!result.rows[0]) {
             return null;

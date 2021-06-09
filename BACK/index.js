@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 
-const apiRouter = require('./app/routers/router');
+const router = require('./app/routers/router');
 
 const app = express();
 

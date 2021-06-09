@@ -14,9 +14,6 @@ router.route('/account/:id/ads')
 
 
 
-
-
-    
 router.use(errorController.resourceNotFound);
 
 module.exports = router;
