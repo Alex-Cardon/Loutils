@@ -36,7 +36,7 @@ CREATE TABLE "ad" (
     "product_state" text NOT NULL,
     "deposit" pint,
     "description" text NOT NULL,
-    "ad-type" text NOT NULL,
+    "ad_type" text NOT NULL,
     "rating"pint,
     "postcode" pint NOT NULL,
     "category_id" integer NOT NULL REFERENCES "category"("id"), --si je supprime une annonce, je veux que la catégorie existe toujours donc pas de cascade

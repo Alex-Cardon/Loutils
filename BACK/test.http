@@ -1,0 +1,21 @@
+
+###Voir les messages et leurs détails de l'utilisateur X
+GET http://localhost:3000/account/2/messages
+
+###Poster une annonce en tant qu'utilisateur X
+POST http://localhost:3000/account/2/ads
+Content-Type: application/json
+
+{
+    "title": "Dimitri",
+    "picture": "app/data/img_ad/dimitri.png",
+    "price": 15,
+    "product_state": "un peu usagé",
+    "deposit": 50,
+    "description": "Il est sympa et parfois utile",
+    "ad_type": "je loue",
+    "rating": 5,
+    "postcode": 59000,
+    "category_id": 2,
+    "user_id": 3
+}
