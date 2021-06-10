@@ -1,9 +1,11 @@
 const {
     insertSchema: userInsertSchema,
-    updateSchema: userUpdateSchema
+    updateSchema: userUpdateSchema,
+    loginSchema: userLoginSchema
 } = require('./userSchema');
 
 module.exports = {
     userInsertSchema,
-    userUpdateSchema
+    userUpdateSchema,
+    userLoginSchema
 };
