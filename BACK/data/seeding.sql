@@ -1,9 +1,10 @@
 
-INSERT INTO "user" ("name", "email", "password", "phone","rating") VALUES
-('Jean','jean.dupont@mail.com','jean','0101010101',3),
-('Michel','michel.dufour@mail.com','michel','0202020202',2),
-('Jeanne','jeanne.dupont@mail.com','jeanne','0303030303',5),
-('Micheline','micheline.dufour@mail.com','micheline','0404040404',1);
+INSERT INTO "user" ("name", "email", "password", "phone","rating", "role") VALUES
+('Jean','jean.dupont@mail.com','jean','0101010101','3', 'user'),
+('Michel','michel.dufour@mail.com','michel','0202020202','2', 'user'),
+('Jeanne','jeanne.dupont@mail.com','jeanne','0303030303','5', 'modo'),
+('Micheline','micheline.dufour@mail.com','micheline','0404040404','1', 'admin');
+
 
 INSERT INTO "category" ("name") VALUES
 ('perçage'),

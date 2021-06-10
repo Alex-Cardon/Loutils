@@ -1,5 +1,13 @@
 const express = require('express');
 
+const userController = require('../controllers/userController');
+const authorization = require('../middlewares/authorization');
+const validUserInfo = require('../middlewares/validUserInfo');
+
+
+
+
+
 const schemas = require('../validations/schemas');
 
 const validate = require('../validations/validate');
@@ -22,6 +30,11 @@ router.route('/bookmarks/:id')
 router.route('/account/:id/messages')
         .get(messageController.getMessageByUserId);
 
+router.post('/register', validUserInfo, userController.register);
+router.post('/login', validUserInfo, userController.login);
+router.get('/test', authorization, userController.test)
+
 router.use(errorController.resourceNotFound);
+
 
 module.exports = router;
