@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from 'src/containers/LoginForm';
-import SignupPage from 'src/components/SignupPage';
-import Signup from '../SignupPage';
+import SignupPage from 'src/containers/SignupPage';
+
 
 const Header = () => (
   <div>

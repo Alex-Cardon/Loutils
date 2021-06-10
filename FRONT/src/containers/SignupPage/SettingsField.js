@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { changeSettingsInput } from 'src/store/actions';
+import { changeSettingsInput } from 'src/actions/settingsField';
 
-import SettingsField from 'src/components/loginForm/SettingsField';
+import SettingsField from 'src/components/SignupPage/SettingsField';
 
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
   // ce qui est dans la prop stateKey
   // si stateKey === "email" c'est comme si j'écrivais
   // state.settings['email']
-  value: state.settings[ownProps.stateKey],
+  value: state[ownProps.stateKey],
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

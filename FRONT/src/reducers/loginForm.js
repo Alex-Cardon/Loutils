@@ -19,17 +19,6 @@ const reducer = (state = initialState, action = {}) => {
         // la valeur de action.newValue
         [action.name]: action.newValue,
       };
-
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        nickname: action.nickname,
-        token: action.token,
-        isLogged: true,
-        email: '',
-        password: '',
-      };
-
     case LOGOUT:
       return {
         ...state,
