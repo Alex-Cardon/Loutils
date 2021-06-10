@@ -10,10 +10,7 @@ import App from 'src/components/App';
 
 const rootReactElement = (
   <Provider store={store}>
-    
-      <App />
-    
-    
+      <App /> 
   </Provider>
 );
 
