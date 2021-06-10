@@ -12,7 +12,8 @@ const router = express.Router();
 
 /*Accéder à la liste de mes annonces (titre et contenu) */
 router.route('/account/:id/ads')
-        .get(adController.getByUserId);
+        .get(adController.getByUserId)
+        .post(adController.postAnAd);
 
 
 router.route('/bookmarks/:id')
