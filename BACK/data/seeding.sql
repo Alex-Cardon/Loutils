@@ -20,6 +20,7 @@ INSERT INTO "ad" ("title", "picture", "price", "product_state", "deposit", "desc
 
 ('échelle', 'echelle.jpeg','25','bon état','70','une échelle stable de minimum 5 mètres','je cherche','0','12000','4','1');
 
+
 INSERT INTO "booking" ("begining", "end", "ad_id") VALUES
 ('2021-06-09', '2021-06-10','1'),
 ('2021-06-11', '2021-07-11','1'),
