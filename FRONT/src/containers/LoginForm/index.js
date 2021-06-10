@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   // changeField prend 2 parametres
   // la nouvelel valeur de l'input
   // la "case" a modifier (email ou password)
-  // cf enquete_changefield.png et enquete_changeField.md
+  // enquete_changefield.png et enquete_changeField.md
   changeField: (value, name) => {
     dispatch(changeField(value, name));
   },
