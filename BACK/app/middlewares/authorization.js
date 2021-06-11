@@ -11,7 +11,6 @@ module.exports = function(req, res, next) {
         return res.status(403).json({ msg: "Accès non autorisé" });
       }
     const verify = jwt.verify(token, process.env.JWTSECRET);
-    console.log('verify', verify);
     req.user = verify;
     next();
   } catch (err) {

@@ -67,5 +67,38 @@ module.exports = {
 
   async test(req, res) {
     res.json({'msg': 'it works!'})
-  }
+  },
+/*
+  async getAccountInformations(req, res, next){
+    try{
+        const get = await userDataMapper.getAccountInformations(req.params.id);
+        res.json({data : get})
+
+    }catch (error) {
+        console.trace(error);
+        res.json({ error });
+    }
+  },*/
+
+  async createAnAccount(request, response, next){
+    try{
+
+        const { name, email, password, phone, role} = request.body;
+
+        const post = await userDataMapper.
+        createAnAccount({ name, email, password, phone, role });
+        
+
+        if(!post){
+            return next();
+        }
+
+        response.json({data : post})
+
+    }catch (error) {
+        console.trace(error);
+        response.json({ error });
+    }
+}
+
 }
