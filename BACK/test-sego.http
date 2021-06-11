@@ -49,17 +49,5 @@ GET http://localhost:3000/bookmarks/2
 
 ###USER
 ###Voir les messages, favoris, profil et annonces de monsieur X
-GET http://localhost:3000/account/2
+/*GET http://localhost:3000/account/2/
 
-
-###Créer un compte
-POST http://localhost:3000/subscribe
-Content-Type: application/json
-
-{
-    "name": "Jonathane",
-    "email": "jonathane@mail.com",
-    "password": "Jonathane",
-    "phone": "0909090909",
-    "role": "utilisateur"
-}

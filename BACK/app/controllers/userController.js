@@ -80,25 +80,5 @@ module.exports = {
     }
   },*/
 
-  async createAnAccount(request, response, next){
-    try{
-
-        const { name, email, password, phone, role} = request.body;
-
-        const post = await userDataMapper.
-        createAnAccount({ name, email, password, phone, role });
-        
-
-        if(!post){
-            return next();
-        }
-
-        response.json({data : post})
-
-    }catch (error) {
-        console.trace(error);
-        response.json({ error });
-    }
-}
 
 }

@@ -18,8 +18,6 @@ const router = express.Router();
 /*router.route('/account/:id')
         .get(userController.getAccountInformations)*/
 
-router.route('/subscribe')
-        .post(userController.createAnAccount);
 
 router.route('/account/:id/ads')
         .get(adController.getByUserId)
