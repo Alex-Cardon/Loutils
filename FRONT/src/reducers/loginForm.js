@@ -1,5 +1,5 @@
 
-import { CHANGE_LOGIN_FIELD, LOGIN_SUCCESS, LOGOUT  } from 'src/actions/loginForm';
+import { CHANGE_LOGIN_FIELD, LOGIN_SUCCESS, LOGOUT,  TOGGLE_SETTINGS } from 'src/actions/loginForm';
 
 export const initialState = {
   isLogged: false,  
@@ -7,6 +7,7 @@ export const initialState = {
   password: '',
   nickname: null,
   token: null,
+  isOpen: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -32,8 +33,19 @@ const reducer = (state = initialState, action = {}) => {
         nickname:action.nickname,
         token:action.token,
         isLogged:true,
+        isOpen:true,
         email: '',
         password: '',
+      };
+      case TOGGLE_SETTINGS:
+      return {
+        ...state,
+       
+          // j'inverse isOpen
+          // par rapport a l'ancienen valeur
+          // dans le state
+          isOpen: !state.isOpen,
+        
       };
 
     default:
