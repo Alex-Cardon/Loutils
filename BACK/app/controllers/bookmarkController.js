@@ -5,11 +5,9 @@ module.exports = {
     async getBookmarksById(request, response, next){
         try{
             const ad = await bookmarkDataMapper.findByPk(request.params.id);
-            console.log(request.params.id);
             if(!ad){
                 return next();
             }
-            console.log(ad);
             response.json({data : ad})
 
         }catch (error) {
