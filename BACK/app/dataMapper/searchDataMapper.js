@@ -1,45 +1,55 @@
 const client = require('../client');
+const fetch = require('node-fetch');
 
-class SearchModel {
+module.exports = {
 
-datavalues = {};
-
-    set data(values) {
-        for (const field of search.fields) {
-            if (values[field]) {
-                search.dataValues[field] = values[field];
-            }
+     async fetchCP(userPC, radius) {
+        try {
+            const url = `https://www.villes-voisines.fr/getcp.php?cp=${userPC}&rayon=${radius}`
+            
+            const result = await fetch(url);
+            return result.json();
+       
+        } catch (error) {
+            console.log(error);
         }
-    };
+    },
 
-    static async findByName(title,category, postcode,  radius) {
-        const result = await client.query(`    SELECT * FROM "ad" 
+/*Recherche des annonces avec titre, catégorie, code postal et rayon */
 
-        JOIN "category" ON "ad"."category_id" = "category"."id"
-        
-        JOIN "user" ON "ad"."user_id"="user"."id"        
-        
-        JOIN "saved_research" ON "user"."id" = "saved_research"."user_id" 
-        
-        WHERE 
+    async getByTitleAndCat(category, postcode, title) {
+   
+    const result = await client.query(`SELECT * FROM "ad" 
+
+    JOIN "category" ON "ad"."category_id" = "category"."id"
     
-        "ad"."title"='perceuse à percution' OR
+    JOIN "user" ON "ad"."user_id" = "user"."id"         
     
-        "ad"."postcode"='75000'
-        OR
-        "category"."name"='élévation'`, [title, postcode, category, radius]);
+    WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-        if (!result.rows) {
-            return null;
-        }
-        return (result.rows);
-    };
+     AND "ad"."title" LIKE $1 
+     
+     AND "category"."name"= $2`, ['%'+title+'%', category]);
 
-/*! Mise en place de la requette en cours, "plus qu'à mettre" la connexion à l'API qui récupère les villes autours */
+    return (result.rows);
+},
 
+/*Recherche des annonces avec titre, code postal et rayon */
 
+async getByTitle(title, postcode) {
+    const result = await client.query(`SELECT * FROM "ad" 
+
+    JOIN "category" ON "ad"."category_id" = "category"."id"
+    
+    JOIN "user" ON "ad"."user_id" = "user"."id"         
+    
+    WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
+
+     AND "ad"."title" LIKE $1`, ['%'+title+'%']);
+
+    return (result.rows);
+}
 
 
 }
 
-module.exports = SearchModel;

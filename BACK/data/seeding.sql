@@ -1,3 +1,4 @@
+BEGIN;
 
 INSERT INTO "user" ("name", "email", "password", "phone","rating", "role") VALUES
 ('Jean','jean.dupont@mail.com','jean','0101010101','3', 'user'),
@@ -15,7 +16,7 @@ INSERT INTO "category" ("name") VALUES
 INSERT INTO "ad" ("title", "picture", "price", "product_state", "deposit", "description","ad_type", "rating", "postcode", "category_id", "user_id") VALUES
 ('perceuse à percution', 'perceuse.png',12,'bon état',10,'perceuse à percution au top pour percer tout types de matériaux','je loue',4,59000,1,2),
 
-('ponceuse électrique', '',15,'comme neuf',80,'ponceuse parfaite pour poncer du bois','je cherche',0,75000,2,3),
+('ponceuse électrique', '',15,'comme neuf',80,'ponceuse parfaite pour poncer du bois','je cherche',0,75001,2,3),
 
 ('poste à souder', 'poste_a_souder.jpeg',20,'en état de marche',20,'poste à souder pro. Location possible du masque à souder eb complément','je loue',3,74000,3,4),
 
@@ -45,3 +46,5 @@ INSERT INTO "bookmark" ("ad_id", "user_id") VALUES
 (1, 4),
 (3, 2),
 (4, 2);
+
+COMMIT;

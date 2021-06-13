@@ -55,7 +55,7 @@ module.exports = {
       //generate jwt
       const token = await jwtGenerator(userFound.id, userFound.role)
 
-      return res.status(200).header("auth-token", token).json({
+      return res.status(200).json({
         'msg': `Bienvenue ${userFound.name}`,
         token
       })

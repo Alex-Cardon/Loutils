@@ -1,0 +1,38 @@
+### Ajouter un user
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Maurice",
+    "email": "lucile.dufour@mail.fr",
+    "password": "luciledu59"
+}
+
+### Auth user
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "lucile.dufour@mail.fr",
+    "password": "luciledu59"
+}
+
+### test authorization
+GET http://localhost:3000/test
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXIiOjUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzQxNzAyNSwiZXhwIjoxNjIzNDMxNDI1fQ.FoKPEF10b3iM3DMr6p8iuJXlNerJfvMPo58WIM2UWJ0
+Content-Type: application/json
+
+{
+}
+
+### serach
+GET http://localhost:3000/search
+Content-Type: application/json
+
+{
+    "title": "échelle",
+    "postcode": "1000",
+    "radius": "0"
+}
+
+
