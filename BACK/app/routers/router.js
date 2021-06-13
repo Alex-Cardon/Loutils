@@ -13,16 +13,22 @@ const searchController = require('../controllers/searchController');
 const router = express.Router();
 
 /*Accéder à la liste de mes annonces (titre et contenu) */
+/*router.route('/account/:id')
+        .get(userController.getAccountInformations)*/
+
+
 router.route('/account/:id/ads')
         .get(adController.getByUserId)
         .post(adController.postAnAd);
 
 
 router.route('/bookmarks/:id')
-        .get(bookmarkController.getBookmarksById);
+        .get(bookmarkController.getBookmarksById)
+        .post(bookmarkController.addBookmark);
 
 router.route('/account/:id/messages')
-        .get(messageController.getMessageByUserId);
+        .get(messageController.getMessageByUserId)
+        .post(messageController.postAMessage);
 
 router.post('/register', validUserInfo, userController.register);
 router.post('/login', validUserInfo, userController.login);

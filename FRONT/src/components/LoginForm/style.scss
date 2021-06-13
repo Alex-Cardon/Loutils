@@ -27,3 +27,26 @@
     height: 2.5em;
   }
 }
+
+.login {
+  position: fixed;
+  display: flex;
+  top: 20px;
+  right: -495px;
+  transition: right 1.5s ease-in;
+
+  &--open {
+    right: 10px;
+  }
+
+}
+
+.button {
+  background-color: #fff;
+  border-radius: 2.5rem;
+  margin-right: 0.8rem;
+
+  &__toggle {
+    display: none;
+  }
+}

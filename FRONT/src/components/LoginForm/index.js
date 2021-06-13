@@ -13,6 +13,8 @@ const LoginForm = ({
   handleLogout,
   isLogged,
   loggedMessage,
+  isOpen, // est-ce que les settings sont ouverts
+  onSettingsToggle, // ouverture ou fermeture des settings
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -20,6 +22,19 @@ const LoginForm = ({
   };
 
   return (
+    <div
+    // si isOpen est vrai, on ajoute la classe CSS
+    // settings--open
+    // qui "poussera" le div depuis la droite
+    className={isOpen ? 'login login--open' : 'login'}
+    >
+    <button
+      className={isLogged ? 'button button__toggle' : 'button'}
+      onClick={onSettingsToggle}
+      type="button"
+    >
+      Connexion
+    </button>
     <div className="login-form">
       {isLogged && (
         <div className="login-form-logged">
@@ -63,6 +78,7 @@ const LoginForm = ({
           </button>
         </form>
       )}
+    </div>
     </div>
   );
 };

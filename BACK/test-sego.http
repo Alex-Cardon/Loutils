@@ -1,0 +1,61 @@
+###MESSAGE
+###Voir les messages et leurs détails de l'utilisateur X
+GET http://localhost:3000/account/2/messages
+
+###Poster un message en tant qu'utilisateur X à un destinataire Y
+POST http://localhost:3000/account/2/messages
+Content-Type: application/json
+
+{
+    "content": "Coucou toi, elle a l'air cool ta perceuse ;) ",
+    "recipient": 1,
+    "sender": 2
+}
+
+
+###ANNONCE
+###Voir les annonces et leurs détails de l'utilisateur X
+GET http://localhost:3000/account/3/ads
+
+
+###Poster une annonce en tant qu'utilisateur X
+POST http://localhost:3000/account/2/ads
+Content-Type: application/json
+
+{
+    "title": "Dimitri",
+    "picture": "app/data/img_ad/dimitri.png",
+    "price": 15,
+    "product_state": "un peu usagé",
+    "deposit": 50,
+    "description": "Il est sympa et parfois utile",
+    "ad_type": "je loue",
+    "rating": 5,
+    "postcode": 59000,
+    "category_id": 2,
+    "user_id": 3
+}
+
+###FAVORIS
+###Voir les favoris et leurs détails de l'utilisateur X
+GET http://localhost:3000/bookmarks/2
+
+###Ajouter un favori en tant que monsieur x
+POST http://localhost:3000/bookmarks/2
+Content-Type: application/json
+
+{
+    "ad_id": 1,
+    "user_id":2
+}
+
+###RECHERCHE
+
+
+
+
+
+###USER
+###Voir les messages, favoris, profil et annonces de monsieur X
+/*GET http://localhost:3000/account/2/
+
