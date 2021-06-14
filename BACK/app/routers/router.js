@@ -23,8 +23,9 @@ router.route('/account/:id/ads')
 
 
 router.route('/bookmarks/:id')
-        .get(bookmarkController.getBookmarksById)
-        .post(bookmarkController.addBookmark);
+        .get(authorization, bookmarkController.getBookmarksById)
+        .post(authorization, bookmarkController.addBookmark) 
+        .delete(authorization, bookmarkController.deleteBookmark);
 
 router.route('/account/:id/messages')
         .get(messageController.getMessageByUserId)
