@@ -8,6 +8,11 @@ import store from 'src/store';
 import App from 'src/components/App';
 
 
+// on charge le css de notre librairie de composants
+import 'semantic-ui-css/semantic.min.css';
+
+
+
 const rootReactElement = (
   <Provider store={store}>
       <App /> 

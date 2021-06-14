@@ -7,7 +7,7 @@ import {
 } from 'src/actions/settingsField';
 //! je recupère mes proptypes du component index.js de SignupPage 
 //!comme le proptype est func cela sera une action direction le container SettingsField
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
     // envoi du formulaire
     handleFormSubmit: (event) => {
     // on ne veut pas que la page se recharge
