@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // on ne veut pas que la page se recharge
     event.preventDefault();
     console.log('Je lance une action SUBMIT_SETTINGS');
-    dispatch(submitSettings(ownProps.stateKey, event.target.value));
+    dispatch(submitSettings());
   },
 });
 
