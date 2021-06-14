@@ -19,7 +19,8 @@ GET http://localhost:3000/account/3/ads
 
 
 ###Poster une annonce en tant qu'utilisateur X
-POST http://localhost:3000/account/2/ads
+POST http://localhost:3000/account/8/ads
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY3MjY3MSwiZXhwIjoxNjIzNjg3MDcxfQ.wkbbzPe9AJZDPBYxFeT8pfcNjg7hn5-FtvjspTTbqh4
 Content-Type: application/json
 
 {
@@ -33,8 +34,13 @@ Content-Type: application/json
     "rating": 5,
     "postcode": 59000,
     "category_id": 2,
-    "user_id": 3
+    "user_id": 8
 }
+
+###supprimer une annonce en tant que monsieur x
+DELETE http://localhost:3000/account/ad/6
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY3MjY3MSwiZXhwIjoxNjIzNjg3MDcxfQ.wkbbzPe9AJZDPBYxFeT8pfcNjg7hn5-FtvjspTTbqh4
+Content-Type: application/json
 
 ###FAVORIS
 ###Voir les favoris et leurs détails de l'utilisateur X

@@ -19,7 +19,10 @@ const router = express.Router();
 
 router.route('/account/:id/ads')
         .get(adController.getByUserId)
-        .post(adController.postAnAd);
+        .post(adController.postAnAd)
+
+router.route('/account/ad/:id')
+        .delete(authorization, adController.deleteAnAd);
 
 router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
 

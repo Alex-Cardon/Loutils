@@ -55,6 +55,15 @@ module.exports = {
         return (result.rows);
     },
 
+
+    /*Suppression d'une annonce */
+
+    async deleteOneAd(id){
+        const result = await client.query(`DELETE FROM "ad" WHERE id = $1`, [id]);
+
+        return result.rows[0];
+    },
+
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
@@ -98,7 +107,8 @@ module.exports = {
         const result = await client.query(`DELETE FROM "saved_research" WHERE id = $1`, [id]);
 
         return result.rows[0];
-    }
+    },
+
 
 
 }

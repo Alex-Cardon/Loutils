@@ -83,6 +83,18 @@ module.exports = {
         }
     },
 
+    async deleteAnAd (request, response, next) {
+        try{
+            const id = request.params.id;
+            const result = await adDataMapper.deleteOneAd(id);
+
+            response.json({"msg" : "annonce supprimée"});
+        }catch(error){
+            console.trace(error);
+            response.status(500).json({ error: `Server error, please contact an administrator` });
+        }
+    },
+
     async addNewResearch(request, response, next) {
         try{
 
@@ -130,6 +142,6 @@ module.exports = {
             console.trace(error);
             response.status(500).json({ error: `Server error, please contact an administrator` });
         }
-    }
+    },
  
 };
