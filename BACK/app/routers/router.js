@@ -17,11 +17,13 @@ const router = express.Router();
         .get(userController.getAccountInformations)*/
 
 
-router.route('/account/:id/ads')
-        .get(adController.getByUserId)
-        .post(adController.postAnAd);
+router.route('/account/ads')
+        .get(authorization, adController.getByUserId)
+        .post(authorization, adController.postAnAd);
 
- router.get('/bookmarks', bookmarkController.getBookmarksById);
+        router.patch('/account/ads/:id', authorization, adController.patchAd);
+
+ router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
 
 router.route('/bookmarks/:id')
         .post(authorization, bookmarkController.addBookmark)

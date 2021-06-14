@@ -1,5 +1,4 @@
 const client = require('../client');
-const { deleteBookmark } = require('../controllers/bookmarkController');
 
 module.exports = {
 
@@ -29,9 +28,9 @@ module.exports = {
 
     },
 
-    async deleteBookmark(ad_id, user_id) {
-        const result = await client.query(`DELETE FROM "bookmark" ("ad_id","user_id")
-        WHERE ad_id = $1 AND user_id = $2) `, [ad_id, user_id]);
+    async deleteOneBookmark(ad_id, user_id) {
+        const result = await client.query(`DELETE FROM "bookmark"
+        WHERE ad_id = $1 AND user_id = $2`, [ad_id, user_id]);
 
         return result.rows[0];
     }

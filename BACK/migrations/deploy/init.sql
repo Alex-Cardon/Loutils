@@ -16,16 +16,14 @@ CREATE TABLE "user" (
     "phone" text ,
     "rating" pint ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 CREATE TABLE "category" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" text NOT NULL,
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 CREATE TABLE "ad" (
@@ -42,8 +40,7 @@ CREATE TABLE "ad" (
     "category_id" integer NOT NULL REFERENCES "category"("id"), --si je supprime une annonce, je veux que la catégorie existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"), --si je supprime une annonce, je veux que l'utilisateur existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 CREATE TABLE "booking" (
@@ -52,8 +49,7 @@ CREATE TABLE "booking" (
     "end" timestamptz NOT NULL,
     "ad_id" integer NOT NULL REFERENCES "ad"("id"), --si je supprime une reservation, je veux que l'annonce existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 
@@ -65,8 +61,7 @@ CREATE TABLE "saved_research" (
     "category_id" integer NOT NULL REFERENCES "category"("id"), --si je supprime une recherche sauvegardée, je veux que la catégorie existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"), --si je supprime une recherche sauvegardée, je veux qu'un utilisateur existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 CREATE TABLE "message" (
@@ -75,16 +70,14 @@ CREATE TABLE "message" (
     "recipient" integer NOT NULL REFERENCES "user"("id"), --si je supprime un message, je veux qu'un utilisateur existe toujours donc pas de cascade
     "sender" integer NOT NULL REFERENCES "user"("id"), --si je supprime un message, je veux qu'un utilisateur existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 CREATE TABLE "bookmark" (
     "ad_id" integer NOT NULL REFERENCES "ad"("id"), --si je supprime un favori, je veux qu'une annonce existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"),--si je supprime un favori, je veux qu'un utilisateur existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz,
-    "deleted_at" timestamptz
+    "updated_at" timestamptz
 );
 
 

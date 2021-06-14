@@ -19,10 +19,12 @@ module.exports = {
     async postAnAd(request, response, next){
         try{
 
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id } = request.body;
+            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = request.body;
+
+            const user_id = request.user.user.user_id
 
             const post = await adDataMapper.
-            postAnAd({ title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id });
+            postAnAd(title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id);
             
     
             if(!post){
@@ -36,6 +38,20 @@ module.exports = {
             response.json({ error });
         }
     },
+
+    async patchAd(req, res){
+        try {
+            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
+            const id = req.params.id
+            const result = await adDataMapper.updateAd(title, picture, price,product_state, deposit, description, ad_type, postcode, category_id, id);
+
+            res.status(200).json({ result });
+        } catch (error) {
+            console.trace(error);
+            res.json({ error });
+        }
+    },
+
 
     async searchAds(req, res) {
 
