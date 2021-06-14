@@ -3,8 +3,8 @@ import { CHANGE_LOGIN_FIELD, LOGIN_SUCCESS, LOGOUT,  TOGGLE_SETTINGS } from 'src
 
 export const initialState = {
   isLogged: false,  
-  email: '',
-  password: '',
+  email: 'bouclierman@herocorp.io',
+  password: 'jennifer',
   nickname: null,
   token: null,
   isOpen: false,
