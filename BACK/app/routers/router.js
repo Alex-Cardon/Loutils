@@ -21,16 +21,18 @@ router.route('/account/:id/ads')
         .get(adController.getByUserId)
         .post(adController.postAnAd);
 
- router.get('/bookmarks', bookmarkController.getBookmarksById)
+ router.get('/bookmarks', bookmarkController.getBookmarksById);
 
 router.route('/bookmarks/:id')
-        .post(authorization, bookmarkController.addBookmark);
+        .post(authorization, bookmarkController.addBookmark)
+        .delete(authorization, bookmarkController.deleteBookmark);
 
 router.route('/account/:id/messages')
         .get(messageController.getMessageByUserId)
         .post(messageController.postAMessage);
 
 router.post('/register', validUserInfo, userController.register);
+
 router.post('/login', validUserInfo, userController.login);
 
 router.route('/account/settings')

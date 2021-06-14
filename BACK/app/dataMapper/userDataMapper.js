@@ -13,6 +13,15 @@ module.exports = {
         return result.rows[0];
     },
 
+    async findByPk(id) {
+        const result = await client.query(`SELECT * FROM "user" WHERE "user_id" = $1`, [id]);
+
+        if (!result.rows) {
+            return null;
+        }
+        return (result.rows);
+    },
+
     async createUser(name, email, hashPassword, role) {
         const result = await client.query(`INSERT INTO "user" 
         (name, email, password, role) VALUES ($1, $2, $3, $4)

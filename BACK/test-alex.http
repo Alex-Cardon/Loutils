@@ -6,6 +6,7 @@ Content-Type: application/json
     "name": "Louis",
     "email": "louis.dufour@mail.fr",
     "password": "louloudu31"
+
 }
 
 ### Auth user

@@ -13,7 +13,7 @@ export const initialState = {
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action ) => {
-  console.log('je suis dans le reducer settings');
+  //console.log('je suis dans le reducer settings');
   switch (action.type) {
     case CHANGE_SETTINGS_INPUT:
       // on renvoie un nouvel objet "state"
