@@ -6,10 +6,9 @@ module.exports = {
     async getBookmarksById(request, response, next){
         try{
             const id = request.user.user.user_id;
-            const ad = await bookmarkDataMapper.findByPk
-            (id);
+            const ad = await bookmarkDataMapper.findByPk(id);
 
-            console.log(ad);
+
 
             if(!ad){
                 return next();
@@ -29,7 +28,10 @@ module.exports = {
             const user_id = request.user.user.user_id;
             const ad_id = request.params.id;
 
-            console.log(user_id, ad_id);
+
+            const user_id = request.user.user.user_id;
+            const ad_id = request.params.id
+
 
             const post = await bookmarkDataMapper.
             addBookmark(ad_id, user_id);

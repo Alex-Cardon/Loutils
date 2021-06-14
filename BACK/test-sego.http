@@ -44,6 +44,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXIiOjcsInJvbGUiOiJ1
 
 ###Ajouter un favori en tant que monsieur x
 POST http://localhost:3000/bookmarks/2
+
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXIiOjcsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2NTQ4OSwiZXhwIjoxNjIzNjc5ODg5fQ.8Fk6apyXJ0yqMQfHq3aV30AMWkMOz-PSrnr6t0xliKU
 Content-Type: application/json
 
@@ -51,7 +52,6 @@ Content-Type: application/json
 DELETE http://localhost:3000/bookmarks/2
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXIiOjcsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2NTQ4OSwiZXhwIjoxNjIzNjc5ODg5fQ.8Fk6apyXJ0yqMQfHq3aV30AMWkMOz-PSrnr6t0xliKU
 Content-Type: application/json
-
 
 ###RECHERCHE
 

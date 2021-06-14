@@ -56,7 +56,7 @@ module.exports = {
       const token = await jwtGenerator(userFound.id, userFound.role)
 
       return res.status(200).json({
-        'msg': `Bienvenue ${userFound.name}`,
+        'name': `${userFound.name}`,
         token
       })
 
@@ -65,20 +65,74 @@ module.exports = {
     }
   },
 
-  async test(req, res) {
-    res.json({'msg': 'it works!'})
-  },
-/*
-  async getAccountInformations(req, res, next){
+
+  async getUserInfo(req, res, next){
     try{
-        const get = await userDataMapper.getAccountInformations(req.params.id);
-        res.json({data : get})
+      console.log(req.user.user.user_id);
+        const info = await userDataMapper.getAccountInformations(req.user.user.user_id);
+        res.json({data : info})
 
     }catch (error) {
         console.trace(error);
         res.json({ error });
     }
-  },*/
+  },
+
+  async patchUserInfo(req, res){
+    try {
+      const id = req.user.user.user_id;
+      const { name, email, phone } = req.body;
+      const result = await userDataMapper.patchUserInfo(id, name, email, phone);
+      if(result){
+        res.json({result})
+      }
+    } catch (error) {
+      console.trace(error);
+      res.json(error)
+    }
+  },
+
+  async patchUserPassword(req, res) {
+    try {
+      const { password, newPassword } = req.body;
+      const id = req.user.user.user_id;
+      
+      const userFound = await userDataMapper.findOneById(id);
+      
+      //check password
+      const validPassword = await bcrypt.compare(password, userFound.password);
+      if(!validPassword) res.status(401).json({'error': 'Mot de passe incorrect'});
+
+       //hashing password
+       const saltRounds = 10;
+       const salt = await bcrypt.genSalt(saltRounds);
+       const hashPassword = await bcrypt.hash(newPassword, salt);
+      const result = await userDataMapper.patchUserPassword(hashPassword, id);
+
+      if(result){
+        res.json({"msg": "Mot de passe changé avec succès"})
+      };
+      
+    } catch (error) {
+      console.trace(error)
+      res.json(error)
+    }
+  },
+
+  async deleteAccount(req, res) {
+    try {
+      const id = req.user.user.user_id; 
+     const result = await userDataMapper.deleteUser(id);
+    if(!result) {
+      res.json({"msg": "Fail to delete"})
+    };
+    res.json({ "msg" : "Account deleted"})
+    } catch (error) {
+      console.trace(error)
+      res.json(error)
+    }
+    
+  }
 
 
 }
