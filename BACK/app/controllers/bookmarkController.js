@@ -49,7 +49,7 @@ module.exports = {
 
             const user_id = request.user.user.user_id;
             const ad_id = request.params.id;
-            console.log(user_id, ad_id);
+
             const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 
             response.json({"msg" : "Favori supprimé"});
@@ -57,7 +57,7 @@ module.exports = {
             console.trace(error);
             response.status(500).json({ error: `Server error, please contact an administrator` });
         }
-    }
+    },
  
 }
 

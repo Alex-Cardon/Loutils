@@ -35,6 +35,19 @@ module.exports = {
             console.trace(error);
             response.json({ error });
         }
+    },
+
+    async deleteAMessage (request, response, next)  {
+
+        try {
+            const id = request.params.id;
+            const result = await userDataMapper.deleteAMessage(id);
+
+            response.json({"msg" : "message supprimé"});
+        } catch (error) {
+            console.trace(error);
+            response.status(500).json({ error: `Server error, please contact an administrator` });
+        }
     }
- 
+
 }

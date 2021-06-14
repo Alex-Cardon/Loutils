@@ -16,22 +16,27 @@ const router = express.Router();
 /*router.route('/account/:id')
         .get(userController.getAccountInformations)*/
 
-
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)
         .post(authorization, adController.postAnAd);
 
-        router.patch('/account/ads/:id', authorization, adController.patchAd);
 
- router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
+router.route('/account/ad/:id')
+        .patch(authorization, adController.patchAd);
+        .delete(authorization, adController.deleteAnAd);
+
+router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
 
 router.route('/bookmarks/:id')
         .post(authorization, bookmarkController.addBookmark)
         .delete(authorization, bookmarkController.deleteBookmark);
 
-router.route('/account/:id/messages')
-        .get(messageController.getMessageByUserId)
-        .post(messageController.postAMessage);
+router.route('messages')
+        .get(authorization, messageController.getMessageByUserId)
+        
+router.route('messages/:id')
+        .post(authorization, messageController.postAMessage)
+        .delete(authorization, messageController.deleteAMessage);
 
 router.post('/register', validUserInfo, userController.register);
 
@@ -44,7 +49,15 @@ router.route('/account/settings')
 
 router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
 
+
 router.get('/search', adController.searchAds);
+
+router.route('/savedResearch')
+        .post(authorization, adController.addNewResearch);
+
+router.route('/savedResearch/:id')
+        .patch(authorization, adController.updateSavedResearch)
+        .delete(authorization, adController.deleteSavedResearch);
 
 router.use(errorController.resourceNotFound);
 
