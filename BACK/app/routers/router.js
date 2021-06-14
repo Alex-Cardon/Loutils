@@ -52,7 +52,8 @@ router.route('/savedResearch')
         .post(authorization, adController.addNewResearch);
 
 router.route('/savedResearch/:id')
-        .patch(authorization, adController.updateSavedResearch);
+        .patch(authorization, adController.updateSavedResearch)
+        .delete(authorization, adController.deleteSavedResearch);
 
 router.use(errorController.resourceNotFound);
 

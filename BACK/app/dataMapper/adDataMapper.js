@@ -94,5 +94,11 @@ module.exports = {
         return result.rows[0];
     },
 
+    async deleteOneSavedResearch(id){
+        const result = await client.query(`DELETE FROM "saved_research" WHERE id = $1`, [id]);
+
+        return result.rows[0];
+    }
+
 
 }

@@ -80,7 +80,10 @@ Content-Type: application/json
 
 }
 
-
+###supprimer une recherche sauvegardée en tant que monsieur x
+DELETE http://localhost:3000/savedResearch/6
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY3MjY3MSwiZXhwIjoxNjIzNjg3MDcxfQ.wkbbzPe9AJZDPBYxFeT8pfcNjg7hn5-FtvjspTTbqh4
+Content-Type: application/json
 
 
 
