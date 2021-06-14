@@ -1,27 +1,17 @@
 const client = require('../client');
 
-class MessageModel {
+module.exports = {
 
-datavalues = {};
 
-    set data(values) {
-        for (const field of message.fields) {
-            if (values[field]) {
-                message.dataValues[field] = values[field];
-            }
-        }
-    };
-
-    static async getMessageByUserId(id) {
+    async getMessageByUserId(id) {
         const result = await client.query(`SELECT * FROM "message" WHERE "sender" = $1`, [id]);
 
         if (!result.rows) {
             return null;
         }
         return (result.rows);
-    };
-
-    static async postAMessage(post) {
+    },
+    async postAMessage(post) {
         const result = await client.query(`INSERT INTO "message" 
         ("content", "recipient", "sender") 
         VALUES($1, $2, $3) RETURNING *`, [post.content, post.recipient, post.sender]);
@@ -30,8 +20,14 @@ datavalues = {};
             return null;
         }
         return result.rows[0];
-    };
+    },
+
+    async deleteAMessage(id) {
+        const result = await client.query(`DELETE FROM "message" 
+        WHERE id = $1) `, [id]);
+
+        return result.rows[0];
+    }
 
 }
 
-module.exports = MessageModel;

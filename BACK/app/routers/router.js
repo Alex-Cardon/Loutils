@@ -21,15 +21,18 @@ router.route('/account/:id/ads')
         .get(adController.getByUserId)
         .post(adController.postAnAd);
 
- router.get('/bookmarks', bookmarkController.getBookmarksById);
+router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
 
 router.route('/bookmarks/:id')
         .post(authorization, bookmarkController.addBookmark)
         .delete(authorization, bookmarkController.deleteBookmark);
 
-router.route('/account/:id/messages')
-        .get(messageController.getMessageByUserId)
-        .post(messageController.postAMessage);
+router.route('messages')
+        .get(authorization, messageController.getMessageByUserId)
+        
+router.route('messages/:id')
+        .post(authorization, messageController.postAMessage)
+        .delete(authorization, messageController.deleteAMessage);
 
 router.post('/register', validUserInfo, userController.register);
 
@@ -42,7 +45,14 @@ router.route('/account/settings')
 
 router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
 
+
 router.get('/search', adController.searchAds);
+
+router.route('/savedResearch')
+        .post(authorization, adController.addNewResearch);
+
+router.route('/savedResearch/:id')
+        .patch(authorization, adController.updateSavedResearch);
 
 router.use(errorController.resourceNotFound);
 
