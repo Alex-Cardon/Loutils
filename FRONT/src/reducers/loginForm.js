@@ -11,6 +11,7 @@ export const initialState = {
 };
 
 const reducer = (state = initialState, action = {}) => {
+  //console.log('je suis dans le reducer Login');
   switch (action.type) {
     case CHANGE_LOGIN_FIELD:
       return {
