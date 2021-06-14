@@ -28,11 +28,6 @@ module.exports = {
             const user_id = request.user.user.user_id;
             const ad_id = request.params.id;
 
-
-            const user_id = request.user.user.user_id;
-            const ad_id = request.params.id
-
-
             const post = await bookmarkDataMapper.
             addBookmark(ad_id, user_id);
             
@@ -55,14 +50,14 @@ module.exports = {
 
             const user_id = request.user.user.user_id;
             const ad_id = request.params.id;
-            const result = await userDataMapper.deleteBookmark(ad_id, user_id);
+            const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 
             response.json({"msg" : "Favori supprimé"});
         } catch (error) {
             console.trace(error);
             response.status(500).json({ error: `Server error, please contact an administrator` });
         }
-    }
+    },
  
 }
 
