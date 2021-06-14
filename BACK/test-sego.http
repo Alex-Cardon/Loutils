@@ -3,11 +3,12 @@
 GET http://localhost:3000/account/2/messages
 
 ###Poster un message en tant qu'utilisateur X à un destinataire Y
-POST http://localhost:3000/account/2/messages
+POST http://localhost:3000//messages/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY3MjY3MSwiZXhwIjoxNjIzNjg3MDcxfQ.wkbbzPe9AJZDPBYxFeT8pfcNjg7hn5-FtvjspTTbqh4
 Content-Type: application/json
 
 {
-    "content": "Coucou toi, elle a l'air cool ta perceuse ;) ",
+    "content": "Coucou ",
     "recipient": 1,
     "sender": 2
 }
@@ -24,7 +25,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUi
 Content-Type: application/json
 
 {
-    "title": "Dimitri",
+    "title": "D",
     "picture": "app/data/img_ad/dimitri.png",
     "price": 15,
     "product_state": "un peu usagé",
