@@ -1,9 +1,6 @@
 const client = require('../client');
 
-
 module.exports = {
-
-
 
      async findByPk(id) {
 
@@ -31,7 +28,7 @@ module.exports = {
 
     async deleteOneBookmark(ad_id, user_id) {
         const result = await client.query(`DELETE FROM "bookmark"
-        WHERE ad_id = $1 AND user_id = $2 `, [ad_id, user_id]);
+        WHERE ad_id = $1 AND user_id = $2`, [ad_id, user_id]);
 
         return result.rows[0];
     }

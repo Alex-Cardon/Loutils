@@ -14,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "martin.dufour@mail.fr",
-    "password": "luciledu59"
+    "email": "megamartin.dufour@mail.com",
+    "password": "martinmega74"
 }
 
 
@@ -39,13 +39,13 @@ Content-Type: application/json
 
 ### Update Données user
 PATCH  http://localhost:3000/account/settings
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjYsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2MDQzNCwiZXhwIjoxNjIzNjc0ODM0fQ.bIymsJE9Suvm3Qdu3jScs_NfkTzIoRMZIATZ_VVcDC8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjgsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY3NDk2NywiZXhwIjoxNjIzNjg5MzY3fQ.WgtTnQlpv_d8MSydyHWSR4JfJUsU8NEqhDFk4xwCaew
 Content-Type: application/json
 
 {
-    "name": "lulu",
+    "name": "demonteP",
     "email": "megamartin.dufour@mail.com",
-    "phone": "0612331622"
+    "phone": "0625986319"
 }
 
 ### Update password user

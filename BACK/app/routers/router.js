@@ -16,12 +16,13 @@ const router = express.Router();
 /*router.route('/account/:id')
         .get(userController.getAccountInformations)*/
 
+router.route('/account/ads')
+        .get(authorization, adController.getByUserId)
+        .post(authorization, adController.postAnAd);
 
-router.route('/account/:id/ads')
-        .get(adController.getByUserId)
-        .post(adController.postAnAd)
 
 router.route('/account/ad/:id')
+        .patch(authorization, adController.patchAd);
         .delete(authorization, adController.deleteAnAd);
 
 router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);

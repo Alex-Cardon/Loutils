@@ -1,5 +1,4 @@
 const bookmarkDataMapper = require ('../dataMapper/bookmarkDataMapper');
-const userDataMapper = require ('../dataMapper/userDataMapper');
 
 module.exports = {
 
@@ -44,12 +43,13 @@ module.exports = {
         }
     },
 
-    async deleteBookmark (request, response, next)  {
+    async deleteBookmark(request, response, next)  {
 
         try {
 
             const user_id = request.user.user.user_id;
             const ad_id = request.params.id;
+
             const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 
             response.json({"msg" : "Favori supprimé"});

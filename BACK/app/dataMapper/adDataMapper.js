@@ -13,15 +13,34 @@ module.exports = {
         return (result.rows);
     },
 
-    async postAnAd(post) {
+
+    async postAnAd(title, picture, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id) {
+
         const result = await client.query(`INSERT INTO "ad" 
         ("title", "picture", "price", "product_state", "deposit", "description", "ad_type", "rating", "postcode", "category_id", "user_id") 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`, [post.title, post.picture, post.price, post.product_state, post.deposit, post.description, post.ad_type, post.rating, post.postcode, post.category_id, post.user_id]);
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`, [title, picture, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id]);
 
         if (!result.rows) {
             return null;
         }
         return result.rows[0];
+    },
+
+    async updateAd(title, picture, price, product_state, deposit, description, ad_type, postcode, category_id, id) {
+        const result = await client.query(`UPDATE "ad"
+        SET "title" = $1, 
+        "picture" = $2, 
+        "price" = $3,
+        "product_state" = $4, 
+        "deposit" = $5, 
+        "description" = $6, 
+        "ad_type" = $7, 
+        "postcode" = $8, 
+        "category_id" = $9 
+        WHERE "id" = $10 RETURNING *`, [title, picture, price, product_state, deposit, description, ad_type, postcode, category_id, id]);
+        console.log(result.rows);
+        return result.rows;
+
     },
 
     async fetchCP(userPC, radius) {
@@ -51,6 +70,7 @@ module.exports = {
      AND "ad"."title" LIKE $1 
      
      AND "category"."name"= $2`, ['%' + title + '%', category]);
+
 
         return (result.rows);
     },
@@ -112,3 +132,4 @@ module.exports = {
 
 
 }
+
