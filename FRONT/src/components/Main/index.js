@@ -1,8 +1,13 @@
 import React from 'react';
+import AdForm from 'src/containers/adForm';
 
 
 const Main = () => (
-  <p>Je suis dans Main</p>
+  <div>
+    <AdForm />
+    <p>Je suis dans Main</p>
+  </div>
+  
 );
 
 export default Main;
