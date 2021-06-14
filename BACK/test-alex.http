@@ -3,9 +3,9 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "Maurice",
-    "email": "lucile.dufour@mail.fr",
-    "password": "luciledu59"
+    "name": "Louis",
+    "email": "louis.dufour@mail.fr",
+    "password": "louloudu31"
 }
 
 ### Auth user
@@ -13,26 +13,55 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "lucile.dufour@mail.fr",
+    "email": "martin.dufour@mail.fr",
     "password": "luciledu59"
 }
 
-### test authorization
-GET http://localhost:3000/test
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXIiOjUsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzQxNzAyNSwiZXhwIjoxNjIzNDMxNDI1fQ.FoKPEF10b3iM3DMr6p8iuJXlNerJfvMPo58WIM2UWJ0
-Content-Type: application/json
 
-{
-}
-
-### serach
+### recherche d'annonces
 GET http://localhost:3000/search
 Content-Type: application/json
 
 {
     "title": "échelle",
-    "postcode": "1000",
+    "postcode": "12000",
     "radius": "0"
 }
 
+### Données user
+GET http://localhost:3000/account/settings
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjYsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2MDQzNCwiZXhwIjoxNjIzNjc0ODM0fQ.bIymsJE9Suvm3Qdu3jScs_NfkTzIoRMZIATZ_VVcDC8
+Content-Type: application/json
 
+{
+}
+
+### Update Données user
+PATCH  http://localhost:3000/account/settings
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjYsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2MDQzNCwiZXhwIjoxNjIzNjc0ODM0fQ.bIymsJE9Suvm3Qdu3jScs_NfkTzIoRMZIATZ_VVcDC8
+Content-Type: application/json
+
+{
+    "name": "lulu",
+    "email": "megamartin.dufour@mail.com",
+    "phone": "0612331622"
+}
+
+### Update password user
+PATCH  http://localhost:3000/account/settings/password
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjYsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2MDQzNCwiZXhwIjoxNjIzNjc0ODM0fQ.bIymsJE9Suvm3Qdu3jScs_NfkTzIoRMZIATZ_VVcDC8
+Content-Type: application/json
+
+{
+    "password": "luciledu59",
+    "newPassword": "martinmega74"
+}
+
+### Delete user account
+DELETE http://localhost:3000/account/settings 
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjcsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2OTE1OSwiZXhwIjoxNjIzNjgzNTU5fQ.cel60z7WyQl6O2ZtjOhLXrUCwlifdclmXuD2b1wuzcA
+Content-Type: application/json
+
+{
+
+}

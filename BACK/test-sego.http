@@ -42,12 +42,10 @@ GET http://localhost:3000/bookmarks/2
 
 ###Ajouter un favori en tant que monsieur x
 POST http://localhost:3000/bookmarks/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjYsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzY2MDQzNCwiZXhwIjoxNjIzNjc0ODM0fQ.bIymsJE9Suvm3Qdu3jScs_NfkTzIoRMZIATZ_VVcDC8
 Content-Type: application/json
 
-{
-    "ad_id": 1,
-    "user_id":2
-}
+
 
 ###RECHERCHE
 

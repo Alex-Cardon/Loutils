@@ -8,7 +8,7 @@ const adController = require('../controllers/adController');
 const bookmarkController = require('../controllers/bookmarkController');
 const messageController = require('../controllers/messageController');
 const errorController = require('../controllers/errorController');
-const searchController = require('../controllers/searchController');
+const validUserSettings = require('../middlewares/validUserSettings');
 
 const router = express.Router();
 
@@ -21,10 +21,10 @@ router.route('/account/:id/ads')
         .get(adController.getByUserId)
         .post(adController.postAnAd);
 
+ router.get('/bookmarks', bookmarkController.getBookmarksById)
 
 router.route('/bookmarks/:id')
-        .get(bookmarkController.getBookmarksById)
-        .post(bookmarkController.addBookmark);
+        .post(authorization, bookmarkController.addBookmark);
 
 router.route('/account/:id/messages')
         .get(messageController.getMessageByUserId)
@@ -32,9 +32,15 @@ router.route('/account/:id/messages')
 
 router.post('/register', validUserInfo, userController.register);
 router.post('/login', validUserInfo, userController.login);
-router.get('/test', authorization, userController.test)
 
-router.get('/search', searchController.research);
+router.route('/account/settings')
+        .get(authorization, userController.getUserInfo)
+        .patch(authorization, validUserSettings, userController.patchUserInfo)
+        .delete(authorization, userController.deleteAccount);
+
+router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
+
+router.get('/search', adController.searchAds);
 
 router.use(errorController.resourceNotFound);
 
