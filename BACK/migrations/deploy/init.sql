@@ -29,7 +29,7 @@ CREATE TABLE "category" (
 CREATE TABLE "ad" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL,
-    "picture" text,
+    "picture_id" text,
     "price" pint,
     "product_state" text NOT NULL,
     "deposit" pint,
@@ -76,6 +76,14 @@ CREATE TABLE "message" (
 CREATE TABLE "bookmark" (
     "ad_id" integer NOT NULL REFERENCES "ad"("id"), --si je supprime un favori, je veux qu'une annonce existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"),--si je supprime un favori, je veux qu'un utilisateur existe toujours donc pas de cascade
+    "created_at" timestamptz NOT NULL DEFAULT now(),
+    "updated_at" timestamptz
+);
+
+CREATE TABLE "ad_rating" (
+    "rated_by_user" integer NOT NULL REFERENCES "user"("id"),
+    "rated_ad" integer NOT NULL REFERENCES "ad"("id"),
+    "rating" integer NOT NULL,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
