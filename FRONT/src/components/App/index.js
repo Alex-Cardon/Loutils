@@ -29,11 +29,12 @@ const App = () => (
         <Route excat path="/SettingsPage">
           <Setting/>
         </Route>
-
-      </Switch>
-      
+        <Route>
+          <Error />
+        </Route>
+       <Footer /> 
+      </Switch>  
     <Footer />
-    <Error />
   </div>
 );
 
