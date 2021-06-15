@@ -6,6 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Main from 'src/components/Main';
 import Footer from 'src/components/Footer';
+import SignupPage from 'src/containers/SignupPage';
+import Setting from 'src/components/SettingsPage';
 
 import './styles.css';
 
@@ -13,7 +15,19 @@ import './styles.css';
 const App = () => (
   <div className="app">
     <Header />
-    <Main />
+      <Switch>
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <Route excat path="/SignupPage">
+          <SignupPage/>
+        </Route>
+        <Route excat path="/SettingsPage">
+          <Setting/>
+        </Route>
+
+      </Switch>
+      
     <Footer />
   </div>
 );

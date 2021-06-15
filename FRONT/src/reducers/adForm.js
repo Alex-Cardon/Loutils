@@ -22,6 +22,7 @@ const reducer = (state = initialState, action) => {
         case GET_TOOL_STATE:
           return {
             ...state,
+            // ici toolState recoit un objet au lieu de string
             toolState: action.value,
           }
         default:
