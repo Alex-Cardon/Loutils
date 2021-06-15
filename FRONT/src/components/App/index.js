@@ -4,8 +4,9 @@ import React from 'react';
 import Header from 'src/components/Header';
 import Main from 'src/components/Main';
 import Footer from 'src/components/Footer';
+import Error from 'src/components/Error';
 
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
     <Header />
     <Main />
     <Footer />
+    <Error />
   </div>
 );
 

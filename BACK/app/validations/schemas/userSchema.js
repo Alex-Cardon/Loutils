@@ -8,6 +8,13 @@ const insertSchema = Joi.object({
     phone_number: Joi.number().min(10)
 }).required();
 
+const loginSchema = Joi.object({
+
+    mail: Joi.string().email().required(),
+    password: Joi.string().min(2).required()
+}).required();
+
+
 const updateSchema = Joi.object({
 
     name: Joi.string().min(3),
@@ -16,4 +23,4 @@ const updateSchema = Joi.object({
     phone_number: Joi.number().min(10)
 }).required();
 
-module.exports = { insertSchema, updateSchema };
+module.exports = { insertSchema, updateSchema, loginSchema };

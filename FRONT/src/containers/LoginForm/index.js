@@ -5,7 +5,8 @@ import LoginForm from 'src/components/LoginForm';
 import { 
   changeField, 
   submitLogin, 
-  logout 
+  logout,
+  toggleSettings,
 } from 'src/actions/loginForm';
 
 const mapStateToProps = (state) => ({
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => ({
   password: state.user.password,
   isLogged: state.user.isLogged,
   loggedMessage: `Bienvenue ${state.user.nickname}`,
+  isOpen: state.user.isOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,6 +32,11 @@ const mapDispatchToProps = (dispatch) => ({
   handleLogout: () => {
     dispatch(logout());
   },
+
+  onSettingsToggle: () => {
+    dispatch(toggleSettings());
+  },
+ 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

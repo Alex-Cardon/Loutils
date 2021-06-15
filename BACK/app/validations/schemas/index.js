@@ -1,9 +1,21 @@
 const {
     insertSchema: userInsertSchema,
-    updateSchema: userUpdateSchema
+    updateSchema: userUpdateSchema,
+    loginSchema: userLoginSchema
 } = require('./userSchema');
+
+const {
+    postMessageSchema : messagePostMessageSchema
+} = require('./messageSchema');
+
+const {
+    addSchema : adAddSchema
+} = require('./adSchema');
 
 module.exports = {
     userInsertSchema,
-    userUpdateSchema
+    userUpdateSchema,
+    userLoginSchema,
+    messagePostMessageSchema,
+    adAddSchema
 };

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//! 2 le sous composant permet de gérer l'imput et de pouvoir le multiplier en fonction 
+//! du besoin direction le container SignupPage et dans le fichier index 
+
 const SettingsField = ({
   value,
   onChange,

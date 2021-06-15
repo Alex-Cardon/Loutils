@@ -3,6 +3,7 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 
 export const changeField = (newValue, name) => ({
   type: CHANGE_LOGIN_FIELD,
@@ -27,3 +28,9 @@ export const loginSuccess = (apiData) => ({
 });
 
 export const loginError = () => ({});
+
+// pas besoin de parametre
+// le reducer pourra inverser depuis l'ancien state
+export const toggleSettings = () => ({
+  type: TOGGLE_SETTINGS,
+});
