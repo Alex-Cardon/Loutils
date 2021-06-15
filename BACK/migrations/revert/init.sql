@@ -16,6 +16,8 @@ DROP TABLE "category";
 
 DROP TABLE "user";
 
+DROP TABLE "ad_rating"
+
 DROP DOMAIN "pint";
 
 COMMIT;

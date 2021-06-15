@@ -10,8 +10,6 @@ function jwtGenerator(id, role) {
         }
     };
 
-
-
     return jwt.sign(payload, process.env.JWTSECRET, {
         expiresIn: "4h"
     });
