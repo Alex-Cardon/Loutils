@@ -10,7 +10,6 @@ const messageController = require('../controllers/messageController');
 const errorController = require('../controllers/errorController');
 const validUserSettings = require('../middlewares/validUserSettings');
 const { request, response } = require('express');
-const pictureController = require('../controllers/pictureController');
 
 const router = express.Router();
 
@@ -27,14 +26,85 @@ const router = express.Router();
 
 /*image et BDD, sorry pour la place prise et le non rangement, dès que ça fonctionne nickel je bouge tout ça*/        
 
+const path = require('path');
 const multer = require('multer');
-const imageUpload = multer({
-        dest: 'data/images',
-    });
+const knex = require('knex');
 
-router.post('/image', imageUpload.single('image'), pictureController.postImage);
+const db = knex (
+        {
+                client: 'pg',
+                connection:{
+                        host: '127.0.0.1',
+                        user: process.env.PGUSER,
+                        password: process.env.PGPASSWORD,
+                        database: process.env.PGDATABASE,
+                },
+        }
+);
 
-router.get('/image/:filename', pictureController.getImage); 
+const imageUpload = multer ({
+    dest: 'data/images',
+});
+
+router.post('/image', imageUpload.single('image'), (request, response) => {
+        const { filename, mimetype, size } = request.file;
+        const filepath = request.file.path;
+
+        db
+                .insert({
+                        filename,
+                        filepath,
+                        mimetype,
+                        size,
+                })
+                .into('image_files')
+                .then(() => response.json({success: true, filename}))
+                .catch(error => response.json({
+                        success: false,
+                        message: 'upload failed',
+                        stack: error.stack,
+                }));
+});
+
+router.get('/image/:filename', (request, response) => {
+        const { filename } = request.params;
+        db
+                .select('*')
+                .from('image_files')
+                .where({filename})
+                .then(images => {
+                        if(images[0]){
+                                const dirname = path.resolve();
+                                const fullfilepath = path.join( dirname, 
+                                        images[0].filepath);
+                                return response
+                                        .type(images[0].mimetype)
+                                        .sendFile(fullfilepath);
+                        }
+                        return Promise.reject(new Error("L'image n'existe pas"));
+                })
+                .catch(error => response
+                        .status(404)
+                        .json({
+                                success: false,
+                                message: 'Not found',
+                                stack: error.stack,
+                        }),
+                );
+
+
+        /*const dirname = path.resolve();
+        const fullfilepath = path.join(dirname, 'images/' + filename);
+        return response.sendFile(fullfilepath);*/
+}); 
+
+
+
+
+
+
+
+
 
 /*FIN DU BORDEL */
 
