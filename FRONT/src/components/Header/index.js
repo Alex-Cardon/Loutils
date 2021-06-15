@@ -1,12 +1,14 @@
 import React from 'react';
-import LoginForm from 'src/containers/LoginForm';
-import SignupPage from 'src/containers/SignupPage';
 
+import LoginForm from 'src/containers/LoginForm';
+import SearchBar from 'src/containers/SearchBar';
+
+import './styles.scss';
 
 const Header = () => (
-  <div>
+  <div className="header">
     <LoginForm />
-    <SignupPage />
+    <SearchBar /> 
   </div>
   
 );

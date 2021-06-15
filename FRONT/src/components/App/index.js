@@ -6,10 +6,14 @@ import { Switch, Route } from 'react-router-dom';
 import Header from 'src/components/Header';
 import Main from 'src/components/Main';
 import Footer from 'src/components/Footer';
+
 import SignupPage from 'src/containers/SignupPage';
 import Setting from 'src/components/SettingsPage';
 
-import './styles.css';
+import Error from 'src/components/Error';
+
+
+import './styles.scss';
 
 // == Composant
 const App = () => (
@@ -29,6 +33,7 @@ const App = () => (
       </Switch>
       
     <Footer />
+    <Error />
   </div>
 );
 
