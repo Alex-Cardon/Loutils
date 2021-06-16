@@ -14,7 +14,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "louis.dufour@mail.fr",
+    "email": "manu.dumoulin@mail.fr",
     "password": "louloudu31"
 }
 
@@ -99,3 +99,15 @@ Content-Type: application/json
 {
     "ad_id": 35
 }
+
+### créer une réservation
+POST http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzg2NjYzOSwiZXhwIjoxNjIzODgxMDM5fQ.la_JJ4jkTOXaMlsLBjQlLR5Tzft1V6FHQX6A9tj8530
+Content-Type: application/json
+
+{
+    "begining": "2021-06-17",
+    "end": "2021-06-18",
+    "ad_id": "1"
+}
+
