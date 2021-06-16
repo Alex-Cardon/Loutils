@@ -13,10 +13,10 @@
     height: 2.5em;
 
     &:focus {
-      border-color: grey;
+      border-color: vars.$color;
 
       & + .field-label {
-        color: black;
+        color: vars.$color;
       }
     }
   }

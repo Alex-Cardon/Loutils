@@ -4,7 +4,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 // TODO en cours de construction
 
-import './style.scss';
+import './styles.scss';
 
 const adResults = () => (
   <Card.Group className='card-group'>

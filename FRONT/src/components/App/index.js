@@ -7,6 +7,11 @@ import { Switch, Route } from 'react-router-dom';
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
 import Setting from 'src/components/SettingsPage';
+import Favorites from 'src/components/Favorites';
+import Announcements from 'src/components/Announcements';
+import Profil from 'src/components/Profil';
+import MyResearch from 'src/components/MyResearch';
+import Params from 'src/components/Params';
 
 
 import AdForm from 'src/containers/adForm';
@@ -31,6 +36,21 @@ const App = () => (
       </Route>
       <Route excat path="/SettingsPage">
         <Setting />
+      </Route>
+      <Route excat path="/Favorites">
+        <Favorites />
+      </Route>
+      <Route excat path="/Announcements">
+        <Announcements />
+      </Route>
+      <Route excat path="/MyResearch">
+        <MyResearch />
+      </Route>
+      <Route excat path="/Profil">
+        <Profil />
+      </Route>
+      <Route excat path="/Params">
+        <Params />
       </Route>
       <Route>
         <Error />

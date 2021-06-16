@@ -29,6 +29,14 @@ const LoginForm = ({
       // qui "poussera" le div depuis la droite
       className={isOpen ? 'login login--open' : 'login'}
     >
+
+  <NavLink
+        className={isLogged ? 'settingsPage-link settingsPage-link' : 'settingsPage-link__toggle'}
+        exact
+        to="/SettingsPage"
+      >
+        Mon compte 
+    </NavLink>
       <NavLink
         className={isLogged ? 'signup-link signup-link__toggle' : 'signup-link'}
         exact

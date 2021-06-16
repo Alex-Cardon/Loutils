@@ -16,6 +16,7 @@ const Header = () => (
     >
       <img src={logo} className="header-logo" alt="Logo loutils" />
     </NavLink>
+    <p>Le site de location d'outils entre particuliers</p>
   </div>
 
 );
