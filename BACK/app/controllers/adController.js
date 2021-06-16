@@ -41,9 +41,9 @@ module.exports = {
 
     async patchAd(req, res){
         try {
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
             const id = req.params.id
-            const result = await adDataMapper.updateAd(title, picture, price,product_state, deposit, description, ad_type, postcode, category_id, id);
+            const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
             res.status(200).json({ result });
         } catch (error) {
