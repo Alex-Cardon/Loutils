@@ -23,15 +23,7 @@ const router = express.Router();
 router.get('/randads',adController.getRandAds);
         
 router.get('/categories', categoryController.getCategories);
-
-
-
-
-
-
-
-
-/*image et BDD, sorry pour la place prise et le non rangement, dès que ça fonctionne nickel je bouge tout ça*/        
+   
 
 const multer = require('multer');
 const imageUpload = multer({
@@ -42,19 +34,9 @@ router.post('/image', imageUpload.single('image'), pictureController.postImage);
 
 router.get('/image/:filename', pictureController.getImage); 
 
-/*FIN DU BORDEL */
-
-
-
-
-
-
-
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)
         .post(authorization, adController.postAnAd);
-
-
 
 router.route('/account/ad/:id(\\d+)')
         .patch(authorization, adController.patchAd)
@@ -66,11 +48,11 @@ router.route('/bookmarks/:id(\\d+)')
         .post(authorization, bookmarkController.addBookmark)
         .delete(authorization, bookmarkController.deleteBookmark);
 
-router.route('messages')
+router.route('/messages')
         .get(authorization, messageController.getMessageByUserId)
-        
-router.route('messages/:id(\\d+)')
-        .post(authorization, messageController.postAMessage)
+        .post(authorization, messageController.postAMessage);
+
+router.route('/messages/:id(\\d+)')
         .delete(authorization, messageController.deleteAMessage);
 
 router.post('/register', validUserInfo, userController.register);

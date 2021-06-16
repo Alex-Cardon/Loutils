@@ -4,10 +4,13 @@ module.exports = {
 
     async getMessageByUserId(request, response, next){
         try{
-            const message = await messageDataMapper.getMessageByUserId(request.params.id);
+            const user = request.user.user.user_id;
+
+            const message = await messageDataMapper.getMessageByUserId(user);
             if(!message){
                 return next();
             }
+            console.log("message", message.content);
             response.json({data : message})
 
         }catch (error) {
@@ -18,12 +21,15 @@ module.exports = {
 
     async postAMessage(request, response, next){
         try{
-
-            const { content, recipient, sender} = request.body;
-
-            const post = await messageDataMapper.
-            postAMessage({ content, recipient, sender });
             
+            const { content, recipient } = request.body;
+            const sender = request.user.user.user_id;
+
+            // console.log("content", content, "recipient", recipient, "sender", sender);
+            
+            const post = await messageDataMapper.postAMessage({ content, recipient, sender });
+            
+            //console.log("post.content", post.content);
     
             if(!post){
                 return next();
