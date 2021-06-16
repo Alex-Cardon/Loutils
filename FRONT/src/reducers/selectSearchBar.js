@@ -1,8 +1,12 @@
-import { CHANGE_RESEARCH_INPUT } from 'src/actions/searchBar';
+import { CHANGE_CATEGORIES_INPUT, CHANGE_LOCALISATION_INPUT } from 'src/actions/selectSearchBar';
 
 //! state
 export const initialState = {
-  searchValue: "",
+  tools:"",
+  localisation: "",
+  category: "",
+  distance:"",
+  
   
 };
 //! récupération de l'action pour injecter dans le state 
@@ -10,11 +14,17 @@ export const initialState = {
 const reducer = (state = initialState, action ) => {
   //console.log('je suis dans le reducer searchBar');
   switch (action.type) {
-    case CHANGE_RESEARCH_INPUT:
+    case CHANGE_CATEGORIES_INPUT:
       // on renvoie un nouvel objet "state"
       return {
         ...state, 
-        searchValue: action.value,   
+        tools: action.value,   
+      };
+      case CHANGE_LOCALISATION_INPUT:
+      // on renvoie un nouvel objet "state"
+      return {
+        ...state, 
+        localisation: action.value,   
       };
     default:
       return state;
