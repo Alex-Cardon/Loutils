@@ -3,6 +3,18 @@ const client = require('../client');
 
 module.exports = {
 
+    /*afficher les recherches enregistrées de monsieur x*/
+
+    async findSavedResearchByUserId(id) {
+        console.log(id);
+        const result = await client.query(`SELECT * FROM "saved_research" WHERE "user_id" = $1`, [id]);
+        console.log(result);
+        if (!result.rows) {
+            return null;
+        }
+        return (result.rows);
+    },
+
      /*Enregistrer une recherche */
 
      async addNewResearch(post) {
@@ -21,9 +33,9 @@ module.exports = {
         console.log(id, postcode, title, radius, category_id );
         const result = await client.query(`UPDATE "saved_research" 
         SET "postcode"=$1, "title"=$2, "radius"=$3, "category_id"=$4 
-        WHERE "user_id"=$5 RETURNING *`, [postcode, title, radius, category_id, id]);
-        //console.log(result);
-        return result.rows[0];
+        WHERE "id"=$5 RETURNING *`, [postcode, title, radius, category_id, id]);
+        console.log(postcode, title, radius, category_id, id);
+        return result.rows;
     },
 
     async deleteOneSavedResearch(id){
@@ -32,3 +44,4 @@ module.exports = {
         return result.rows[0];
     },
 }
+

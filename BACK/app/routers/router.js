@@ -23,15 +23,7 @@ const router = express.Router();
 router.get('/randads',adController.getRandAds);
         
 router.get('/categories', categoryController.getCategories);
-
-
-
-
-
-
-
-
-/*image et BDD, sorry pour la place prise et le non rangement, dès que ça fonctionne nickel je bouge tout ça*/        
+   
 
 const multer = require('multer');
 const imageUpload = multer({
@@ -42,35 +34,25 @@ router.post('/image', imageUpload.single('image'), pictureController.postImage);
 
 router.get('/image/:filename', pictureController.getImage); 
 
-/*FIN DU BORDEL */
-
-
-
-
-
-
-
 router.route('/account/ads')
-        .get(authorization, adController.getByUserId)
-        .post(authorization, adController.postAnAd);
-
-
+        .get(authorization, adController.getByUserId)/*ok */
+        .post(authorization, adController.postAnAd)/*ok */;
 
 router.route('/account/ad/:id(\\d+)')
-        .patch(authorization, adController.patchAd)
-        .delete(authorization, adController.deleteAnAd);
+        .patch(authorization, adController.patchAd)/*ok */
+        .delete(authorization, adController.deleteAnAd)/*ok */;
 
-router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
+router.get('/bookmarks', authorization, bookmarkController.getBookmarksById)/*ok */;
 
 router.route('/bookmarks/:id(\\d+)')
-        .post(authorization, bookmarkController.addBookmark)
-        .delete(authorization, bookmarkController.deleteBookmark);
+        .post(authorization, bookmarkController.addBookmark)/*ok */
+        .delete(authorization, bookmarkController.deleteBookmark)/*ok */;
 
-router.route('messages')
-        .get(authorization, messageController.getMessageByUserId)
-        
-router.route('messages/:id(\\d+)')
-        .post(authorization, messageController.postAMessage)
+router.route('/messages')
+        .get(authorization, messageController.getMessageByUserId)/*ok */
+        .post(authorization, messageController.postAMessage)/*ok */;
+
+router.route('/messages/:id(\\d+)')
         .delete(authorization, messageController.deleteAMessage);
 
 router.post('/register', validUserInfo, userController.register);
@@ -89,11 +71,12 @@ router.route('/account/settings')
 router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
 
 router.route('/savedResearch')
-        .post(authorization, savedResearch.addNewResearch);
+        .get(authorization, savedResearch.getSavedResearch)/*ok */
+        .post(authorization, savedResearch.addNewResearch)/*ok */;
 
 router.route('/savedResearch/:id(\\d+)')
-        .patch(authorization, savedResearch.updateSavedResearch)
-        .delete(authorization, savedResearch.deleteSavedResearch);
+        .patch(authorization, savedResearch.updateSavedResearch)/*ok */
+        .delete(authorization, savedResearch.deleteSavedResearch)/*ok */;
 
 router.route('/ad/rating')
         .get(ratingController.getAVGRating)
