@@ -32,8 +32,9 @@
   position: fixed;
   display: flex;
   top: 20px;
-  right: -495px;
-  transition: right 1.5s ease-in;
+  right: -435px;
+  transition: right 1s ease-in;
+  text-align: center;
 
   &--open {
     right: 10px;
@@ -49,4 +50,12 @@
   &__toggle {
     display: none;
   }
+}
+
+.signup-link {
+  margin-right: 1rem;
+ 
+  &__toggle {
+    display: none;
+  } 
 }

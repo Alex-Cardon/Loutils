@@ -2,15 +2,19 @@ import React from 'react';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
+import Header from 'src/components/Header';
 import ConnectedSettingsField from 'src/containers/SignupPage/SettingsField';
 //! 1 je fais mon component maintenant direction le sous composant SettingsField
+
+import './styles.scss';
 
 const Signup = ({ 
   handleFormSubmit 
 }) => (
-  <div>
+  <div className="signup-page">
+    <Header />
     <h2>Créer votre compte</h2>
-    <form className="form"
+    <form className="signup-page__form"
       onSubmit={handleFormSubmit}
     >
       <ConnectedSettingsField
