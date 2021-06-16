@@ -1,9 +1,8 @@
 const express = require('express');
+
 const userController = require('../controllers/userController');
 const authorization = require('../middlewares/authorization');
 const validUserInfo = require('../middlewares/validUserInfo');
-const schemas = require('../validations/schemas');
-const validate = require('../validations/validate');
 const adController = require('../controllers/adController');
 const bookmarkController = require('../controllers/bookmarkController');
 const messageController = require('../controllers/messageController');
@@ -12,31 +11,36 @@ const categoryController = require('../controllers/categoryController');
 const errorController = require('../controllers/errorController');
 const validUserSettings = require('../middlewares/validUserSettings');
 const ratingController = require('../controllers/ratingController');
-const { request, response } = require('express');
 const pictureController = require('../controllers/pictureController');
+const bookingController = require('../controllers/bookingController');
+
+const schemas = require('../validations/schemas');
+const validate = require('../validations/validate');
 
 const router = express.Router();
-
-/*Accéder à la liste de mes annonces (titre et contenu) */
-/*router.route('/account/:id')
-        .get(userController.getAccountInformations)*/
-router.get('/randads',adController.getRandAds);
-        
-router.get('/categories', categoryController.getCategories);
-   
-
+const maxSize = 1 * 1000 * 1000;
 const multer = require('multer');
 const imageUpload = multer({
         dest: 'data/images',
+        limits: { fileSize: maxSize }
     });
+
+
+
+router.get('/randads',adController.getRandAds);
+        
+router.get('/categories', categoryController.getCategories);
+
 
 router.post('/image', imageUpload.single('image'), pictureController.postImage);
 
 router.get('/image/:filename', pictureController.getImage); 
 
+
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)/*ok */
         .post(authorization, adController.postAnAd)/*ok */;
+
 
 router.route('/account/ad/:id(\\d+)')
         .patch(authorization, adController.patchAd)/*ok */
@@ -81,6 +85,11 @@ router.route('/savedResearch/:id(\\d+)')
 router.route('/ad/rating')
         .get(ratingController.getAVGRating)
         .post(authorization, ratingController.ratingAnAd);
+
+router.route('/booking')
+        .get(bookingController.getBooking)
+        .post(authorization, bookingController.boonking)
+        .delete(authorization, bookingController.removeBooking);
 
 
 router.use(errorController.resourceNotFound);

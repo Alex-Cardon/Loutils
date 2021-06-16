@@ -13,6 +13,7 @@ INSERT INTO "category" ("name") VALUES
 ('soudage'),
 ('élévation');
 
+
 INSERT INTO "ad" ("title", "picture_id", "price", "product_state", "deposit", "description","ad_type",  "postcode", "category_id", "user_id") VALUES
 ('perceuse à percution', 1, 12,'bon état',10,'perceuse à percution au top pour percer tout types de matériaux','je loue',59000,1,2),
 
