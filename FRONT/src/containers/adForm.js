@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { changeAdField, getToolState } from 'src/actions/adForm';
+import { changeAdField, changeToolState, submitAdLogin } from 'src/actions/adForm';
 
 import AdForm from 'src/components/AdForm';
 
@@ -19,11 +19,21 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeAdField(value, name));
   },
 
-  getToolStateValue: (value) => {
+    getToolStateValue: (value) => {
     console.log("value : ", value);
     // ici value est un objet au lieu de value="used" ou value="working"
-    dispatch(getToolState(value));
+    dispatch(changeToolState(value));
   },
+
+  // getWorkingValue: (value) => {
+  //   console.log("value : ", value.target.value);
+  //   // ici value est un objet au lieu de value="used" ou value="working"
+  //   dispatch(getWorkingValue(value));
+  // },
+
+  handleLogin: () => {
+    dispatch(submitAdLogin());
+  }
 
 });
 
