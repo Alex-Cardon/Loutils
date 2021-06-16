@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-
 const insertSchema = Joi.object({
 
     title: Joi.string().min(3),

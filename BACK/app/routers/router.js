@@ -11,6 +11,8 @@ const savedResearch = require('../controllers/savedSearchController');
 const categoryController = require('../controllers/categoryController');
 const errorController = require('../controllers/errorController');
 const validUserSettings = require('../middlewares/validUserSettings');
+const { request, response } = require('express');
+const pictureController = require('../controllers/pictureController');
 
 const router = express.Router();
 
@@ -21,9 +23,36 @@ router.get('/randads',adController.getRandAds);
         
 router.get('/categories', categoryController.getCategories);
 
+
+
+
+
+
+
+
+/*image et BDD, sorry pour la place prise et le non rangement, dès que ça fonctionne nickel je bouge tout ça*/        
+
+const multer = require('multer');
+const imageUpload = multer({
+        dest: 'data/images',
+    });
+
+router.post('/image', imageUpload.single('image'), pictureController.postImage);
+
+router.get('/image/:filename', pictureController.getImage); 
+
+/*FIN DU BORDEL */
+
+
+
+
+
+
+
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)
         .post(validate.body(schemas.insertAdSchema), authorization, adController.postAnAd);
+
 
 
 router.route('/account/ad/:id(\\d+)')

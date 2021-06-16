@@ -18,5 +18,7 @@ module.exports = {
     userUpdateSchema,
     userLoginSchema,
     messagePostMessageSchema,
+
     insertAdSchema
 };
+
