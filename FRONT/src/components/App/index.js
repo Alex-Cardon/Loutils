@@ -19,26 +19,16 @@ import './styles.scss';
 // == Composant
 const App = () => (
   <div className="app">
-
     <Switch>
       <Route exact path="/">
         <Home />
-
-    <Header />
-    <Switch>
-      <Route exact path="/">
-        <Main />
-
       </Route>
       <Route excat path="/SignupPage">
         <SignupPage />
       </Route>
-
-
       <Route exact path="/AdForm">
         <AdForm />
       </Route>
-
       <Route excat path="/SettingsPage">
         <Setting />
       </Route>
@@ -46,10 +36,6 @@ const App = () => (
         <Error />
       </Route>
     </Switch>
-
-
-    <Footer />
-
   </div>
 );
 
