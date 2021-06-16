@@ -13,7 +13,7 @@ INSERT INTO "category" ("name") VALUES
 ('soudage'),
 ('élévation');
 
-INSERT INTO "ad" ("title", "picture", "price", "product_state", "deposit", "description","ad_type", "rating", "postcode", "category_id", "user_id") VALUES
+INSERT INTO "ad" ("title", "picture_id", "price", "product_state", "deposit", "description","ad_type", "rating", "postcode", "category_id", "user_id") VALUES
 ('perceuse à percution', 'perceuse.png',12,'bon état',10,'perceuse à percution au top pour percer tout types de matériaux','je loue',4,59000,1,2),
 
 ('ponceuse électrique', '',15,'comme neuf',80,'ponceuse parfaite pour poncer du bois','je cherche',0,75001,2,3),

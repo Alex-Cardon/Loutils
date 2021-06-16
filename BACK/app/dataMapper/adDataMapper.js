@@ -21,11 +21,11 @@ module.exports = {
     },
 
 
-    async postAnAd(title, picture, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id) {
+    async postAnAd(title, picture_id, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id) {
 
         const result = await client.query(`INSERT INTO "ad" 
-        ("title", "picture", "price", "product_state", "deposit", "description", "ad_type", "rating", "postcode", "category_id", "user_id") 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`, [title, picture, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id]);
+        ("title", "picture_id", "price", "product_state", "deposit", "description", "ad_type", "rating", "postcode", "category_id", "user_id") 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id]);
 
         if (!result.rows) {
             return null;
@@ -33,10 +33,10 @@ module.exports = {
         return result.rows[0];
     },
 
-    async updateAd(title, picture, price, product_state, deposit, description, ad_type, postcode, category_id, id) {
+    async updateAd(title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, id) {
         const result = await client.query(`UPDATE "ad"
         SET "title" = $1, 
-        "picture" = $2, 
+        "picture_id" = $2, 
         "price" = $3,
         "product_state" = $4, 
         "deposit" = $5, 
@@ -44,7 +44,7 @@ module.exports = {
         "ad_type" = $7, 
         "postcode" = $8, 
         "category_id" = $9 
-        WHERE "id" = $10 RETURNING *`, [title, picture, price, product_state, deposit, description, ad_type, postcode, category_id, id]);
+        WHERE "id" = $10 RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, id]);
         console.log(result.rows);
         return result.rows;
 

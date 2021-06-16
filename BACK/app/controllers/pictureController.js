@@ -1,15 +1,21 @@
 const pictureDataMapper = require('../dataMapper/pictureDataMapper');
+const path = require ('path');
 
 module.exports  = {
 
     async getImage(request, response, next){
         try{
             const { filename } = request.params;
-            const get = await pictureDataMapper.findByPk(filename);
-            if(!get){
+            const image = await pictureDataMapper.findByPk(filename);
+            if(!image){
                 return next();
             }
-            response.json({data : get})
+            const dirname = path.resolve();
+            const fullfilepath = path.join(dirname,
+                image.filepath);
+            response
+                .type(image.mimetype)
+                .sendFile(fullfilepath);
 
         }catch (error) {
             console.trace(error);
