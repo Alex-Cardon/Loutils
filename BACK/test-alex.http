@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "Louis",
-    "email": "louis.dufour@mail.fr",
+    "email": "louis.dumoulin@mail.fr",
     "password": "louloudu31"
 
 }
@@ -14,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "megamartin.dufour@mail.com",
-    "password": "martinmega74"
+    "email": "louis.dufour@mail.fr",
+    "password": "louloudu31"
 }
 
 
@@ -66,3 +66,17 @@ Content-Type: application/json
 {
 
 }
+
+### get une annonce par son id
+GET http://localhost:3000/ad/1
+Content-Type: application/json
+
+
+### Get 10 une annonces random
+GET http://localhost:3000/randads
+Content-Type: application/json
+
+
+### get all categories
+GET http://localhost:3000/categories
+Content-Type: application/json

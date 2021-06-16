@@ -7,40 +7,78 @@ const validate = require('../validations/validate');
 const adController = require('../controllers/adController');
 const bookmarkController = require('../controllers/bookmarkController');
 const messageController = require('../controllers/messageController');
+const savedResearch = require('../controllers/savedSearchController');
+const categoryController = require('../controllers/categoryController');
 const errorController = require('../controllers/errorController');
 const validUserSettings = require('../middlewares/validUserSettings');
+const { request, response } = require('express');
+const pictureController = require('../controllers/pictureController');
 
 const router = express.Router();
 
 /*Accéder à la liste de mes annonces (titre et contenu) */
 /*router.route('/account/:id')
         .get(userController.getAccountInformations)*/
+router.get('/randads',adController.getRandAds);
+        
+router.get('/categories', categoryController.getCategories);
+
+
+
+
+
+
+
+
+/*image et BDD, sorry pour la place prise et le non rangement, dès que ça fonctionne nickel je bouge tout ça*/        
+
+const multer = require('multer');
+const imageUpload = multer({
+        dest: 'data/images',
+    });
+
+router.post('/image', imageUpload.single('image'), pictureController.postImage);
+
+router.get('/image/:filename', pictureController.getImage); 
+
+/*FIN DU BORDEL */
+
+
+
+
+
+
 
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)
-        .post(authorization, adController.postAnAd);
+        .post(validate.body(schemas.insertAdSchema), authorization, adController.postAnAd);
 
 
-router.route('/account/ad/:id')
-        .patch(authorization, adController.patchAd);
+
+router.route('/account/ad/:id(\\d+)')
+        .patch(authorization, adController.patchAd)
         .delete(authorization, adController.deleteAnAd);
 
 router.get('/bookmarks', authorization, bookmarkController.getBookmarksById);
 
-router.route('/bookmarks/:id')
+router.route('/bookmarks/:id(\\d+)')
         .post(authorization, bookmarkController.addBookmark)
         .delete(authorization, bookmarkController.deleteBookmark);
 
 router.route('messages')
         .get(authorization, messageController.getMessageByUserId)
         
-router.route('messages/:id')
+router.route('messages/:id(\\d+)')
         .post(authorization, messageController.postAMessage)
         .delete(authorization, messageController.deleteAMessage);
 
 router.post('/register', validUserInfo, userController.register);
 
 router.post('/login', validUserInfo, userController.login);
+
+router.get('/search', adController.searchAds);
+
+router.get('/ad/:id(\\d+)', adController.getAdById);
 
 router.route('/account/settings')
         .get(authorization, userController.getUserInfo)
@@ -49,15 +87,12 @@ router.route('/account/settings')
 
 router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
 
-
-router.get('/search', adController.searchAds);
-
 router.route('/savedResearch')
-        .post(authorization, adController.addNewResearch);
+        .post(authorization, savedResearch.addNewResearch);
 
-router.route('/savedResearch/:id')
-        .patch(authorization, adController.updateSavedResearch)
-        .delete(authorization, adController.deleteSavedResearch);
+router.route('/savedResearch/:id(\\d+)')
+        .patch(authorization, savedResearch.updateSavedResearch)
+        .delete(authorization, savedResearch.deleteSavedResearch);
 
 router.use(errorController.resourceNotFound);
 
