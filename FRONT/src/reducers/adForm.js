@@ -1,4 +1,4 @@
-import { CHANGE_AD_FIELD, GET_TOOL_STATE } from 'src/actions/adForm';
+import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN } from 'src/actions/adForm';
 
 const initialState = {
   toolName: "",
@@ -19,12 +19,19 @@ const reducer = (state = initialState, action) => {
             
         };
 
-        case GET_TOOL_STATE:
+        case SUBMIT_AD_LOGIN:
+          return {
+            ...state,
+            state: action.value,
+          };
+
+        case CHANGE_TOOL_STATE:
           return {
             ...state,
             // ici toolState recoit un objet au lieu de string
             toolState: action.value,
           }
+
         default:
             return state;
     }
