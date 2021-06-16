@@ -19,7 +19,7 @@
 
   &-button {
     font-size: 1em;
-    color: #fff;
+    color: vars.$color;
     
     border-radius: .3em;
     border: 0;
@@ -34,7 +34,7 @@
   top: 20px;
   right: -435px;
   transition: right 1s ease-in;
-  text-align: center;
+  align-items: center;
 
   &--open {
     right: 10px;
@@ -53,6 +53,14 @@
 }
 
 .signup-link {
+  margin-right: 1rem;
+ 
+  &__toggle {
+    display: none;
+  } 
+}
+
+.settingsPage-link {
   margin-right: 1rem;
  
   &__toggle {

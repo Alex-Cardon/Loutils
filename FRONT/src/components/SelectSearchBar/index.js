@@ -7,16 +7,16 @@ import './styles.scss';
 
 const category = [
   { key: 'Catégories', text: 'Catégories', value: 'Catégories' },
-  { key: 'marteau', text: 'Marteau', value: 'all' },
-  { key: 'articles', text: 'Articles', value: 'articles' },
-  { key: 'products', text: 'Products', value: 'products' },
+  { key: 'marteau', text: 'Marteau à bomber le verre', value: 'all' },
+  { key: 'articles', text: 'Sulfateuse à petits poids', value: 'articles' },
+  { key: 'products', text: 'Scie Borg', value: 'products' },
 ]
 
 const distance = [
   { key: 'Rayon', text: 'Rayon', value: 'Rayon' },
   { key: '5', text: '5 kms', value: '5' },
   { key: '10', text: '10 kms', value: '10' },
-  { key: '15', text: '15 kms', value: '15' },
+  { key: '15', text: "laser", value: '15' },
 ]
 
 const SelectSearchBar = ({
