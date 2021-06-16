@@ -5,8 +5,9 @@ module.exports = {
 
 
     async findByUserId(id) {
+        console.log(id);
         const result = await client.query(`SELECT * FROM "ad" WHERE "user_id" = $1`, [id]);
-
+        console.log(result);
         if (!result.rows) {
             return null;
         }
@@ -46,7 +47,7 @@ module.exports = {
         "postcode" = $8, 
         "category_id" = $9 
         WHERE "id" = $10 RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, id]);
-        console.log("2", category_id);
+
         console.log(result.rows);
         return result.rows;
 
