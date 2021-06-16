@@ -5,8 +5,9 @@ module.exports = {
 
 
     async findByUserId(id) {
+        console.log(id);
         const result = await client.query(`SELECT * FROM "ad" WHERE "user_id" = $1`, [id]);
-
+        console.log(result);
         if (!result.rows) {
             return null;
         }
@@ -21,11 +22,11 @@ module.exports = {
     },
 
 
-    async postAnAd(title, picture_id, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id) {
-
+    async postAnAd(title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id) {
+        console.log(postcode)
         const result = await client.query(`INSERT INTO "ad" 
-        ("title", "picture_id", "price", "product_state", "deposit", "description", "ad_type", "rating", "postcode", "category_id", "user_id") 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, rating, postcode, category_id, user_id]);
+        ("title", "picture_id", "price", "product_state", "deposit", "description", "ad_type", "postcode", "category_id", "user_id") 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id]);
 
         if (!result.rows) {
             return null;
@@ -34,6 +35,7 @@ module.exports = {
     },
 
     async updateAd(title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, id) {
+        console.log("1", category_id);
         const result = await client.query(`UPDATE "ad"
         SET "title" = $1, 
         "picture_id" = $2, 
@@ -45,6 +47,7 @@ module.exports = {
         "postcode" = $8, 
         "category_id" = $9 
         WHERE "id" = $10 RETURNING *`, [title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, id]);
+
         console.log(result.rows);
         return result.rows;
 
