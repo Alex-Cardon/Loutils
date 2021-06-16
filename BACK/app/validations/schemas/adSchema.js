@@ -4,7 +4,7 @@ const insertSchema = Joi.object({
 
     title: Joi.string().min(3),
     price: Joi.number().integer().required(),
-    picture: Joi.string(),
+    picture_id: Joi.string(),
     product_state: Joi.string().required().min(3),
     deposit: Joi.number().integer().required(),
     description: Joi.string().required().min(20),

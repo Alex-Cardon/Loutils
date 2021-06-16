@@ -4,9 +4,5 @@ BEGIN;
 
 DROP TABLE "image_files";
 
-ALTER TABLE "ad" 
-    RENAME "picture_id" TO "picture";
-
-
 
 COMMIT;

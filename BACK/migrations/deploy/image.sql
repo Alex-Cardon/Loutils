@@ -2,8 +2,7 @@
 
 BEGIN;
 
-ALTER TABLE "ad" 
-    RENAME "picture" TO "picture_id";
+
 
 CREATE TABLE "image_files" (
     "id" SERIAL NOT NULL PRIMARY KEY,
