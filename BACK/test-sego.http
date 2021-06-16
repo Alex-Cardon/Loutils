@@ -136,13 +136,18 @@ Content-Type: application/json
 
 
 ###IMAGE
-###Poster une image
+###Poster une image, A TESTER SUR POSTMAN
 POST http://localhost:3000/image
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjksInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzc0NjQyMywiZXhwIjoxNjIzNzYwODIzfQ.fzRxyNvL7EyA0baOZy6-HpF_iINyd_Z_HGEx7Ha2RRs
 Content-Type: application/json
+{
 
-###récupérrer une image
-GET  http://localhost:3000/image/test.jpg
+    "image" : tournevis.jpg
+
+}
+
+###récupérrer une image, A TESTER SUR POSTMAN
+GET  http://localhost:3000/image/nomDuFichierImage
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjksInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzc0NjQyMywiZXhwIjoxNjIzNzYwODIzfQ.fzRxyNvL7EyA0baOZy6-HpF_iINyd_Z_HGEx7Ha2RRs
 Content-Type: application/json
 

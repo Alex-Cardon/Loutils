@@ -26,10 +26,19 @@ CREATE TABLE "category" (
     "updated_at" timestamptz
 );
 
+CREATE TABLE "image_files" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "filename" TEXT UNIQUE NOT NULL,
+    "filepath" TEXT NOT NULL,
+    "mimetype" TEXT NOT NULL,
+    "size" BIGINT NOT NULL,
+    "created_at" timestamptz NOT NULL DEFAULT now()
+);
+
 CREATE TABLE "ad" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL,
-    "picture_id" text,
+    "picture_id" integer NOT NULL REFERENCES "image_files"("id"),
     "price" pint,
     "product_state" text NOT NULL,
     "deposit" pint,
@@ -42,6 +51,7 @@ CREATE TABLE "ad" (
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
+
 
 CREATE TABLE "booking" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
