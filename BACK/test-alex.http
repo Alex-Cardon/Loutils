@@ -3,8 +3,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "Louis",
-    "email": "louis.dufour@mail.fr",
+    "name": "Manu",
+    "email": "manu.dumoulin@mail.fr",
     "password": "louloudu31"
 
 }
@@ -14,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "megamartin.dufour@mail.com",
-    "password": "martinmega74"
+    "email": "louis.dufour@mail.fr",
+    "password": "louloudu31"
 }
 
 
@@ -65,4 +65,37 @@ Content-Type: application/json
 
 {
 
+}
+
+### get une annonce par son id
+GET http://localhost:3000/ad/34
+Content-Type: application/json
+
+
+### Get 10 une annonces random
+GET http://localhost:3000/randads
+Content-Type: application/json
+
+
+### get all categories
+GET http://localhost:3000/categories
+Content-Type: application/json
+
+
+### Rating ad 
+POST http://localhost:3000/ad/rating
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIzLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM4MzUxNzUsImV4cCI6MTYyMzg0OTU3NX0.ZaxLjqiX6qFpsdUYejfqwdlLQ1SlJH_7ZTdEsAeURW0
+Content-Type: application/json
+
+{
+    "ad_id": 35,
+    "rating": 5
+}
+
+### get AVG rating
+GET http://localhost:3000/ad/rating
+Content-Type: application/json
+
+{
+    "ad_id": 35
 }

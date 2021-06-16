@@ -3,12 +3,14 @@ import React from 'react';
 import AdFormInput from './adFormInput';
 import AdFormText from './adFormText';
 
+import { Icon } from 'semantic-ui-react';
 
 import Proptypes from 'prop-types';
 
 import './style.scss';
 
 const AdForm = ({
+    handleLogin,
     getToolStateValue,
     changeField,
     toolName,
@@ -19,14 +21,19 @@ const AdForm = ({
     toolState,
     // isNew,
     // working,
-}) => {    
+}) => {   
+  
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleLogin();
+  };
 
     return (
-        <div className="adForm">
+        <div className="adForm" >
 
             <h2 className="adForm__title">Decrivez ici votre outil</h2>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="adForm__unit">
                     <AdFormInput
                         name="toolName"
@@ -41,7 +48,7 @@ const AdForm = ({
                     <AdFormInput
                         name="image"
                         type="text"
-                        placeholder="url photo"
+                        placeholder="Categories"
                         onChange={changeField}
                         value={image}
                     />
@@ -69,7 +76,7 @@ const AdForm = ({
                     <AdFormText
                         name="description"
                         type="text"
-                        placeholder="exemple: perceuse sans fil 12V 850w "
+                        placeholder="description "
                         onChange={changeField}
                         value={description}
                     />
@@ -103,7 +110,7 @@ const AdForm = ({
                             value="new"
                             // ici, avec getToolStateValue, je veux récupérer la valuer value="new"
                             onChange={getToolStateValue}
-                            checked
+                            
                         />
                     </div>
                     <div>
@@ -112,11 +119,19 @@ const AdForm = ({
                             type="radio"
                             id="used"
                             name="toolState"
-                            value="used"
+                            value="working"
                             onChange={getToolStateValue}
+                            
                         />
                     </div>
 
+                </div>
+                <div>
+                  <p>Ajoutez des photos</p>
+                  <button>
+                    <Icon name='camera' style={{color: "red"}}/>
+                  </button>
+                  
                 </div>
                 <button
                     className="adForm__button"
@@ -132,6 +147,7 @@ const AdForm = ({
 };
 
 AdForm.proptypes = {
+    handleLogin: Proptypes.func.isRequired,
     getToolStateValue: Proptypes.func.isRequired,
     changeField: Proptypes.func.isRequired,
     toolName: Proptypes.string.isRequired,

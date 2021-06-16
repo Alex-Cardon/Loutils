@@ -9,13 +9,16 @@ const {
 } = require('./messageSchema');
 
 const {
-    addSchema : adAddSchema
+    insertSchema : insertAdSchema
 } = require('./adSchema');
+
 
 module.exports = {
     userInsertSchema,
     userUpdateSchema,
     userLoginSchema,
     messagePostMessageSchema,
-    adAddSchema
+
+    insertAdSchema
 };
+

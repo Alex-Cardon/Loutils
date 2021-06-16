@@ -4,7 +4,7 @@ module.exports = {
 
     async getByUserId(request, response, next){
         try{
-            const ad = await adDataMapper.findByPk(request.params.id);
+            const ad = await adDataMapper.findByUserId(request.params.id);
             if(!ad){
                 return next();
             }
@@ -19,12 +19,12 @@ module.exports = {
     async postAnAd(request, response, next){
         try{
 
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = request.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = request.body;
 
             const user_id = request.user.user.user_id
 
             const post = await adDataMapper.
-            postAnAd(title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id);
+            postAnAd(title, picture_id, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id);
             
     
             if(!post){
@@ -41,9 +41,9 @@ module.exports = {
 
     async patchAd(req, res){
         try {
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
             const id = req.params.id
-            const result = await adDataMapper.updateAd(title, picture, price,product_state, deposit, description, ad_type, postcode, category_id, id);
+            const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
             res.status(200).json({ result });
         } catch (error) {
@@ -111,53 +111,26 @@ module.exports = {
         }
     },
 
-    async addNewResearch(request, response, next) {
-        try{
-
-            const {postcode, title, radius, category_id, user_id} = request.body;
-            const post = await adDataMapper.addNewResearch({postcode, title, radius, category_id, user_id});
-            console.log(post);
-            if(!post){
-                return next();
-            }
-    
-            response.json({data : post})
-
-
-        }catch(error){
-            console.trace(error);
-            response.json({error});
-        }
-    },
-
-
-    async updateSavedResearch (request, response, next){
-        try{
-
-            const id = request.user.user.user_id;
-            const { postcode, title, radius, category_id } = request.body;
-            const result = await adDataMapper.updateSavedResearch(id, postcode, title, radius, category_id);
-
-            if(result){
-                response.json({result})
-              }
-
-        }catch(error){
-            console.trace(error);
-            response.json(error);
-        }
-    },
-
-    async deleteSavedResearch (request, response, next) {
-        try{
-            const id = request.params.id;
-            const result = await adDataMapper.deleteOneSavedResearch(id);
-
-            response.json({"msg" : "message supprimé"});
-        }catch(error){
+    async getAdById(req, res) {
+        try {
+            const id = req.params.id;
+            const result = await adDataMapper.findById(id);
+            res.status(200).json({ result });
+        } catch (error) {
             console.trace(error);
             response.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
- 
+
+    async getRandAds(req, res) {
+        try {
+            const result = await adDataMapper.getTenAds();
+            res.status(200).json({ result });
+        } catch (error) {
+
+            console.trace(error);
+            response.status(500).json({ error: `Server error, please contact an administrator` });
+            
+        }
+    }
 };
