@@ -22,23 +22,19 @@ GET http://localhost:3000/account/3/ads
 ###Poster une annonce en tant qu'utilisateur X
 
 POST http://localhost:3000/account/ads
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjksInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzc0NjQyMywiZXhwIjoxNjIzNzYwODIzfQ.fzRxyNvL7EyA0baOZy6-HpF_iINyd_Z_HGEx7Ha2RRs
-
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIyLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM4Mjk0MTMsImV4cCI6MTYyMzg0MzgxM30.DXe3JXZFf31CLsHVCvmOyK1Rv_iT4rgvR11_2Fad8U8
 Content-Type: application/json
 
 {
-    "title": "Ségo",
+    "title": "Alex",
     "price": 25,
-    "picture": "ose/ose.jpg",
+    "picture_id": "ose/ose.jpg",
     "product_state": "comme neuf",
     "deposit": 150,
     "description": "très utile et plus encore",
     "ad_type": "je loue",
-
-    "rating": 5,
-    "postcode": 5900,
-    "category_id": 2
-
+    "postcode": 74200,
+    "category_id": 10
 }
 
 

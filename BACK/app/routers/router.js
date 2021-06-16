@@ -11,6 +11,7 @@ const savedResearch = require('../controllers/savedSearchController');
 const categoryController = require('../controllers/categoryController');
 const errorController = require('../controllers/errorController');
 const validUserSettings = require('../middlewares/validUserSettings');
+const ratingController = require('../controllers/ratingController');
 const { request, response } = require('express');
 const pictureController = require('../controllers/pictureController');
 
@@ -51,7 +52,7 @@ router.get('/image/:filename', pictureController.getImage);
 
 router.route('/account/ads')
         .get(authorization, adController.getByUserId)
-        .post(validate.body(schemas.insertAdSchema), authorization, adController.postAnAd);
+        .post(authorization, adController.postAnAd);
 
 
 
@@ -93,6 +94,11 @@ router.route('/savedResearch')
 router.route('/savedResearch/:id(\\d+)')
         .patch(authorization, savedResearch.updateSavedResearch)
         .delete(authorization, savedResearch.deleteSavedResearch);
+
+router.route('/ad/rating')
+        .get(ratingController.getAVGRating)
+        .post(authorization, ratingController.ratingAnAd);
+
 
 router.use(errorController.resourceNotFound);
 
