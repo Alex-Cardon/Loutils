@@ -68,7 +68,6 @@ module.exports = {
 
   async getUserInfo(req, res, next){
     try{
-      console.log(req.user.user.user_id);
         const info = await userDataMapper.getAccountInformations(req.user.user.user_id);
         res.json({data : info})
 

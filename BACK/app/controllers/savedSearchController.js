@@ -28,7 +28,6 @@ module.exports = {
 
             const post = await savedSearchDataMapper.addNewResearch({postcode, title, radius, category_id, user_id});
 
-            console.log(post);
             if(!post){
                 return next();
             }
@@ -50,9 +49,6 @@ module.exports = {
             const id = request.params.id; 
 
             const result = await savedSearchDataMapper.updateSavedResearch(id, postcode, title, radius, category_id);
-
-            console.log("controller 1 :",id, postcode, title, radius, category_id)
-            console.log("controller 2 :", result)
 
             response.status(200).json({ data :result });
 

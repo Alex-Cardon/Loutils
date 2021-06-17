@@ -23,8 +23,6 @@ module.exports = {
         try{
 
             const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = request.body;
-
-            console.log(postcode);
             
             const user_id = request.user.user.user_id
 
