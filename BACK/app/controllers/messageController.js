@@ -58,7 +58,7 @@ module.exports = {
 
         try {
             const id = request.params.id;
-            const result = await userDataMapper.deleteAMessage(id);
+            const result = await messageDataMapper.deleteAMessage(id);
 
             response.json({"msg" : "message supprimé"});
         } catch (error) {

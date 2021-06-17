@@ -59,7 +59,7 @@ router.route('/outbox')
         .get(authorization, messageController.getSenderMessageByUserId);
 
 router.route('/messages/:id(\\d+)')
-        .delete(authorization, messageController.deleteAMessage);
+        .delete(authorization, messageController.deleteAMessage)/*ok */;
 
 router.post('/register', validUserInfo, userController.register)/*ok */;
 
@@ -85,13 +85,13 @@ router.route('/savedResearch/:id(\\d+)')
         .delete(authorization, savedResearch.deleteSavedResearch)/*ok */;
 
 router.route('/ad/rating')
-        .get(ratingController.getAVGRating)
-        .post(authorization, ratingController.ratingAnAd);
+        .get(ratingController.getAVGRating)/*ok */
+        .post(authorization, ratingController.ratingAnAd)/*ok */;
 
 router.route('/booking')
-        .get(bookingController.getBooking)
-        .post(authorization, bookingController.boonking)
-        .delete(authorization, bookingController.removeBooking);
+        .get(bookingController.getBooking)/*ok */
+        .post(authorization, bookingController.boonking)/*ok */
+        .delete(authorization, bookingController.removeBooking)/*ok */;
 
 
 router.use(errorController.resourceNotFound);
