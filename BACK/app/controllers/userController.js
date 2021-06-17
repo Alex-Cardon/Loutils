@@ -68,7 +68,6 @@ module.exports = {
 
   async getUserInfo(req, res, next){
     try{
-      console.log(req.user.user.user_id);
         const info = await userDataMapper.getAccountInformations(req.user.user.user_id);
         res.json({data : info})
 
@@ -81,8 +80,8 @@ module.exports = {
   async patchUserInfo(req, res){
     try {
       const id = req.user.user.user_id;
-      const { name, email, phone } = req.body;
-      const result = await userDataMapper.patchUserInfo(id, name, email, phone);
+      const { name, email } = req.body;
+      const result = await userDataMapper.patchUserInfo(id, name, email);
       if(result){
         res.json({result})
       }

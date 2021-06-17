@@ -1,10 +1,51 @@
 const adDataMapper = require ('../dataMapper/adDataMapper');
 
+/**
+ * @typedef Ad
+ * @property {number} id - Identifiant unique
+ * @property {string} title - Titre de l'annonce
+ * @property {number} picture_id - Id de la photo de l'annonce
+ * @property {number} price - Prix de location de l'outil 
+ * @property {string} product_state - Etat de l'outil
+ * @property {number} deposit - Montant de la caution
+ * @property {string} description - Description de l'outil
+ * @property {string} title - Titre de l'annonce
+ * @property {string} ad_type - Si l'outil est disponible à la location ou si quelqu'un cherche un outil
+ * @property {number} postcode - Ville où se situe l'outil
+ * @property {number} category_id - La catégorie dans laquelle l'outil se situe
+ * @property {number} user_id - Id de l'utilisateur à qui appartient l'outil
+ * @property {string} created_at - Date de création de l'auteur (date ISO 8601)
+ * @property {string} updated_at - Date de mise à jour de l'auteur (date ISO 8601)
+  */
+
+/**
+ * @typedef AdInput
+ * @property {string} title - Titre de l'annonce
+ * @property {number} picture_id - Id de la photo de l'annonce
+ * @property {number} price - Prix de location de l'outil 
+ * @property {string} product_state - Etat de l'outil
+ * @property {number} deposit - Montant de la caution
+ * @property {string} description - Description de l'outil
+ * @property {string} title - Titre de l'annonce
+ * @property {string} ad_type - Si l'outil est disponible à la location ou si quelqu'un cherche un outil
+ * @property {number} postcode - Ville où se situe l'outil
+ * @property {number} category_id - La catégorie dans laquelle l'outil se situe
+ * @property {number} user_id - Id de l'utilisateur à qui appartient l'outil
+ */
+
+
 module.exports = {
 
+        /**
+     * Récupération les annonces d'un utilisateur connecté
+     * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
+     */
     async getByUserId(request, response, next){
         try{
-            const ad = await adDataMapper.findByUserId(request.params.id);
+
+            const user = request.user.user.user_id;
+
+            const ad = await adDataMapper.findByUserId(user);
             if(!ad){
                 return next();
             }
@@ -16,15 +57,30 @@ module.exports = {
         }
     },
 
+
+        /**
+     * Poster une annonce en tant qu'utilisateur connecté
+     * @param {string} title - Titre de l'annonce
+     * @param {number} picture_id - Id de la photo de l'annonce
+     * @param {number} price - Prix de location de l'outil 
+     * @param {string} product_state - Etat de l'outil
+     * @param {number} deposit - Montant de la caution
+     * @param {string} description - Description de l'outil
+     * @param {string} title - Titre de l'annonce
+     * @param {string} ad_type - Si l'outil est disponible à la location ou si quelqu'un cherche un outil
+     * @param {number} postcode - Ville où se situe l'outil
+     * @param {number} category_id - La catégorie dans laquelle l'outil se situe
+     * @returns {object} L'annonce créée avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
+     */
     async postAnAd(request, response, next){
         try{
 
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = request.body;
-
+            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = request.body;
+            
             const user_id = request.user.user.user_id
 
             const post = await adDataMapper.
-            postAnAd(title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id, user_id);
+            postAnAd(title, picture_id, price,product_state, deposit, description, ad_type,  postcode, category_id, user_id);
             
     
             if(!post){
@@ -39,11 +95,26 @@ module.exports = {
         }
     },
 
+       /**
+     * Modifier une annonce en tant qu'utilisateur connecté
+     * @param {number} id id de l'annonce
+     * @param {string} title - Titre de l'annonce
+     * @param {number} picture_id - Id de la photo de l'annonce
+     * @param {number} price - Prix de location de l'outil 
+     * @param {string} product_state - Etat de l'outil
+     * @param {number} deposit - Montant de la caution
+     * @param {string} description - Description de l'outil
+     * @param {string} title - Titre de l'annonce
+     * @param {string} ad_type - Si l'outil est disponible à la location ou si quelqu'un cherche un outil
+     * @param {number} postcode - Ville où se situe l'outil
+     * @param {number} category_id - La catégorie dans laquelle l'outil se situe
+     * @returns {object[]} L'annonce modifiée avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
+     */
     async patchAd(req, res){
         try {
-            const { title, picture, price,product_state, deposit, description, ad_type, rating, postcode, category_id } = req.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
             const id = req.params.id
-            const result = await adDataMapper.updateAd(title, picture, price,product_state, deposit, description, ad_type, postcode, category_id, id);
+            const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
             res.status(200).json({ result });
         } catch (error) {
@@ -52,7 +123,14 @@ module.exports = {
         }
     },
 
-
+       /**
+     * Rechercher une/des annonces qui correspond(ent) aux critères entrés dans la barre de recherche
+     * @param {string} title - Titre de l'annonce
+     * @param {number} category - La catégorie dans laquelle l'outil se situe
+     * @param {number} postcode - Ville où se situe l'outil
+     * @param {number} radius - Périmètre autour du code postal jusqu'où l'utilisateur recherche
+     * @returns {object[]} Les annonces qui correspondent aux critères saisis
+     */
     async searchAds(req, res) {
 
         try {
@@ -99,6 +177,11 @@ module.exports = {
         }
     },
 
+        /**
+     * Supprimer une annonce en tant qu'utilisateur connecté
+     * @param {number} id - Id de l'annonce
+     * @returns {object} Un message indiquant que l'annonce a bien été supprimée
+     */
     async deleteAnAd (request, response, next) {
         try{
             const id = request.params.id;
@@ -111,6 +194,11 @@ module.exports = {
         }
     },
 
+        /**
+     * Récupérrer une annonce en tant que visiteur
+     * @param {number} id - Id de l'annonce
+     * @returns {object[]} L'annonce avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
+     */
     async getAdById(req, res) {
         try {
             const id = req.params.id;
@@ -122,6 +210,10 @@ module.exports = {
         }
     },
 
+    /**
+     * Récupération de 10 annonces aléatoires en tant que visiteur
+     * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
+     */
     async getRandAds(req, res) {
         try {
             const result = await adDataMapper.getTenAds();

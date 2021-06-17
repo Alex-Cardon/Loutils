@@ -1,0 +1,287 @@
+### OK - Ajouter un user
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Louis XIV",
+    "email": "louis.dumoulin@mail.fr",
+    "password": "louloudu31"
+
+}
+
+### OK - Auth user
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "charles.dumoulin@mail.fr",
+    "password": "louloudu31"
+}
+
+
+###JSDOC - OK - recherche d'annonces
+GET http://localhost:3000/search
+Content-Type: application/json
+
+{
+    "title": "Dimitriiiiiyyy",
+    "postcode": "59520",
+    "radius": "50"
+}
+
+###OK - Données user
+GET http://localhost:3000/account/settings
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+}
+
+###OK - Update Données user
+PATCH  http://localhost:3000/account/settings
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "name": "demonteP",
+    "email": "megamartin.dufour@mail.com",
+    "phone": "0625986319"
+}
+
+### OK - Update password user
+PATCH  http://localhost:3000/account/settings/password
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "password": "louloudu31",
+    "newPassword": "martinmega74"
+}
+
+### OK - Delete user account
+DELETE http://localhost:3000/account/settings 
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+
+}
+
+###JSDONC - OK - get une annonce par son id
+GET http://localhost:3000/ad/23
+Content-Type: application/json
+
+
+###JSDOC - OK - Get 10 une annonces random
+GET http://localhost:3000/randads
+Content-Type: application/json
+
+
+### OK - get all categories
+GET http://localhost:3000/categories
+Content-Type: application/json
+
+
+### Rating ad 
+POST http://localhost:3000/ad/rating
+
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "ad_id": 23,
+    "rating": 5
+}
+
+### get AVG rating
+GET http://localhost:3000/ad/rating
+Content-Type: application/json
+
+{
+    "ad_id": 2
+}
+
+### JSDOC - créer une réservation
+POST http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "begining": "2021-06-20",
+    "end": "2021-06-20",
+    "ad_id": 28
+}
+
+###JSDOC Spprimer une réservation
+DELETE http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "id": 3
+}
+
+
+### JSDONC - Toutes les réservations d'une annonce
+GET http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "ad_id": 28
+
+}
+
+###MESSAGE
+###OK- Voir les messages et leurs détails de l'utilisateur X http://localhost:3000/account/2/messages
+GET http://localhost:3000/messages
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjIwNywiZXhwIjoxNjIzOTYwNjA3fQ.YgTFTVepq99z0CtIRVlo-TQXPWQvPWWdEVK4ZDB9BYY
+Content-Type: application/json
+
+###OK- Voir les messages envoyés par l'utilisateur X http://localhost:3000/account/2/messages
+GET http://localhost:3000/outbox
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjIwNywiZXhwIjoxNjIzOTYwNjA3fQ.YgTFTVepq99z0CtIRVlo-TQXPWQvPWWdEVK4ZDB9BYY
+Content-Type: application/json
+
+
+###OK- Poster un message en tant qu'utilisateur X à un destinataire Y
+POST http://localhost:3000/messages
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjExMiwiZXhwIjoxNjIzOTYwNTEyfQ.6tb1-gS3ygXHWub3a4JjSL1O405BgBSHy_2O5tNvXQw
+
+Content-Type: application/json
+
+{
+    "content": "J'aime tes grosses douilles ;) ",
+    "recipient": 2
+}
+
+
+###ANNONCE
+###JSDOC - OK - Voir les annonces et leurs détails de l'utilisateur X
+GET http://localhost:3000/account/ads
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0MjQ0OCwiZXhwIjoxNjIzOTU2ODQ4fQ.8xP-tOIeSP09NNnV3aTG2KkIIyDnec-3RaZFM-r2XvQ
+Content-Type: application/json
+
+
+###JSDOC - OK - Poster une annonce en tant qu'utilisateur X
+POST http://localhost:3000/account/ads
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "title": "Niv",
+    "price": 100,
+    "picture_id": "2",
+    "product_state": "neuf",
+    "deposit": 150,
+    "description": "très utile",
+    "ad_type": "je cherche",
+    "postcode":74200,
+    "category_id": 10
+}
+
+
+###JSDOC -OK-  Modifier une annonce en tant qu'utilisateur X
+PATCH http://localhost:3000/account/ad/23
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "title": "Dimitriiiiiyyy",
+    "picture_id": 3,
+    "price": 12,
+    "product_state": "alcoolisé",
+    "deposit": 1,
+    "description": "Il est sympa et parfois utile mais souvent bourré",
+    "ad_type": "je loue",
+    "postcode": "59000",
+    "category_id": 10
+}
+
+###JSDOC -OK- supprimer une annonce en tant que monsieur x
+DELETE http://localhost:3000/account/ad/24
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+
+###FAVORIS
+###JSDOC OK - Voir les favoris et leurs détails de l'utilisateur X
+GET http://localhost:3000/bookmarks
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+
+
+
+###JSDONC OK - Ajouter un favori en tant que monsieur x
+POST http://localhost:3000/bookmarks/23
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+###JSDOC OK - supprimer un favori en tant que monsieur x
+DELETE http://localhost:3000/bookmarks/3
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+###RECHERCHE
+
+###OK - Voir les recherches et leurs détails de l'utilisateur X
+GET http://localhost:3000/savedResearch
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+
+
+
+
+
+###OK - Enregistrer une recherche en tant qu'utilisateur X
+POST http://localhost:3000/savedResearch
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+    "postcode": 59000,
+    "title": "ponceuse",
+    "radius": 20,
+    "category_id": 11
+}
+
+###OK -  Mise à jour d'une recherche sauvegardée
+PATCH  http://localhost:3000/savedResearch/6
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+{
+
+    "postcode" : 75001,
+    "title" : "tournevissseeesss",
+    "radius" : 6,
+    "category_id" : 11
+
+}
+
+###OK - supprimer une recherche sauvegardée en tant que monsieur x
+DELETE http://localhost:3000/savedResearch/6
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+
+
+
+###USER
+###Voir les messages, favoris, profil et annonces de monsieur X
+/*GET http://localhost:3000/account/2/
+
+
+
+###IMAGE
+###Poster une image, A TESTER SUR POSTMAN
+POST http://localhost:3000/image
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json
+{
+
+    "image" : tournevis.jpg
+
+}
+
+###récupérrer une image, A TESTER SUR POSTMAN
+GET  http://localhost:3000/image/nomDuFichierImage
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+Content-Type: application/json

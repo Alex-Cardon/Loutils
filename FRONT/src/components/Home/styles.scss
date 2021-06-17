@@ -1,0 +1,10 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ 
+  &-navlink {
+    margin: 2rem auto;
+    border-radius: black solid 1 rem ;
+}
+}

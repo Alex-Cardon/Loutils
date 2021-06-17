@@ -23,12 +23,14 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-swagger-generator": "^1.1.17",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.6",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "swagger": "^0.7.5"
   }
 }

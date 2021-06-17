@@ -45,4 +45,9 @@ BEFORE UPDATE ON "ad"
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
 
+CREATE TRIGGER set_timestamp_ad_rating
+BEFORE UPDATE ON "ad_rating"
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
 COMMIT;

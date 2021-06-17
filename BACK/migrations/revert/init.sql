@@ -12,6 +12,8 @@ DROP TABLE "booking";
 
 DROP TABLE "ad";
 
+DROP TABLE "image_files";
+
 DROP TABLE "category";
 
 DROP TABLE "user";
