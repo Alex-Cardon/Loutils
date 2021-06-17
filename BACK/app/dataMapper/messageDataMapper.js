@@ -29,7 +29,7 @@ module.exports = {
 
     async deleteAMessage(id) {
         const result = await client.query(`DELETE FROM "message" 
-        WHERE id = $1) `, [id]);
+        WHERE "id" = $1`, [id]);
 
         return result.rows[0];
     }
