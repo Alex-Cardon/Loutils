@@ -53,8 +53,10 @@ router.route('/bookmarks/:id(\\d+)')
         .delete(authorization, bookmarkController.deleteBookmark)/*ok */;
 
 router.route('/messages')
-        .get(authorization, messageController.getMessageByUserId)/*ok */
+        .get(authorization, messageController.getRecievedMsgByUserId)/*ok */
         .post(authorization, messageController.postAMessage)/*ok */;
+router.route('/outbox')
+        .get(authorization, messageController.getSenderMessageByUserId);
 
 router.route('/messages/:id(\\d+)')
         .delete(authorization, messageController.deleteAMessage);

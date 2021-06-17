@@ -2,9 +2,12 @@ const client = require('../client');
 
 module.exports = {
 
+    async getRecievedMsgByUserId(id) {
+        const result = await client.query(`SELECT * FROM "message" WHERE "recipient" = $1`, [id]);
+        return result.rows;
+    },
 
-    async getMessageByUserId(id) {
-        //console.log("avant la query");
+    async getSenderMessageByUserId(id) {
         const result = await client.query(`SELECT * FROM "message" WHERE "sender" = $1`, [id]);
 
         if (!result.rows) {
