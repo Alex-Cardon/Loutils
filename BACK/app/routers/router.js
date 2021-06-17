@@ -27,9 +27,9 @@ const imageUpload = multer({
 
 
 
-router.get('/randads',adController.getRandAds);
+router.get('/randads',adController.getRandAds)/*ok */;
         
-router.get('/categories', categoryController.getCategories);
+router.get('/categories', categoryController.getCategories)/*ok */;
 
 
 router.post('/image', imageUpload.single('image'), pictureController.postImage);
@@ -59,20 +59,20 @@ router.route('/messages')
 router.route('/messages/:id(\\d+)')
         .delete(authorization, messageController.deleteAMessage);
 
-router.post('/register', validUserInfo, userController.register);
+router.post('/register', validUserInfo, userController.register)/*ok */;
 
-router.post('/login', validUserInfo, userController.login);
+router.post('/login', validUserInfo, userController.login)/*ok */;
 
-router.get('/search', adController.searchAds);
+router.get('/search', adController.searchAds)/*ok */;
 
-router.get('/ad/:id(\\d+)', adController.getAdById);
+router.get('/ad/:id(\\d+)', adController.getAdById)/*ok */;
 
 router.route('/account/settings')
-        .get(authorization, userController.getUserInfo)
-        .patch(authorization, validUserSettings, userController.patchUserInfo)
-        .delete(authorization, userController.deleteAccount);
+        .get(authorization, userController.getUserInfo)/*ok */
+        .patch(authorization, validUserSettings, userController.patchUserInfo)/*ok */
+        .delete(authorization, userController.deleteAccount)/*ok */;
 
-router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword);
+router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword)/*ok */;
 
 router.route('/savedResearch')
         .get(authorization, savedResearch.getSavedResearch)/*ok */
