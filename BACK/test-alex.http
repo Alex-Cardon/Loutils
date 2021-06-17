@@ -84,6 +84,7 @@ Content-Type: application/json
 
 ### Rating ad 
 POST http://localhost:3000/ad/rating
+
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIyLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5Mjc3NjUsImV4cCI6MTYyMzk0MjE2NX0.fvEpCqvteO0ZohEZXEAcD3jCb6gHyGRuB79gZhKwzZ0
 Content-Type: application/json
 
@@ -97,17 +98,40 @@ GET http://localhost:3000/ad/rating
 Content-Type: application/json
 
 {
-    "ad_id": 35
+    "ad_id": 2
 }
 
 ### créer une réservation
 POST http://localhost:3000/booking
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIyLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5Mjc3NjUsImV4cCI6MTYyMzk0MjE2NX0.fvEpCqvteO0ZohEZXEAcD3jCb6gHyGRuB79gZhKwzZ0
+
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzkxNjIwOSwiZXhwIjoxNjIzOTMwNjA5fQ.qLEs98RsDtUmwRUWn3BXLQT2VN4278iafWEHmPSNyVk
+
 Content-Type: application/json
 
 {
-    "begining": "2021-06-17",
+    "begining": "2021-06-18",
     "end": "2021-06-18",
-    "ad_id": "23"
+
+    "ad_id": 2
+}
+
+### Spprimer une réservation
+DELETE http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzkxNjIwOSwiZXhwIjoxNjIzOTMwNjA5fQ.qLEs98RsDtUmwRUWn3BXLQT2VN4278iafWEHmPSNyVk
+Content-Type: application/json
+
+{
+    "id": 14
+}
+
+
+### Toutes les réservations d'une annonce
+GET http://localhost:3000/booking
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzkxNjIwOSwiZXhwIjoxNjIzOTMwNjA5fQ.qLEs98RsDtUmwRUWn3BXLQT2VN4278iafWEHmPSNyVk
+Content-Type: application/json
+
+{
+    "ad_id": 2
+
 }
 

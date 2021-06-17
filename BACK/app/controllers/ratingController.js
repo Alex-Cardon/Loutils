@@ -13,15 +13,8 @@ module.exports = {
             console.log("user_id ", user_id, "ad_id", ad_id, "rating", rating );
 
             if(rating < 1 || rating > 5) res.status(400).json({ "error": "rating can not be less than 1 and more than 5" });
-
-            const isexist = await ratingDataMapper.ratexist(user_id, ad_id);
-
-            console.log("isexist", isexist);
-
-            if(isexist){
-
-                console.log("dans le if", "user_id ", user_id, "ad_id", ad_id, "rating", rating );
-
+            const exist = await ratingDataMapper.ratexist(user_id, ad_id);
+            if(exist.length !== 0){
                 const result = await ratingDataMapper.updateRating(user_id, ad_id, rating);
                 res.status(200).json({ result });
 
