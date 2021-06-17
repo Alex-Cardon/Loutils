@@ -7,11 +7,8 @@ module.exports = {
         return result.rows;
     },
 
-<<<<<<< HEAD
     async getSenderMessageByUserId(id) {
-=======
-    async getMessageByUserId(id) {
->>>>>>> 7b910e9d1ff2456ee79f812ac2d196a26b6533b0
+
         const result = await client.query(`SELECT * FROM "message" WHERE "sender" = $1`, [id]);
 
         if (!result.rows) {

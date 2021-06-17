@@ -27,7 +27,7 @@ const imageUpload = multer({
 
 
 
-router.get('/randads',adController.getRandAds)/*ok */;
+router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
 router.get('/categories', categoryController.getCategories)/*ok */;
 
@@ -38,19 +38,19 @@ router.get('/image/:filename', pictureController.getImage);
 
 
 router.route('/account/ads')
-        .get(authorization, adController.getByUserId)/*ok */
-        .post(authorization, adController.postAnAd)/*ok */;
+        .get(authorization, adController.getByUserId)/*JSDOC ok + ok */
+        .post(authorization, adController.postAnAd)/*JSDOC ok + ok */;
 
 
 router.route('/account/ad/:id(\\d+)')
-        .patch(authorization, adController.patchAd)/*ok */
-        .delete(authorization, adController.deleteAnAd)/*ok */;
+        .patch(authorization, adController.patchAd)/*JSDOC ok + ok */
+        .delete(authorization, adController.deleteAnAd)/*JSDOC ok + ok */;
 
-router.get('/bookmarks', authorization, bookmarkController.getBookmarksById)/*ok */;
+router.get('/bookmarks', authorization, bookmarkController.getBookmarksById)/*JSDOC ok */;
 
 router.route('/bookmarks/:id(\\d+)')
-        .post(authorization, bookmarkController.addBookmark)/*ok */
-        .delete(authorization, bookmarkController.deleteBookmark)/*ok */;
+        .post(authorization, bookmarkController.addBookmark)/*JSDOC ok */
+        .delete(authorization, bookmarkController.deleteBookmark)/*JSDOC ok */;
 
 router.route('/messages')
         .get(authorization, messageController.getRecievedMsgByUserId)/*ok */
@@ -65,9 +65,9 @@ router.post('/register', validUserInfo, userController.register)/*ok */;
 
 router.post('/login', validUserInfo, userController.login)/*ok */;
 
-router.get('/search', adController.searchAds)/*ok */;
+router.get('/search', adController.searchAds)/*JSDOC ok */;
 
-router.get('/ad/:id(\\d+)', adController.getAdById)/*ok */;
+router.get('/ad/:id(\\d+)', adController.getAdById)/*JSDOC ok */;
 
 router.route('/account/settings')
         .get(authorization, userController.getUserInfo)/*ok */
@@ -89,9 +89,9 @@ router.route('/ad/rating')
         .post(authorization, ratingController.ratingAnAd)/*ok */;
 
 router.route('/booking')
-        .get(bookingController.getBooking)/*ok */
-        .post(authorization, bookingController.boonking)/*ok */
-        .delete(authorization, bookingController.removeBooking)/*ok */;
+        .get(bookingController.getBooking)/*JSDOC ok */
+        .post(authorization, bookingController.boonking)/*JSDOC ok */
+        .delete(authorization, bookingController.removeBooking)/*JSDOC ok */;
 
 
 router.use(errorController.resourceNotFound);
