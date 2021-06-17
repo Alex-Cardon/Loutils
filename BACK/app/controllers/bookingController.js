@@ -11,7 +11,9 @@ module.exports = {
             const testBooking = await bookingDataMapper.bookingTest(begining, end);
             if(testBooking.length !== 0) res.status(400).json({ "error": "impossible de réserver sur une date déjà réservée" });
             const result = await bookingDataMapper.newBooking(begining, end, user_id, ad_id);
+
             res.status(200).json({ result });
+            
         } catch (error) {
             console.log(error);
         }
