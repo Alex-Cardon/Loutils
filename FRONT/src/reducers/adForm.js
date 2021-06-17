@@ -1,4 +1,5 @@
-import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN } from 'src/actions/adForm';
+import { attempt } from 'joi';
+import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, INPUT_DATE, UPLOAD_FILE } from 'src/actions/adForm';
 
 const initialState = {
   toolName: "",
@@ -7,6 +8,7 @@ const initialState = {
   caution: "",
   description:"",
   toolState:"",
+  date: [new Date()],
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,7 +32,19 @@ const reducer = (state = initialState, action) => {
             ...state,
             // ici toolState recoit un objet au lieu de string
             toolState: action.value,
-          }
+          };
+
+        case INPUT_DATE:
+          return {
+            ...state,
+            date: action.date,
+          };
+
+          case UPLOAD_FILE:
+            return {
+              ...state,
+              files: action.value
+            }
 
         default:
             return state;
