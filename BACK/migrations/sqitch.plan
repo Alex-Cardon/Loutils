@@ -4,4 +4,4 @@
 init 2021-06-08T16:15:13Z Segolene-Danjou <segolene.danjou@gmail.com> # initalisation de la base de donnée
 update_user_table 2021-06-10T12:54:43Z alex <pierrealexandre.cardon@gmail.com> # add role to the table user
 updated_at_function 2021-06-14T13:30:26Z alex <pierrealexandre.cardon@gmail.com> # trigger to auto update field updated_at
-image 2021-06-15T12:58:19Z Segolene-Danjou <segolene.danjou@gmail.com> # ajout de la table image afin de pouvoir les mettre dans la bdd
+add_col_msg 2021-06-17T09:56:17Z alex <pierrealexandre.cardon@gmail.com> # add a column boolean to msg table

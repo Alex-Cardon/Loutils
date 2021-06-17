@@ -2,13 +2,31 @@ const messageDataMapper = require ('../dataMapper/messageDataMapper');
 
 module.exports = {
 
-    async getMessageByUserId(request, response, next){
+    async getSenderMessageByUserId(request, response, next){
         try{
-            const message = await messageDataMapper.getMessageByUserId(request.params.id);
+            const user = request.user.user.user_id;
+
+            const message = await messageDataMapper.getSenderMessageByUserId(user);
             if(!message){
                 return next();
             }
-            response.json({data : message})
+            response.json({ message })
+
+        }catch (error) {
+            console.trace(error);
+            response.json({ error });
+        }
+    },
+
+    async getRecievedMsgByUserId(request, response, next){
+        try{
+            const user = request.user.user.user_id;
+
+            const message = await messageDataMapper.getRecievedMsgByUserId(user);
+            if(!message){
+                return next();
+            }
+            response.json({ message })
 
         }catch (error) {
             console.trace(error);
@@ -18,12 +36,11 @@ module.exports = {
 
     async postAMessage(request, response, next){
         try{
-
-            const { content, recipient, sender} = request.body;
-
-            const post = await messageDataMapper.
-            postAMessage({ content, recipient, sender });
             
+            const { content, recipient } = request.body;
+            const sender = request.user.user.user_id;
+            
+            const post = await messageDataMapper.postAMessage({ content, recipient, sender });
     
             if(!post){
                 return next();
@@ -41,7 +58,7 @@ module.exports = {
 
         try {
             const id = request.params.id;
-            const result = await userDataMapper.deleteAMessage(id);
+            const result = await messageDataMapper.deleteAMessage(id);
 
             response.json({"msg" : "message supprimé"});
         } catch (error) {

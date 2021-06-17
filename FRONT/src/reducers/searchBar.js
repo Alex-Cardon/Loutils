@@ -22,3 +22,7 @@ const reducer = (state = initialState, action ) => {
 };
 
 export default reducer;
+
+//!
+//! Ne pas oublier de le créer dans index.js du dossier Réducers
+//!

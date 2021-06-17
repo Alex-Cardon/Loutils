@@ -13,8 +13,6 @@ CREATE TABLE "user" (
     "name" text NOT NULL,
     "email" text NOT NULL,
     "password" text NOT NULL,
-    "phone" text ,
-    "rating" pint ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
@@ -22,20 +20,27 @@ CREATE TABLE "user" (
 CREATE TABLE "category" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" text NOT NULL,
-    "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz
+    "created_at" timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE "image_files" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "filename" TEXT UNIQUE NOT NULL,
+    "filepath" TEXT NOT NULL,
+    "mimetype" TEXT NOT NULL,
+    "size" BIGINT NOT NULL,
+    "created_at" timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE "ad" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL,
-    "picture_id" text,
+    "picture_id" integer NOT NULL REFERENCES "image_files"("id"),
     "price" pint,
     "product_state" text NOT NULL,
     "deposit" pint,
     "description" text NOT NULL,
     "ad_type" text NOT NULL,
-    "rating"pint,
     "postcode" pint NOT NULL,
     "category_id" integer NOT NULL REFERENCES "category"("id"), --si je supprime une annonce, je veux que la catégorie existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"), --si je supprime une annonce, je veux que l'utilisateur existe toujours donc pas de cascade
@@ -43,10 +48,12 @@ CREATE TABLE "ad" (
     "updated_at" timestamptz
 );
 
+
 CREATE TABLE "booking" (
     "id" integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "begining" timestamptz NOT NULL,
     "end" timestamptz NOT NULL,
+    "user_id" integer NOT NULL REFERENCES "user"("id"),
     "ad_id" integer NOT NULL REFERENCES "ad"("id"), --si je supprime une reservation, je veux que l'annonce existe toujours donc pas de cascade
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
@@ -76,8 +83,7 @@ CREATE TABLE "message" (
 CREATE TABLE "bookmark" (
     "ad_id" integer NOT NULL REFERENCES "ad"("id"), --si je supprime un favori, je veux qu'une annonce existe toujours donc pas de cascade
     "user_id" integer NOT NULL REFERENCES "user"("id"),--si je supprime un favori, je veux qu'un utilisateur existe toujours donc pas de cascade
-    "created_at" timestamptz NOT NULL DEFAULT now(),
-    "updated_at" timestamptz
+    "created_at" timestamptz NOT NULL DEFAULT now()
 );
 
 CREATE TABLE "ad_rating" (

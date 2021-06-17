@@ -1,10 +1,10 @@
 BEGIN;
 
-INSERT INTO "user" ("name", "email", "password", "phone","rating", "role") VALUES
-('Jean','jean.dupont@mail.com','jean','0101010101','3', 'user'),
-('Michel','michel.dufour@mail.com','michel','0202020202','2', 'user'),
-('Jeanne','jeanne.dupont@mail.com','jeanne','0303030303','5', 'modo'),
-('Micheline','micheline.dufour@mail.com','micheline','0404040404','1', 'admin');
+INSERT INTO "user" ("name", "email", "password", "role") VALUES
+('Jean','jean.dupont@mail.com','jean','user'),
+('Michel','michel.dufour@mail.com','michel','user'),
+('Jeanne','jeanne.dupont@mail.com','jeanne','modo'),
+('Micheline','micheline.dufour@mail.com','micheline', 'admin');
 
 
 INSERT INTO "category" ("name") VALUES
@@ -13,21 +13,22 @@ INSERT INTO "category" ("name") VALUES
 ('soudage'),
 ('élévation');
 
-INSERT INTO "ad" ("title", "picture", "price", "product_state", "deposit", "description","ad_type", "rating", "postcode", "category_id", "user_id") VALUES
-('perceuse à percution', 'perceuse.png',12,'bon état',10,'perceuse à percution au top pour percer tout types de matériaux','je loue',4,59000,1,2),
 
-('ponceuse électrique', '',15,'comme neuf',80,'ponceuse parfaite pour poncer du bois','je cherche',0,75001,2,3),
+INSERT INTO "ad" ("title", "picture_id", "price", "product_state", "deposit", "description","ad_type",  "postcode", "category_id", "user_id") VALUES
+('perceuse à percution', 1, 12,'bon état',10,'perceuse à percution au top pour percer tout types de matériaux','je loue',59000,1,2),
 
-('poste à souder', 'poste_a_souder.jpeg',20,'en état de marche',20,'poste à souder pro. Location possible du masque à souder eb complément','je loue',3,74000,3,4),
+('ponceuse électrique', 2, 15,'comme neuf',80,'ponceuse parfaite pour poncer du bois','je cherche',75001,2,3),
 
-('échelle', 'echelle.jpeg',25,'bon état',70,'une échelle stable de minimum 5 mètres','je cherche',0,12000,4,1);
+('poste à souder', 3, 20,'en état de marche',20,'poste à souder pro. Location possible du masque à souder eb complément','je loue',74000,3,4),
+
+('échelle', 4, 25,'bon état',70,'une échelle stable de minimum 5 mètres','je cherche',12000,4,1);
 
 
-INSERT INTO "booking" ("begining", "end", "ad_id") VALUES
-('2021-06-09', '2021-06-10',1),
-('2021-06-11', '2021-07-11',1),
-('2021-06-01', '2021-06-05',3),
-('2021-06-12', '2021-06-20',3);
+INSERT INTO "booking" ("begining", "end", "user_id", "ad_id") VALUES
+('2021-06-09', '2021-06-10',4 ,1),
+('2021-06-11', '2021-07-11',3 ,1),
+('2021-06-01', '2021-06-05',2 ,3),
+('2021-06-12', '2021-06-20', 1,3);
 
 INSERT INTO "saved_research" ( "postcode", "title", "radius", "category_id", "user_id") VALUES
 (10100,'meuleuse',10,2,1),
@@ -46,5 +47,11 @@ INSERT INTO "bookmark" ("ad_id", "user_id") VALUES
 (1, 4),
 (3, 2),
 (4, 2);
+
+INSERT INTO "ad_rating" ("rated_by_user", "rated_ad", "rating") VALUES
+(1, 3, 2),
+(1, 4, 3),
+(3, 2, 4),
+(4, 2, 1);
 
 COMMIT;

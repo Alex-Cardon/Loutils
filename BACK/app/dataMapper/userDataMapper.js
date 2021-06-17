@@ -31,7 +31,7 @@ module.exports = {
     },
 
     getAccountInformations: async(id) => {
-        const result = await client.query(`SELECT name, email, phone FROM "user"
+        const result = await client.query(`SELECT name, email FROM "user"
         WHERE id = $1`, [id]);
         return result.rows;
     },
@@ -47,12 +47,11 @@ module.exports = {
     return result.rows[0];
     },
 
-    async patchUserInfo(id, name, email, phone) {
+    async patchUserInfo(id, name, email) {
         const result = await client.query(`UPDATE "user"
         SET "name" = $1,
-        "email" = $2,
-        "phone" = $3
-        WHERE "id" = $4 RETURNING *`, [name, email, phone, id]);
+        "email" = $2
+        WHERE "id" = $3 RETURNING *`, [name, email, id]);
         return result.rows;
     },
     

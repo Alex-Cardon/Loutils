@@ -1,0 +1,69 @@
+@use 'src/styles/vars';
+
+.login-form {
+  
+  &-element {
+    display: flex;
+    align-items: center;
+  }
+
+  &-message {
+    margin: .3em 1em;
+  }
+
+  &-logged {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-button {
+    font-size: 1em;
+    color: vars.$color;
+    
+    border-radius: .3em;
+    border: 0;
+    padding: .7em;
+    height: 2.5em;
+  }
+}
+
+.login {
+  position: fixed;
+  display: flex;
+  top: 20px;
+  right: -435px;
+  transition: right 1s ease-in;
+  align-items: center;
+
+  &--open {
+    right: 10px;
+  }
+
+}
+
+.button {
+  background-color: #fff;
+  border-radius: 2.5rem;
+  margin-right: 0.8rem;
+
+  &__toggle {
+    display: none;
+  }
+}
+
+.signup-link {
+  margin-right: 1rem;
+ 
+  &__toggle {
+    display: none;
+  } 
+}
+
+.settingsPage-link {
+  margin-right: 1rem;
+ 
+  &__toggle {
+    display: none;
+  } 
+}

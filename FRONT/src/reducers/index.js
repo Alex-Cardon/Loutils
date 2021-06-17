@@ -8,6 +8,8 @@ import adFormReducer from './adForm';
 import settingsFieldReducer from './settingsField';
 
 import searchBarReducer from './searchBar';
+import selectSearchBarReducer  from './selectSearchBar';
+import contentReducer  from './content';
 
 const rootReducer = combineReducers({
   ad: adFormReducer,
@@ -16,6 +18,10 @@ const rootReducer = combineReducers({
   settings : settingsFieldReducer,
 
   search : searchBarReducer,
+
+  research : selectSearchBarReducer,
+
+  card : contentReducer,
   
 });
 
