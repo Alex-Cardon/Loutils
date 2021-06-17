@@ -7,8 +7,8 @@ module.exports = {
             const user_id = req.user.user.user_id;
             const { ad_id, rating } = req.body;
             if(rating < 1 || rating > 5) res.status(400).json({ "error": "rating can not be less than 1 and more than 5" });
-            const isexist = await ratingDataMapper.ratexist(user_id, ad_id);
-            if(isexist){
+            const exist = await ratingDataMapper.ratexist(user_id, ad_id);
+            if(exist.length !== 0){
                 const result = await ratingDataMapper.updateRating(user_id, ad_id, rating);
                 res.status(200).json({ result });
             } else {
