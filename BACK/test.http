@@ -138,30 +138,30 @@ Content-Type: application/json
 ###MESSAGE
 ###OK- Voir les messages et leurs détails de l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/messages
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjE3LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM4NDg2MjgsImV4cCI6MTYyMzg2MzAyOH0.H01waBul8gDEDkhjpdIBiB0qtiBzWVI7ZCkdx2MGSWI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjIwNywiZXhwIjoxNjIzOTYwNjA3fQ.YgTFTVepq99z0CtIRVlo-TQXPWQvPWWdEVK4ZDB9BYY
 Content-Type: application/json
 
 ###OK- Voir les messages envoyés par l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/outbox
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzkzMzUyMiwiZXhwIjoxNjIzOTQ3OTIyfQ.iY_SHJy1z-63nl3tvWHpZu37jueSkBKKPvZPxGK0BvM
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjIwNywiZXhwIjoxNjIzOTYwNjA3fQ.YgTFTVepq99z0CtIRVlo-TQXPWQvPWWdEVK4ZDB9BYY
 Content-Type: application/json
 
 
 ###OK- Poster un message en tant qu'utilisateur X à un destinataire Y
 POST http://localhost:3000/messages
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjE3LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM4NDg2MjgsImV4cCI6MTYyMzg2MzAyOH0.H01waBul8gDEDkhjpdIBiB0qtiBzWVI7ZCkdx2MGSWI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0NjExMiwiZXhwIjoxNjIzOTYwNTEyfQ.6tb1-gS3ygXHWub3a4JjSL1O405BgBSHy_2O5tNvXQw
 Content-Type: application/json
 
 {
-    "content": "Hola ",
-    "recipient": 18
+    "content": "J'aime tes grosses douilles ;) ",
+    "recipient": 2
 }
 
 
 ###ANNONCE
 ###OK - Voir les annonces et leurs détails de l'utilisateur X
 GET http://localhost:3000/account/ads
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjE3LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM4NDg2MjgsImV4cCI6MTYyMzg2MzAyOH0.H01waBul8gDEDkhjpdIBiB0qtiBzWVI7ZCkdx2MGSWI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyMzk0MjQ0OCwiZXhwIjoxNjIzOTU2ODQ4fQ.8xP-tOIeSP09NNnV3aTG2KkIIyDnec-3RaZFM-r2XvQ
 Content-Type: application/json
 
 

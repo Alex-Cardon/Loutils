@@ -3,16 +3,16 @@ const client = require('../client');
 module.exports = {
 
     async getRecievedMsgByUserId(id) {
-        const result = await client.query(`SELECT * FROM "message" WHERE "recipient" = $1`, [id]);
+        const result = await client.query(`SELECT "message"."id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" FROM "message" JOIN 
+        "user" ON "sender" = "user"."id"
+        WHERE "recipient" = $1`, [id]);
         return result.rows;
     },
 
-<<<<<<< HEAD
     async getSenderMessageByUserId(id) {
-=======
-    async getMessageByUserId(id) {
->>>>>>> 7b910e9d1ff2456ee79f812ac2d196a26b6533b0
-        const result = await client.query(`SELECT * FROM "message" WHERE "sender" = $1`, [id]);
+        const result = await client.query(`SELECT "message"."id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" FROM "message" JOIN
+        "user" ON "recipient" = "user"."id"
+         WHERE "sender" = $1`, [id]);
 
         if (!result.rows) {
             return null;
