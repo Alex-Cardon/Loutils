@@ -24,12 +24,8 @@ module.exports = {
             
             const { content, recipient } = request.body;
             const sender = request.user.user.user_id;
-
-            // console.log("content", content, "recipient", recipient, "sender", sender);
             
-            const post = await messageDataMapper.postAMessage({ content, recipient, sender });
-            
-            //console.log("post.content", post.content);
+            const post = await messageDataMapper.postAMessage({ content, recipient, sender });      
     
             if(!post){
                 return next();

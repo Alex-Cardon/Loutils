@@ -14,7 +14,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "giscard.dumoulin@mail.fr",
+    "email": "charles.dumoulin@mail.fr",
     "password": "louloudu31"
 }
 
@@ -84,6 +84,7 @@ Content-Type: application/json
 
 ### OK - Rating ad 
 POST http://localhost:3000/ad/rating
+
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI0LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5MzA0NzUsImV4cCI6MTYyMzk0NDg3NX0.1N-HWhPaN7Pg0xCFHfUyaQm7IN1DJKCmr7xOu2sNjyA
 Content-Type: application/json
 

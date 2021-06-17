@@ -26,7 +26,6 @@ module.exports  = {
     async postImage(request, response, next) {
         try {
             const { filename, mimetype, size } = request.file;
-            console.log(filename);
             const filepath = request.file.path;
             const postImage = await pictureDataMapper.postAnImage( filename, mimetype, size, filepath );
 
