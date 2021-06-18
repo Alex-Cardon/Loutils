@@ -8,11 +8,12 @@ const loginFormMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       // avec getstate on apporte le state dans le MW
         const state = store.getState();
-      axios.post('http://localhost:3001/login', {
+      axios.post('http://localhost:3000/login', {
           email: state.user.email, 
           password: state.user.password,
         })
         .then((response)=>{
+            console.log(response.data);
             store.dispatch(loginSuccess(response.data))
         })
         .catch((error)=>console.log(error))
