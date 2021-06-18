@@ -3,27 +3,27 @@ const Joi = require('joi');
 const insertSchema = Joi.object({
     /* Poster une annonce en tant qu'utilisateur connecté */
     title: Joi.string().required().min(3),
-    picture_id: Joi.string().required(),
+    picture_id: Joi.number().positive().integer().min(1).required(),
     price: Joi.number().positive().integer().required(),
     product_state: Joi.string().required().min(3),
-    deposit: Joi.number().integer().positive().required(),
+    deposit: Joi.number().positive().integer().min(1).required(),
     description: Joi.string().required().min(20),
     ad_type: Joi.string().min(4).required(),
     postcode: Joi.string().regex(/0[1-9]\d{3}|[1-8]\d{4}|97[1-68]\d{2}|98[678]\d{2}|9[0-6]\d{3}/).required(),
-    category_id: Joi.number().integer().positive().required()
+    category_id: Joi.number().positive().integer().min(1).required()
 }).required();
 
 const updateSchema = Joi.object({
     // Modifier une annonce en tant qu'utilisateur connecté
     title: Joi.string().min(3),
-    picture_id: Joi.string().required(),
-    price: Joi.number().positive().integer(),
+    picture_id: Joi.number().positive().integer().min(1).required(),
+    price: Joi.number().positive().integer().min(1).required(),
     product_state: Joi.string().min(3),
-    deposit: Joi.number().integer().positive(),
+    deposit: Joi.number().positive().integer().min(1).required(),
     description: Joi.string().min(20),
     ad_type: Joi.string().min(4),
     postcode: Joi.string().regex(/0[1-9]\d{3}|[1-8]\d{4}|97[1-68]\d{2}|98[678]\d{2}|9[0-6]\d{3}/),
-    category_id: Joi.number().integer().positive()
+    category_id: Joi.number().positive().integer().min(1).required()
 }).required();
 
 const searchSchema = Joi.object({

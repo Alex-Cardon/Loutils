@@ -3,8 +3,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "jacques",
-    "email": "jacques.dumoulin@mail.fr",
+    "name": "Mitteran",
+    "email": "mitteran.dumoulin@mail.fr",
     "password": "louloudu31"
 
 }
@@ -39,7 +39,7 @@ Content-Type: application/json
 
 ###JSDOC OK - Update Données user
 PATCH  http://localhost:3000/account/settings
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjQsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAzMTE4MywiZXhwIjoxNjI0MDQ1NTgzfQ.vFvpl-kbQVq0REkHw7WPcAkse5JMHzjAu5zq3j1bPKM
 Content-Type: application/json
 
 {

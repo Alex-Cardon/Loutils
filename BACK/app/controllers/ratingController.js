@@ -47,9 +47,8 @@ module.exports = {
     },
 
     /**
-     * Noter une annonce en tant qu'utilisateur connecté
+     * Récupérer la moyenne d'une annonce
      * @param {number} ad_id - Id de l'annonce
-     * @param {number} rating - Note 
      * @returns {object[]} La note moyenne de l'annonce
      */
     async getAVGRating(req, res) {

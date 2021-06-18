@@ -16,7 +16,7 @@ const categoryDatamapper = require('../dataMapper/categoryDatamapper');
 
 module.exports = {
 
-               /**
+    /**
      * Afficher les catégories
      * @returns {object[]} Les catégories avec leur identifiant, nom et date de création
      */

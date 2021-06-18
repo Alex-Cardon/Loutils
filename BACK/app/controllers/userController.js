@@ -29,7 +29,7 @@ module.exports = {
      * @property {string} password - Mot de passe de l'utilisateur
      * @returns {object} un message indiquant que le compte a bien été créé
      */
-  async register(req, res) {
+    async register(req, res) {
     try {
       
       const { name, email, password } = req.body;
@@ -164,6 +164,11 @@ module.exports = {
     }
   },
 
+
+    /**
+     * Supprimer son compte
+     * @returns {object} Message indiquant que le compte a bien été modifié
+     */
   async deleteAccount(req, res) {
     try {
       const id = req.user.user.user_id; 
@@ -178,6 +183,5 @@ module.exports = {
     }
     
   }
-
 
 }
