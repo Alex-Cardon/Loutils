@@ -9,7 +9,10 @@ const {
 } = require('./messageSchema');
 
 const {
-    insertSchema : insertAdSchema
+    insertSchema : insertAdSchema,
+    updateSchema : updateAdSchema,
+    searchSchema : searchAdSchema,
+    getByIdSchema : getByIdAdSchema
 } = require('./adSchema');
 
 
@@ -19,6 +22,9 @@ module.exports = {
     userLoginSchema,
     messagePostMessageSchema,
 
-    insertAdSchema
+    insertAdSchema,
+    updateAdSchema,
+    searchAdSchema,
+    getByIdAdSchema
 };
 

@@ -36,7 +36,7 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
 
 module.exports = {
 
-        /**
+    /**
      * Récupération les annonces d'un utilisateur connecté
      * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
      */
@@ -58,7 +58,7 @@ module.exports = {
     },
 
 
-        /**
+    /**
      * Poster une annonce en tant qu'utilisateur connecté
      * @param {string} title - Titre de l'annonce
      * @param {number} picture_id - Id de la photo de l'annonce
@@ -66,7 +66,6 @@ module.exports = {
      * @param {string} product_state - Etat de l'outil
      * @param {number} deposit - Montant de la caution
      * @param {string} description - Description de l'outil
-     * @param {string} title - Titre de l'annonce
      * @param {string} ad_type - Si l'outil est disponible à la location ou si quelqu'un cherche un outil
      * @param {number} postcode - Ville où se situe l'outil
      * @param {number} category_id - La catégorie dans laquelle l'outil se situe
@@ -95,7 +94,7 @@ module.exports = {
         }
     },
 
-       /**
+    /**
      * Modifier une annonce en tant qu'utilisateur connecté
      * @param {number} id id de l'annonce
      * @param {string} title - Titre de l'annonce
@@ -177,7 +176,7 @@ module.exports = {
         }
     },
 
-        /**
+    /**
      * Supprimer une annonce en tant qu'utilisateur connecté
      * @param {number} id - Id de l'annonce
      * @returns {object} Un message indiquant que l'annonce a bien été supprimée
@@ -194,7 +193,7 @@ module.exports = {
         }
     },
 
-        /**
+    /**
      * Récupérrer une annonce en tant que visiteur
      * @param {number} id - Id de l'annonce
      * @returns {object[]} L'annonce avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
