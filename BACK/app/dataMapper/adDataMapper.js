@@ -13,9 +13,9 @@ module.exports = {
     },
 
 
-    async findById(id) {
+    async findById(id, user_id) {
         const result = await client.query(`SELECT * FROM "ad" 
-        WHERE "id" = $1`, [id]);
+        WHERE "id" = $1 AND "user_id" = $2`, [id, user_id]);
         return result.rows;
     },
 
@@ -82,8 +82,8 @@ module.exports = {
 
     /*Suppression d'une annonce */
 
-    async deleteOneAd(id) {
-        const result = await client.query(`DELETE FROM "ad" WHERE id = $1`, [id]);
+    async deleteOneAd(id, user_id) {
+        const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1 AND "user_id" = $2`, [id, user_id]);
 
         return result.rows[0];
     },
@@ -105,7 +105,26 @@ module.exports = {
     },
 
     async getTenAds() {
-        const result = await client.query(`SELECT * FROM "ad" ORDER BY RANDOM() LIMIT 2;`)
+        const result = await client.query(`SELECT * FROM "ad" ORDER BY RANDOM() LIMIT 2`)
         return result.rows;
-    }
+    },
+
+    async moderated(id) {
+        const result = await client.query(`UPDARE "ad"
+        SET "moderated" = TRUE
+        WHERE "id" = $1 RETURNING *`, [id]);
+        return result.rows;
+    },
+
+    async getAllNonModAd() {
+        const result = await client.query(`SELECT "id", "name" FROM "ad"
+        WHERE "moderated" = FALSE ORDER BY "created_at" ASC`);
+        return result.rows;
+    },
+
+    async ModofindById(id) {
+        const result = await client.query(`SELECT * FROM "ad" 
+        WHERE "id" = $1`, [id]);
+        return result.rows;
+    },
 }
