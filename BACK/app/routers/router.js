@@ -93,6 +93,7 @@ router.route('/booking')
         .post(authorization, bookingController.boonking)/*ok */
         .delete(authorization, bookingController.removeBooking)/*ok */;
 
+router.get('/confirmation/:token', userController.emailConfirm); //ok
 
 router.use(errorController.resourceNotFound);
 

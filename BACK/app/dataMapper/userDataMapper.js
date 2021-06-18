@@ -66,6 +66,13 @@ module.exports = {
         const result = await client.query(`DELETE FROM "user"
         WHERE "id" = $1 RETURNING "name"`, [id]);
         return result;
+    },
+    
+    async confirmUser(id) {
+        const result = await client.query(`UPDATE "user"
+        SET "confirmed" = TRUE
+        WHERE "id" = $1 RETURNING "name"`, [id]);
+        return result.rows;
     }
 
 }

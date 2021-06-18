@@ -3,8 +3,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "charles",
-    "email": "charles.dumoulin@mail.fr",
+    "name": "alex",
+    "email": "uzemlakw_g691q@nafxo.com",
     "password": "louloudu31"
 
 }
