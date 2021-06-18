@@ -17,7 +17,7 @@ const profil = () => (
     <Header />
     <LoginForm />
     <h1> Mon Profil</h1>
-    <Card.Group className='card-group'>
+    <Card.Group className='card-profil'>
       {/* {
       advertissment.map(
       (ad) => (*/}
@@ -36,7 +36,7 @@ const profil = () => (
     <NavLink
       className=''
       exact
-      to="/"
+      to="/UpdatedProfil"
     >
       Modifier mon profil
     </NavLink>

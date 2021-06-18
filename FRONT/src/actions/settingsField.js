@@ -9,6 +9,7 @@ export const changeSettingsInput = (settingsKey, newValue) => ({
   settingsKey: settingsKey,
   // la nouvelle valeur a sauvegarder
   newValue: newValue,
+  
 });
 
 //! action créator pour gérer le submit des inputs
