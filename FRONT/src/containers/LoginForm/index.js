@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
   isLogged: state.user.isLogged,
-  loggedMessage: `Bienvenue ${state.user.nickname}`,
+  loggedMessage: `Bienvenue ${state.user.name}`,
   isOpen: state.user.isOpen,
 });
 

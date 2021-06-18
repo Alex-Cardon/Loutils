@@ -7,8 +7,8 @@ const bookingDataMapper = require('../dataMapper/bookingDataMapper');
  * @property {string} end - Date de fin de la location (date ISO 8601)
  * @property {number} user_id - Identifiant de l'utilisateur qui fait la réservation
  * @property {number} ad_id - Identifiant de l'annonce
- * @property {string} created_at - Date de création de l'auteur (date ISO 8601)
- * @property {string} updated_at - Date de mise à jour de l'auteur (date ISO 8601)
+ * @property {string} created_at - Date de création (date ISO 8601)
+ * @property {string} updated_at - Date de mise à jour (date ISO 8601)
   */
 
 /**

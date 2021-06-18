@@ -1,14 +1,17 @@
 
-import { CHANGE_SETTINGS_INPUT,} from 'src/actions/settingsField';
+import { CHANGE_SETTINGS_INPUT } from 'src/actions/settingsField';
+
 
 
 //! state
 export const initialState = {
-  pseudo: "",
+  name: "",
   email: "",
-  phone: "",
+  //phone: "",
   password: "",
   confirmPassword: "",
+  token:'',
+  msg:'',
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
@@ -27,8 +30,11 @@ const reducer = (state = initialState, action ) => {
           // deviendra la clé
           // et on mettra dedans la nouvelle valeur
           [action.settingsKey]: action.newValue,
-        
+         // msg:action.newValue,
+         // token:action.newValue,
       };
+
+ 
     default:
       return state;
   }

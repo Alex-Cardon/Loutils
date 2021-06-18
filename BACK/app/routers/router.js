@@ -32,12 +32,12 @@ const imageUpload = multer({
 
 router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
-router.get('/categories', categoryController.getCategories)/*ok */;
+router.get('/categories', categoryController.getCategories)/*JSDOC ok */;
 
 
-router.post('/image', imageUpload.single('image'), pictureController.postImage);
+router.post('/image', imageUpload.single('image'), pictureController.postImage);/*JSDOC */
 
-router.get('/image/:filename', pictureController.getImage); 
+router.get('/image/:filename', pictureController.getImage); /*JSDOC*/
 
 
 router.route('/account/ads')
@@ -64,15 +64,17 @@ router.route('/outbox')
 router.route('/messages/:id(\\d+)')
         .delete(authorizationLvl1, messageController.deleteAMessage)/*ok */;
 
-router.post('/register', validUserInfo, userController.register)/*ok */;
 
-router.post('/login', validUserInfo, userController.login)/*ok */;
+router.post('/register', validUserInfo, userController.register)/*JSDOC ok */;
+
+router.post('/login', validUserInfo, userController.login)/*JSDOC ok */;
 
 router.get('/search', adController.searchAds)/*JSDOC ok */;
 
 router.get('/ad/:id(\\d+)', adController.getAdById)/*JSDOC ok */;
 
 router.route('/account/settings')
+
         .get(authorizationLvl1, userController.getUserInfo)/*ok */
         .patch(authorizationLvl1, validUserSettings, userController.patchUserInfo)/*ok */
         .delete(authorizationLvl1, userController.deleteAccount)/*ok */;
@@ -90,6 +92,7 @@ router.route('/savedResearch/:id(\\d+)')
 router.route('/ad/rating')
         .get(ratingController.getAVGRating)/*ok */
         .post(authorizationLvl1, ratingController.ratingAnAd)/*ok */;
+
 
 router.route('/booking')
         .get(bookingController.getBooking)/*JSDOC ok */

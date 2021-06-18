@@ -1,4 +1,5 @@
 import React from 'react';
+//import { Redirect } from 'react-router-dom';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
@@ -18,36 +19,40 @@ const Signup = ({
       onSubmit={handleFormSubmit}
     >
       <ConnectedSettingsField
-        stateKey="pseudo"
-        type="text"
+        stateKey="name"
+        type="text" 
         placeholder="votre pseudo"
+        
       />
 
       <ConnectedSettingsField
         stateKey="email"
-        type="email"
+        type="email" 
         placeholder="votre email"
+        
       />
 
-      <ConnectedSettingsField
+      {/*<ConnectedSettingsField
         stateKey="phone"
         type="phone"
         placeholder="votre telephone"
-      />
+      />*/}
 
       <ConnectedSettingsField
         stateKey="password"
-        type="password"
+        type="password" 
         placeholder="votre mot de passe"
+       
       />
-
       <ConnectedSettingsField
         stateKey="confirmPassword"
-        type="password"
+        type="password" 
         placeholder="confirmez mot de passe"
+        
       />
 
       <button className="settings__submit" type="submit" >Valider</button>
+      {/*<Redirect from="/SignupPage" to="/" />*/}
     </form>
   </div>
 );
