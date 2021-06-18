@@ -14,8 +14,8 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
  * @property {number} postcode - Ville où se situe l'outil
  * @property {number} category_id - La catégorie dans laquelle l'outil se situe
  * @property {number} user_id - Id de l'utilisateur à qui appartient l'outil
- * @property {string} created_at - Date de création de l'auteur (date ISO 8601)
- * @property {string} updated_at - Date de mise à jour de l'auteur (date ISO 8601)
+ * @property {string} created_at - Date de création (date ISO 8601)
+ * @property {string} updated_at - Date de mise à jour (date ISO 8601)
   */
 
 /**

@@ -5,7 +5,7 @@ const bookmarkDataMapper = require ('../dataMapper/bookmarkDataMapper');
  * @typedef Bookmark
  * @property {number} ad_id - Identifiant unique de l'annonce
  * @property {number} user_id - Identifiant unique de l'utilisateur
- * @property {string} created_at - Date de création de l'auteur (date ISO 8601)
+ * @property {string} created_at - Date de création (date ISO 8601)
   */
 
 /**

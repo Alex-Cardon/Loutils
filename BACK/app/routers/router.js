@@ -29,12 +29,12 @@ const imageUpload = multer({
 
 router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
-router.get('/categories', categoryController.getCategories)/*ok */;
+router.get('/categories', categoryController.getCategories)/*JSDOC ok */;
 
 
-router.post('/image', imageUpload.single('image'), pictureController.postImage);
+router.post('/image', imageUpload.single('image'), pictureController.postImage);/*JSDOC */
 
-router.get('/image/:filename', pictureController.getImage); 
+router.get('/image/:filename', pictureController.getImage); /*JSDOC*/
 
 
 router.route('/account/ads')
@@ -53,40 +53,40 @@ router.route('/bookmarks/:id(\\d+)')
         .delete(authorization, bookmarkController.deleteBookmark)/*JSDOC ok */;
 
 router.route('/messages')
-        .get(authorization, messageController.getRecievedMsgByUserId)/*ok */
-        .post(authorization, messageController.postAMessage)/*ok */;
+        .get(authorization, messageController.getRecievedMsgByUserId)/*JSDOC ok */
+        .post(authorization, messageController.postAMessage)/*JSDOC ok */;
 router.route('/outbox')
-        .get(authorization, messageController.getSenderMessageByUserId);
+        .get(authorization, messageController.getSenderMessageByUserId)/*JSDOC*/;
 
 router.route('/messages/:id(\\d+)')
-        .delete(authorization, messageController.deleteAMessage)/*ok */;
+        .delete(authorization, messageController.deleteAMessage)/*JSDOC ok */;
 
-router.post('/register', validUserInfo, userController.register)/*ok */;
+router.post('/register', validUserInfo, userController.register)/*JSDOC ok */;
 
-router.post('/login', validUserInfo, userController.login)/*ok */;
+router.post('/login', validUserInfo, userController.login)/*JSDOC ok */;
 
 router.get('/search', adController.searchAds)/*JSDOC ok */;
 
 router.get('/ad/:id(\\d+)', adController.getAdById)/*JSDOC ok */;
 
 router.route('/account/settings')
-        .get(authorization, userController.getUserInfo)/*ok */
-        .patch(authorization, validUserSettings, userController.patchUserInfo)/*ok */
+        .get(authorization, userController.getUserInfo)/*JSDOC ok */
+        .patch(authorization, validUserSettings, userController.patchUserInfo)/*JSDOC ok */
         .delete(authorization, userController.deleteAccount)/*ok */;
 
-router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword)/*ok */;
+router.patch('/account/settings/password', authorization, validUserSettings, userController.patchUserPassword)/*JSDOC ok */;
 
 router.route('/savedResearch')
-        .get(authorization, savedResearch.getSavedResearch)/*ok */
-        .post(authorization, savedResearch.addNewResearch)/*ok */;
+        .get(authorization, savedResearch.getSavedResearch)/*JSDOC ok */
+        .post(authorization, savedResearch.addNewResearch)/*JSDOC ok */;
 
 router.route('/savedResearch/:id(\\d+)')
-        .patch(authorization, savedResearch.updateSavedResearch)/*ok */
-        .delete(authorization, savedResearch.deleteSavedResearch)/*ok */;
+        .patch(authorization, savedResearch.updateSavedResearch)/*JSDOC ok */
+        .delete(authorization, savedResearch.deleteSavedResearch)/*JSDOC ok */;
 
 router.route('/ad/rating')
-        .get(ratingController.getAVGRating)/*ok */
-        .post(authorization, ratingController.ratingAnAd)/*ok */;
+        .get(ratingController.getAVGRating)/*JSDOC ok */
+        .post(authorization, ratingController.ratingAnAd)/*JSDOC ok */;
 
 router.route('/booking')
         .get(bookingController.getBooking)/*JSDOC ok */
