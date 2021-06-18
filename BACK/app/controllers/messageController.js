@@ -54,7 +54,7 @@ module.exports = {
         }
     },
 
-    async deleteAMessage (request, response, next)  {
+    async deleteAMessage (request, response)  {
 
         try {
             const id = request.params.id;

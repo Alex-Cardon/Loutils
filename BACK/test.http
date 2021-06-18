@@ -3,10 +3,9 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "Louis XIV",
-    "email": "louis.dumoulin@mail.fr",
+    "name": "alex",
+    "email": "uzemlakw_g691q@nafxo.com",
     "password": "louloudu31"
-
 }
 
 ### OK - Auth user

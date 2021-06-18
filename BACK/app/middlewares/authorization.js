@@ -1,4 +1,3 @@
-
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -9,11 +8,15 @@ module.exports = function(req, res, next) {
   try {
       if (!token) {
         return res.status(403).json({ msg: "Accès non autorisé" });
-      }
+      };
     const verify = jwt.verify(token, process.env.JWTSECRET);
-    req.user = verify;
-    next();
+    if(verify.user.confirmed){
+      req.user = verify;
+      next();
+    } else {
+      throw new Error("Email not confirmed, please check your mail box and click the confirmation link first")
+    }
   } catch (err) {
-    res.status(401).json({ msg: "Token non valide" });
+    res.status(401).json({ err });
   }
 };
