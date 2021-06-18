@@ -3,8 +3,8 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "name": "alex",
-    "email": "uzemlakw_g691q@nafxo.com",
+    "name": "Alex",
+    "email": "rtw18982@eoopy.com",
     "password": "louloudu31"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "charles.dumoulin@mail.fr",
+    "email": "rtw18982@eoopy.com",
     "password": "louloudu31"
 }
 
@@ -59,12 +59,9 @@ Content-Type: application/json
 
 ### OK - Delete user account
 DELETE http://localhost:3000/account/settings 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIxLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDAxNzI5NCwiZXhwIjoxNjI0MDYwNDk0fQ.OvmeFQG7jcwcL0GesFnWIMgtrze5_jk8IQrnX79aw_E
 Content-Type: application/json
 
-{
-
-}
 
 ###JSDONC - OK - get une annonce par son id
 GET http://localhost:3000/ad/23
@@ -102,13 +99,13 @@ Content-Type: application/json
 
 ### JSDOC - créer une réservation
 POST http://localhost:3000/booking
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIxLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDAxNzI5NCwiZXhwIjoxNjI0MDYwNDk0fQ.OvmeFQG7jcwcL0GesFnWIMgtrze5_jk8IQrnX79aw_E
 Content-Type: application/json
 
 {
     "begining": "2021-06-20",
-    "end": "2021-06-20",
-    "ad_id": 28
+    "end": "2021-06-21",
+    "ad_id": 2
 }
 
 ###JSDOC Spprimer une réservation
@@ -164,19 +161,19 @@ Content-Type: application/json
 
 ###JSDOC - OK - Poster une annonce en tant qu'utilisateur X
 POST http://localhost:3000/account/ads
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjI2LCJyb2xlIjoidXNlciJ9LCJpYXQiOjE2MjM5NDU3MTksImV4cCI6MTYyMzk2MDExOX0.amynjRH5mPK0-573UWVfg5oRzqbJeZwAYFtzkVOUmQY
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MDI0NjkxLCJleHAiOjE2MjQwNjc4OTF9.dzGCPnRazq-k0mNhdUnXmwW_ArPCjjA-JUESqnLZpOU
 Content-Type: application/json
 
 {
-    "title": "Niv",
-    "price": 100,
-    "picture_id": "2",
+    "title": "Ma grosse douilles",
+    "price": 1000,
+    "picture_id": "1",
     "product_state": "neuf",
     "deposit": 150,
     "description": "très utile",
-    "ad_type": "je cherche",
+    "ad_type": "je loue",
     "postcode":74200,
-    "category_id": 10
+    "category_id": 1
 }
 
 

@@ -6,3 +6,6 @@ update_user_table 2021-06-10T12:54:43Z alex <pierrealexandre.cardon@gmail.com> #
 updated_at_function 2021-06-14T13:30:26Z alex <pierrealexandre.cardon@gmail.com> # trigger to auto update field updated_at
 add_col_msg 2021-06-17T09:56:17Z alex <pierrealexandre.cardon@gmail.com> # add a column boolean to msg table
 user_confirmed 2021-06-17T19:19:52Z alex <pierrealexandre.cardon@gmail.com> # add a column confirmed to table user
+msg_ad_id 2021-06-18T12:28:22Z alex <pierrealexandre.cardon@gmail.com> # add ad_id to tale message
+msg_tab_modif 2021-06-18T12:57:58Z alex <pierrealexandre.cardon@gmail.com> # adding columns senderdelete and recipientdelete
+moderated_ad 2021-06-18T13:48:23Z alex <pierrealexandre.cardon@gmail.com> # adding column moderated to table ad

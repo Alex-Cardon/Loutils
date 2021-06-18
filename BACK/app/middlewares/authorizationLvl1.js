@@ -10,7 +10,9 @@ module.exports = function(req, res, next) {
         return res.status(403).json({ msg: "Accès non autorisé" });
       };
     const verify = jwt.verify(token, process.env.JWTSECRET);
-    if(verify.user.confirmed){
+    if(verify.user.confirmed && (verify.user.role == 'user'
+     || verify.user.role == 'modo' 
+     || verify.user.role == 'admin')){
       req.user = verify;
       next();
     } else {

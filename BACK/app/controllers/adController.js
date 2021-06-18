@@ -185,7 +185,8 @@ module.exports = {
     async deleteAnAd (request, response, next) {
         try{
             const id = request.params.id;
-            const result = await adDataMapper.deleteOneAd(id);
+            const user_id = request.user.user.user_id;
+            const result = await adDataMapper.deleteOneAd(id, user_id);
 
             response.json({"msg" : "annonce supprimée"});
         }catch(error){
@@ -202,7 +203,8 @@ module.exports = {
     async getAdById(req, res) {
         try {
             const id = req.params.id;
-            const result = await adDataMapper.findById(id);
+            const user_id = request.user.user.user_id;
+            const result = await adDataMapper.findById(id, user_id);
             res.status(200).json({ result });
         } catch (error) {
             console.trace(error);
