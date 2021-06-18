@@ -3,9 +3,9 @@ import { CHANGE_LOGIN_FIELD, LOGIN_SUCCESS, LOGOUT,  TOGGLE_SETTINGS } from 'src
 
 export const initialState = {
   isLogged: false,  
-  email: 'ddlarotule@jtelacasse.fr',
-  password: 'jennifer',
-  nickname: null,
+  email: 'Valery.dumoulin@mail.fr',
+  password: 'louloudu31',
+  name: null,
   token: null,
   isOpen: false,
 };
@@ -25,13 +25,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
-        nickname: null,
+        name: null,
         token: null,
       };
       case LOGIN_SUCCESS:   
       return {
         ...state,
-        nickname:action.nickname,
+        name:action.name,
         token:action.token,
         isLogged:true,
         isOpen:true,

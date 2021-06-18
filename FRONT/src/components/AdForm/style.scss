@@ -5,11 +5,20 @@
     margin-top: 1em;
   }
 
+  &__component{
+    display: flex;
+  }
+
+  &__diary{
+    width: 50%;
+  }
+
   &__form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 1em;
+    width: 50%;
   }
   &__unit{
     margin-top: 1em;

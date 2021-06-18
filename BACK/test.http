@@ -6,7 +6,6 @@ Content-Type: application/json
     "name": "Mitteran",
     "email": "mitteran.dumoulin@mail.fr",
     "password": "louloudu31"
-
 }
 
 ###JSDOC OK - Auth user
@@ -139,6 +138,7 @@ Content-Type: application/json
 ###JSDOC OK- Voir les messages envoyés par l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/outbox
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+
 Content-Type: application/json
 
 
@@ -161,6 +161,7 @@ Content-Type: application/json
 ###JSDOC - OK - Voir les annonces et leurs détails de l'utilisateur X
 GET http://localhost:3000/account/ads
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+
 Content-Type: application/json
 
 

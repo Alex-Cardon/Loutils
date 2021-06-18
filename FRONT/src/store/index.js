@@ -4,12 +4,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from 'src/reducers';
 
 import loginFormMiddleware from 'src/middlewares/loginForm';
+import signupMiddleware from 'src/middlewares/signupPage';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
   applyMiddleware(loginFormMiddleware),
+  applyMiddleware(signupMiddleware),
   
 );
 // création du store

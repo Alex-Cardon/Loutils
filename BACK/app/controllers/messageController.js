@@ -88,12 +88,14 @@ module.exports = {
     },
 
 
+
     /**
      * Supprimer un message que l'utilisateur connecté a supprimé
      * @param {number} id - Id du message
      * @returns {object} Un message indiquant que le message a bien été supprimé
      */
     async deleteAMessage (request, response, next)  {
+
 
         try {
             const id = request.params.id;
