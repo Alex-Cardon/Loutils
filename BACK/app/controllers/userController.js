@@ -38,10 +38,14 @@ module.exports = {
       const {
         name,
         email,
-        password
+        password,
+        confirmPassword
       } = req.body;
       const role = 'user';
-
+      
+      //check passwords
+      if(password !== confirmPassword) res.status(401).json({ "error": "not same password" });
+      
       //check user exist
       const userFound = await userDataMapper.findOneByEmail(email);
 
