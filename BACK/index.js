@@ -32,8 +32,8 @@ let options = {
         }, value: "Bearer a.8df3p/dfks896v5µ?zjdk8563dfz7dd"
        }
    },
-   basedir: __dirname, //app absolute path
-   files: ['./app/routers/*.js', './app/dataMapper/*.js'] //Path to the API handle folder
+   basedir: __dirname, 
+   files: ['./app/routers/*.js', './app/controllers/*.js'] 
 };
 expressSwagger(options);
 
