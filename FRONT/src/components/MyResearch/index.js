@@ -27,42 +27,42 @@ const myResearch= () => (
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />

@@ -31,12 +31,12 @@ const Params = ({
         type="email"
         placeholder="votre email"
       />
-
-      <ParamsField
+     
+     {/*  <ParamsField
         stateKey="phone"
         type="phone"
         placeholder="votre telephone"
-      />
+      />*/}
 
       <ParamsField
         stateKey="password"

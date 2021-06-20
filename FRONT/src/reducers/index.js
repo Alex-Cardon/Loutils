@@ -10,6 +10,8 @@ import settingsFieldReducer from './settingsField';
 import searchBarReducer from './searchBar';
 import selectSearchBarReducer  from './selectSearchBar';
 import contentReducer  from './content';
+import favoritesReducer  from './favorites';
+import myresearchReducer  from './myResearch';
 
 const rootReducer = combineReducers({
   ad: adFormReducer,
@@ -22,6 +24,10 @@ const rootReducer = combineReducers({
   research : selectSearchBarReducer,
 
   card : contentReducer,
+
+  fav : favoritesReducer,
+
+  my : myresearchReducer,
   
 });
 

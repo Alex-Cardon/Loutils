@@ -15,7 +15,7 @@ import Params from 'src/components/Params';
 import UpdatedProfil from 'src/components/UpdatedProfil';
 
 
-import AdForm from 'src/containers/adForm';
+//import AdForm from 'src/containers/adForm';
 
 import Error from 'src/components/Error';
 
@@ -23,7 +23,7 @@ import Error from 'src/components/Error';
 import './styles.scss';
 
 // == Composant
-const App = ({  }) => (
+const App = () => (
   <div className="app">
     <Switch>
       <Route exact path="/">
@@ -34,9 +34,9 @@ const App = ({  }) => (
       </Route>
      {/*  {isLogged && (
       <> */}
-      <Route exact path="/AdForm">
+     {/* <Route exact path="/AdForm">
         <AdForm />
-      </Route>
+      </Route>*/}
       <Route excat path="/SettingsPage">
         <Setting />
       </Route>

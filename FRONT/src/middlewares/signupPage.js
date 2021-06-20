@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-import { SUBMIT_SETTINGS, changeSettingsInput } from 'src/actions/settingsField';
+import { SUBMIT_SETTINGS, signupSuccess } from 'src/actions/settingsField';
 
 const signupMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -12,12 +12,11 @@ const signupMiddleware = (store) => (next) => (action) => {
         name: state.settings.name,
         email: state.settings.email,
         password: state.settings.password,
-        confirmPassword: state.settings.password,
-
+        confirmPassword: state.settings.confirmPassword,
       })
         .then((response) => {
           console.log('je suis la réponse de registrer', response.data);
-          store.dispatch(changeSettingsInput(response.data))
+          store.dispatch(signupSuccess(response.data))
         })
         .catch((error) => console.log(error))
       break;

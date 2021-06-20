@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Content from 'src/components/Content';
+import Favorites from 'src/components/Content';
 // TODO en cpours de construction
 const mapStateToprops = (state) => ({
   id: state.,
@@ -9,8 +9,7 @@ const mapStateToprops = (state) => ({
   price: state. ,
 });
 
-export default connect(mapStateToprops)(Content);
-
+export default connect(mapStateToprops)(Favorites);
 
 
 
