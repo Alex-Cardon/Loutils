@@ -1,7 +1,4 @@
-
-import { CHANGE_SETTINGS_INPUT } from 'src/actions/settingsField';
-
-
+import { CHANGE_SETTINGS_INPUT, SIGNUP_SUCCESS } from 'src/actions/settingsField';
 
 //! state
 export const initialState = {
@@ -30,11 +27,17 @@ const reducer = (state = initialState, action ) => {
           // deviendra la clé
           // et on mettra dedans la nouvelle valeur
           [action.settingsKey]: action.newValue,
-         // msg:action.newValue,
-         // token:action.newValue,
       };
-
- 
+      case SIGNUP_SUCCESS:   
+      return {
+        ...state,
+        msg:action.msg,
+        token:action.token,
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      };
     default:
       return state;
   }

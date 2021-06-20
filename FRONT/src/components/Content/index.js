@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Card } from 'semantic-ui-react';
 // TODO en cours de construction
@@ -14,42 +14,42 @@ const adResults = () => (
           <Card
             key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
             key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
             key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
           key="id"//{ad.id}
           image="image"//{ad.}
-          header="titre"//{ad.}
+          header="title"//{ad.}
           meta="description"//{ad.}
           description="price"//{ad.}
         />
         <Card
             key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
             key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
@@ -59,14 +59,15 @@ const adResults = () => (
   </Card.Group>
 );
 
-/*adResults.propTypes = {
-  advertissement: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-      name: PropTypes.string.isRequired,
+adResults.propTypes = {
+  /*advertissement: PropTypes.arrayOf(
+    PropTypes.shape({*/
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-};*/
+      price: PropTypes.number.isRequired,
+  /*  }).isRequired,
+  ).isRequired,*/
+};
 
 export default adResults;

@@ -1,4 +1,4 @@
-import { GET_CONTENT, GET_CONTENT_SUCCESS } from 'src/actions/content';
+import { GET_MY_RESEARCH, GET_MY_RESEARCH_SUCCESS } from 'src/actions/myResearch';
 
 //! state
 export const initialState = {
@@ -12,14 +12,14 @@ export const initialState = {
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
-  console.log('je suis dans le reducer Content');
+  console.log('je suis dans le reducer myResearch');
   switch (action.type) {
-    case GET_CONTENT:
+    case GET_MY_RESEARCH:
       return {
         ...state,
         loading: true,
       };
-      case GET_CONTENT_SUCCESS:
+      case GET_MY_RESEARCH_SUCCESS:
       return {
         ...state,
         id: action.id,
