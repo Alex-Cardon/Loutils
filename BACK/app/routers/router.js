@@ -15,7 +15,9 @@ const validUserSettings = require('../middlewares/validUserSettings');
 const ratingController = require('../controllers/ratingController');
 const pictureController = require('../controllers/pictureController');
 const bookingController = require('../controllers/bookingController');
-const radiusController = require('../controllers/configController');
+
+const configController = require('../controllers/configController');
+
 const modoContoller = require('../controllers/modoContoller');
 
 const schemas = require('../validations/schemas');
@@ -29,7 +31,8 @@ const imageUpload = multer({
         limits: { fileSize: maxSize }
     });
 
-router.get('/radius', radiusController.radiusArray);
+router.get('/radius', configController.radiusArray);
+
 
 router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
