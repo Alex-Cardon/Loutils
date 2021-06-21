@@ -128,11 +128,10 @@ module.exports = {
         return result.rows;
     },
 
-        /*Suppression d'une annonce en tant que modérateur*/
+    async deleteAd(id) {
+        const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1`, [id]);
 
-        async deleteAd(id, user_id) {
-            const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1 `, [id]);
-    
-            return result.rows[0];
-        },
+        return result.rows[0];
+    }
+
 }

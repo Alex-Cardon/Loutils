@@ -36,6 +36,11 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
 
 module.exports = {
 
+    async radiusArray() {
+        const radiusList = await [5, 10, 20, 50, 'fruits et légumes'];
+        res.json({ radiusList });
+      },
+
     /**
      * Récupération les annonces d'un utilisateur connecté
      * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour

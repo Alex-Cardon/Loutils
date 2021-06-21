@@ -3,11 +3,10 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-
-    "name": "Stacy",
-    "email": "tayor95808@moxkid.com",
-    "password": "bonjour123456789",
-    "confirmPassword": "bonjour123456789"
+    "name": "Mitteran",
+    "email": "sbaileyn_p698z@nafxo.com",
+    "password": "louloudu31",
+    "confirmPassword": "louloudu31"
 }
 
 ###JSDOC OK - Auth user
@@ -15,8 +14,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "tayor95808@moxkid.com",
-    "password": "bonjour123456789"
+    "email": "sbaileyn_p698z@nafxo.com",
+    "password": "louloudu31"
 }
 
 
@@ -32,7 +31,7 @@ Content-Type: application/json
 
 ###JSDOC OK - Données user
 GET http://localhost:3000/account/settings
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MjY2NDYzLCJleHAiOjE2MjQzMDk2NjN9.la17eQg5Pgd-7vFFWK4D0hvoq4aUepbccsS2g-p6qzo
 Content-Type: application/json
 
 {
@@ -40,12 +39,12 @@ Content-Type: application/json
 
 ###JSDOC OK - Update Données user
 PATCH  http://localhost:3000/account/settings
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjQsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAzMTE4MywiZXhwIjoxNjI0MDQ1NTgzfQ.vFvpl-kbQVq0REkHw7WPcAkse5JMHzjAu5zq3j1bPKM
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MjY2NDYzLCJleHAiOjE2MjQzMDk2NjN9.la17eQg5Pgd-7vFFWK4D0hvoq4aUepbccsS2g-p6qzo
 Content-Type: application/json
 
 {
     "name": "demonteP",
-    "email": "megamartin.dufour@mail.com"
+    "email": "rtw18982@eoopy.com"
 }
 
 ###JSDOC OK - Update password user
@@ -208,13 +207,13 @@ Content-Type: application/json
 ###FAVORIS
 ###JSDOC OK - Voir les favoris et leurs détails de l'utilisateur X
 GET http://localhost:3000/bookmarks
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MjY2NDYzLCJleHAiOjE2MjQzMDk2NjN9.la17eQg5Pgd-7vFFWK4D0hvoq4aUepbccsS2g-p6qzo
 
 
 
 ###JSDONC OK - Ajouter un favori en tant que monsieur x
-POST http://localhost:3000/bookmarks/23
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+POST http://localhost:3000/bookmarks/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MjY2NDYzLCJleHAiOjE2MjQzMDk2NjN9.la17eQg5Pgd-7vFFWK4D0hvoq4aUepbccsS2g-p6qzo
 Content-Type: application/json
 
 ###JSDOC OK - supprimer un favori en tant que monsieur x
@@ -287,6 +286,30 @@ GET  http://localhost:3000/image/nomDuFichierImage
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
 Content-Type: application/json
 
+
+
+### Admin / get all users
+GET  http://localhost:3000/admin/users
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
+
+
+### Admin /get one user
+GET http://localhost:3000/admin/user/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
+
+### Admin / update role
+PATCH  http://localhost:3000/admin/user/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
+Content-Type: application/json
+
+{
+    "role": "user"
+}
+
+
+### Admin /delete one user
+DELETE http://localhost:3000/admin/user/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
 ###Voir les annonces pas filtrées 
 GET http://localhost:3000/modo
 Content-Type: application/json
@@ -299,3 +322,4 @@ GET http://localhost:3000/modo/12
 
 ###supprimer une annonce et ses informations
 DELETE http://localhost:3000/modo/12
+

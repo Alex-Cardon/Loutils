@@ -15,8 +15,8 @@ const validUserSettings = require('../middlewares/validUserSettings');
 const ratingController = require('../controllers/ratingController');
 const pictureController = require('../controllers/pictureController');
 const bookingController = require('../controllers/bookingController');
+const adminController = require('../controllers/adminController');
 const modoContoller = require('../controllers/modoContoller');
-
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
 
@@ -32,7 +32,7 @@ const imageUpload = multer({
 
 
 
-//router.get('/radius', configController.radiusArray);
+router.get('/radius', adController.radiusArray);
 
 
 /**
@@ -452,6 +452,15 @@ router.route('/modo/:id')
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
         .delete(/*authorizationLvl2,*/ modoContoller.deleteAd);
+
+router.get('/admin/users',authorizationLvl3, adminController.getAllUsers);
+
+router.route('/admin/user/:id')
+        .get(authorizationLvl3, adminController.getOneUser)
+        .patch(authorizationLvl3, adminController.userRole)
+        .delete(authorizationLvl3, adminController.deleteOneUser);
+
+
 
 router.use(errorController.resourceNotFound);
 
