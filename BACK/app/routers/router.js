@@ -16,6 +16,7 @@ const ratingController = require('../controllers/ratingController');
 const pictureController = require('../controllers/pictureController');
 const bookingController = require('../controllers/bookingController');
 const configController = require('../controllers/configController');
+const adminController = require('../controllers/adminController');
 const modoContoller = require('../controllers/modoContoller');
 
 const schemas = require('../validations/schemas');
@@ -108,6 +109,13 @@ router.route('/modo/:id')
         .get(authorizationLvl2, modoContoller.getOneAd)
         .post(authorizationLvl2, modoContoller.moderate)
         .delete(authorizationLvl2, modoContoller.deleteAd);
+
+router.get('/admin/allusers',authorizationLvl3, adminController.getAllUsers);
+
+router.route('/admin/oneuser/:id')
+        .get(authorizationLvl3, adminController.getOneUser);
+
+
 
 router.use(errorController.resourceNotFound);
 

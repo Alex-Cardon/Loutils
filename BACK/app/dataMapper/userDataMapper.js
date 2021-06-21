@@ -2,6 +2,12 @@ const client = require('../client');
 
 
 module.exports = {
+
+    async getAllUsers() {
+        const result = await client.query(`SELECT "id", "name", "email", "role" FROM "user"`);
+        return result.rows;
+    },
+
     async findOneById(id) {
         const result = await client.query(`SELECT * FROM "user"
         WHERE "id" = $1`, [id]);
@@ -51,7 +57,7 @@ module.exports = {
         const result = await client.query(`UPDATE "user"
         SET "name" = $1,
         "email" = $2
-        WHERE "id" = $3 RETURNING *`, [name, email, id]);
+        WHERE "id" = $3 RETURNING "name", "email"`, [name, email, id]);
         return result.rows;
     },
     

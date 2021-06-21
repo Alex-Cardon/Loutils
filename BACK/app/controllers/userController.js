@@ -153,7 +153,7 @@ module.exports = {
      * Modifier les informations d'un utilisateur connecté
      * @property {string} name - Nom de l'utilisateur
      * @property {string} email - Adresse mail de l'utilisateur
-     * @returns {object[]} L'utilisateur modifié avec son identifiant, son nom, son email, son mot de passe crypté, la date de création et la date de mise à jour
+     * @returns {object[]} L'utilisateur modifié avec son nom et son email mis à jour
      */
   async patchUserInfo(req, res){
     try {
@@ -187,6 +187,9 @@ module.exports = {
         newPassword
       } = req.body;
       const id = req.user.user.user_id;
+
+      //check passwords
+      if(password !== newPassword) res.status(401).json({ "error": "not same password" });
 
       const userFound = await userDataMapper.findOneById(id);
 
