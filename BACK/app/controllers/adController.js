@@ -35,8 +35,11 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
 
 
 module.exports = {
-
-    async radiusArray() {
+    /**
+     * Récupération des radius prédéfinis
+     * @returns {object[]} Les radius dans un tableau
+     */
+    async radiusArray(req, res, next) {
         const radiusList = await [5, 10, 20, 50, 'fruits et légumes'];
         res.json({ radiusList });
       },

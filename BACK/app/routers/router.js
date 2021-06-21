@@ -31,7 +31,12 @@ const imageUpload = multer({
 });
 
 
-
+/**
+ * Récupération des radius prédéfinis
+ * @route GET /radius
+ * @returns {adController[]} 200 - Les radius dans un tableau
+ * @returns {Error} 500 - Une erreur serveur
+ */
 router.get('/radius', adController.radiusArray);
 
 
@@ -423,25 +428,25 @@ router.get('/confirmation/:token', userController.emailConfirm); //ok
  * @returns {modoController[]} 200 - La liste des annonces avec  leur identifiant de l'annonce et son titre
  * @returns {Error} 500 - Une erreur serveur
  */
-router.get('/modo', /*authorizationLvl2, */modoContoller.getAllNonModAd);
+router.get('/modo', authorizationLvl2, modoContoller.getAllNonModAd);
 
 router.route('/modo/:id')
         /**
- * Récupérrer une annonce et ses informations
- * @route GET /modo/:id
- * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
- * @returns {Error} 500 - Une erreur serveur
- * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
- */
-        .get(/*authorizationLvl2,*/ modoContoller.getOneAd)
+         * Récupérrer une annonce et ses informations
+         * @route GET /modo/:id
+         * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
+         */
+        .get(authorizationLvl2, modoContoller.getOneAd)
         /**
- * Autoriser une annonce
- * @route POST /modo/:id
- * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
- * @returns {Error} 500 - Une erreur serveur
- * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
- */
-        .post(/*authorizationLvl2,*/ modoContoller.moderate)
+         * Autoriser une annonce
+         * @route POST /modo/:id
+         * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
+         */
+        .post(authorizationLvl2, modoContoller.moderate)
 
         /**
          * Supprimer une annonce en tant que modérateur
@@ -451,14 +456,55 @@ router.route('/modo/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .delete(/*authorizationLvl2,*/ modoContoller.deleteAd);
+        .delete(authorizationLvl2, modoContoller.deleteAd);
 
-router.get('/admin/users',authorizationLvl3, adminController.getAllUsers);
+/**
+ * Récupération la liste des utilisateurs
+ * @route GET /admin/users
+ * @returns {modoController[]} 200 - Les utilisateurs avec leur id, nom, email et rôle
+ * @returns {Error} 500 - Une erreur serveur
+ */
+router.get('/admin/users', /*authorizationLvl3,*/ adminController.getAllUsers);
+
+/**
+ * Récupération la liste des roles
+ * @route GET /rolist
+ * @returns {adminController[]} 200 - Tableau des rôles
+ * @returns {Error} 500 - Une erreur serveur
+ */
+router.get('/rolist', adminController.roleList);
 
 router.route('/admin/user/:id')
-        .get(authorizationLvl3, adminController.getOneUser)
-        .patch(authorizationLvl3, adminController.userRole)
-        .delete(authorizationLvl3, adminController.deleteOneUser);
+        /**
+         * Récupération la liste des utilisateurs
+         * @route GET /admin/user/:id
+         * @returns {adminController[]} 200 - L'identifiant de l'utilisateur, son nom, son rôle, son email, si son email a été confirmé
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
+         */
+        .get( /*authorizationLvl3,*/ adminController.getOneUser)
+
+
+        /**
+         * Modifier un rôle d'un utilisateur en tant qu'admin
+         * @route PATCH /admin/user/:id
+         * @param {id} id - Id du compte 
+         * @param {string} role - Role que l'on souhaite attribuer à l'utilisateur
+         * @returns {adminController} 200 - Le nom et le rôle
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur ou le rôle est inconnu
+         */
+        .patch( /*authorizationLvl3,*/ adminController.userRole)
+
+        /**
+         * Supprimer un utilisateur en tant qu'administrateur
+         * @route DELETE /admin/user/:id
+         * @param {id} id - Id du compte 
+         * @returns {adminController} 200 - Message de confirmation indiquant que l'utilisateur a bien été supprimé
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
+         */
+        .delete( /*authorizationLvl3,*/ adminController.deleteOneUser);
 
 
 
