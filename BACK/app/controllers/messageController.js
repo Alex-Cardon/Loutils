@@ -25,12 +25,12 @@ module.exports = {
      * Afficher les messages envoyés par l'utilisateur connecté
      * @returns {object[]} L'identifiant du message, le contenu, la personne qui reçoit le message, la personne qui envoit le message, la date de création, la date de mise à jour, booleen pour savoir si le message a été lu
      */
-    async getSenderMessageByUserId(request, response, next){
+    async getSenderMessageByUserId(req, res, next){
         try{
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
 
             if(!user){
-                return request.status(401).json({
+                return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
             };
@@ -39,11 +39,11 @@ module.exports = {
             if(!message){
                 return next();
             }
-            response.json({ message })
+            res.json({ message })
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -51,12 +51,12 @@ module.exports = {
      * Afficher les messages reçu par l'utilisateur connecté
      * @returns {object[]} L'identifiant du message, le contenu, la personne qui reçoit le message, la personne qui envoit le message, la date de création, la date de mise à jour, booleen pour savoir si le message a été lu
      */
-    async getRecievedMsgByUserId(request, response, next){
+    async getRecievedMsgByUserId(req, res, next){
         try{
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
 
             if(!user){
-                return request.status(401).json({
+                return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
             };
@@ -65,11 +65,11 @@ module.exports = {
             if(!message){
                 return next();
             }
-            response.json({ message })
+            res.json({ message })
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -79,11 +79,11 @@ module.exports = {
      * @property {number} recipient - Identifiant unique de la personne qui reçoit le message
      * @returns {object} L'identifiant du message, le contenu, la personne qui reçoit, la personne qui envoit, la date de création, la date de mise à jour et si le message a été lu ou non
      */
-    async postAMessage(request, response, next){
+    async postAMessage(req, res, next){
         try{
             
-            const { content, recipient } = request.body;
-            const sender = request.user.user.user_id;
+            const { content, recipient } = req.body;
+            const sender = req.user.user.user_id;
             
             const post = await messageDataMapper.postAMessage({ content, recipient, sender });
     
@@ -91,11 +91,11 @@ module.exports = {
                 return next();
             }
     
-            response.json({data : post})
+            res.json({data : post})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -106,11 +106,11 @@ module.exports = {
      * @param {number} id - Id du message
      * @returns {object} Un message indiquant que le message a bien été supprimé
      */
-    async deleteAMessage (request, response, next)  {
+    async deleteAMessage (req, res, next)  {
 
 
         try {
-            const id = request.params.id;
+            const id = req.params.id;
 
             if(!id){
                 return res.status(405).json({
@@ -120,10 +120,10 @@ module.exports = {
 
             const result = await messageDataMapper.deleteAMessage(id);
 
-            response.json({"msg" : "message supprimé"});
+            res.json({"msg" : "message supprimé"});
         } catch (error) {
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     }
 

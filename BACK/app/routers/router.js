@@ -38,6 +38,7 @@ const imageUpload = multer({
  * @returns {Error} 500 - Une erreur serveur
  */
 router.get('/radius', adController.radiusArray);
+router.get('/rolist', adminController.roleList);
 
 
 /**
