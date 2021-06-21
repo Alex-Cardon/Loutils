@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Announcements from 'src/components/Announcements';
+import SettingsPage from 'src/components/Content';
 // TODO en cpours de construction
 const mapStateToprops = (state) => ({
   id: state,
@@ -9,7 +9,7 @@ const mapStateToprops = (state) => ({
   price: state,
 });
 
-export default connect(mapStateToprops)(Announcements);
+export default connect(mapStateToprops)(SettingsPage);
 
 
 

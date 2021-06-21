@@ -12,7 +12,7 @@ export const initialState = {
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
-  console.log('je suis dans le reducer myResearch');
+  //console.log('je suis dans le reducer myResearch');
   switch (action.type) {
     case GET_MY_RESEARCH:
       return {

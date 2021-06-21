@@ -6,7 +6,7 @@ import {
 } from 'src/actions/content';
 
 
-const apiMiddleware = (store) => (next) => (action) => {
+const contentMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_CONTENT:
       axios.get(`GET http://localhost:3000/randads`)
@@ -22,4 +22,4 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 };
 
-export default apiMiddleware;
+export default contentMiddleware;
