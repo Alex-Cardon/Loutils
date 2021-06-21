@@ -323,3 +323,27 @@ GET http://localhost:3000/modo/12
 ###supprimer une annonce et ses informations
 DELETE http://localhost:3000/modo/12
 
+###Récupérrer la liste des radius
+GET http://localhost:3000/radius
+
+###Récupérrer la liste des utilisateurs
+GET http://localhost:3000/admin/users
+
+###Récupérrer la liste des rôles
+GET http://localhost:3000/rolist
+
+###Récupérrer les informations d'un utilisateur en tant qu'administrateur
+GET http://localhost:3000/admin/user/3
+
+###Modifier le rôle d'un utilisateur en tant qu'administrateur
+PATCH http://localhost:3000/admin/user/3
+Content-Type: application/json
+
+{
+
+    "role" : "théière"
+
+}
+
+###Supprimer un utilisateur en tant qu'administrateur
+DELETE http://localhost:3000/admin/user/3
