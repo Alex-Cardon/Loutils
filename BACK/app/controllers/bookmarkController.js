@@ -21,9 +21,9 @@ module.exports = {
      * Afficher les annonces mises en favori par l'utilisateur connecté
      * @returns {object[]} L'identifiant de l'annonce, son titre, l'identifiant de la photo, le prix, l'état, la caution, la description, le type d'annonce, la code postal, l'identifiant de la catégorie, l'identifiant de l'utilisateur, la date de création, la date de mise à jour, le nom de l'utilisateur, son mail, son mot de passe crypté et le role
      */
-    async getBookmarksById(request, response, next){
+    async getBookmarksById(req, res){
         try{
-            const id = request.user.user.user_id;
+            const id = req.user.user.user_id;
 
             if(!id){
                 return res.status(401).json({
@@ -38,11 +38,11 @@ module.exports = {
                     msg: "L'identifiant de l'annonce est inconnu"
                   });
             }
-            response.json({data : ad})
+            res.json({data : ad})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -51,20 +51,20 @@ module.exports = {
      * @param {number} id - Identifiant de l'annonce
      * @returns {object} L'identifiant de l'annonce, l'identifiant de l'utilisateur et la date de création
      */
-    async addBookmark(request, response, next){
+    async addBookmark(req, res, next){
         try{
             
-            const user_id = request.user.user.user_id;
+            const user_id = req.user.user.user_id;
 
             if(!user_id){
-                return response.status(401).json({
+                return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
             };
 
-            const ad_id = request.params.id;
+            const ad_id = req.params.id;
             if(!ad_id){
-                return response.status(405).json({
+                return res.status(405).json({
                     msg: "L'identifiant de l'annonce est inconnu"
                   });
             };
@@ -78,11 +78,11 @@ module.exports = {
                 return next();
             }
     
-            response.json({data : post})
+            res.json({data : post})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -91,23 +91,23 @@ module.exports = {
      * @param {number} id - Identifiant du favori
      * @returns {object} Un message indiquant que le favori est supprimé
      */
-    async deleteBookmark(request, response, next)  {
+    async deleteBookmark(req, res)  {
 
         try {
 
-            const user_id = request.user.user.user_id;
+            const user_id = req.user.user.user_id;
 
             if(!user_id){
-                return response.status(401).json({
+                return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
             };
 
 
-            const ad_id = request.params.id;
+            const ad_id = req.params.id;
 
             if(!ad_id){
-                return response.status(405).json({
+                return res.status(405).json({
                     msg: "L'identifiant de l'annonce est inconnu"
                   });
             };
@@ -115,10 +115,10 @@ module.exports = {
 
             const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 
-            response.json({"msg" : "Favori supprimé"});
+            res.json({"msg" : "Favori supprimé"});
         } catch (error) {
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
  
