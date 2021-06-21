@@ -12,6 +12,12 @@ import selectSearchBarReducer  from './selectSearchBar';
 import contentReducer  from './content';
 import favoritesReducer  from './favorites';
 import myresearchReducer  from './myResearch';
+import announcementsReducer  from './announcements';
+import paramsFieldReducer  from './paramsField';
+import settingsPageReducer  from './settingsPage';
+import updatedProfilReducer  from './profilField';
+import profilReducer from './profil';
+
 
 const rootReducer = combineReducers({
   ad: adFormReducer,
@@ -28,7 +34,16 @@ const rootReducer = combineReducers({
   fav : favoritesReducer,
 
   my : myresearchReducer,
-  
+
+  announcements : announcementsReducer,
+
+  params : paramsFieldReducer,
+ 
+  page : settingsPageReducer,
+
+  updatedProfil : updatedProfilReducer, 
+
+  profil : profilReducer,
 });
 
 export default rootReducer;

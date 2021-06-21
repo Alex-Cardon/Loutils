@@ -1,32 +1,32 @@
-import { GET_FAVORITES, GET_FAVORITES_SUCCESS } from 'src/actions/favorites';
+import { GET_PROFIL, GET_PROFIL_SUCCESS } from 'src/actions/profil';
 
 //! state
 export const initialState = {
-  id: "",
+  key: "",
   image: "",
-  title: "",
+  header: "",
   description: "",
-  price: "",
+  description: "",
   loading: false,
 
 }; // TODO en construction
-//! direction index.js de mon reducer
+
 const reducer = (state = initialState, action) => {
   //console.log('je suis dans le reducer favorites');
   switch (action.type) {
-    case GET_FAVORITES:
+    case GET_PROFIL:
       return {
         ...state,
         loading: true,
       };
-      case GET_FAVORITES_SUCCESS:
+    case GET_PROFIL_SUCCESS:
       return {
         ...state,
-        id: action.id,
-        image: action.image,
-        title: action.title,
-        description: action.title,
-        price: action.price,
+        key: state,
+        image: state,
+        header: state,
+        meta: state,
+        description: state,
         loading: false,
       };
     default:
@@ -36,7 +36,4 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-//!
-//! Ne pas oublier de le créer dans index.js du dossier Réducers
-//!
 

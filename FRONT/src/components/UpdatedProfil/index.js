@@ -3,19 +3,19 @@ import React from 'react';
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
 import Header from 'src/components/Header';
-import ProfilField from 'src/components/UpdatedProfil/ProfilField';
-//! 1 je fais mon component maintenant direction le sous composant SettingsField
+import ProfilField from 'src/containers/UpdatedProfil/ProfilField';
+import Footer from 'src/components/Footer';
 
 import './styles.scss';
 
 const UpdatedProfil = ({
-  handleFormSubmit
+  handleUpdatedProfilFormSubmit
 }) => (
   <div className="signup-page">
     <Header />
-    <h2>Modifier votre compte</h2>
+    <h2>Mise à jour de mon profil</h2>
     <form className="signup-page__form"
-      onSubmit={handleFormSubmit}
+      onSubmit={handleUpdatedProfilFormSubmit}
     >
       <ProfilField
         stateKey="pseudo"
@@ -29,11 +29,11 @@ const UpdatedProfil = ({
         placeholder="votre email"
       />
 
-      <ProfilField
+      {/*  <ParamsField
         stateKey="phone"
         type="phone"
         placeholder="votre telephone"
-      />
+      />*/}
 
       <ProfilField
         stateKey="password"
@@ -46,22 +46,26 @@ const UpdatedProfil = ({
         type="password"
         placeholder="confirmez mot de passe"
       />
-      <form method="post" enctype="multipart/form-data">
-        <div>
-          <label for="file">Sélectionner une photo de profil</label>
-          <input type="file" id="file" name="file" 
-          accept="image/png, image/jpeg" />
-        </div>
-        <div>
-          <button>Envoyer</button>
-        </div>
-      </form>
+
+      <button className="settings__submit" type="submit" >Modifier</button>
     </form>
+    <form method="post" enctype="multipart/form-data">
+      <div>
+        <label for="file">Sélectionner une photo de profil</label>
+        <input type="file" id="file" name="file"
+          accept="image/png, image/jpeg" />
+      </div>
+      <div>
+        <button>Envoyer</button>
+      </div>
+    </form>
+    <Footer />
   </div>
 );
 
 UpdatedProfil.proptypes = {
-  handleFormSubmit: Proptypes.func.isRequired,
+  handleUpdatedProfilFormSubmit: Proptypes.func.isRequired,
 };
 
 export default UpdatedProfil;
+
