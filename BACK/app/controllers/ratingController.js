@@ -20,7 +20,7 @@ const ratingDataMapper = require('../dataMapper/ratingDataMapper');
 module.exports = {
 
     /**
-     * Poster une annonce en tant qu'utilisateur connecté
+     * Noter une annonce en tant qu'utilisateur connecté
      * @param {number} ad_id - Id de l'annonce
      * @param {number} rating - Note 
      * @returns {object} L'utilisateur qui a mis la note, l'annonce qui a reçu la note, la note, la date de création et la date de mise à jour
@@ -29,9 +29,16 @@ module.exports = {
         try {
             const user_id = req.user.user.user_id;
 
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
             const { ad_id, rating } = req.body;
 
             if(rating < 1 || rating > 5) res.status(400).json({ "error": "rating can not be less than 1 and more than 5" });
+            
             const exist = await ratingDataMapper.ratexist(user_id, ad_id);
             if(exist.length !== 0){
                 const result = await ratingDataMapper.updateRating(user_id, ad_id, rating);

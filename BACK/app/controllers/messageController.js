@@ -29,6 +29,12 @@ module.exports = {
         try{
             const user = request.user.user.user_id;
 
+            if(!user){
+                return request.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
             const message = await messageDataMapper.getSenderMessageByUserId(user);
             if(!message){
                 return next();
@@ -48,6 +54,12 @@ module.exports = {
     async getRecievedMsgByUserId(request, response, next){
         try{
             const user = request.user.user.user_id;
+
+            if(!user){
+                return request.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
 
             const message = await messageDataMapper.getRecievedMsgByUserId(user);
             if(!message){
@@ -99,6 +111,13 @@ module.exports = {
 
         try {
             const id = request.params.id;
+
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de du message est inconnu"
+                  });
+            };
+
             const result = await messageDataMapper.deleteAMessage(id);
 
             response.json({"msg" : "message supprimé"});

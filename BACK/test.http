@@ -4,9 +4,10 @@ Content-Type: application/json
 
 {
 
-    "name": "Mitteran",
-    "email": "mitteran.dumoulin@mail.fr",
-    "password": "louloudu31"
+    "name": "Stacy",
+    "email": "tayor95808@moxkid.com",
+    "password": "bonjour123456789",
+    "confirmPassword": "bonjour123456789"
 }
 
 ###JSDOC OK - Auth user
@@ -14,8 +15,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "rtw18982@eoopy.com",
-    "password": "louloudu31"
+    "email": "tayor95808@moxkid.com",
+    "password": "bonjour123456789"
 }
 
 
@@ -285,3 +286,16 @@ Content-Type: application/json
 GET  http://localhost:3000/image/nomDuFichierImage
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
 Content-Type: application/json
+
+###Voir les annonces pas filtrées 
+GET http://localhost:3000/modo
+Content-Type: application/json
+
+###Autoriser une annonce 
+POST http://localhost:3000/modo/12
+
+###Récupérrer une annonce et ses informations
+GET http://localhost:3000/modo/12
+
+###supprimer une annonce et ses informations
+DELETE http://localhost:3000/modo/12
