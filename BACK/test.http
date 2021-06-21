@@ -3,7 +3,6 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-
     "name": "Mitteran",
     "email": "sbaileyn_p698z@nafxo.com",
     "password": "louloudu31",
@@ -288,6 +287,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUi
 Content-Type: application/json
 
 
+
 ### Admin / get all users
 GET  http://localhost:3000/admin/users
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
@@ -310,3 +310,16 @@ Content-Type: application/json
 ### Admin /delete one user
 DELETE http://localhost:3000/admin/user/1
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
+###Voir les annonces pas filtrées 
+GET http://localhost:3000/modo
+Content-Type: application/json
+
+###Autoriser une annonce 
+POST http://localhost:3000/modo/12
+
+###Récupérrer une annonce et ses informations
+GET http://localhost:3000/modo/12
+
+###supprimer une annonce et ses informations
+DELETE http://localhost:3000/modo/12
+

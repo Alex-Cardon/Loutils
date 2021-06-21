@@ -110,7 +110,7 @@ module.exports = {
     },
 
     async moderated(id) {
-        const result = await client.query(`UPDARE "ad"
+        const result = await client.query(`UPDATE "ad"
         SET "moderated" = TRUE
         WHERE "id" = $1 RETURNING *`, [id]);
         return result.rows;
@@ -132,5 +132,6 @@ module.exports = {
         const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1`, [id]);
 
         return result.rows[0];
-    },
+    }
+
 }

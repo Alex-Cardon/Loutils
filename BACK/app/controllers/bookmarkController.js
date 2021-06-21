@@ -24,10 +24,19 @@ module.exports = {
     async getBookmarksById(request, response, next){
         try{
             const id = request.user.user.user_id;
+
+            if(!id){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir vos favoris"
+                  });
+            };
+
             const ad = await bookmarkDataMapper.findByPk(id);
 
             if(!ad){
-                return next();
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
             }
             response.json({data : ad})
 
@@ -46,7 +55,20 @@ module.exports = {
         try{
             
             const user_id = request.user.user.user_id;
+
+            if(!user_id){
+                return response.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
             const ad_id = request.params.id;
+            if(!ad_id){
+                return response.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
 
             const post = await bookmarkDataMapper.
             addBookmark(ad_id, user_id);
@@ -74,7 +96,22 @@ module.exports = {
         try {
 
             const user_id = request.user.user.user_id;
+
+            if(!user_id){
+                return response.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
+
             const ad_id = request.params.id;
+
+            if(!ad_id){
+                return response.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
 
             const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 

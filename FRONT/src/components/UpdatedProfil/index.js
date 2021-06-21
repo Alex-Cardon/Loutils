@@ -28,8 +28,8 @@ const UpdatedProfil = ({
         type="email"
         placeholder="votre email"
       />
-     
-     {/*  <ParamsField
+
+      {/*  <ParamsField
         stateKey="phone"
         type="phone"
         placeholder="votre telephone"
@@ -49,17 +49,16 @@ const UpdatedProfil = ({
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
-    {/* <form method="post" enctype="multipart/form-data">
-        <div>
-          <label for="file">Sélectionner une photo de profil</label>
-          <input type="file" id="file" name="file" 
+    <form method="post" enctype="multipart/form-data">
+      <div>
+        <label for="file">Sélectionner une photo de profil</label>
+        <input type="file" id="file" name="file"
           accept="image/png, image/jpeg" />
-        </div>
-        <div>
-          <button>Envoyer</button>
-        </div>
-      </form>
-    </form>*/}
+      </div>
+      <div>
+        <button>Envoyer</button>
+      </div>
+    </form>
     <Footer />
   </div>
 );
@@ -70,14 +69,3 @@ UpdatedProfil.proptypes = {
 
 export default UpdatedProfil;
 
- {/* <form method="post" enctype="multipart/form-data">
-        <div>
-          <label for="file">Sélectionner une photo de profil</label>
-          <input type="file" id="file" name="file" 
-          accept="image/png, image/jpeg" />
-        </div>
-        <div>
-          <button>Envoyer</button>
-        </div>
-      </form>
-    </form>*/}

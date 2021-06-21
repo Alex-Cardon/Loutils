@@ -50,11 +50,19 @@ module.exports = {
 
             const user = request.user.user.user_id;
 
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
+
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
-                return next();
+                return response.status(403).json({
+                    msg: "Accès non autorisé"
+                  });
             }
-            response.json({data : ad})
+            response.status(200).json({data : ad})
 
         }catch (error) {
             console.trace(error);
@@ -83,15 +91,23 @@ module.exports = {
             
             const user_id = request.user.user.user_id
 
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
+
             const post = await adDataMapper.
             postAnAd(title, picture_id, price,product_state, deposit, description, ad_type,  postcode, category_id, user_id);
             
     
             if(!post){
-                return next();
+                return res.status(400).json({
+                    'error': 'Veuillez remplir les champs de l\'annonce'
+                  });
             }
     
-            response.json({data : post})
+            response.status(200).json({data : post})
 
         }catch (error) {
             console.trace(error);
@@ -117,7 +133,14 @@ module.exports = {
     async patchAd(req, res){
         try {
             const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
+
             const id = req.params.id
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
             const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
             res.status(200).json({ result });
@@ -145,6 +168,7 @@ module.exports = {
             if (radius === "0") {
                 radius = "1";
             };
+
             const listPC = await adDataMapper.fetchCP(postcode, radius);
             const full_arr_pc = [];
             if (Array.isArray(listPC)) {
@@ -156,6 +180,13 @@ module.exports = {
                     full_arr_pc.push(listPC[prop].code_postal)
                 }
             }
+
+            if(!listPC){
+                return res.status(400).json({
+                    msg: "Veuillez saisir un code postal"
+                  });
+            };
+
             const trimmed_cp = [...new Set(full_arr_pc)];
             const {
                 category,
@@ -164,12 +195,12 @@ module.exports = {
 
             if (!category) {
                 const result = await adDataMapper.getByTitle(title, trimmed_cp)
-                res.json({
+                res.status(200).json({
                     result
                 });
             } else {
                 const result = await adDataMapper.getByTitleAndCat(category, trimmed_cp, title);
-                res.json({
+                res.status(200).json({
                     result
                 });
             }
@@ -190,6 +221,13 @@ module.exports = {
         try{
             const id = request.params.id;
             const user_id = request.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
+            
             const result = await adDataMapper.deleteOneAd(id, user_id);
 
             response.json({"msg" : "annonce supprimée"});
@@ -207,7 +245,21 @@ module.exports = {
     async getAdById(req, res) {
         try {
             const id = req.params.id;
+
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
             const user_id = request.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
             const result = await adDataMapper.findById(id, user_id);
             res.status(200).json({ result });
         } catch (error) {

@@ -11,7 +11,8 @@ import favoritesMiddleware from 'src/middlewares/favorites';
 import myResearchMiddleware from 'src/middlewares/myResearch';
 import paramsMiddleware from 'src/middlewares/params';
 import settingsPageMiddleware from 'src/middlewares/settingsPage';
-//import paramsMiddleware from 'src/middlewares/params';
+import profilMiddleware from 'src/middlewares/profil';
+
 
 
 
@@ -26,7 +27,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(myResearchMiddleware),
   applyMiddleware(paramsMiddleware),
   applyMiddleware(settingsPageMiddleware),
-  //applyMiddleware(paramsMiddleware),
+  applyMiddleware(profilMiddleware),
 );
 // création du store
 const store = createStore(reducer, enhancers);

@@ -30,6 +30,7 @@ module.exports = {
      * @property {string} name - Nom de l'utilisateur
      * @property {string} email - Adresse mail de l'utilisateur
      * @property {string} password - Mot de passe de l'utilisateur
+     * @property {string} confirmPassword - Confirmer le mot de passe de l'utilisateur
      * @returns {object} un message indiquant que le compte a bien été créé
      */
     async register(req, res) {
@@ -158,6 +159,13 @@ module.exports = {
   async patchUserInfo(req, res){
     try {
       const id = req.user.user.user_id;
+
+      if(!id){
+        return res.status(401).json({
+            msg: "Veuillez vous connecter afin de voir l'annonce"
+          });
+    };
+
       const {
         name,
         email
@@ -188,14 +196,20 @@ module.exports = {
       } = req.body;
       const id = req.user.user.user_id;
 
+
       //check passwords
       if(password !== newPassword) res.status(401).json({ "error": "not same password" });
+      if(!id){
+        return res.status(401).json({
+            msg: "Veuillez vous connecter afin de mettre à jour votre mot de passe"
+          });
+    };
 
       const userFound = await userDataMapper.findOneById(id);
 
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
-      if (!validPassword) res.status(401).json({
+      if (!validPassword) res.status(400).json({
         'error': 'Mot de passe incorrect'
       });
 
@@ -225,6 +239,13 @@ module.exports = {
   async deleteAccount(req, res) {
     try {
       const id = req.user.user.user_id;
+
+      if(!id){
+        return res.status(401).json({
+            msg: "Veuillez vous connecter afin de supprimer votre compte"
+          });
+    };
+
       const result = await userDataMapper.deleteUser(id);
       if (!result) {
         res.json({

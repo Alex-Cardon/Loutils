@@ -31,7 +31,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
-    "nodemailer": "^6.6.1",
+    "nodemailer": "^6.6.2",
     "pg": "^8.6.0",
     "swagger": "^0.7.5"
   }
