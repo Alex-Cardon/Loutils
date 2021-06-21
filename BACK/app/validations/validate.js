@@ -1,12 +1,5 @@
 const validate = {
 
-  /*
-   * Cette méthode est un factory de middleware
-   * Elle sert à pouvoir récéptionner le schema (injection de dépendance)
-   * @param {object} schema 
-   * @param {object} schema 
-   */
-
   queryString: (schema) => {
 
     return async (request, response, next) => {
