@@ -15,7 +15,6 @@ const validUserSettings = require('../middlewares/validUserSettings');
 const ratingController = require('../controllers/ratingController');
 const pictureController = require('../controllers/pictureController');
 const bookingController = require('../controllers/bookingController');
-const configController = require('../controllers/configController');
 const adminController = require('../controllers/adminController');
 const modoContoller = require('../controllers/modoContoller');
 
@@ -30,7 +29,7 @@ const imageUpload = multer({
         limits: { fileSize: maxSize }
     });
 
-router.get('/radius', configController.radiusArray);
+router.get('/radius', adController.radiusArray);
 
 router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
@@ -113,7 +112,9 @@ router.route('/modo/:id')
 router.get('/admin/allusers',authorizationLvl3, adminController.getAllUsers);
 
 router.route('/admin/oneuser/:id')
-        .get(authorizationLvl3, adminController.getOneUser);
+        .get(authorizationLvl3, adminController.getOneUser)
+        .post(authorizationLvl3, adminController.userRole)
+        .delete(authorizationLvl3, adminController.deleteOneUser);
 
 
 

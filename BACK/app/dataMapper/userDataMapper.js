@@ -79,6 +79,13 @@ module.exports = {
         SET "confirmed" = TRUE
         WHERE "id" = $1 RETURNING "name"`, [id]);
         return result.rows;
+    },
+
+    async changeRole(id, role) {
+        const result = await client.query(`UPDATE "user"
+        SET "role" = $1
+        WHERE "id" = $2 RETURNING "name", "role"`, [role, id]);
+        return result.rows[0];
     }
 
 }
