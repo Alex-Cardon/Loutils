@@ -16,6 +16,8 @@ import announcementsReducer  from './announcements';
 import paramsFieldReducer  from './paramsField';
 import settingsPageReducer  from './settingsPage';
 import updatedProfilReducer  from './profilField';
+import profilReducer from './profil';
+
 
 const rootReducer = combineReducers({
   ad: adFormReducer,
@@ -40,6 +42,8 @@ const rootReducer = combineReducers({
   page : settingsPageReducer,
 
   updatedProfil : updatedProfilReducer, 
+
+  profil : profilReducer,
 });
 
 export default rootReducer;

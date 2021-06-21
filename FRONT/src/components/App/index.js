@@ -6,10 +6,10 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
-import Setting from 'src/containers/SettingsPage';
+import SettingsPage from 'src/containers/SettingsPage';
 import Favorites from 'src/containers/Favorites';
 import Announcements from 'src/containers/Announcements';
-import Profil from 'src/components/Profil';
+import Profil from 'src/containers/Profil';
 import MyResearch from 'src/containers/MyResearch';
 import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
@@ -38,7 +38,7 @@ const App = () => (
         <AdForm />
       </Route>*/}
       <Route excat path="/SettingsPage">
-        <Setting />
+        <SettingsPage />
       </Route>
       <Route excat path="/Favorites">
         <Favorites />
