@@ -40,7 +40,7 @@ module.exports = {
             };
 
             const result = await adDataMapper.deleteAd(id);
-            response.status(200).json({"msg" : "annonce supprimée"});
+            res.status(200).json({"msg" : "annonce supprimée"});
         } catch (error) {
             console.log(error);
             res.json({ error });
@@ -51,7 +51,7 @@ module.exports = {
      * Afficher les annonces non filtrées
      * @returns {object[]} La liste des annonces avec  leur identifiant de l'annonce et son titre
      */
-    async getAllNonModAd(req, res) {
+    async getAllNonModAd(_, res) {
         try {
             const result = await adDataMapper.getAllNonModAd();
             res.status(200).json({ result });

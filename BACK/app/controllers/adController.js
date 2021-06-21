@@ -36,7 +36,7 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
 
 module.exports = {
 
-    async radiusArray() {
+    async radiusArray(_, res) {
         const radiusList = await [5, 10, 20, 50, 'fruits et légumes'];
         res.json({ radiusList });
       },
@@ -45,10 +45,10 @@ module.exports = {
      * Récupération les annonces d'un utilisateur connecté
      * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
      */
-    async getByUserId(request, response, next){
+    async getByUserId(req, res){
         try{
 
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
 
             if(!user_id){
                 return res.status(401).json({
@@ -58,15 +58,15 @@ module.exports = {
 
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
-                return response.status(403).json({
+                return res.status(403).json({
                     msg: "Accès non autorisé"
                   });
             }
-            response.status(200).json({data : ad})
+            res.status(200).json({data : ad})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -84,12 +84,12 @@ module.exports = {
      * @param {number} category_id - La catégorie dans laquelle l'outil se situe
      * @returns {object} L'annonce créée avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
      */
-    async postAnAd(request, response, next){
+    async postAnAd(req, res){
         try{
 
-            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = request.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
             
-            const user_id = request.user.user.user_id
+            const user_id = req.user.user.user_id
 
             if(!user_id){
                 return res.status(401).json({
@@ -107,11 +107,11 @@ module.exports = {
                   });
             }
     
-            response.status(200).json({data : post})
+            res.status(200).json({data : post})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -217,10 +217,10 @@ module.exports = {
      * @param {number} id - Id de l'annonce
      * @returns {object} Un message indiquant que l'annonce a bien été supprimée
      */
-    async deleteAnAd (request, response, next) {
+    async deleteAnAd (req, res) {
         try{
-            const id = request.params.id;
-            const user_id = request.user.user.user_id;
+            const id = req.params.id;
+            const user_id = req.user.user.user_id;
 
             if(!user_id){
                 return res.status(401).json({
@@ -230,10 +230,10 @@ module.exports = {
             
             const result = await adDataMapper.deleteOneAd(id, user_id);
 
-            response.json({"msg" : "annonce supprimée"});
+            res.json({"msg" : "annonce supprimée"});
         }catch(error){
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
 
@@ -252,7 +252,7 @@ module.exports = {
                   });
             };
 
-            const user_id = request.user.user.user_id;
+            const user_id = req.user.user.user_id;
 
             if(!user_id){
                 return res.status(401).json({
@@ -264,7 +264,7 @@ module.exports = {
             res.status(200).json({ result });
         } catch (error) {
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            req.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
 
@@ -279,7 +279,7 @@ module.exports = {
         } catch (error) {
 
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
             
         }
     }

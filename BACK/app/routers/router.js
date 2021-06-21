@@ -33,6 +33,7 @@ const imageUpload = multer({
 
 
 router.get('/radius', adController.radiusArray);
+router.get('/rolist', adminController.roleList);
 
 
 /**

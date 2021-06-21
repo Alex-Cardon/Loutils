@@ -137,7 +137,7 @@ module.exports = {
      * Récupération des informations d'un utilisateur connecté
      * @returns {object[]} Le nom et l'email de l'utilisateur
      */
-  async getUserInfo(req, res, next){
+  async getUserInfo(req, res){
     try{
         const info = await userDataMapper.getAccountInformations(req.user.user.user_id);
         res.json({data : info})
