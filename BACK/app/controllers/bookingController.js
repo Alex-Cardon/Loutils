@@ -32,7 +32,15 @@ module.exports = {
     async boonking(req, res) {
         try {
             const { begining, end, ad_id } = req.body;
-            const user_id = req.user.user.user_id
+
+            const user_id = req.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
+
             const today = new Date(Date.now());
             if(begining > end) res.status(400).json({ "error": "impossible de réserver sur une date postérieur à la date de fin" });
             if(begining < today.toISOString()) res.status(400).json({ "error": "impossible de réserver sur une date anterieur à la date du jour" });
@@ -71,6 +79,13 @@ module.exports = {
     async getBooking(req, res) {
         try {
             const { ad_id } = req.body;
+
+            if(!ad_id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
             const result = await bookingDataMapper.getBooking(ad_id);
             res.status(200).json({ result });
         } catch (error) {

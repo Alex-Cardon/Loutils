@@ -32,6 +32,12 @@ module.exports = {
 
             const user = request.user.user.user_id;
 
+            if(!user){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir vos recherches sauvegardées"
+                  });
+            };
+
             const get = await savedSearchDataMapper.findSavedResearchByUserId(user);
             if(!get){
                 return next();
@@ -59,6 +65,12 @@ module.exports = {
             const {postcode, title, radius, category_id} = request.body;
 
             const user_id = request.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
 
             const post = await savedSearchDataMapper.addNewResearch({postcode, title, radius, category_id, user_id});
 
@@ -88,6 +100,11 @@ module.exports = {
             const { postcode, title, radius, category_id } = request.body;
 
             const id = request.params.id; 
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
 
             const result = await savedSearchDataMapper.updateSavedResearch(id, postcode, title, radius, category_id);
 
@@ -107,6 +124,11 @@ module.exports = {
     async deleteSavedResearch (request, response, next) {
         try{
             const id = request.params.id;
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
             const result = await savedSearchDataMapper.deleteOneSavedResearch(id);
 
             response.json({"msg" : "recherche supprimée"});

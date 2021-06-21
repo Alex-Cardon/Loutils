@@ -31,7 +31,9 @@ module.exports  = {
             const { filename } = request.params;
             const image = await pictureDataMapper.findByPk(filename);
             if(!image){
-                return next();
+                return res.status(405).json({
+                    msg: "Cette image n'existe pas"
+                  });
             }
             const dirname = path.resolve();
             const fullfilepath = path.join(dirname,
