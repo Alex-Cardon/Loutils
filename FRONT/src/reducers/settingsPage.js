@@ -1,4 +1,4 @@
-import { GET_FAVORITES, GET_FAVORITES_SUCCESS } from 'src/actions/favorites';
+import { GET_SETTINGS_PAGE, GET_SETTINGS_PAGE_SUCCESS } from 'src/actions/settingsPage';
 
 //! state
 export const initialState = {
@@ -12,14 +12,14 @@ export const initialState = {
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
-  //console.log('je suis dans le reducer favorites');
+  //console.log('je suis dans le reducer Content');
   switch (action.type) {
-    case GET_FAVORITES:
+    case GET_SETTINGS_PAGE:
       return {
         ...state,
         loading: true,
       };
-      case GET_FAVORITES_SUCCESS:
+      case GET_SETTINGS_PAGE_SUCCESS:
       return {
         ...state,
         id: action.id,

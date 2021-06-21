@@ -6,7 +6,7 @@ import {
 } from 'src/actions/favorites';
 
 
-const apiMiddleware = (store) => (next) => (action) => {
+const favoritesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_FAVORITES:
       axios.get(`GET http://localhost:3000/bookmarks`)
@@ -22,4 +22,4 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 };
 
-export default apiMiddleware;
+export default favoritesMiddleware;

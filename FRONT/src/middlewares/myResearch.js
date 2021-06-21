@@ -6,7 +6,7 @@ import {
 } from 'src/actions/myResearch';
 
 
-const apiMiddleware = (store) => (next) => (action) => {
+const myResearchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_MY_RESEARCH:
       axios.get(`GET http://localhost:3000/search`)
@@ -22,4 +22,4 @@ const apiMiddleware = (store) => (next) => (action) => {
   }
 };
 
-export default apiMiddleware;
+export default myResearchMiddleware;
