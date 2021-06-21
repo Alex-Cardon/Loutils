@@ -1,4 +1,4 @@
-import { CHANGE_SETTINGS_INPUT, SIGNUP_SUCCESS } from 'src/actions/settingsField';
+import { CHANGE_PARAMS_INPUT, PARAMS_SUCCESS } from 'src/actions/paramsField';
 
 //! state
 export const initialState = {
@@ -7,15 +7,15 @@ export const initialState = {
   //phone: "",
   password: "",
   confirmPassword: "",
-  token:'',
-  msg:'',
+  //token:'',
+  //msg:'',
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action ) => {
- // console.log('je suis dans le reducer settings');
+  //console.log('je suis dans le reducer params');
   switch (action.type) {
-    case CHANGE_SETTINGS_INPUT:
+    case CHANGE_PARAMS_INPUT:
       // on renvoie un nouvel objet "state"
       return {
         ...state, // on recopie tout l'ancien state
@@ -28,11 +28,11 @@ const reducer = (state = initialState, action ) => {
           // et on mettra dedans la nouvelle valeur
           [action.settingsKey]: action.newValue,
       };
-      case SIGNUP_SUCCESS:   
+      case PARAMS_SUCCESS:   
       return {
         ...state,
-        msg:action.msg,
-        token:action.token,
+       // msg:action.msg,
+        //token:action.token,
         name: '',
         email: '',
         password: '',

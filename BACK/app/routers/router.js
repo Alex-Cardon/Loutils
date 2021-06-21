@@ -31,6 +31,7 @@ const imageUpload = multer({
 
 router.get('/radius', adController.radiusArray);
 
+
 router.get('/randads',adController.getRandAds)/* JSDOC ok */;
         
 router.get('/categories', categoryController.getCategories)/*JSDOC ok */;
