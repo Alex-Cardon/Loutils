@@ -15,8 +15,8 @@ module.exports = {
     async deleteAd(req, res) {
         try {
             const id = req.params.id;
-            const result = await adDataMapper.deleteOneAd(id);
-            res.status(200).json({ result });
+            const result = await adDataMapper.deleteAd(id);
+            res.status(200).json({ msg: 'annonce supprimée' });
         } catch (error) {
             console.log(error);
             res.json({ error });

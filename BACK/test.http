@@ -289,11 +289,24 @@ Content-Type: application/json
 
 
 ### Admin / get all users
-GET  http://localhost:3000/admin/allusers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MjY5MzM4LCJleHAiOjE2MjQzMTI1Mzh9.kWRfQXVKOe8Lyf57OK2nrCiDh_AxfVxIpSgewkwi7O4
+GET  http://localhost:3000/admin/users
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
 
 
 ### Admin /get one user
-GET http://localhost:3000/admin/oneuser/1
+GET http://localhost:3000/admin/user/1
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
 
+### Admin / update role
+PATCH  http://localhost:3000/admin/user/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE
+Content-Type: application/json
+
+{
+    "role": "user"
+}
+
+
+### Admin /delete one user
+DELETE http://localhost:3000/admin/user/1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDI2OTcyMCwiZXhwIjoxNjI0MzEyOTIwfQ.nbcENEHCa0EWPr9OF3bZgaaPPOh_SOGixJBcDKuVxFE

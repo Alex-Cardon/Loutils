@@ -117,7 +117,7 @@ module.exports = {
     },
 
     async getAllNonModAd() {
-        const result = await client.query(`SELECT "id", "name" FROM "ad"
+        const result = await client.query(`SELECT "id", "title" FROM "ad"
         WHERE "moderated" = FALSE ORDER BY "created_at" ASC`);
         return result.rows;
     },
@@ -126,5 +126,11 @@ module.exports = {
         const result = await client.query(`SELECT * FROM "ad" 
         WHERE "id" = $1`, [id]);
         return result.rows;
+    },
+
+    async deleteAd(id) {
+        const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1`, [id]);
+
+        return result.rows[0];
     },
 }

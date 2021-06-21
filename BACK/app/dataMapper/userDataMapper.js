@@ -8,6 +8,12 @@ module.exports = {
         return result.rows;
     },
 
+    async oneAccountById(id) {
+        const result = await client.query(`SELECT * FROM "user"
+        WHERE "id" = $1`, [id]);
+        return result.rows[0];
+    },
+
     async findOneById(id) {
         const result = await client.query(`SELECT * FROM "user"
         WHERE "id" = $1`, [id]);
@@ -19,8 +25,8 @@ module.exports = {
         return result.rows[0];
     },
 
-    async findByPk(id) {
-        const result = await client.query(`SELECT * FROM "user" WHERE "user_id" = $1`, [id]);
+    async findById(id) {
+        const result = await client.query(`SELECT "id", "name", "role", "email", "confirmed" FROM "user" WHERE "id" = $1`, [id]);
 
         if (!result.rows) {
             return null;
@@ -70,7 +76,7 @@ module.exports = {
 
     async deleteUser(id) {
         const result = await client.query(`DELETE FROM "user"
-        WHERE "id" = $1 RETURNING "name"`, [id]);
+        WHERE "id" = $1`, [id]);
         return result;
     },
     

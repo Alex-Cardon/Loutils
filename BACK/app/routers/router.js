@@ -109,11 +109,11 @@ router.route('/modo/:id')
         .post(authorizationLvl2, modoContoller.moderate)
         .delete(authorizationLvl2, modoContoller.deleteAd);
 
-router.get('/admin/allusers',authorizationLvl3, adminController.getAllUsers);
+router.get('/admin/users',authorizationLvl3, adminController.getAllUsers);
 
-router.route('/admin/oneuser/:id')
+router.route('/admin/user/:id')
         .get(authorizationLvl3, adminController.getOneUser)
-        .post(authorizationLvl3, adminController.userRole)
+        .patch(authorizationLvl3, adminController.userRole)
         .delete(authorizationLvl3, adminController.deleteOneUser);
 
 

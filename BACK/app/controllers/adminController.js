@@ -8,7 +8,9 @@ module.exports = {
     async roleList() {
         try {
             const roleList = ['user', 'modo', 'admin'];
-            res.status(200).json({ roleList });
+            res.status(200).json({
+                roleList
+            });
         } catch (error) {
             console.log(error);
         }
@@ -22,9 +24,13 @@ module.exports = {
 
         try {
             const result = await userDataMapper.getAllUsers();
-            res.status(200).json({ result });
+            res.status(200).json({
+                result
+            });
         } catch (error) {
-            res.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({
+                error: `Server error, please contact an administrator`
+            });
         }
     },
     /**
@@ -35,12 +41,16 @@ module.exports = {
     async getOneUser(req, res) {
         try {
             const id = req.params.id;
-        const result = await userDataMapper.getAccountInformations(id);
-        res.status(200).json({ result });
+            const result = await userDataMapper.findById(id);
+            res.status(200).json({
+                result
+            });
         } catch (error) {
-            res.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({
+                error: `Server error, please contact an administrator`
+            });
         }
-        
+
     },
 
     /**
@@ -48,35 +58,44 @@ module.exports = {
      * @param {number} id L'id de l'utilisateur en params  
      * @returns {object} Message de confirmation avec id de l'utilisateur 
      */
-
     async deleteOneUser(req, res) {
         try {
             const id = req.params.id;
-        await userDataMapper.deleteUser(id);
-        res.status(200).json({ confirm: `User ${id} a été supprimé` });
+            await userDataMapper.deleteUser(id);
+            res.status(200).json({
+                confirm: `User ${id} a été supprimé`
+            });
         } catch (error) {
-            res.status(500).json({ error: `Server error, please contact an administrator` }); 
+            console.log(error);
+            res.status(500).json({
+                error: `Server error, please contact an administrator`
+            });
         }
-        
+
     },
 
     /**
      * 
      * @param {id} id Id du compte en params 
-     * @param {sting} role Role que l'on souhaite attribuer à l'utilisateur
+     * @param {string} role Role que l'on souhaite attribuer à l'utilisateur
      * @returns {object[]} Le nom et le rôle
      */
-
     async userRole(req, res) {
         try {
             const id = req.params.id;
-        const { role } = req.body
-        const result = await userDataMapper.changeRole(id, role);
-        res.status(200).json({ result });
+            const role = req.body.role;
+            console.log('role', role);
+            console.log('id', id);
+            const result = await userDataMapper.changeRole(id, role);
+            res.status(200).json({
+                result
+            });
         } catch (error) {
-            res.status(500).json({ error: `Server error, please contact an administrator` });
+            
+            res.status(500).json({
+                error: `Server error, please contact an administrator`
+            });
         }
-        
     }
 
 }
