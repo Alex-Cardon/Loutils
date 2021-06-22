@@ -136,9 +136,22 @@ module.exports = {
         }
     },
 
+
+    /**
+     * Voir si le message a été lu
+     * @param {number} id - Id du message
+     * @returns {object} Un message indiquant que le message est marqué comme lu
+     */
     async hasBeenRead(req, res) {
         try {
             const id = req.params.id;
+
+            if(!id){
+                res.status(405).json({
+                    msg: "L'identifiant de du message est inconnu"
+                  });
+            };
+
             await messageDataMapper.hasBeenRead(id);
             res.status(200).json({ msg: "marqué comme lu" });
 
