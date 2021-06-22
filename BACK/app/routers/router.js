@@ -198,11 +198,13 @@ router.route('/messages')
          * @route POST /messages
          * @param {string} content - Contenu du message
          * @param {number} recipient - Identifiant unique de la personne qui reçoit le message
+         * @param {number} ad_id - Identifiant unique de l'annonce à laquelle fait référence le message'
          * @returns {messageController} 200 - L'identifiant du message, le contenu, la personne qui reçoit, la personne qui envoit, la date de création, la date de mise à jour et si le message a été lu ou non
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          */
         .post(validate.body(schemas.messagePostMessageSchema),authorizationLvl1, messageController.postAMessage);
+        
 router.route('/outbox')
         /**
          * Afficher les messages envoyés par l'utilisateur connecté

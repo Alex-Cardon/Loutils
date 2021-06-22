@@ -149,8 +149,8 @@ Content-Type: application/json
 
 {
     "content": "cookie",
-    "recipient": 1,
-    "ad_id": 2
+    "recipient": 3,
+    "ad_id": 
 }
 
 ###JSDOC - supprimer un message en tant que monsieur x
