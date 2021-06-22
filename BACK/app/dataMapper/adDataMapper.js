@@ -63,7 +63,7 @@ module.exports = {
 
     async getByTitleAndCat(category, postcode, title) {
 
-        const result = await client.query(`SELECT * FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
     
@@ -91,7 +91,7 @@ module.exports = {
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
-        const result = await client.query(`SELECT * FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
     
