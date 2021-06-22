@@ -38,6 +38,13 @@ const imageUpload = multer({
  * @returns {Error} 500 - Une erreur serveur
  */
 router.get('/radius', adController.radiusArray);
+
+/**
+ * Récupération la liste des rôles
+ * @route GET /rolist'
+ * @returns {adminController[]} 200 - Le Tableau des rôles
+ * @returns {Error} 500 - Une erreur serveur
+ */
 router.get('/rolist', adminController.roleList);
 
 
@@ -61,13 +68,13 @@ router.get('/categories', categoryController.getCategories);
  * poster une image
  * @route POST /image
  * @param {object} image - L'image que l'on souhaite charger
- * @returns {pictureController} 200 - l'identifiant de l'image, le nom du fichier, l'amplacement du fichier, le mimetype, la taille et la date de création
+ * @returns {pictureController} 200 - l'identifiant de l'image, le nom du fichier, l'emplacement du fichier, le mimetype, la taille et la date de création
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 404 - Une erreur redirigeant vers la page 404
  */
 router.post('/image', imageUpload.single('image'), pictureController.postImage);
 
-/**
+/**-------
  * Afficher une image
  * @route GET /image/:filename
  * @param {string} filename - Titre de la photo
@@ -75,7 +82,7 @@ router.post('/image', imageUpload.single('image'), pictureController.postImage);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 405 - Une erreur indiquant que l'image n'existe pas
  */
-router.get('/image/:filename', pictureController.getImage);
+router.get('/image/:filename', validate.body(schemas.getAnImageSchema), pictureController.getImage);
 
 
 router.route('/account/ads')
@@ -89,7 +96,7 @@ router.route('/account/ads')
          */
         .get(validate.body(schemas.searchAdSchema),authorizationLvl1, adController.getByUserId)
 
-        /**
+        /**-------
          * Poster une annonce en tant qu'utilisateur connecté
          * @route POST /account/ads
          * @param {string} title - Titre de l'annonce
@@ -111,7 +118,7 @@ router.route('/account/ads')
 
 router.route('/account/ad/:id(\\d+)')
 
-        /**
+        /**-------
          * Modifier une annonce en tant qu'utilisateur connecté
          * @route PATCH /account/ad/:id
          * @param {number} id id de l'annonce
@@ -131,14 +138,14 @@ router.route('/account/ad/:id(\\d+)')
          */
         .patch(validate.body(schemas.updateAdSchema), authorizationLvl1, adController.patchAd)
 
-        /**
+        /**-------
          * Supprimer une annonce en tant qu'utilisateur connecté
          * @route DELETE /account/ad/:id
          * @param {number} id id de l'annonce
          * @returns {adController} 200 - Un message indiquant que l'annonce a bien été supprimée
          * @returns {Error} 500 - Une erreur serveur
          */
-        .delete(authorizationLvl1, adController.deleteAnAd);
+        .delete(validate.body(schemas.getByIdAdSchema), authorizationLvl1, adController.deleteAnAd);
 
 
 
@@ -153,7 +160,7 @@ router.route('/account/ad/:id(\\d+)')
 router.get('/bookmarks', authorizationLvl1, bookmarkController.getBookmarksById);
 
 router.route('/bookmarks/:id(\\d+)')
-        /**
+        /**-------
          * Ajouter une annonce en favori en tant qu'utilisateur connecté
          * @route POST /bookmarks/:id
          * @param {number} id - id de l'annonce
@@ -164,7 +171,7 @@ router.route('/bookmarks/:id(\\d+)')
          */
         .post(validate.body(schemas.newBookmarkASchema),authorizationLvl1, bookmarkController.addBookmark)
 
-        /**
+        /**-------
          * Supprimer une annonce en favori en tant qu'utilisateur connecté
          * @route DELETE /bookmarks/:id
          * @param {number} id - id de l'annonce
@@ -186,7 +193,7 @@ router.route('/messages')
          */
         .get(authorizationLvl1, messageController.getRecievedMsgByUserId)
 
-        /**
+        /**-------
          * Poster un message en tant qu'utilisateur connecté
          * @route POST /messages
          * @param {string} content - Contenu du message
@@ -195,7 +202,7 @@ router.route('/messages')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          */
-        .post(/*validate.body(schemas.messagePostMessageSchema),*/ authorizationLvl1, messageController.postAMessage);
+        .post(validate.body(schemas.messagePostMessageSchema),authorizationLvl1, messageController.postAMessage);
 router.route('/outbox')
         /**
          * Afficher les messages envoyés par l'utilisateur connecté
@@ -207,7 +214,7 @@ router.route('/outbox')
         .get(authorizationLvl1, messageController.getSenderMessageByUserId);
 
 router.route('/messages/:id(\\d+)')
-        /**
+        /**-------
          * Supprimer un message que l'utilisateur connecté a supprimé
          * @route DElETE /messages/:id
          * @param {number} id - Id du message
@@ -217,7 +224,7 @@ router.route('/messages/:id(\\d+)')
          */
         .delete(validate.body(schemas.removeAMessageSchema), authorizationLvl1, messageController.deleteAMessage);
 
-/**
+/**-------
  * Créer un compte
  * @route POST /register
  *  @param {string} name - Nom de l'utilisateur
@@ -230,7 +237,7 @@ router.route('/messages/:id(\\d+)')
  * @returns {Error} 409 - Une erreur indiquant que l'utilisateur existe déjà
  */
 router.post('/register', validate.body(schemas.insertASchema),validUserInfo, userController.register);
-/**
+/**-------
  * Se connecter
  * @route POST /login
  *  @param {string} email - Adresse mail de l'utilisateur
@@ -242,7 +249,7 @@ router.post('/register', validate.body(schemas.insertASchema),validUserInfo, use
 router.post('/login', validate.body(schemas.loginASchema), validUserInfo, userController.login);
 
 
-/**
+/**-------
  * Rechercher une/des annonces qui correspond(ent) aux critères entrés dans la barre de recherche
  * @route GET /search
  * @param {string} title - Titre de l'annonce
@@ -253,10 +260,10 @@ router.post('/login', validate.body(schemas.loginASchema), validUserInfo, userCo
  * @returns {Error} 500 - Une erreur serveur
  *  @returns {Error} 400 - Une erreur indiquant que l'utilisateur doit saisir un code postal
  */
-router.get('/search', adController.searchAds);
+router.get('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
 
 
-/**
+/**-------
  * Récupérrer une annonce en tant que visiteur
  * @route GET /ad/:id
  * @param {number} id - Id de l'annonce
@@ -277,9 +284,11 @@ router.route('/account/settings')
          */
         .get(authorizationLvl1, userController.getUserInfo)
 
-        /**
+        /**-------
          * Modifier les informations d'un utilisateur connecté
          * @route PATCH /account/settings
+         *  @param {string} name - Nom de l'utilisateur
+     * @param {string} email - Adresse mail de l'utilisateur
          * @returns {userController} 200 - Message indiquant que le compte a bien été modifié
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
@@ -289,14 +298,12 @@ router.route('/account/settings')
         /**
          * Supprimer son compte
          * @route DELETE /account/settings
-         * @param {string} name - Nom de l'utilisateur
-         * @param {string} email - Adresse mail de l'utilisateur
          * @returns {userController[]} 200 - L'utilisateur modifié avec son identifiant, son nom, son email, son mot de passe crypté, la date de création et la date de mise à jour
          * @returns {Error} 500 - Une erreur serveur
          */
         .delete(authorizationLvl1, userController.deleteAccount);
 
-/**
+/**-------
  * Modifier le mot de passe d'un utilisateur connecté
  * @route PATCH /account/settings/password
  * @param {string} password - L'ancien mot de passe de l'utilisateur
@@ -319,9 +326,14 @@ router.route('/savedResearch')
          */
         .get(authorizationLvl1, savedResearch.getSavedResearch)
 
-        /**
+        /**-------
          * Enregistrer une nouvelle recherche
          * @route POST /savedResearch
+         * @param {number} id - Identifiant unique
+     * @param {number} postcode - Code postal
+     * @param {string} title - Titre de l'annonce
+     * @param {number} radius - Rayon accepté autour du code postal 
+     * @param {number} category_id - Identifiant de la catégorie
          * @returns {savedSearchController} 200 - L'idendifiant de la sauvegarde, le code postal, le rayon, l'identifiant de la catégorie, l'identifiant de l'utilisateur, la date de création et la date de mise à jour
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
@@ -330,7 +342,7 @@ router.route('/savedResearch')
         .post(validate.body(schemas.newASavedSearchSchema), authorizationLvl1, savedResearch.addNewResearch);
 
 router.route('/savedResearch/:id(\\d+)')
-        /**
+        /**-------
          * Modifier une recherche sauvegardée en tant qu'utilisateur connecté
          * @route PATCH savedResearch/:id
          * @param {number} postcode - Code postal
@@ -342,7 +354,7 @@ router.route('/savedResearch/:id(\\d+)')
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce n'existe pas
          */
         .patch(validate.body(schemas.updateASavedSearchSchema),authorizationLvl1, savedResearch.updateSavedResearch)
-        /**
+        /**-------
          * Supprimer une recherche sauvegardée en tant qu'utilisateur connecté
          * @route DELETE savedResearch/:id
          * @param {number} id - Id de la recherche
@@ -354,7 +366,7 @@ router.route('/savedResearch/:id(\\d+)')
 
 router.route('/ad/rating')
 
-        /**
+        /**-------
          * Récupérer la moyenne d'une annonce
          * @route GET /ad/rating
          * @param {number} ad_id - Id de l'annonce
@@ -364,7 +376,7 @@ router.route('/ad/rating')
         .get(validate.body(schemas.avgRatingASchema), ratingController.getAVGRating)
 
 
-        /**
+        /**-------
          * Noter une annonce en tant qu'utilisateur connecté
          * @route POST /ad/rating
          * @param {number} ad_id - Id de l'annonce
@@ -379,7 +391,7 @@ router.route('/ad/rating')
 
 router.route('/booking')
 
-        /**
+        /**-------
          * Voir les dates à laquelle l'annonce est réservée
          * @route GET /booking
          *     @param {number} ad_id - Identifiant de l'annonce
@@ -389,7 +401,7 @@ router.route('/booking')
          */
         .get(validate.body(schemas.getBookingASchema), bookingController.getBooking)
 
-        /**
+        /**-------
          * Réserver un outil en tant qu'utilisateur connecté
          * @route POST /booking
          *     @param {string} begining - Date de début de la location (date ISO 8601)
@@ -402,7 +414,7 @@ router.route('/booking')
          */
         .post(validate.body(schemas.newBookingASchema),authorizationLvl1, bookingController.boonking)
 
-        /**
+        /**-------
          * Supprimer une réservation en tant qu'utilisateur connecté
          * @route DELETE /booking
          * @param {number} id - Id de la réservation
@@ -432,22 +444,26 @@ router.get('/confirmation/:token', userController.emailConfirm); //ok
 router.get('/modo', authorizationLvl2, modoContoller.getAllNonModAd);
 
 router.route('/modo/:id')
-        /**
+
+        /**-------
          * Récupérrer une annonce et ses informations
          * @route GET /modo/:id
+         * @param {number} id - Identifiant de l'annonce
          * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .get(authorizationLvl2, modoContoller.getOneAd)
-        /**
+        .get(authorizationLvl2,validate.body(schemas.getAnAdInfoModo),  modoContoller.getOneAd)
+
+        /**-------
          * Autoriser une annonce
          * @route POST /modo/:id
+         * @param {number} id - Identifiant de l'annonce
          * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .post(authorizationLvl2, modoContoller.moderate)
+        .post(authorizationLvl2, validate.body(schemas.authoriseAnAdInfoModo),modoContoller.moderate)
 
         /**
          * Supprimer une annonce en tant que modérateur
@@ -457,7 +473,7 @@ router.route('/modo/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .delete(authorizationLvl2, modoContoller.deleteAd);
+        .delete(authorizationLvl2, validate.body(schemas.deleteAnAdInfoModo),modoContoller.deleteAd);
 
 /**
  * Récupération la liste des utilisateurs
@@ -465,7 +481,7 @@ router.route('/modo/:id')
  * @returns {modoController[]} 200 - Les utilisateurs avec leur id, nom, email et rôle
  * @returns {Error} 500 - Une erreur serveur
  */
-router.get('/admin/users', /*authorizationLvl3,*/ adminController.getAllUsers);
+router.get('/admin/users', authorizationLvl3, adminController.getAllUsers);
 
 /**
  * Récupération la liste des roles
@@ -476,17 +492,18 @@ router.get('/admin/users', /*authorizationLvl3,*/ adminController.getAllUsers);
 router.get('/rolist', adminController.roleList);
 
 router.route('/admin/user/:id')
-        /**
-         * Récupération la liste des utilisateurs
+        /**-------
+         * Récupération d'un utilisateur
          * @route GET /admin/user/:id
+         * @param {number} id - Id de l'utilisateur
          * @returns {adminController[]} 200 - L'identifiant de l'utilisateur, son nom, son rôle, son email, si son email a été confirmé
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
          */
-        .get( authorizationLvl3, adminController.getOneUser)
+        .get( authorizationLvl3, validate.body(schemas.getAnUserInfoAdmin), adminController.getOneUser)
 
 
-        /**
+        /**-------
          * Modifier un rôle d'un utilisateur en tant qu'admin
          * @route PATCH /admin/user/:id
          * @param {id} id - Id du compte 
@@ -495,9 +512,9 @@ router.route('/admin/user/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur ou le rôle est inconnu
          */
-        .patch( authorizationLvl3, adminController.userRole)
+        .patch( authorizationLvl3, validate.body(schemas.modifyARoleAdmin),adminController.userRole)
 
-        /**
+        /**-------
          * Supprimer un utilisateur en tant qu'administrateur
          * @route DELETE /admin/user/:id
          * @param {id} id - Id du compte 
@@ -505,7 +522,7 @@ router.route('/admin/user/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
          */
-        .delete( authorizationLvl3, adminController.deleteOneUser);
+        .delete( authorizationLvl3, validate.body(schemas.deleteAnUserAdmin),adminController.deleteOneUser);
 
 
 
