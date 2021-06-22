@@ -23,7 +23,7 @@ export const logout = () => ({
 
 export const loginSuccess = (apiData) => ({
   type: LOGIN_SUCCESS,
-  nickname: apiData.pseudo,
+  name: apiData.name,
   token: apiData.token,
 });
 

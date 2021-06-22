@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -31,42 +31,42 @@ const announcements = () => (
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
-        header="titre"//{ad.}
+        header="title"//{ad.}
         meta="description"//{ad.}
         description="price"//{ad.}
       />
@@ -78,14 +78,14 @@ const announcements = () => (
   </div>
 );
 
-/*adResults.propTypes = {
-  advertissement: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-      name: PropTypes.string.isRequired,
+announcements.propTypes = {
+  /*advertissement: PropTypes.arrayOf(
+    PropTypes.shape({*/
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-};*/
-
+      price: PropTypes.number.isRequired,
+   /* }).isRequired,
+  ).isRequired,*/
+};
 export default announcements;

@@ -1,4 +1,3 @@
-
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -9,11 +8,15 @@ module.exports = function(req, res, next) {
   try {
       if (!token) {
         return res.status(403).json({ msg: "Accès non autorisé" });
-      }
+      };
     const verify = jwt.verify(token, process.env.JWTSECRET);
-    req.user = verify;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: "Token non valide" });
+    if(verify.user.confirmed && verify.user.role == 'admin'){
+      req.user = verify;
+      next();
+    } else {
+      throw new Error({ msg: 'Accès forbiden'})
+    }
+  } catch (Error) {
+    res.status(401).json({ Error });
   }
 };

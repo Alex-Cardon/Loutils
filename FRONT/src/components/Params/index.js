@@ -4,21 +4,21 @@ import Proptypes from "prop-types";
 // j'importe mon composant connecté
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
-import ParamsField from 'src/components/Params/ParamsField';
+import ParamsField from 'src/containers/Params/ParamsField';
 import Footer from 'src/components/Footer';
-//! 1 je fais mon component maintenant direction le sous composant SettingsField
+//! 1 je fais mon component maintenant direction le sous composant ParamsField
 
 import './styles.scss';
 
 const Params = ({ 
-  handleFormSubmit 
+  handleParamsFormSubmit 
 }) => (
   <div className="signup-page">
     <Header />
     <LoginForm /> 
     <h2>Mes paramètres</h2>
     <form className="signup-page__form"
-      onSubmit={handleFormSubmit}
+      onSubmit={handleParamsFormSubmit}
     >
       <ParamsField
         stateKey="pseudo"
@@ -31,12 +31,12 @@ const Params = ({
         type="email"
         placeholder="votre email"
       />
-
-      <ParamsField
+     
+     {/*  <ParamsField
         stateKey="phone"
         type="phone"
         placeholder="votre telephone"
-      />
+      />*/}
 
       <ParamsField
         stateKey="password"
@@ -50,14 +50,14 @@ const Params = ({
         placeholder="confirmez mot de passe"
       />
 
-      <button className="settings__submit" type="submit" >Valider</button>
+      <button className="settings__submit" type="submit" >Modifier</button>
     </form>
     <Footer />
   </div>
 );
 
 Params.proptypes = {
-  handleFormSubmit: Proptypes.func.isRequired,
+  handleParamsFormSubmit: Proptypes.func.isRequired,
 };
 
 export default Params;

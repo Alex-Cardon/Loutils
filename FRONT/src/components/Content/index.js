@@ -12,44 +12,44 @@ const adResults = () => (
       advertissment.map(
       (ad) => (*/}
           <Card
-            key="id"//{ad.id}
+            //key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
-            key="id"//{ad.id}
+           // key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
-            key="id"//{ad.id}
+           // key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
-          key="id"//{ad.id}
+          //key="id"//{ad.id}
           image="image"//{ad.}
-          header="titre"//{ad.}
+          header="title"//{ad.}
           meta="description"//{ad.}
           description="price"//{ad.}
         />
         <Card
-            key="id"//{ad.id}
+            //key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
           <Card
-            key="id"//{ad.id}
+            //key="id"//{ad.id}
             image="image"//{ad.}
-            header="titre"//{ad.}
+            header="title"//{ad.}
             meta="description"//{ad.}
             description="price"//{ad.}
           />
@@ -59,14 +59,20 @@ const adResults = () => (
   </Card.Group>
 );
 
+
+
 /*adResults.propTypes = {
-  advertissement: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }).isRequired,
+  /*advertissement: PropTypes.arrayOf(
+    PropTypes.shape({*/
+      //id: PropTypes.number.isRequired,
+     // title: PropTypes.string.isRequired,
+      //description: PropTypes.string.isRequired,
+      //price: PropTypes.number.isRequired,
+  /*  }).isRequired,
   ).isRequired,
 };*/
 
 export default adResults;
+
+
+

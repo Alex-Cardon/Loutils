@@ -1,21 +1,14 @@
 const validate = {
 
-  /*
-   * Cette méthode est un factory de middleware
-   * Elle sert à pouvoir récéptionner le schema (injection de dépendance)
-   * @param {object} schema 
-   * @param {object} schema 
-   */
-
   queryString: (schema) => {
 
-    return async (request, response, next) => {
+    return async (req, res, next) => {
 
       try {
-        await schema.validateAsync(request.query);
+        await schema.validateAsync(req.query);
         next();
       } catch (error) {
-        return response.status(400).json({
+        return res.status(400).json({
           error: error.details[0].message
         });
       }
@@ -24,13 +17,13 @@ const validate = {
 
   body: (schema) => {
 
-    return async (request, response, next) => {
+    return async (req, res, next) => {
 
       try {
-        await schema.validateAsync(request.body);
+        await schema.validateAsync(req.body);
         next();
       } catch (error) {
-        return response.status(400).json({
+        return res.status(400).json({
           error: error.details[0].message
         });
       }
@@ -39,13 +32,13 @@ const validate = {
 
   params: (schema) => {
 
-    return async (request, response, next) => {
+    return async (req, res, next) => {
 
       try {
-        await schema.validateAsync(request.params);
+        await schema.validateAsync(req.params);
         next();
       } catch (error) {
-        return response.status(400).json({
+        return res.status(400).json({
           "error": error
         });
       }
