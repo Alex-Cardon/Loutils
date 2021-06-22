@@ -13,6 +13,7 @@ import Profil from 'src/components/Profil';
 import MyResearch from 'src/components/MyResearch';
 import Params from 'src/components/Params';
 
+import Diary from 'src/containers/Diary';
 
 import AdForm from 'src/containers/adForm';
 
@@ -33,6 +34,9 @@ const App = () => (
       </Route>
       <Route exact path="/AdForm">
         <AdForm />
+      </Route>
+      <Route exact path="/Diary">
+        <Diary />
       </Route>
       <Route excat path="/SettingsPage">
         <Setting />

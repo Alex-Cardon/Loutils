@@ -1,19 +1,19 @@
 
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, loginSuccess } from 'src/actions/loginForm';
+import { SUBMIT_DATE_VALUE, submitSuccess} from 'src/actions/diary';
 
-const loginFormMiddleware = (store) => (next) => (action) => {
+const diaryMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case SUBMIT_LOGIN: {
+    case SUBMIT_DATE_VALUE: {
       // avec getstate on apporte le state dans le MW
         const state = store.getState();
       axios.post('http://localhost:3000/login', {
-          email: state.user.email, 
-          password: state.user.password,
+        // ici transformer format
+         date: state.diary.date,
         })
         .then((response)=>{
-            store.dispatch(loginSuccess(response.data))
+            store.dispatch(submitSuccess(response.data))
         })
         .catch((error)=>console.log(error))
         break;
@@ -24,5 +24,5 @@ const loginFormMiddleware = (store) => (next) => (action) => {
 }
 
 
-export default loginFormMiddleware;
+export default diaryMiddleware;
 

@@ -14,23 +14,32 @@ import Proptypes from 'prop-types';
 import './style.scss';
 
 const AdForm = ({
+  uploadHandler,
+  onImageSelected,
   handleLogin,
   getToolStateValue,
   changeField,
+
   toolName,
   image,
   price,
   caution,
   description,
   toolState,
-  // isNew,
-  // working,
 }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
+  const handleImageSelected = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+
+    
+    onImageSelected(file);
+ };
 
   return (
     <div className="adForm" >
@@ -87,23 +96,6 @@ const AdForm = ({
           />
         </div>
 
-        {/* <div className="adForm__unit--radio">
-            <AdFormRadio
-                name="radio"
-                stateKey="isNew"
-                type="radio"
-                placeholder="comme neuf"
-                checked
-            />
-            <AdFormRadio
-                name="radio"
-                stateKey="working"
-                type="radio"
-                placeholder="etat de marche"
-
-            />
-        </div> */}
-
         <div className="adForm__unit--radio">
           <p>Loutil est plutot: {toolState} </p>
           <div>
@@ -125,19 +117,24 @@ const AdForm = ({
               id="used"
               name="toolState"
               value="working"
+              // onChage nous retourne un tableau files 
               onChange={getToolStateValue}
 
             />
           </div>
 
         </div>
-        <div>
-          <p>Ajoutez des photos</p>
-          <button>
-            <Icon name='camera' style={{ color: "red" }} />
-          </button>
 
+        <div>
+            <input 
+              
+              type="file"
+              accept='.jpg, .png, .jpeg'
+              onChange={handleImageSelected}
+            />
+            <button onClick={uploadHandler}>Upload!</button>
         </div>
+          
         <button
           className="adForm__button"
           type="submit"
@@ -152,6 +149,8 @@ const AdForm = ({
 };
 
 AdForm.proptypes = {
+  uploadHandler: Proptypes.func.isRequired,
+  onImageSelected: Proptypes.func.isRequired,
   handleLogin: Proptypes.func.isRequired,
   getToolStateValue: Proptypes.func.isRequired,
   changeField: Proptypes.func.isRequired,
@@ -161,8 +160,6 @@ AdForm.proptypes = {
   caution: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
   toolState: Proptypes.string.isRequired,
-  // isNew: Proptypes.string.isRequired,
-  // working: Proptypes.string.isRequired,
 }
 
 export default AdForm;

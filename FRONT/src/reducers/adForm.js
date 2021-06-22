@@ -1,4 +1,4 @@
-import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN } from 'src/actions/adForm';
+import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, SELECT_IMAGE } from 'src/actions/adForm';
 
 const initialState = {
   toolName: "",
@@ -7,6 +7,7 @@ const initialState = {
   caution: "",
   description:"",
   toolState:"",
+  selectedFile:null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,7 +31,13 @@ const reducer = (state = initialState, action) => {
             ...state,
             // ici toolState recoit un objet au lieu de string
             toolState: action.value,
-          }
+          };
+
+          case SELECT_IMAGE:
+            return {
+              ...state,
+              selectedFile: action.file,
+            };
 
         default:
             return state;

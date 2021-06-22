@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 
-import { changeAdField, changeToolState, submitAdLogin } from 'src/actions/adForm';
+import { 
+  changeAdField, 
+  changeToolState, 
+  submitAdLogin, 
+  getFileUpload,
+  selectImage,
+} from 'src/actions/adForm';
 
 import AdForm from 'src/components/AdForm';
 
@@ -25,15 +31,19 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeToolState(value));
   },
 
-  // getWorkingValue: (value) => {
-  //   console.log("value : ", value.target.value);
-  //   // ici value est un objet au lieu de value="used" ou value="working"
-  //   dispatch(getWorkingValue(value));
-  // },
+  handleFileUpload: (value) => {
+    console.log('je suis dans containers: handleFileUpload');
+    dispatch(getFileUpload(value));
+  },
 
   handleLogin: () => {
     dispatch(submitAdLogin());
-  }
+  },
+
+  onImageSelected:(image) => {
+    //console.log('image: ', image);
+    dispatch(selectImage(image));
+  },
 
 });
 
