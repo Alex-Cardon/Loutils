@@ -35,10 +35,15 @@ const searchSchema = Joi.object({
 }).required();
 
 const getByIdSchema = Joi.object({
-    // supprimer une annonce
+    // Supprimer une annonce en tant qu'utilisateur connecté
+    id: Joi.number().integer().positive().min(1).required()
+}).required();
+
+const getAdByIdSchema = Joi.object({
+    // Récupérrer une annonce en tant que visiteur
     id: Joi.number().integer().positive().min(1).required()
 }).required();
 
 
-module.exports = { insertSchema, updateSchema, searchSchema, getByIdSchema };
+module.exports = { insertSchema, updateSchema, searchSchema, getByIdSchema, getAdByIdSchema };
 

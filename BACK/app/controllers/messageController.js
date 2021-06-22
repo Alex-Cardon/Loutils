@@ -85,6 +85,7 @@ module.exports = {
         try{
             
             const { content, recipient, ad_id } = req.body;
+
             const sender = req.user.user.user_id;
             
             const post = await messageDataMapper.postAMessage({ content, recipient, sender, ad_id });

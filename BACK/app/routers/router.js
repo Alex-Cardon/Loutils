@@ -31,8 +31,20 @@ const imageUpload = multer({
 });
 
 
-
+/**
+ * Récupération des radius prédéfinis
+ * @route GET /radius
+ * @returns {adController[]} 200 - Les radius dans un tableau
+ * @returns {Error} 500 - Une erreur serveur
+ */
 router.get('/radius', adController.radiusArray);
+
+/**
+ * Récupération la liste des rôles
+ * @route GET /rolist
+ * @returns {adminController[]} 200 - Le Tableau des rôles
+ * @returns {Error} 500 - Une erreur serveur
+ */
 router.get('/rolist', adminController.roleList);
 
 
@@ -56,7 +68,7 @@ router.get('/categories', categoryController.getCategories);
  * poster une image
  * @route POST /image
  * @param {object} image - L'image que l'on souhaite charger
- * @returns {pictureController} 200 - l'identifiant de l'image, le nom du fichier, l'amplacement du fichier, le mimetype, la taille et la date de création
+ * @returns {pictureController} 200 - l'identifiant de l'image, le nom du fichier, l'emplacement du fichier, le mimetype, la taille et la date de création
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 404 - Une erreur redirigeant vers la page 404
  */
@@ -70,7 +82,7 @@ router.post('/image', imageUpload.single('image'), pictureController.postImage);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 405 - Une erreur indiquant que l'image n'existe pas
  */
-router.get('/image/:filename', pictureController.getImage);
+router.get('/image/:filename', validate.body(schemas.getAnImageSchema), pictureController.getImage);
 
 
 router.route('/account/ads')
@@ -82,7 +94,7 @@ router.route('/account/ads')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 403 - Une erreur indiquant que l'accès n'est pas autorisé'
          */
-        .get(authorizationLvl1, adController.getByUserId)
+        .get(validate.body(schemas.searchAdSchema),authorizationLvl1, adController.getByUserId)
 
         /**
          * Poster une annonce en tant qu'utilisateur connecté
@@ -101,7 +113,7 @@ router.route('/account/ads')
          *  @returns {Error} 400 - Une erreur indiquant qu'il faut remplir les champs du formulaire'
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire'
          */
-        .post(authorizationLvl1, adController.postAnAd);
+        .post(validate.body(schemas.insertAdSchema),authorizationLvl1,adController.postAnAd);
 
 
 router.route('/account/ad/:id(\\d+)')
@@ -124,7 +136,7 @@ router.route('/account/ad/:id(\\d+)')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .patch(authorizationLvl1, adController.patchAd)
+        .patch(validate.body(schemas.updateAdSchema), authorizationLvl1, adController.patchAd)
 
         /**
          * Supprimer une annonce en tant qu'utilisateur connecté
@@ -133,7 +145,7 @@ router.route('/account/ad/:id(\\d+)')
          * @returns {adController} 200 - Un message indiquant que l'annonce a bien été supprimée
          * @returns {Error} 500 - Une erreur serveur
          */
-        .delete(authorizationLvl1, adController.deleteAnAd);
+        .delete(validate.body(schemas.getByIdAdSchema), authorizationLvl1, adController.deleteAnAd);
 
 
 
@@ -157,7 +169,7 @@ router.route('/bookmarks/:id(\\d+)')
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu'
          */
-        .post(authorizationLvl1, bookmarkController.addBookmark)
+        .post(validate.body(schemas.newBookmarkASchema),authorizationLvl1, bookmarkController.addBookmark)
 
         /**
          * Supprimer une annonce en favori en tant qu'utilisateur connecté
@@ -168,7 +180,7 @@ router.route('/bookmarks/:id(\\d+)')
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu'
          */
-        .delete(authorizationLvl1, bookmarkController.deleteBookmark);
+        .delete(validate.body(schemas.removeABookmarkSchema),authorizationLvl1, bookmarkController.deleteBookmark);
 
 router.route('/messages')
 
@@ -191,9 +203,8 @@ router.route('/messages')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          */
-        .post(authorizationLvl1, messageController.postAMessage);
-
-
+        .post(validate.body(schemas.messagePostMessageSchema),authorizationLvl1, messageController.postAMessage);
+        
 router.route('/outbox')
         /**
          * Afficher les messages envoyés par l'utilisateur connecté
@@ -214,7 +225,7 @@ router.route('/messages/:id(\\d+)')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant du message est inconnu
          */
-        .delete(authorizationLvl1, messageController.deleteAMessage);
+        .delete(validate.body(schemas.removeAMessageSchema), authorizationLvl1, messageController.deleteAMessage);
 
 /**
  * Créer un compte
@@ -228,9 +239,9 @@ router.route('/messages/:id(\\d+)')
  * @returns {Error} 401 - Une erreur indiquant que les deux mots de passe sont différents
  * @returns {Error} 409 - Une erreur indiquant que l'utilisateur existe déjà
  */
-router.post('/register', validUserInfo, userController.register);
+router.post('/register', validate.body(schemas.insertASchema),validUserInfo, userController.register);
 /**
- * Créer un compte
+ * Se connecter
  * @route POST /login
  *  @param {string} email - Adresse mail de l'utilisateur
  * @param {string} password - Mot de passe de l'utilisateur
@@ -238,7 +249,7 @@ router.post('/register', validUserInfo, userController.register);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 401 - Une erreur indiquant que la combinaison mail/mdp n'est pas correct
  */
-router.post('/login', validUserInfo, userController.login);
+router.post('/login', validate.body(schemas.loginASchema), validUserInfo, userController.login);
 
 
 /**
@@ -252,7 +263,7 @@ router.post('/login', validUserInfo, userController.login);
  * @returns {Error} 500 - Une erreur serveur
  *  @returns {Error} 400 - Une erreur indiquant que l'utilisateur doit saisir un code postal
  */
-router.get('/search', adController.searchAds);
+router.get('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
 
 
 /**
@@ -264,7 +275,7 @@ router.get('/search', adController.searchAds);
  * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
  * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
  */
-router.get('/ad/:id(\\d+)', adController.getAdById);
+router.get('/ad/:id(\\d+)', validate.body(schemas.getByIdAdSchema),adController.getAdById);
 
 router.route('/account/settings')
         /**
@@ -279,17 +290,17 @@ router.route('/account/settings')
         /**
          * Modifier les informations d'un utilisateur connecté
          * @route PATCH /account/settings
+         *  @param {string} name - Nom de l'utilisateur
+     * @param {string} email - Adresse mail de l'utilisateur
          * @returns {userController} 200 - Message indiquant que le compte a bien été modifié
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
          */
-        .patch(authorizationLvl1, validUserSettings, userController.patchUserInfo)
+        .patch(validate.body(schemas.updateAInfoSchema), authorizationLvl1, validUserSettings, userController.patchUserInfo)
 
         /**
          * Supprimer son compte
          * @route DELETE /account/settings
-         * @param {string} name - Nom de l'utilisateur
-         * @param {string} email - Adresse mail de l'utilisateur
          * @returns {userController[]} 200 - L'utilisateur modifié avec son identifiant, son nom, son email, son mot de passe crypté, la date de création et la date de mise à jour
          * @returns {Error} 500 - Une erreur serveur
          */
@@ -305,7 +316,7 @@ router.route('/account/settings')
  *  @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
  * @returns {Error} 500 - Une erreur serveur
  */
-router.patch('/account/settings/password', authorizationLvl1, validUserSettings, userController.patchUserPassword);
+router.patch('/account/settings/password', validate.body(schemas.updateAPasswordSchema),authorizationLvl1, validUserSettings, userController.patchUserPassword);
 
 router.route('/savedResearch')
 
@@ -321,12 +332,17 @@ router.route('/savedResearch')
         /**
          * Enregistrer une nouvelle recherche
          * @route POST /savedResearch
+         * @param {number} id - Identifiant unique
+     * @param {number} postcode - Code postal
+     * @param {string} title - Titre de l'annonce
+     * @param {number} radius - Rayon accepté autour du code postal 
+     * @param {number} category_id - Identifiant de la catégorie
          * @returns {savedSearchController} 200 - L'idendifiant de la sauvegarde, le code postal, le rayon, l'identifiant de la catégorie, l'identifiant de l'utilisateur, la date de création et la date de mise à jour
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
          * @returns {Error} 404 - Une erreur redirigeant vers la page 404
          */
-        .post(authorizationLvl1, savedResearch.addNewResearch);
+        .post(validate.body(schemas.newASavedSearchSchema), authorizationLvl1, savedResearch.addNewResearch);
 
 router.route('/savedResearch/:id(\\d+)')
         /**
@@ -340,7 +356,7 @@ router.route('/savedResearch/:id(\\d+)')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce n'existe pas
          */
-        .patch(authorizationLvl1, savedResearch.updateSavedResearch)
+        .patch(validate.body(schemas.updateASavedSearchSchema),authorizationLvl1, savedResearch.updateSavedResearch)
         /**
          * Supprimer une recherche sauvegardée en tant qu'utilisateur connecté
          * @route DELETE savedResearch/:id
@@ -349,7 +365,7 @@ router.route('/savedResearch/:id(\\d+)')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce n'existe pas
          */
-        .delete(authorizationLvl1, savedResearch.deleteSavedResearch);
+        .delete(validate.body(schemas.deleteASavedSearchSchema),authorizationLvl1, savedResearch.deleteSavedResearch);
 
 router.route('/ad/rating')
 
@@ -360,7 +376,7 @@ router.route('/ad/rating')
          * @returns {ratingController[]} 200 - La note moyenne de l'annonce
          * @returns {Error} 500 - Une erreur serveur
          */
-        .get(ratingController.getAVGRating)
+        .get(validate.body(schemas.avgRatingASchema), ratingController.getAVGRating)
 
 
         /**
@@ -373,7 +389,7 @@ router.route('/ad/rating')
          * @returns {Error} 400 - Une erreur indiquant que la note doit se situer entre 1 et 5 inclus
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire'
          */
-        .post(authorizationLvl1, ratingController.ratingAnAd);
+        .post(validate.body(schemas.newRatingASchema), authorizationLvl1, ratingController.ratingAnAd);
 
 
 router.route('/booking')
@@ -386,7 +402,7 @@ router.route('/booking')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .get(bookingController.getBooking)
+        .get(validate.body(schemas.getBookingASchema), bookingController.getBooking)
 
         /**
          * Réserver un outil en tant qu'utilisateur connecté
@@ -399,7 +415,7 @@ router.route('/booking')
          * @returns {Error} 400 - Une erreur indiquant un problème de date de réservation dû à une incohérence ou une date déjà bookée.
          * @returns {Error} 401 - Une erreur indiquant que l'utilisateur doit se connecter
          */
-        .post(authorizationLvl1, bookingController.boonking)
+        .post(validate.body(schemas.newBookingASchema),authorizationLvl1, bookingController.boonking)
 
         /**
          * Supprimer une réservation en tant qu'utilisateur connecté
@@ -408,7 +424,7 @@ router.route('/booking')
          * @returns {bookingController} 200 - Un message indiquant que la réservation a bien été supprimée
          * @returns {Error} 500 - Une erreur serveur
          */
-        .delete(authorizationLvl1, bookingController.removeBooking);
+        .delete(validate.body(schemas.removeBookingASchema),authorizationLvl1, bookingController.removeBooking);
 
 
 
@@ -428,25 +444,29 @@ router.get('/confirmation/:token', userController.emailConfirm); //ok
  * @returns {modoController[]} 200 - La liste des annonces avec  leur identifiant de l'annonce et son titre
  * @returns {Error} 500 - Une erreur serveur
  */
-router.get('/modo', /*authorizationLvl2, */modoContoller.getAllNonModAd);
+router.get('/modo', authorizationLvl2, modoContoller.getAllNonModAd);
 
 router.route('/modo/:id')
+
         /**
- * Récupérrer une annonce et ses informations
- * @route GET /modo/:id
- * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
- * @returns {Error} 500 - Une erreur serveur
- * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
- */
-        .get(/*authorizationLvl2,*/ modoContoller.getOneAd)
+         * Récupérrer une annonce et ses informations
+         * @route GET /modo/:id
+         * @param {number} id - Identifiant de l'annonce
+         * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
+         */
+        .get(authorizationLvl2,validate.body(schemas.getAnAdInfoModo),  modoContoller.getOneAd)
+
         /**
- * Autoriser une annonce
- * @route POST /modo/:id
- * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
- * @returns {Error} 500 - Une erreur serveur
- * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
- */
-        .post(/*authorizationLvl2,*/ modoContoller.moderate)
+         * Autoriser une annonce
+         * @route POST /modo/:id
+         * @param {number} id - Identifiant de l'annonce
+         * @returns {modoController[]} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, son prix, son état, sa caution, sa description, son type, code postal, catégorie, l'identifiant de l'utilisateur, date de création, date de mise à jour, si elle a été modérée
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
+         */
+        .post(authorizationLvl2, validate.body(schemas.authoriseAnAdInfoModo),modoContoller.moderate)
 
         /**
          * Supprimer une annonce en tant que modérateur
@@ -456,14 +476,56 @@ router.route('/modo/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .delete(/*authorizationLvl2,*/ modoContoller.deleteAd);
+        .delete(authorizationLvl2, validate.body(schemas.deleteAnAdInfoModo),modoContoller.deleteAd);
 
-router.get('/admin/users',authorizationLvl3, adminController.getAllUsers);
+/**
+ * Récupération la liste des utilisateurs
+ * @route GET /admin/users
+ * @returns {modoController[]} 200 - Les utilisateurs avec leur id, nom, email et rôle
+ * @returns {Error} 500 - Une erreur serveur
+ */
+router.get('/admin/users', authorizationLvl3, adminController.getAllUsers);
+
+/**
+ * Récupération la liste des roles
+ * @route GET /rolist
+ * @returns {adminController[]} 200 - Tableau des rôles
+ * @returns {Error} 500 - Une erreur serveur
+ */
+router.get('/rolist', adminController.roleList);
 
 router.route('/admin/user/:id')
-        .get(authorizationLvl3, adminController.getOneUser)
-        .patch(authorizationLvl3, adminController.userRole)
-        .delete(authorizationLvl3, adminController.deleteOneUser);
+        /**
+         * Récupération d'un utilisateur
+         * @route GET /admin/user/:id
+         * @param {number} id - Id de l'utilisateur
+         * @returns {adminController[]} 200 - L'identifiant de l'utilisateur, son nom, son rôle, son email, si son email a été confirmé
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
+         */
+        .get( authorizationLvl3, validate.body(schemas.getAnUserInfoAdmin), adminController.getOneUser)
+
+
+        /**
+         * Modifier un rôle d'un utilisateur en tant qu'admin
+         * @route PATCH /admin/user/:id
+         * @param {id} id - Id du compte 
+         * @param {string} role - Role que l'on souhaite attribuer à l'utilisateur
+         * @returns {adminController} 200 - Le nom et le rôle
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur ou le rôle est inconnu
+         */
+        .patch( authorizationLvl3, validate.body(schemas.modifyARoleAdmin),adminController.userRole)
+
+        /**
+         * Supprimer un utilisateur en tant qu'administrateur
+         * @route DELETE /admin/user/:id
+         * @param {id} id - Id du compte 
+         * @returns {adminController} 200 - Message de confirmation indiquant que l'utilisateur a bien été supprimé
+         * @returns {Error} 500 - Une erreur serveur
+         * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
+         */
+        .delete( authorizationLvl3, validate.body(schemas.deleteAnUserAdmin),adminController.deleteOneUser);
 
 
 
