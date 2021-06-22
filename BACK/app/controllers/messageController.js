@@ -80,8 +80,9 @@ module.exports = {
      * @returns {object} L'identifiant du message, le contenu, la personne qui reçoit, la personne qui envoit, la date de création, la date de mise à jour et si le message a été lu ou non
      */
     async postAMessage(req, res, next){
+        console.log("req.user",req.user);
         try{
-            
+            console.log(req.user);
             const { content, recipient } = req.body;
             const sender = req.user.user.user_id;
             

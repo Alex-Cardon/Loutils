@@ -106,7 +106,7 @@ router.route('/account/ads')
          *  @returns {Error} 400 - Une erreur indiquant qu'il faut remplir les champs du formulaire'
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire'
          */
-        .post(validate.body(schemas.insertAdSchema),authorizationLvl1, adController.postAnAd);
+        .post(validate.body(schemas.insertAdSchema),authorizationLvl1,adController.postAnAd);
 
 
 router.route('/account/ad/:id(\\d+)')
@@ -195,7 +195,7 @@ router.route('/messages')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
          */
-        .post(validate.body(schemas.messagePostMessageSchema), authorizationLvl1, messageController.postAMessage);
+        .post(/*validate.body(schemas.messagePostMessageSchema),*/ authorizationLvl1, messageController.postAMessage);
 router.route('/outbox')
         /**
          * Afficher les messages envoyés par l'utilisateur connecté
