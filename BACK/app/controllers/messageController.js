@@ -81,7 +81,7 @@ module.exports = {
      * @property {number} recipient - Identifiant unique de la personne qui reçoit le message
      * @returns {object} L'identifiant du message, le contenu, la personne qui reçoit, la personne qui envoit, la date de création, la date de mise à jour et si le message a été lu ou non
      */
-    async postAMessage(req, res, next){
+    async postAMessage(req, res){
         try{
             
             const { content, recipient, ad_id } = req.body;
