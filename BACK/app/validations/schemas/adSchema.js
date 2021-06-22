@@ -39,6 +39,11 @@ const getByIdSchema = Joi.object({
     id: Joi.number().integer().positive().min(1).required()
 }).required();
 
+const getAdByIdSchema = Joi.object({
+    // Récupérrer une annonce en tant que visiteur
+    id: Joi.number().integer().positive().min(1).required()
+}).required();
 
-module.exports = { insertSchema, updateSchema, searchSchema, getByIdSchema };
+
+module.exports = { insertSchema, updateSchema, searchSchema, getByIdSchema, getAdByIdSchema };
 

@@ -2,7 +2,8 @@ const {
     insertSchema : insertAdSchema,
     updateSchema : updateAdSchema,
     searchSchema : searchAdSchema,
-    getByIdSchema : getByIdAdSchema
+    getByIdSchema : getByIdAdSchema,
+    getAdByIdSchema: getAnAdByIdSchema
 } = require('./adSchema');
 
 const {
@@ -47,6 +48,7 @@ module.exports = {
     updateAdSchema,
     searchAdSchema,
     getByIdAdSchema,
+    getAnAdByIdSchema,
 
     newBookingASchema,
     removeBookingASchema,
