@@ -14,7 +14,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "sbaileyn_p698z@nafxo.com",
+    "email": "rtw18982@eoopy.com",
     "password": "louloudu31"
 }
 
@@ -24,8 +24,8 @@ GET http://localhost:3000/search
 Content-Type: application/json
 
 {
-    "title": "Dimitriiiiiyyy",
-    "postcode": "59520",
+    "title": "grosse",
+    "postcode": "74200",
     "radius": "50"
 }
 
@@ -128,32 +128,39 @@ Content-Type: application/json
 }
 
 ###MESSAGE
+
+
 ###JSDOC OK- Voir les messages et leurs détails de l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/messages
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MzQ5MzIwLCJleHAiOjE2MjQzOTI1MjB9.cd7mcxiJbBL8EpJdk11PX7NXFxvK8_H3GRQMx5D2ihg
 Content-Type: application/json
 
 ###JSDOC OK- Voir les messages envoyés par l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/outbox
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDM0ODcxNSwiZXhwIjoxNjI0MzkxOTE1fQ.F5JFrGFBEVyOkIewkz4WtpVHouUg4pLYSY4OuwnduSQ
 
 Content-Type: application/json
 
 
 ###JSDOC OK- Poster un message en tant qu'utilisateur X à un destinataire Y
 POST http://localhost:3000/messages
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjMsInJvbGUiOiJhZG1pbiIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDM0ODcxNSwiZXhwIjoxNjI0MzkxOTE1fQ.F5JFrGFBEVyOkIewkz4WtpVHouUg4pLYSY4OuwnduSQ
 Content-Type: application/json
 
 {
     "content": "cookie",
-    "recipient": 17
+    "recipient": 1,
+    "ad_id": 2
 }
 
 ###JSDOC - supprimer un message en tant que monsieur x
-DELETE http://localhost:3000/messages/9
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIn0sImlhdCI6MTYyNDAxODM5OSwiZXhwIjoxNjI0MDMyNzk5fQ.PxswU509HITF6io0YzP40GL8248hJTrcD02n6rmH7TU
+DELETE http://localhost:3000/messages/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0MzQ5MzIwLCJleHAiOjE2MjQzOTI1MjB9.cd7mcxiJbBL8EpJdk11PX7NXFxvK8_H3GRQMx5D2ihg
 Content-Type: application/json
+
+{
+    "sender_id": 3
+}
 
 ###ANNONCE
 ###JSDOC - OK - Voir les annonces et leurs détails de l'utilisateur X

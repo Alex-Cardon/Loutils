@@ -3,7 +3,7 @@ const client = require('../client');
 module.exports = {
 
     async getRecievedMsgByUserId(id) {
-        const result = await client.query(`SELECT "message"."id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" "ad"."title" FROM "message" JOIN 
+        const result = await client.query(`SELECT "message"."id" AS "msg_id", "user"."id" AS "sender_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "sender_name", "title" FROM "message" JOIN 
         "user" ON "sender" = "user"."id" 
         JOIN "ad" ON "ad_id" = "ad"."id"
         WHERE "recipient" = $1 AND "recipient_deleted" = FALSE`, [id]);
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async getSenderMessageByUserId(id) {
-        const result = await client.query(`SELECT "message"."id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" "ad"."title" FROM "message" JOIN
+        const result = await client.query(`SELECT "message"."id" AS "msg_id", "user"."id" AS "recipient_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "recipient_name", "sender" AS "sender_id", "title" FROM "message" JOIN
         "user" ON "recipient" = "user"."id" 
         JOIN "ad" ON "ad_id" = "ad"."id"
         WHERE "sender" = $1 AND "sender_deleted" = FALSE`, [id]);
@@ -22,8 +22,8 @@ module.exports = {
 
     async postAMessage(post) {
         const result = await client.query(`INSERT INTO "message" 
-        ("content", "recipient", "sender") 
-        VALUES($1, $2, $3) RETURNING *`, [post.content, post.recipient, post.sender]);
+        ("content", "recipient", "sender", "ad_id") 
+        VALUES($1, $2, $3, $4) RETURNING *`, [post.content, post.recipient, post.sender, post.ad_id]);
 
         if (!result.rows) {
             return null;
@@ -31,12 +31,12 @@ module.exports = {
         return result.rows[0];
     },
 
-    async deleteAMessage(id) {
+   /* async deleteAMessage(id) {
         const result = await client.query(`DELETE FROM "message" 
         WHERE "id" = $1`, [id]);
 
         return result.rows[0];
-    },
+    },*/
 
     async hasBeenRead(id) {
         const result = await client.query(`UPDATE "message"
@@ -52,10 +52,10 @@ module.exports = {
         return result.rows;
     },
 
-    async recipientDeleted(id) {
+    async recipientDeleted(msg_id) {
         const result = await client.query(`UPDATE "message"
         SET "recipient_deleted" = TRUE
-        WHERE "id" = $1 RETURNING *`, [id]);
+        WHERE "id" = $1 RETURNING *`, [msg_id]);
         return result.rows;
     }
 

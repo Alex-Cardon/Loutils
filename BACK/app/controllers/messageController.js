@@ -28,6 +28,7 @@ module.exports = {
     async getSenderMessageByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
+            console.log(user);
 
             if(!user){
                 return res.status(401).json({
@@ -39,7 +40,7 @@ module.exports = {
             if(!message){
                 return next();
             }
-            res.json({ message })
+            res.json({ msg_sent: message })
 
         }catch (error) {
             console.trace(error);
@@ -54,6 +55,7 @@ module.exports = {
     async getRecievedMsgByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
+            console.log(user);
 
             if(!user){
                 return res.status(401).json({
@@ -65,7 +67,7 @@ module.exports = {
             if(!message){
                 return next();
             }
-            res.json({ message })
+            res.json({ msg_recieved: message })
 
         }catch (error) {
             console.trace(error);
@@ -82,10 +84,10 @@ module.exports = {
     async postAMessage(req, res, next){
         try{
             
-            const { content, recipient } = req.body;
+            const { content, recipient, ad_id } = req.body;
             const sender = req.user.user.user_id;
             
-            const post = await messageDataMapper.postAMessage({ content, recipient, sender });
+            const post = await messageDataMapper.postAMessage({ content, recipient, sender, ad_id });
     
             if(!post){
                 return next();
@@ -106,21 +108,28 @@ module.exports = {
      * @param {number} id - Id du message
      * @returns {object} Un message indiquant que le message a bien été supprimé
      */
-    async deleteAMessage (req, res, next)  {
-
+    async deleteAMessage(req, res)  {
 
         try {
-            const id = req.params.id;
+            const user_id = req.user.user.user_id;
+            const msg_id = req.params.id;
+            const { sender_id } = req.body;
 
-            if(!id){
-                return res.status(405).json({
+            if(!msg_id){
+                res.status(405).json({
                     msg: "L'identifiant de du message est inconnu"
                   });
             };
 
-            const result = await messageDataMapper.deleteAMessage(id);
+            if(user_id !== sender_id) {
+                await messageDataMapper.recipientDeleted(msg_id);
+                res.json({"msg" : "message reçus, supprimé"});
+            } else {
+                await messageDataMapper.senderDeleted(msg_id);
+                res.json({"msg" : "message envoyé, supprimé"});
+            }
 
-            res.json({"msg" : "message supprimé"});
+
         } catch (error) {
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });
