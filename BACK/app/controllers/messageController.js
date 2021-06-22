@@ -127,13 +127,23 @@ module.exports = {
             } else {
                 await messageDataMapper.senderDeleted(msg_id);
                 res.json({"msg" : "message envoyé, supprimé"});
-            }
+            };
 
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json({ error: `Server error, please contact an administrator` });
+        }
+    },
+
+    async hasBeenRead(req, res) {
+        try {
+            const id = req.params.id;
+            await messageDataMapper.hasBeenRead(id);
+            res.status(200).json({ msg: "marqué comme lu" });
 
         } catch (error) {
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     }
-
 }

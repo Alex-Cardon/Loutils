@@ -202,6 +202,7 @@ router.route('/outbox')
         .get(authorizationLvl1, messageController.getSenderMessageByUserId);
 
 router.route('/messages/:id(\\d+)')
+        .post(authorizationLvl1, messageController.hasBeenRead)
         /**
          * Supprimer un message que l'utilisateur connecté a supprimé
          * @route DElETE /messages/:id
