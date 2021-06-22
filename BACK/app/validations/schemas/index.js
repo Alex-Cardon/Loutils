@@ -7,10 +7,21 @@ const {
 } = require('./adSchema');
 
 const {
+    getUserInfoAdmin : getAnUserInfoAdmin,
+    modifyRoleAdmin: modifyARoleAdmin,
+    deleteUserAdmin: deleteAnUserAdmin
+   
+} = require('./adminSchema');
+
+const {
     newBookingSchema : newBookingASchema,
     removeBookingSchema:removeBookingASchema,
     getBookingSchema: getBookingASchema
 } = require('./bookingSchema');
+
+const {
+    getImageSchema : getAnImageSchema,
+} = require('./imageSchema');
 
 const {
     newBookmarkSchema : newBookmarkASchema,
@@ -26,6 +37,12 @@ const {
     postMessageSchema : messagePostMessageSchema,
     removeMessageSchema : removeAMessageSchema
 } = require('./messageSchema');
+
+const {
+    getAdInfoModo : getAnAdInfoModo,
+    authoriseAdInfoModo: authoriseAnAdInfoModo,
+    deleteAdInfoModo: deleteAnAdInfoModo
+} = require('./modoSchema');
 
 const {
     newSavedSearchSchema : newASavedSearchSchema,
@@ -50,9 +67,15 @@ module.exports = {
     getByIdAdSchema,
     getAnAdByIdSchema,
 
+    getAnUserInfoAdmin,
+    modifyARoleAdmin,
+    deleteAnUserAdmin,
+
     newBookingASchema,
     removeBookingASchema,
     getBookingASchema,
+
+    getAnImageSchema,
 
     newBookmarkASchema,
     removeABookmarkSchema,
@@ -62,6 +85,10 @@ module.exports = {
 
     messagePostMessageSchema,
     removeAMessageSchema,
+
+    getAnAdInfoModo,
+    authoriseAnAdInfoModo,
+    deleteAnAdInfoModo,
 
     newASavedSearchSchema,
     updateASavedSearchSchema,

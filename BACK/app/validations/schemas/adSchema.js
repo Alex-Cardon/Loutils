@@ -35,7 +35,7 @@ const searchSchema = Joi.object({
 }).required();
 
 const getByIdSchema = Joi.object({
-    // supprimer une annonce
+    // Supprimer une annonce en tant qu'utilisateur connecté
     id: Joi.number().integer().positive().min(1).required()
 }).required();
 

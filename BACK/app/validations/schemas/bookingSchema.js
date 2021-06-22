@@ -8,7 +8,7 @@ const newBookingSchema = Joi.object({
 }).required();
 
 const removeBookingSchema = Joi.object({
-    // supprimer une annonce
+    // Supprimer une réservation en tant qu'utilisateur connecté
     id: Joi.number().integer().positive().min(1).required()
 }).required();
 

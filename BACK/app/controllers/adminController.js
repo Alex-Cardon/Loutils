@@ -19,6 +19,7 @@ module.exports = {
 
     /**
      * Récupération la liste des utilisateurs
+     * @param {number} id - Id de l'utilisateur
      * @returns {object[]} Les utilisateurs avec leur id, nom, email et rôle
      */
     async getAllUsers(_, res) {
