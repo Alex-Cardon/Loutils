@@ -10,8 +10,8 @@ import './styles.scss';
 
 const UpdatedProfil = ({
   handleUpdatedProfilFormSubmit,
-  picture,
-  onChangePicture,
+  //picture,
+  //onChangePicture,
   formSubmitPicture,
 }) => (
   <div className="signup-page">
@@ -53,7 +53,7 @@ const UpdatedProfil = ({
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
     <form onSubmit={formSubmitPicture} method="post" enctype="multipart/form-data">
-      <div>
+     {/*<div>
         <label for="file">Sélectionner une photo de profil</label>
         <input 
           value={picture}
@@ -63,7 +63,7 @@ const UpdatedProfil = ({
       </div>
       <div>
         <button type="submit" >Envoyer</button>
-      </div>
+      </div>*/} 
     </form>
     <Footer />
   </div>
