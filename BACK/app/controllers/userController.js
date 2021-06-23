@@ -45,13 +45,13 @@ module.exports = {
       const role = 'user';
       
       //check passwords
-      if(password !== confirmPassword) res.status(401).json({ "error": "not same password" });
+      if(password !== confirmPassword) res.status(401).json({ error: "not same password" });
       
       //check user exist
       const userFound = await userDataMapper.findOneByEmail(email);
 
       if (userFound) return res.status(409).json({
-        'error': 'user already exist'
+        error: 'user already exist'
       });
 
       //hashing password
@@ -65,7 +65,7 @@ module.exports = {
       const mail = await mailConf.sendConfirm(newUser.id, newUser.role, newUser.email, newUser.confirmed);
 
       console.log('mail', mail);
-      res.status(200).json("you will recieve email in a few minutes, check your inbox mail or spam")
+      res.status(200).json({msg : "you will recieve email in a few minutes, check your inbox mail or spam"})
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,7 @@ module.exports = {
       });
       const confirmed = await userDataMapper.confirmUser(verify.user.user_id);
       res.status(200).json({
-        confirmed
+        data : confirmed
       });
     } catch (error) {
       console.log(error);
@@ -110,14 +110,14 @@ module.exports = {
       const userFound = await userDataMapper.findOneByEmail(email);
 
       if (!userFound) return res.status(401).json({
-        'error': 'Adresse mail ou mot de passe incorrect'
+        error: 'Adresse mail ou mot de passe incorrect'
       })
 
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
 
       if (!validPassword) res.status(401).json({
-        'error': 'Adresse mail ou mot de passe incorrect'
+        error: 'Adresse mail ou mot de passe incorrect'
       })
 
       //generate jwt
@@ -140,7 +140,7 @@ module.exports = {
   async getUserInfo(req, res){
     try{
         const info = await userDataMapper.getAccountInformations(req.user.user.user_id);
-        res.json({data : info})
+        res.status(200).json({data : info})
 
     } catch (error) {
       console.trace(error);
@@ -172,8 +172,8 @@ module.exports = {
       } = req.body;
       const result = await userDataMapper.patchUserInfo(id, name, email);
       if (result) {
-        res.json({
-          result
+        res.status(200).json({
+          data : result
         })
       }
     } catch (error) {
@@ -210,7 +210,7 @@ module.exports = {
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
       if (!validPassword) res.status(400).json({
-        'error': 'Mot de passe incorrect'
+        error: 'Mot de passe incorrect'
       });
 
       //hashing password
@@ -220,8 +220,8 @@ module.exports = {
       const result = await userDataMapper.patchUserPassword(hashPassword, id);
 
       if (result) {
-        res.json({
-          "msg": "Mot de passe changé avec succès"
+        res.status(200).json({
+          msg: "Mot de passe changé avec succès"
         })
       };
 
@@ -249,11 +249,11 @@ module.exports = {
       const result = await userDataMapper.deleteUser(id);
       if (!result) {
         res.json({
-          "msg": "Fail to delete"
+          msg: "Fail to delete"
         })
       };
-      res.json({
-        "msg": "Account deleted"
+      res.status(200).json({
+        msg: "Account deleted"
       })
     } catch (error) {
       console.trace(error)
