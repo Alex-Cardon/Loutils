@@ -65,7 +65,7 @@ module.exports = {
       const mail = await mailConf.sendConfirm(newUser.id, newUser.role, newUser.email, newUser.confirmed);
 
       console.log('mail', mail);
-      res.status(200).json("you will recieve email in a few minutes, check your inbox mail or spam")
+      res.status(200).json({msg:"you will recieve email in a few minutes, check your inbox mail or spam"})
     } catch (error) {
       console.log(error);
     }
