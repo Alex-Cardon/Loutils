@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, /* useState */ } from 'react'; 
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -11,6 +11,31 @@ import Diary from 'src/containers/diary';
 import { Icon } from 'semantic-ui-react';
 
 import Proptypes from 'prop-types';
+
+
+/*
+
+source : https://github.com/pqina/react-filepond <- laisser commenter, c'est pour info
+
+import ReactDOM from 'react-dom'
+
+// Import React FilePond
+import { FilePond, registerPlugin } from "react-filepond";
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+
+// Import the Image EXIF Orientation and Image Preview plugins
+// Note: These need to be installed separately
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+*/
+
+
 
 import './style.scss';
 //import { uploadFile } from '../../actions/adForm';
@@ -52,6 +77,20 @@ const AdForm = ({
         evt.preventDefault();
         handleLogin();
     };
+
+    /*const files = [
+      {
+        source: "index.html",
+        options: {
+          type: "local"
+        }
+      }
+    ]*/
+
+    /*handleInit() {
+      console.log("FilePond instance has initialised", this.pond);
+    }*/
+    
 
     return (
         <div className="adForm" >
@@ -160,6 +199,29 @@ const AdForm = ({
                     >
                         Validez
                     </button>
+
+{/*  
+                    <div className="App">
+                      <FilePond
+                        ref={ref => (this.pond = ref)}
+                        files={this.state.files}
+                        allowMultiple={true}
+                        allowReorder={true}
+                        maxFiles={1}
+                        server="/api"
+                        name="files" {/* sets the file input name, it's filepond by default *//*}
+                        oninit={() => this.handleInit()}
+                        onupdatefiles={fileItems => {
+                          // Set currently active file objects to this.state
+                          this.setState({
+                            files: fileItems.map(fileItem => fileItem.file)
+                          });
+                        }}
+                      />
+                    </div>
+*/}
+
+
                 </form>
                 <div className="adForm__diary">
                     <h3>Choisissez la période de disponibilité de votre outil</h3>
