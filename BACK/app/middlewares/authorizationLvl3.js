@@ -14,9 +14,9 @@ module.exports = function(req, res, next) {
       req.user = verify;
       next();
     } else {
-      throw new Error("Email not confirmed, please check your mail box and click the confirmation link first")
+      throw new Error({ msg: 'Accès forbiden'})
     }
-  } catch (err) {
-    res.status(401).json({ err });
+  } catch (Error) {
+    res.status(401).json({ Error });
   }
 };

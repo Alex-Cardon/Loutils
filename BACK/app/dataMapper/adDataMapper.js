@@ -63,7 +63,7 @@ module.exports = {
 
     async getByTitleAndCat(category, postcode, title) {
 
-        const result = await client.query(`SELECT * FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
     
@@ -91,7 +91,7 @@ module.exports = {
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
-        const result = await client.query(`SELECT * FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
     
@@ -110,14 +110,14 @@ module.exports = {
     },
 
     async moderated(id) {
-        const result = await client.query(`UPDARE "ad"
+        const result = await client.query(`UPDATE "ad"
         SET "moderated" = TRUE
         WHERE "id" = $1 RETURNING *`, [id]);
         return result.rows;
     },
 
     async getAllNonModAd() {
-        const result = await client.query(`SELECT "id", "name" FROM "ad"
+        const result = await client.query(`SELECT "id", "title" FROM "ad"
         WHERE "moderated" = FALSE ORDER BY "created_at" ASC`);
         return result.rows;
     },
@@ -127,4 +127,11 @@ module.exports = {
         WHERE "id" = $1`, [id]);
         return result.rows;
     },
+
+    async deleteAd(id) {
+        const result = await client.query(`DELETE FROM "ad" WHERE "id" = $1`, [id]);
+
+        return result.rows[0];
+    }
+
 }

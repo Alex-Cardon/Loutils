@@ -23,7 +23,6 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-swagger-generator": "^1.1.17",
     "joi": "^17.4.0",
     "joi-postalcode": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
@@ -31,8 +30,11 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
-    "nodemailer": "^6.6.1",
+    "nodemailer": "^6.6.2",
     "pg": "^8.6.0",
     "swagger": "^0.7.5"
+  },
+  "devDependencies": {
+    "express-swagger-generator": "^1.1.17"
   }
 }

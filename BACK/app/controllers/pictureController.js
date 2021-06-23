@@ -26,23 +26,25 @@ module.exports  = {
      * @property {string} filename - Titre de la photo
      * @returns {object} L'image
      */
-    async getImage(request, response, next){
+    async getImage(req, res, next){
         try{
-            const { filename } = request.params;
+            const { filename } = req.params;
             const image = await pictureDataMapper.findByPk(filename);
             if(!image){
-                return next();
+                return res.status(405).json({
+                    msg: "Cette image n'existe pas"
+                  });
             }
             const dirname = path.resolve();
             const fullfilepath = path.join(dirname,
                 image.filepath);
-            response
+            res
                 .type(image.mimetype)
                 .sendFile(fullfilepath);
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -52,20 +54,20 @@ module.exports  = {
      * @returns {object} l'identifiant de l'image, le nom du fichier, l'amplacement du fichier, le mimetype, la taille et la date de création
      */
 
-    async postImage(request, response, next) {
+    async postImage(req, res, next) {
         try {
-            const { filename, mimetype, size } = request.file;
-            const filepath = request.file.path;
+            const { filename, mimetype, size } = req.file;
+            const filepath = req.file.path;
             const postImage = await pictureDataMapper.postAnImage( filename, mimetype, size, filepath );
 
             if(!postImage){
                 return next();
             }
 
-            response.json({data : postImage});
+            res.json({data : postImage});
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
 
     },

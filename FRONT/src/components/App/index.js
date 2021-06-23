@@ -13,7 +13,12 @@ import Profil from 'src/containers/Profil';
 import MyResearch from 'src/containers/MyResearch';
 import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
+
 import Messaging from 'src/containers/Messaging';
+
+
+import Diary from 'src/containers/Diary';
+
 
 //import AdForm from 'src/containers/adForm';
 
@@ -36,7 +41,14 @@ const App = () => (
       <> */}
       {/* <Route exact path="/AdForm">
         <AdForm />
+
+      </Route>
+      <Route exact path="/Diary">
+        <Diary />
+      </Route>
+
       </Route>*/}
+
       <Route excat path="/SettingsPage">
         <Setting />
       </Route>

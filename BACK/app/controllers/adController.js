@@ -35,25 +35,41 @@ const adDataMapper = require ('../dataMapper/adDataMapper');
 
 
 module.exports = {
+    /**
+     * Récupération des radius prédéfinis
+     * @returns {object[]} Les radius dans un tableau
+     */
+    async radiusArray(_, res) {
+        const radiusList = await [5, 10, 20, 50, 'fruits et légumes'];
+        res.json({ radiusList });
+      },
 
     /**
      * Récupération les annonces d'un utilisateur connecté
      * @returns {object[]} Les annonces avec leur id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
      */
-    async getByUserId(request, response, next){
+    async getByUserId(req, res){
         try{
 
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
 
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
-                return next();
+                return res.status(403).json({
+                    msg: "Accès non autorisé"
+                  });
             }
-            response.json({data : ad})
+            res.status(200).json({data : ad})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -71,26 +87,34 @@ module.exports = {
      * @param {number} category_id - La catégorie dans laquelle l'outil se situe
      * @returns {object} L'annonce créée avec son id, titre, id de l'image, prix, l'état, la caution, le type d'annonce, le code postal, l'id de la catégorie, l'id de l'utilisateur, la date de création et la date de mise à jour
      */
-    async postAnAd(request, response, next){
+    async postAnAd(req, res){
         try{
 
-            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = request.body;
+            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
             
-            const user_id = request.user.user.user_id
+            const user_id = req.user.user.user_id
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
 
             const post = await adDataMapper.
             postAnAd(title, picture_id, price,product_state, deposit, description, ad_type,  postcode, category_id, user_id);
             
     
             if(!post){
-                return next();
+                return res.status(400).json({
+                    'error': 'Veuillez remplir les champs de l\'annonce'
+                  });
             }
     
-            response.json({data : post})
+            res.status(200).json({data : post})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
@@ -112,7 +136,14 @@ module.exports = {
     async patchAd(req, res){
         try {
             const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
+
             const id = req.params.id
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
             const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
             res.status(200).json({ result });
@@ -140,6 +171,7 @@ module.exports = {
             if (radius === "0") {
                 radius = "1";
             };
+
             const listPC = await adDataMapper.fetchCP(postcode, radius);
             const full_arr_pc = [];
             if (Array.isArray(listPC)) {
@@ -151,6 +183,13 @@ module.exports = {
                     full_arr_pc.push(listPC[prop].code_postal)
                 }
             }
+
+            if(!listPC){
+                return res.status(400).json({
+                    msg: "Veuillez saisir un code postal"
+                  });
+            };
+
             const trimmed_cp = [...new Set(full_arr_pc)];
             const {
                 category,
@@ -159,12 +198,12 @@ module.exports = {
 
             if (!category) {
                 const result = await adDataMapper.getByTitle(title, trimmed_cp)
-                res.json({
+                res.status(200).json({
                     result
                 });
             } else {
                 const result = await adDataMapper.getByTitleAndCat(category, trimmed_cp, title);
-                res.json({
+                res.status(200).json({
                     result
                 });
             }
@@ -181,16 +220,23 @@ module.exports = {
      * @param {number} id - Id de l'annonce
      * @returns {object} Un message indiquant que l'annonce a bien été supprimée
      */
-    async deleteAnAd (request, response, next) {
+    async deleteAnAd (req, res) {
         try{
-            const id = request.params.id;
-            const user_id = request.user.user.user_id;
+            const id = req.params.id;
+            const user_id = req.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Accès non autorisé, veuillez vous connecter"
+                  });
+            };
+            
             const result = await adDataMapper.deleteOneAd(id, user_id);
 
-            response.json({"msg" : "annonce supprimée"});
+            res.json({"msg" : "annonce supprimée"});
         }catch(error){
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
 
@@ -202,12 +248,26 @@ module.exports = {
     async getAdById(req, res) {
         try {
             const id = req.params.id;
-            const user_id = request.user.user.user_id;
+
+            if(!id){
+                return res.status(405).json({
+                    msg: "L'identifiant de l'annonce est inconnu"
+                  });
+            };
+
+            const user_id = req.user.user.user_id;
+
+            if(!user_id){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
+
             const result = await adDataMapper.findById(id, user_id);
             res.status(200).json({ result });
         } catch (error) {
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            req.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
 
@@ -222,7 +282,7 @@ module.exports = {
         } catch (error) {
 
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
             
         }
     }

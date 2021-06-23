@@ -4,6 +4,8 @@ import loginFormReducer from './loginForm';
 
 import adFormReducer from './adForm';
 
+import diaryReducer from './diary';
+
 //! j'import mon réducer 
 import settingsFieldReducer from './settingsField';
 
@@ -24,6 +26,7 @@ import messagingReducer from './messaging';
 
 
 const rootReducer = combineReducers({
+  diary: diaryReducer,
   ad: adFormReducer,
   user: loginFormReducer,
   //! je crée mon state 

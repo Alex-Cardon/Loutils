@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, /* useState */ } from 'react'; 
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -12,10 +12,39 @@ import { Icon } from 'semantic-ui-react';
 
 import Proptypes from 'prop-types';
 
+
+/*
+
+source : https://github.com/pqina/react-filepond <- laisser commenter, c'est pour info
+
+import ReactDOM from 'react-dom'
+
+// Import React FilePond
+import { FilePond, registerPlugin } from "react-filepond";
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+
+// Import the Image EXIF Orientation and Image Preview plugins
+// Note: These need to be installed separately
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+*/
+
+
+
 import './style.scss';
 //import { uploadFile } from '../../actions/adForm';
 
 const AdForm = ({
+
+  uploadHandler,
+  onImageSelected,
+
 
     onUploadFile,
 
@@ -48,6 +77,20 @@ const AdForm = ({
         evt.preventDefault();
         handleLogin();
     };
+
+    /*const files = [
+      {
+        source: "index.html",
+        options: {
+          type: "local"
+        }
+      }
+    ]*/
+
+    /*handleInit() {
+      console.log("FilePond instance has initialised", this.pond);
+    }*/
+    
 
     return (
         <div className="adForm" >
@@ -156,6 +199,29 @@ const AdForm = ({
                     >
                         Validez
                     </button>
+
+{/*  
+                    <div className="App">
+                      <FilePond
+                        ref={ref => (this.pond = ref)}
+                        files={this.state.files}
+                        allowMultiple={true}
+                        allowReorder={true}
+                        maxFiles={1}
+                        server="/api"
+                        name="files" {/* sets the file input name, it's filepond by default *//*}
+                        oninit={() => this.handleInit()}
+                        onupdatefiles={fileItems => {
+                          // Set currently active file objects to this.state
+                          this.setState({
+                            files: fileItems.map(fileItem => fileItem.file)
+                          });
+                        }}
+                      />
+                    </div>
+*/}
+
+
                 </form>
                 <div className="adForm__diary">
                     <h3>Choisissez la période de disponibilité de votre outil</h3>
@@ -163,23 +229,31 @@ const AdForm = ({
                 </div>
             </div>
 
+
   handleLogin,
   getToolStateValue,
   changeField,
+
   toolName,
   image,
   price,
   caution,
   description,
   toolState,
-  // isNew,
-  // working,
 }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
+  const handleImageSelected = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+
+    
+    onImageSelected(file);
+ };
 
   return (
     <div className="adForm" >
@@ -236,23 +310,6 @@ const AdForm = ({
           />
         </div>
 
-        {/* <div className="adForm__unit--radio">
-            <AdFormRadio
-                name="radio"
-                stateKey="isNew"
-                type="radio"
-                placeholder="comme neuf"
-                checked
-            />
-            <AdFormRadio
-                name="radio"
-                stateKey="working"
-                type="radio"
-                placeholder="etat de marche"
-
-            />
-        </div> */}
-
         <div className="adForm__unit--radio">
           <p>Loutil est plutot: {toolState} </p>
           <div>
@@ -274,20 +331,28 @@ const AdForm = ({
               id="used"
               name="toolState"
               value="working"
+              // onChage nous retourne un tableau files 
               onChange={getToolStateValue}
 
             />
           </div>
 
         </div>
+
+
         <div>
-          <p>Ajoutez des photos</p>
-          <button>
-            <Icon name='camera' style={{ color: "red" }} />
-          </button>
+            <input 
+              
+              type="file"
+              accept='.jpg, .png, .jpeg'
+              onChange={handleImageSelected}
+            />
+            <button onClick={uploadHandler}>Upload!</button>
+
 
 
         </div>
+          
         <button
           className="adForm__button"
           type="submit"
@@ -303,6 +368,10 @@ const AdForm = ({
 
 AdForm.proptypes = {
 
+  uploadHandler: Proptypes.func.isRequired,
+  onImageSelected: Proptypes.func.isRequired,
+
+
     onUploadFile: Proptypes.func.isRequired,
     handleLogin: Proptypes.func.isRequired,
     getToolStateValue: Proptypes.func.isRequired,
@@ -316,6 +385,7 @@ AdForm.proptypes = {
     // isNew: Proptypes.string.isRequired,
     // working: Proptypes.string.isRequired,
 
+
   handleLogin: Proptypes.func.isRequired,
   getToolStateValue: Proptypes.func.isRequired,
   changeField: Proptypes.func.isRequired,
@@ -325,8 +395,11 @@ AdForm.proptypes = {
   caution: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
   toolState: Proptypes.string.isRequired,
+
+
   // isNew: Proptypes.string.isRequired,
   // working: Proptypes.string.isRequired,
+
 
 }
 
