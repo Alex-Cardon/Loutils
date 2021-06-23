@@ -1,6 +1,14 @@
 import { connect } from 'react-redux';
 
-import { changeAdField, changeToolState, submitAdLogin, uploadFile } from 'src/actions/adForm';
+
+import { 
+  changeAdField, 
+  changeToolState, 
+  submitAdLogin, 
+  getFileUpload,
+  selectImage,
+} from 'src/actions/adForm';
+
 
 import AdForm from 'src/components/AdForm';
 
@@ -25,14 +33,26 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeToolState(value));
   },
 
+
+  handleFileUpload: (value) => {
+    console.log('je suis dans containers: handleFileUpload');
+    dispatch(getFileUpload(value));
+  },
+
   onUploadFile: (e) => {
     console.log("data file");
     dispatch(uploadFile(e));
   }, 
 
+
   handleLogin: () => {
     dispatch(submitAdLogin());
-  }
+  },
+
+  onImageSelected:(image) => {
+    //console.log('image: ', image);
+    dispatch(selectImage(image));
+  },
 
 });
 
