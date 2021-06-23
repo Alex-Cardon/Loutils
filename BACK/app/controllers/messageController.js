@@ -28,7 +28,6 @@ module.exports = {
     async getSenderMessageByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
-            console.log(user);
 
             if(!user){
                 return res.status(401).json({
@@ -55,7 +54,6 @@ module.exports = {
     async getRecievedMsgByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
-            console.log(user);
 
             if(!user){
                 return res.status(401).json({
