@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const category = [
+{/*const category = [
   { key: 'Catégories', text: 'Catégories', value: 'Catégories' },
   { key: 'marteau', text: 'Marteau à bomber le verre', value: 'all' },
   { key: 'articles', text: 'Sulfateuse à petits poids', value: 'articles' },
@@ -17,14 +17,16 @@ const distance = [
   { key: '5', text: '5 kms', value: '5' },
   { key: '10', text: '10 kms', value: '10' },
   { key: '15', text: "laser", value: '15' },
-]
+]*/}
 
 const SelectSearchBar = ({
   inputTools,
   inputLocalisation,
   onSearchToolsChange,
   onSearchLocalisationChange,
-  handleResearh
+  handleResearh,
+  category,
+  radius 
 }) => (
 
   <Input className='selectSearchBar'
@@ -33,14 +35,14 @@ const SelectSearchBar = ({
     type='text'
     placeholder="Nom de l'outil" action>
     <input />
-    <Select compact options={category} defaultValue='Catégories' />
+    <Select compact options={category} defaultValue='Catégories' placeholder='Catégories'/>
     <Input
       onChange={onSearchLocalisationChange}
       value={inputLocalisation}
       type='text'
       placeholder='Code Postal' action>
     </Input>
-    <Select compact options={distance} defaultValue='Rayon' />
+    <Select compact options={radius} defaultValue='Rayon' placeholder='Rayon' />
     <Button type='button' onClick={handleResearh}>Search</Button>
   </Input>
 );

@@ -1,16 +1,15 @@
 import { GET_MY_RESEARCH, GET_MY_RESEARCH_SUCCESS } from 'src/actions/myResearch';
 
-//! state
+
 export const initialState = {
-  id: "",
-  image: "",
   title: "",
-  description: "",
-  price: "",
+  category: "",
+  postcode: "",
+  radius: "",
   loading: false,
 
-}; // TODO en construction
-//! direction index.js de mon reducer
+}; 
+
 const reducer = (state = initialState, action) => {
   //console.log('je suis dans le reducer myResearch');
   switch (action.type) {
@@ -19,14 +18,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
-      case GET_MY_RESEARCH_SUCCESS:
+    case GET_MY_RESEARCH_SUCCESS:
       return {
         ...state,
-        id: action.id,
-        image: action.image,
         title: action.title,
-        description: action.title,
-        price: action.price,
+        category: action.category,
+        postcode: action.postcode,
+        radius: action.radius,
         loading: false,
       };
     default:
@@ -35,8 +33,4 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-//!
-//! Ne pas oublier de le créer dans index.js du dossier Réducers
-//!
 

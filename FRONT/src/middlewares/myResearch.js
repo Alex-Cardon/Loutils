@@ -9,7 +9,12 @@ import {
 const myResearchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_MY_RESEARCH:
-      axios.get(`GET http://localhost:3000/search`)
+      axios.post(`http://localhost:3000/search`, {
+        title: state.my.title,
+        category: state.my.category,
+        postcode: state.my.postcode,
+        radius: state.my.radius,
+      })
         .then((response) => {
           console.log('response de myResearch', response.data)
           store.dispatch(getMyResearchSuccess(response.data));
