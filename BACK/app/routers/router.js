@@ -234,7 +234,7 @@ router.route('/messages/:id(\\d+)')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant du message est inconnu
          */
-        .delete( authorizationLvl1, messageController.deleteAMessage);
+        .patch( authorizationLvl1, messageController.deleteAMessage);
 
 /**
  * Créer un compte
