@@ -14,7 +14,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "pmillsu_b813c@nafxo.com",
+    "email": "rtw18982@eoopy.com",
     "password": "louloudu31"
 }
 
@@ -189,7 +189,7 @@ Content-Type: application/json
 
 ###JSDOC -OK-  Modifier une annonce en tant qu'utilisateur X
 PATCH http://localhost:3000/account/ad/15
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEyLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDQzNTk5NywiZXhwIjoxNjI0NDc5MTk3fQ.iOOBsRL0Gb2C5gRo8p7jD-BtYBc3N5fivj8ixiH6MLQ
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEsInJvbGUiOiJ1c2VyIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0NDM1ODU4LCJleHAiOjE2MjQ0NzkwNTh9.N5tNPOJXNmLlCIfh857yU0PeQ7mF4y4iu9jHNqQ8IZw
 Content-Type: application/json
 
 {
