@@ -335,17 +335,17 @@ GET http://localhost:3000/admin/users
 GET http://localhost:3000/rolist
 
 ###Récupérrer les informations d'un utilisateur en tant qu'administrateur
-GET http://localhost:3000/admin/user/3
+GET http://localhost:3000/admin/user/5
 
 ###Modifier le rôle d'un utilisateur en tant qu'administrateur
-PATCH http://localhost:3000/admin/user/3
+PATCH http://localhost:3000/admin/user/5
 Content-Type: application/json
 
 {
 
-    "role" : "théière"
+    "role" : "admin"
 
 }
 
 ###Supprimer un utilisateur en tant qu'administrateur
-DELETE http://localhost:3000/admin/user/3
+DELETE http://localhost:3000/admin/user/5

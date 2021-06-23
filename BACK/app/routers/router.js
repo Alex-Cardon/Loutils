@@ -82,7 +82,7 @@ router.post('/image', imageUpload.single('image'), pictureController.postImage);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 405 - Une erreur indiquant que l'image n'existe pas
  */
-router.get('/image/:filename', validate.body(schemas.getAnImageSchema), pictureController.getImage);
+router.get('/image/:filename',  pictureController.getImage);
 
 
 router.route('/account/ads')
@@ -485,7 +485,7 @@ router.route('/modo/:id')
          * @returns {Error} 500 - Une erreur serveur
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu
          */
-        .delete(/*authorizationLvl2,*/ modoContoller.deleteAd);
+        .delete(authorizationLvl2, modoContoller.deleteAd);
 
 /**
  * Récupération la liste des utilisateurs
@@ -501,7 +501,7 @@ router.get('/admin/users', authorizationLvl3, adminController.getAllUsers);
  * @returns {adminController[]} 200 - Tableau des rôles
  * @returns {Error} 500 - Une erreur serveur
  */
-router.get('/rolist', adminController.roleList);
+router.get('/rolist',authorizationLvl3, adminController.roleList);
 
 router.route('/admin/user/:id')
         /**
