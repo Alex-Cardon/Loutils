@@ -124,7 +124,7 @@ module.exports = {
 
             if(user_id !== sender_id) {
                 await messageDataMapper.recipientDeleted(msg_id);
-                res.json({"msg" : "message reçus, supprimé"});
+                res.json({"msg" : "message reçu, supprimé"});
             } else {
                 await messageDataMapper.senderDeleted(msg_id);
                 res.json({"msg" : "message envoyé, supprimé"});

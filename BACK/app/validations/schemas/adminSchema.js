@@ -7,7 +7,6 @@ const getUserInfoAdmin = Joi.object({
 
 const modifyRoleAdmin = Joi.object({
     /* modifier le role d'un utilisateur ou d'un modo en tant qu'admin */
-    id: Joi.number().positive().integer().min(1).required(),
     role : Joi.string().valid('admin').valid('modo').valid('user')
 }).required();
 
