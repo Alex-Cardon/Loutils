@@ -239,7 +239,7 @@ router.route('/messages/:id(\\d+)')
 /**
  * Créer un compte
  * @route POST /register
- *  @param {string} name - Nom de l'utilisateur
+ * @param {string} name - Nom de l'utilisateur
  * @param {string} email - Adresse mail de l'utilisateur
  * @param {string} password - Mot de passe de l'utilisateur
  * @param {string} confirmPassword - Confirmer le mot de passe de l'utilisateur
