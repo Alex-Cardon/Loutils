@@ -20,7 +20,7 @@ import Messaging from 'src/containers/Messaging';
 import Diary from 'src/containers/Diary';
 
 
-//import AdForm from 'src/containers/adForm';
+import AdForm from 'src/containers/adForm';
 
 import Error from 'src/components/Error';
 
@@ -37,18 +37,12 @@ const App = () => (
       <Route excat path="/SignupPage">
         <SignupPage />
       </Route>
-      {/*  {isLogged && (
-      <> */}
-      {/* <Route exact path="/AdForm">
+      <Route exact path="/AdForm">
         <AdForm />
-
       </Route>
       <Route exact path="/Diary">
         <Diary />
       </Route>
-
-      </Route>*/}
-
       <Route excat path="/SettingsPage">
         <Setting />
       </Route>
@@ -73,8 +67,6 @@ const App = () => (
       <Route excat path="/Messagerie">
         <Messaging />
       </Route>
-      {/*   </>
-      )} */}
       <Route>
         <Error />
       </Route>
