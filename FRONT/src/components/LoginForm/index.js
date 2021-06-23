@@ -14,8 +14,8 @@ const LoginForm = ({
   handleLogout,
   isLogged,
   loggedMessage,
-  isOpen, // est-ce que les settings sont ouverts
-  onSettingsToggle, // ouverture ou fermeture des settings
+  isOpen, 
+  onSettingsToggle,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -24,9 +24,6 @@ const LoginForm = ({
 
   return (
     <div
-      // si isOpen est vrai, on ajoute la classe CSS
-      // settings--open
-      // qui "poussera" le div depuis la droite
       className={isOpen ? 'login login--open' : 'login'}
     >
 
@@ -72,10 +69,6 @@ const LoginForm = ({
             <Field
               name="email"
               placeholder="Adresse Email"
-              // attention : changeField doit etre une fonction
-              // qui prend 2 parametres :
-              // la nouvelle valeur
-              // la case a modifier (email ou password)
               onChange={changeField}
               value={email}
             />
