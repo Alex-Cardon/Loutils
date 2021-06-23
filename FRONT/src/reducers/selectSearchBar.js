@@ -15,13 +15,13 @@ const reducer = (state = initialState, action ) => {
   //console.log('je suis dans le reducer selectSearchBar');
   switch (action.type) {
     case CHANGE_CATEGORIES_INPUT:
-      // on renvoie un nouvel objet "state"
+    
       return {
         ...state, 
         tools: action.value,   
       };
       case CHANGE_LOCALISATION_INPUT:
-      // on renvoie un nouvel objet "state"
+      
       return {
         ...state, 
         localisation: action.value,   

@@ -3,8 +3,8 @@ import { CHANGE_LOGIN_FIELD, LOGIN_SUCCESS, LOGOUT,  TOGGLE_SETTINGS } from 'src
 
 export const initialState = {
   isLogged: false,  
-  email: 'Valery.dumoulin@mail.fr',
-  password: 'louloudu31',
+  email: '',
+  password: '',
   name: null,
   token: null,
   isOpen: false,
@@ -24,9 +24,12 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...state,
+        isOpen: false,
         isLogged: false,
         name: null,
         token: null,
+        
+
       };
       case LOGIN_SUCCESS:   
       return {
