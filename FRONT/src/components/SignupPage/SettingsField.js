@@ -14,8 +14,9 @@ const SettingsField = ({
     className="settings__input"
     value={value}
     onChange={onChange}
-    type={type}
+    type={type} required
     placeholder={placeholder}
+    
   />
 );
 

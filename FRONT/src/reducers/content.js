@@ -1,32 +1,34 @@
-/*import {  } from 'src/actions/content';
+import { GET_CONTENT, GET_CONTENT_SUCCESS } from 'src/actions/content';
 
 //! state
 export const initialState = {
-  id:"",
+  id: "",
   image: "",
   title: "",
-  description:"",
-  price:"",
-  
+  description: "",
+  price: "",
+  loading: false,
+
 }; // TODO en construction
-//! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
-const reducer = (state = initialState, action ) => {
-  //console.log('je suis dans le reducer searchBar');
+const reducer = (state = initialState, action) => {
+ // console.log('je suis dans le reducer Content');
   switch (action.type) {
-    case //!CHANGE_CATEGORIES_INPUT:
-      // on renvoie un nouvel objet "state"
+    case GET_CONTENT:
       return {
-        ...state, 
-        id: action.value,
-        image:action.value,
-        title: action.value,
-        description:action.value,
-        price:action.value,
-      
-          
+        ...state,
+        loading: true,
       };
-      
+      case GET_CONTENT_SUCCESS:
+      return {
+        ...state,
+        id: action.id,
+        image: action.image,
+        title: action.title,
+        description: action.title,
+        price: action.price,
+        loading: false,
+      };
     default:
       return state;
   }
@@ -37,4 +39,4 @@ export default reducer;
 //!
 //! Ne pas oublier de le créer dans index.js du dossier Réducers
 //!
-*/
+

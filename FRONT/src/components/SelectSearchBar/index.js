@@ -20,10 +20,10 @@ const distance = [
 ]
 
 const SelectSearchBar = ({
-  inputTools, 
-  inputLocalisation, 
-  onSearchToolsChange, 
-  onSearchLocalisationChange, 
+  inputTools,
+  inputLocalisation,
+  onSearchToolsChange,
+  onSearchLocalisationChange,
   handleResearh
 }) => (
 
@@ -33,13 +33,13 @@ const SelectSearchBar = ({
     type='text'
     placeholder="Nom de l'outil" action>
     <input />
+    <Select compact options={category} defaultValue='Catégories' />
     <Input
       onChange={onSearchLocalisationChange}
       value={inputLocalisation}
       type='text'
       placeholder='Code Postal' action>
     </Input>
-    <Select compact options={category} defaultValue='Catégories' />
     <Select compact options={distance} defaultValue='Rayon' />
     <Button type='button' onClick={handleResearh}>Search</Button>
   </Input>

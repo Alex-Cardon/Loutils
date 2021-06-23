@@ -6,16 +6,17 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
-import Setting from 'src/components/SettingsPage';
-import Favorites from 'src/components/Favorites';
-import Announcements from 'src/components/Announcements';
-import Profil from 'src/components/Profil';
-import MyResearch from 'src/components/MyResearch';
-import Params from 'src/components/Params';
+import SettingsPage from 'src/containers/SettingsPage';
+import Favorites from 'src/containers/Favorites';
+import Announcements from 'src/containers/Announcements';
+import Profil from 'src/containers/Profil';
+import MyResearch from 'src/containers/MyResearch';
+import Params from 'src/containers/Params';
+import UpdatedProfil from 'src/containers/UpdatedProfil';
 
 import Diary from 'src/containers/Diary';
 
-import AdForm from 'src/containers/adForm';
+//import AdForm from 'src/containers/adForm';
 
 import Error from 'src/components/Error';
 
@@ -32,14 +33,20 @@ const App = () => (
       <Route excat path="/SignupPage">
         <SignupPage />
       </Route>
-      <Route exact path="/AdForm">
+     {/*  {isLogged && (
+      <> */}
+     {/* <Route exact path="/AdForm">
         <AdForm />
+
       </Route>
       <Route exact path="/Diary">
         <Diary />
       </Route>
+
+      </Route>*/}
+
       <Route excat path="/SettingsPage">
-        <Setting />
+        <SettingsPage />
       </Route>
       <Route excat path="/Favorites">
         <Favorites />
@@ -56,6 +63,11 @@ const App = () => (
       <Route excat path="/Params">
         <Params />
       </Route>
+      <Route excat path="/UpdatedProfil">
+        <UpdatedProfil />
+      </Route>
+   {/*   </>
+      )} */} 
       <Route>
         <Error />
       </Route>

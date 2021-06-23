@@ -19,7 +19,7 @@
 
   &-button {
     font-size: 1em;
-    color: vars.$color;
+    color: red;
     
     border-radius: .3em;
     border: 0;
@@ -31,7 +31,7 @@
 .login {
   position: fixed;
   display: flex;
-  top: 20px;
+  top: 15px;
   right: -435px;
   transition: right 1s ease-in;
   align-items: center;

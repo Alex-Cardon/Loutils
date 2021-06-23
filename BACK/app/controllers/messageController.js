@@ -1,70 +1,150 @@
 const messageDataMapper = require ('../dataMapper/messageDataMapper');
 
+/**
+ * @typedef Message
+ * @property {number} id - Identifiant unique du message
+ * @property {string} content - Contenu du message
+ * @property {number} recipient - Identifiant unique de la personne qui reçoit le message
+ * @property {number} sender - Identifiant unique de la personne qui envoit le message
+ * @property {string} created_at - Date de création du message (date ISO 8601)
+ * @property {string} updated_at - Date de la mise à jour du message (date ISO 8601)
+ * @property {boolean} has_been_read - Si le message a été lu ou non
+  */
+
+/**
+ * @typedef MessageInput
+ * @property {string} content - Contenu du message
+ * @property {number} recipient - Identifiant unique de la personne qui reçoit le message
+ * @property {number} sender - Identifiant unique de la personne qui envoit le message
+ * @property {boolean} has_been_read - Si le message a été lu ou non
+ */
+
 module.exports = {
 
-    async getSenderMessageByUserId(request, response, next){
+    /**
+     * Afficher les messages envoyés par l'utilisateur connecté
+     * @returns {object[]} L'identifiant du message, le contenu, la personne qui reçoit le message, la personne qui envoit le message, la date de création, la date de mise à jour, booleen pour savoir si le message a été lu
+     */
+    async getSenderMessageByUserId(req, res, next){
         try{
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
+            console.log(user);
+
+            if(!user){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
 
             const message = await messageDataMapper.getSenderMessageByUserId(user);
             if(!message){
                 return next();
             }
-            response.json({ message })
+            res.json({ msg_sent: message })
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
-    async getRecievedMsgByUserId(request, response, next){
+    /**
+     * Afficher les messages reçu par l'utilisateur connecté
+     * @returns {object[]} L'identifiant du message, le contenu, la personne qui reçoit le message, la personne qui envoit le message, la date de création, la date de mise à jour, booleen pour savoir si le message a été lu
+     */
+    async getRecievedMsgByUserId(req, res, next){
         try{
-            const user = request.user.user.user_id;
+            const user = req.user.user.user_id;
+            console.log(user);
+
+            if(!user){
+                return res.status(401).json({
+                    msg: "Veuillez vous connecter afin de voir l'annonce"
+                  });
+            };
 
             const message = await messageDataMapper.getRecievedMsgByUserId(user);
             if(!message){
                 return next();
             }
-            response.json({ message })
+            res.json({ msg_recieved: message })
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
-    async postAMessage(request, response, next){
+       /**
+     * Poster un message en tant qu'utilisateur connecté
+     * @property {string} content - Contenu du message
+     * @property {number} recipient - Identifiant unique de la personne qui reçoit le message
+     * @returns {object} L'identifiant du message, le contenu, la personne qui reçoit, la personne qui envoit, la date de création, la date de mise à jour et si le message a été lu ou non
+     */
+    async postAMessage(req, res){
         try{
             
-            const { content, recipient } = request.body;
-            const sender = request.user.user.user_id;
+            const { content, recipient, ad_id } = req.body;
+
+            const sender = req.user.user.user_id;
             
-            const post = await messageDataMapper.postAMessage({ content, recipient, sender });
+            const post = await messageDataMapper.postAMessage({ content, recipient, sender, ad_id });
     
             if(!post){
                 return next();
             }
     
-            response.json({data : post})
+            res.json({data : post})
 
         }catch (error) {
             console.trace(error);
-            response.json({ error });
+            res.json({ error });
         }
     },
 
-    async deleteAMessage (request, response, next)  {
+
+
+    /**
+     * Supprimer un message que l'utilisateur connecté a supprimé
+     * @param {number} id - Id du message
+     * @returns {object} Un message indiquant que le message a bien été supprimé
+     */
+    async deleteAMessage(req, res)  {
 
         try {
-            const id = request.params.id;
-            const result = await messageDataMapper.deleteAMessage(id);
+            const user_id = req.user.user.user_id;
+            const msg_id = req.params.id;
+            const { sender_id } = req.body;
 
-            response.json({"msg" : "message supprimé"});
+            if(!msg_id){
+                res.status(405).json({
+                    msg: "L'identifiant de du message est inconnu"
+                  });
+            };
+
+            if(user_id !== sender_id) {
+                await messageDataMapper.recipientDeleted(msg_id);
+                res.json({"msg" : "message reçus, supprimé"});
+            } else {
+                await messageDataMapper.senderDeleted(msg_id);
+                res.json({"msg" : "message envoyé, supprimé"});
+            };
+
         } catch (error) {
             console.trace(error);
-            response.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
+        }
+    },
+
+    async hasBeenRead(req, res) {
+        try {
+            const id = req.params.id;
+            await messageDataMapper.hasBeenRead(id);
+            res.status(200).json({ msg: "marqué comme lu" });
+
+        } catch (error) {
+            console.trace(error);
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     }
-
 }
