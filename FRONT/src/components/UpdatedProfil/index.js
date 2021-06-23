@@ -9,7 +9,10 @@ import Footer from 'src/components/Footer';
 import './styles.scss';
 
 const UpdatedProfil = ({
-  handleUpdatedProfilFormSubmit
+  handleUpdatedProfilFormSubmit,
+  picture,
+  onChangePicture,
+  formSubmitPicture,
 }) => (
   <div className="signup-page">
     <Header />
@@ -49,14 +52,17 @@ const UpdatedProfil = ({
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
-    <form method="post" enctype="multipart/form-data">
+    <form onSubmit={formSubmitPicture} method="post" enctype="multipart/form-data">
       <div>
         <label for="file">Sélectionner une photo de profil</label>
-        <input type="file" id="file" name="file"
+        <input 
+          value={picture}
+          onChange={onChangePicture}
+          type="file" id="file" name="file"
           accept="image/png, image/jpeg" />
       </div>
       <div>
-        <button>Envoyer</button>
+        <button type="submit" >Envoyer</button>
       </div>
     </form>
     <Footer />

@@ -5,8 +5,17 @@ import UpdatedProfil from 'src/components/UpdatedProfil';
 import {
   submitUpdatedProfil,
 } from 'src/actions/profilField.js';
-//! je recupère mes proptypes du component index.js de SignupPage 
-//!comme le proptype est func cela sera une action direction le container SettingsField
+
+import {
+  submitPicture,
+  changePictureInput,
+}from 'src/actions/updatedProfil.js';
+
+const mapStateToProps = (state) => ({
+  
+  value: state.picture.value,
+});
+
 const mapDispatchToProps = (dispatch) => ({
     // envoi du formulaire
     handleUpdatedProfilFormSubmit: (event) => {
@@ -15,6 +24,17 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('Je lance une action SUBMIT_UPDATED_PROFIL');
     dispatch(submitUpdatedProfil());
   },
+  formSubmitPicture: (event) => {
+    // on ne veut pas que la page se recharge
+    event.preventDefault();
+    console.log('Je lance une action SUBMIT_pICTURE');
+    dispatch(submitPicture());
+  },
+
+  onChange: (event) => {
+    console.log(event.target.value);
+    dispatch(changePictureInput(event.target.value));
+  },
 });
 
-export default connect(null, mapDispatchToProps)(UpdatedProfil);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdatedProfil);

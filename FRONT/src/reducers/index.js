@@ -17,8 +17,12 @@ import myresearchReducer  from './myResearch';
 import announcementsReducer  from './announcements';
 import paramsFieldReducer  from './paramsField';
 import settingsPageReducer  from './settingsPage';
-import updatedProfilReducer  from './profilField';
+import profilFieldReducer  from './profilField';
 import profilReducer from './profil';
+import updatedProfilReducer from './updatedProfil';
+import messagingReducer from './messaging';
+
+
 
 
 const rootReducer = combineReducers({
@@ -44,9 +48,13 @@ const rootReducer = combineReducers({
  
   page : settingsPageReducer,
 
-  updatedProfil : updatedProfilReducer, 
+  updatedProfil : profilFieldReducer, 
 
   profil : profilReducer,
+
+  picture : updatedProfilReducer,
+
+  message : messagingReducer,
 });
 
 export default rootReducer;
