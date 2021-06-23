@@ -6,14 +6,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
-import SettingsPage from 'src/containers/SettingsPage';
+import Setting from 'src/containers/SettingsPage';
 import Favorites from 'src/containers/Favorites';
 import Announcements from 'src/containers/Announcements';
 import Profil from 'src/containers/Profil';
 import MyResearch from 'src/containers/MyResearch';
 import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
-
+import Messaging from 'src/containers/Messaging';
 
 //import AdForm from 'src/containers/adForm';
 
@@ -32,13 +32,13 @@ const App = () => (
       <Route excat path="/SignupPage">
         <SignupPage />
       </Route>
-     {/*  {isLogged && (
+      {/*  {isLogged && (
       <> */}
-     {/* <Route exact path="/AdForm">
+      {/* <Route exact path="/AdForm">
         <AdForm />
       </Route>*/}
       <Route excat path="/SettingsPage">
-        <SettingsPage />
+        <Setting />
       </Route>
       <Route excat path="/Favorites">
         <Favorites />
@@ -58,8 +58,11 @@ const App = () => (
       <Route excat path="/UpdatedProfil">
         <UpdatedProfil />
       </Route>
-   {/*   </>
-      )} */} 
+      <Route excat path="/Messagerie">
+        <Messaging />
+      </Route>
+      {/*   </>
+      )} */}
       <Route>
         <Error />
       </Route>
