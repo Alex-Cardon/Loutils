@@ -248,7 +248,7 @@ router.route('/messages/:id(\\d+)')
  * @returns {Error} 401 - Une erreur indiquant que les deux mots de passe sont différents
  * @returns {Error} 409 - Une erreur indiquant que l'utilisateur existe déjà
  */
-router.post('/register', validate.body(schemas.insertASchema), validUserInfo, userController.register);
+router.post('/register', validUserInfo, userController.register);
 /**
  * Se connecter
  * @route POST /login
@@ -258,7 +258,7 @@ router.post('/register', validate.body(schemas.insertASchema), validUserInfo, us
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 401 - Une erreur indiquant que la combinaison mail/mdp n'est pas correct
  */
-router.post('/login', validate.body(schemas.loginASchema), validUserInfo, userController.login);
+router.post('/login', validUserInfo, userController.login);
 
 
 /**
