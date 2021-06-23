@@ -13,9 +13,9 @@ module.exports = {
     },
 
 
-    async findById(id, user_id) {
+    async findById(id/*, user_id*/) {
         const result = await client.query(`SELECT * FROM "ad" 
-        WHERE "id" = $1 AND "user_id" = $2`, [id, user_id]);
+        WHERE "id" = $1 `, [id/*, user_id*/]);
         return result.rows;
     },
 

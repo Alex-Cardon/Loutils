@@ -50,15 +50,15 @@ module.exports = {
      */
     async getByUserId(req, res){
         try{
-
+            console.log(req.user.user.user_id);
             const user = req.user.user.user_id;
-
-            if(!user_id){
+            console.log(user);
+            if(!user){
                 return res.status(401).json({
                     msg: "Accès non autorisé, veuillez vous connecter"
                   });
             };
-
+            console.log(user);
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
                 return res.status(403).json({
@@ -255,15 +255,15 @@ module.exports = {
                   });
             };
 
-            const user_id = req.user.user.user_id;
+            /*const user_id = req.user.user.user_id;
 
             if(!user_id){
                 return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
-            };
+            };*/
 
-            const result = await adDataMapper.findById(id, user_id);
+            const result = await adDataMapper.findById(id/*, user_id*/);
             res.status(200).json({ result });
         } catch (error) {
             console.trace(error);

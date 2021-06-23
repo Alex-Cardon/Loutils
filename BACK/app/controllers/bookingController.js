@@ -78,8 +78,12 @@ module.exports = {
      */
     async getBooking(req, res) {
         try {
+            console.log(req.body.ad_id);
+
             const { ad_id } = req.body;
 
+            console.log(ad_id);
+            
             if(!ad_id){
                 return res.status(405).json({
                     msg: "L'identifiant de l'annonce est inconnu"

@@ -48,17 +48,6 @@ module.exports = {
         return result.rows;
     },
 
-    async createAnAccount(post) {
-    const result = await client.query(`INSERT INTO "user" 
-    ("name", "email", "password", "phone", "role") 
-    VALUES($1, $2, $3, $4, $5) RETURNING *`, [post.name, post.email, post.password, post.phone, post.role]);
-
-    if (!result.rows) {
-        return null;
-    }
-    return result.rows[0];
-    },
-
     async patchUserInfo(id, name, email) {
         const result = await client.query(`UPDATE "user"
         SET "name" = $1,
