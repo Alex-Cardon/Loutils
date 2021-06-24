@@ -9,8 +9,6 @@ import {
   selectImage,
 } from 'src/actions/adForm';
 
-import { changeAdField, changeToolState, submitAdLogin, uploadFile } from 'src/actions/adForm';
-
 
 import AdForm from 'src/components/AdForm';
 

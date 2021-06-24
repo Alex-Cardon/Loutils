@@ -50,15 +50,12 @@ module.exports = {
      */
     async getByUserId(req, res){
         try{
-            console.log(req.user.user.user_id);
             const user = req.user.user.user_id;
-            console.log(user);
             if(!user){
                 return res.status(401).json({
                     msg: "Accès non autorisé, veuillez vous connecter"
                   });
             };
-            console.log(user);
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
                 return res.status(403).json({

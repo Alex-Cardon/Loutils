@@ -28,7 +28,7 @@ module.exports = {
         expiresIn: 600,
     });
        //create dynamic URL
-       const url = `http://localhost:3000/confirmation/${emailToken}`;
+       const url = `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/confirmation/${emailToken}`;
 
        //send email
        await transporter.sendMail({

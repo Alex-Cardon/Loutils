@@ -1,8 +1,8 @@
 
-import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, SELECT_IMAGE } from 'src/actions/adForm';
 
-import { attempt } from 'joi';
-import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, INPUT_DATE, UPLOAD_FILE } from 'src/actions/adForm';
+
+
+import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, INPUT_DATE, UPLOAD_FILE, SELECT_IMAGE } from 'src/actions/adForm';
 
 
 const initialState = {
