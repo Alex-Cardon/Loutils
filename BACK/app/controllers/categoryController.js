@@ -23,7 +23,7 @@ module.exports = {
     async getCategories(req, res) {
         try {
             const result = await categoryDatamapper.getCategories();
-            res.status(200).json({ result })
+            res.status(200).json({ data : result })
         } catch (error) {
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });

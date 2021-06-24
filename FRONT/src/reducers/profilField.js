@@ -6,6 +6,7 @@ export const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
+  msg:"",
 
 };
 //! récupération de l'action pour injecter dans le state 
@@ -22,6 +23,7 @@ const reducer = (state = initialState, action ) => {
       case UPDATED_PROFIL_SUCCESS:   
       return {
         ...state,
+        msg:action.msg,
         name: '',
         email: '',
         password: '',

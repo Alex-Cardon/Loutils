@@ -8,10 +8,12 @@ const signupMiddleware = (store) => (next) => (action) => {
     case SUBMIT_SETTINGS: {
       const state = store.getState();
       axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/register', {
+       
         "name": state.settings.name,
         "email": state.settings.email,
         "password": state.settings.password,
         "confirmPassword": state.settings.confirmPassword,
+
       })
         .then((response) => {
           console.log('je suis la réponse de registrer', response.data);

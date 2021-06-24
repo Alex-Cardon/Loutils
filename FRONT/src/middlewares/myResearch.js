@@ -9,7 +9,8 @@ import {
 const myResearchMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_MY_RESEARCH:
-      axios.post(`http://localhost:3000/search`, {
+
+      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/savedResearch`)
         title: state.my.title,
         category: state.my.category,
         postcode: state.my.postcode,
