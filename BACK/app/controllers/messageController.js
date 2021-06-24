@@ -92,7 +92,7 @@ module.exports = {
                 return next();
             }
     
-            res.json({data : post})
+            res.status200.json({data : post})
 
         }catch (error) {
             console.trace(error);
@@ -122,10 +122,10 @@ module.exports = {
 
             if(user_id !== sender_id) {
                 await messageDataMapper.recipientDeleted(msg_id);
-                res.json({"msg" : "message reçu, supprimé"});
+                res.status(200).json({msg : "message reçu, supprimé"});
             } else {
                 await messageDataMapper.senderDeleted(msg_id);
-                res.json({"msg" : "message envoyé, supprimé"});
+                res.status(200).json({msg : "message envoyé, supprimé"});
             };
 
         } catch (error) {

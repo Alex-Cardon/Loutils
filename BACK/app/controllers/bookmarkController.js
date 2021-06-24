@@ -38,7 +38,7 @@ module.exports = {
                     msg: "L'identifiant de l'annonce est inconnu"
                   });
             }
-            res.json({data : ad})
+            res.status(200).json({data : ad})
 
         }catch (error) {
             console.trace(error);
@@ -78,7 +78,7 @@ module.exports = {
                 return next();
             }
     
-            res.json({data : post})
+            res.status(200).json({data : post})
 
         }catch (error) {
             console.trace(error);
@@ -115,7 +115,7 @@ module.exports = {
 
             const result = await bookmarkDataMapper.deleteOneBookmark(ad_id, user_id);
 
-            res.json({"msg" : "Favori supprimé"});
+            res.status(200).json({msg : "Favori supprimé"});
         } catch (error) {
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });

@@ -38,7 +38,7 @@ module.exports  = {
             const dirname = path.resolve();
             const fullfilepath = path.join(dirname,
                 image.filepath);
-            res
+            res.status(200)
                 .type(image.mimetype)
                 .sendFile(fullfilepath);
 
@@ -64,7 +64,7 @@ module.exports  = {
                 return next();
             }
 
-            res.json({data : postImage});
+            res.status(200).json({data : postImage});
         }catch (error) {
             console.trace(error);
             res.json({ error });
