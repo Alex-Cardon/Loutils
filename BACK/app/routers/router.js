@@ -17,6 +17,7 @@ const pictureController = require('../controllers/pictureController');
 const bookingController = require('../controllers/bookingController');
 const adminController = require('../controllers/adminController');
 const modoContoller = require('../controllers/modoContoller');
+const downloadController = require('../controllers/downloadController');
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
 
@@ -535,6 +536,14 @@ router.route('/admin/user/:id')
          * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'utilisateur est inconnu
          */
         .delete(authorizationLvl3,adminController.deleteOneUser);
+
+/**
+ * Téléchargement du contrat type de location entre particuliers
+ * @route GET /download
+ * @returns {Document.pdf} 200 - Document PDF
+ * @returns {Error} 500 - Une erreur serveur
+ */
+router.get('/download', downloadController.downloadFile)
 
 
 
