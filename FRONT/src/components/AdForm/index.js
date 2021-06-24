@@ -4,35 +4,9 @@ import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
 import AdFormText from './adFormText';
-import { Icon } from 'semantic-ui-react';
+
 import Proptypes from 'prop-types';
 import './style.scss';
-
-//import { uploadFile } from '../../actions/adForm';
-/*
-
-source : https://github.com/pqina/react-filepond <- laisser commenter, c'est pour info
-
-import ReactDOM from 'react-dom'
-
-// Import React FilePond
-import { FilePond, registerPlugin } from "react-filepond";
-
-// Import FilePond styles
-import "filepond/dist/filepond.min.css";
-
-// Import the Image EXIF Orientation and Image Preview plugins
-// Note: These need to be installed separately
-import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-
-// Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
-*/
-
-
-
 
 const AdForm = ({
   uploadHandler,
@@ -52,22 +26,8 @@ const AdForm = ({
     handleLogin();
   };
 
-  /*const files = [
-      {
-        source: "index.html",
-        options: {
-          type: "local"
-        }
-      }
-    ]*/
-
-  /*handleInit() {
-    console.log("FilePond instance has initialised", this.pond);
-  }*/
-
   const handleImageSelected = (event) => {
     const file = event.target.files[0];
-    console.log(file);
     onImageSelected(file);
   };
   return (
@@ -152,6 +112,8 @@ const AdForm = ({
             type="file"
             accept='.jpg, .png, .jpeg'
             onChange={handleImageSelected}
+            className="uploadInput"
+            
           />
           <button onClick={uploadHandler}>Upload!</button>
         </div>
@@ -166,6 +128,7 @@ const AdForm = ({
                     <Diary />
   </div>*/}
       </form>
+      
       <Footer />
     </div>
 

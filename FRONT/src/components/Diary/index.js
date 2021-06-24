@@ -12,18 +12,18 @@ const Diary = ({handleDateChange, handleValidation, date}) => {
           
             onChange={handleDateChange}
             selectRange={true}
-            value={date}
+            defaultValue={date}
          />
         
         <button onClick={handleValidation}>Valider</button>
         
-    </div>
+      </div>
     );
 };
 
 Diary.propTypes = {
   showDate: PropTypes.bool.isRequired,
-  date: PropTypes.object.isRequired, 
+  date: PropTypes.instanceOf(Date).isRequired,
   handleDateChange: PropTypes.func.isRequired,
   handleValidation: PropTypes.func.isRequired,
   };
