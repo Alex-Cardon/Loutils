@@ -105,7 +105,7 @@ module.exports = {
     },
 
     async getTenAds() {
-        const result = await client.query(`SELECT * FROM "ad" ORDER BY RANDOM() LIMIT 2`)
+        const result = await client.query(`SELECT * FROM "ad" ORDER BY RANDOM() LIMIT 6`)
         return result.rows;
     },
 
