@@ -30,7 +30,6 @@ const imageUpload = multer({
         }
 });
 
-
 /**
  * Récupération des radius prédéfinis
  * @route GET /radius
@@ -152,7 +151,7 @@ router.route('/account/ad/:id(\\d+)')
 /**
  * Afficher les annonces mises en favori par l'utilisateur connecté
  * @route GET /bookmarks
- * @returns {bookmarkController} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, le prix, l'état, la caution, la description, le type d'annonce, la code postal, l'identifiant de la catégorie, l'identifiant de l'utilisateur, la date de création, la date de mise à jour, le nom de l'utilisateur, son mail, son mot de passe crypté et le role
+ * @returns {bookmarkController} 200 - L'identifiant de l'annonce, son titre, l'identifiant de la photo, le prix, l'état, la caution, la description, le type d'annonce, la code postal, l'identifiant de la catégorie, l'identifiant de l'utilisateur, la date de création, la date de mise à jour
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 401 - Une erreur indiquant que l'accès n'est pas autorisé et que la connexion est nécessaire
  * @returns {Error} 405 - Une erreur indiquant que l'identifiant de l'annonce est inconnu'
