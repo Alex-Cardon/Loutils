@@ -4,7 +4,8 @@ const insertSchema = Joi.object({
     //Créer un compte
     name: Joi.string().required().min(3),
     email: Joi.string().email().required(),
-    password: Joi.string().min(2).required()
+    password: Joi.string().min(2).required(),
+    confirmPassword: Joi.string().min(2).required(),
 }).required();
 
 const loginSchema = Joi.object({

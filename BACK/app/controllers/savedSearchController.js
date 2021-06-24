@@ -42,7 +42,7 @@ module.exports = {
             if(!get){
                 return next();
             }
-            res.json({data : get})
+            res.status(200).json({data : get})
 
         }catch (error) {
             console.trace(error);
@@ -78,7 +78,7 @@ module.exports = {
                 return next();
             }
     
-            res.json({data : post})
+            res.status(200).json({data : post})
 
 
         }catch(error){
@@ -131,7 +131,7 @@ module.exports = {
             };
             const result = await savedSearchDataMapper.deleteOneSavedResearch(id);
 
-            res.json({"msg" : "recherche supprimée"});
+            res.status(200).json({msg : "recherche supprimée"});
         }catch(error){
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });

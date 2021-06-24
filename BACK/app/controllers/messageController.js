@@ -28,7 +28,6 @@ module.exports = {
     async getSenderMessageByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
-            console.log(user);
 
             if(!user){
                 return res.status(401).json({
@@ -55,7 +54,6 @@ module.exports = {
     async getRecievedMsgByUserId(req, res, next){
         try{
             const user = req.user.user.user_id;
-            console.log(user);
 
             if(!user){
                 return res.status(401).json({
@@ -94,7 +92,7 @@ module.exports = {
                 return next();
             }
     
-            res.json({data : post})
+            res.status200.json({data : post})
 
         }catch (error) {
             console.trace(error);
@@ -124,10 +122,10 @@ module.exports = {
 
             if(user_id !== sender_id) {
                 await messageDataMapper.recipientDeleted(msg_id);
-                res.json({"msg" : "message reçus, supprimé"});
+                res.status(200).json({msg : "message reçu, supprimé"});
             } else {
                 await messageDataMapper.senderDeleted(msg_id);
-                res.json({"msg" : "message envoyé, supprimé"});
+                res.status(200).json({msg : "message envoyé, supprimé"});
             };
 
         } catch (error) {

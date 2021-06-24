@@ -17,7 +17,7 @@ module.exports = {
             };
 
             const result = await adDataMapper.moderated(id);
-            res.status(200).json({ result });
+            res.status(200).json({ data : result });
         } catch (error) {
             console.log(error);
             res.json({ error });
@@ -40,7 +40,7 @@ module.exports = {
             };
 
             const result = await adDataMapper.deleteAd(id);
-            res.status(200).json({"msg" : "annonce supprimée"});
+            res.status(200).json({msg : "annonce supprimée"});
         } catch (error) {
             console.log(error);
             res.json({ error });
@@ -54,7 +54,7 @@ module.exports = {
     async getAllNonModAd(_, res) {
         try {
             const result = await adDataMapper.getAllNonModAd();
-            res.status(200).json({ result });
+            res.status(200).json({ data : result });
         } catch (error) {
             console.log(error);
             res.json({ error });
@@ -77,7 +77,7 @@ module.exports = {
             };
 
             const result = await adDataMapper.ModofindById(id);
-            res.status(200).json({ result });
+            res.status(200).json({ data : result });
         } catch (error) {
             console.log(error);
             res.json({ error });

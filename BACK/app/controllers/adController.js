@@ -41,7 +41,7 @@ module.exports = {
      */
     async radiusArray(_, res) {
         const radiusList = await [5, 10, 20, 50, 'fruits et légumes'];
-        res.json({ radiusList });
+        res.status(200).json({ data : radiusList });
       },
 
     /**
@@ -50,22 +50,19 @@ module.exports = {
      */
     async getByUserId(req, res){
         try{
-
             const user = req.user.user.user_id;
-
-            if(!user_id){
+            if(!user){
                 return res.status(401).json({
                     msg: "Accès non autorisé, veuillez vous connecter"
                   });
             };
-
             const ad = await adDataMapper.findByUserId(user);
             if(!ad){
                 return res.status(403).json({
                     msg: "Accès non autorisé"
                   });
             }
-            res.status(200).json({data : ad})
+            res.status(200).json({ data : ad })
 
         }catch (error) {
             console.trace(error);
@@ -106,7 +103,7 @@ module.exports = {
     
             if(!post){
                 return res.status(400).json({
-                    'error': 'Veuillez remplir les champs de l\'annonce'
+                    error: 'Veuillez remplir les champs de l\'annonce'
                   });
             }
     
@@ -146,7 +143,7 @@ module.exports = {
 
             const result = await adDataMapper.updateAd(title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id, id);
 
-            res.status(200).json({ result });
+            res.status(200).json({ data : result });
         } catch (error) {
             console.trace(error);
             res.json({ error });
@@ -199,12 +196,12 @@ module.exports = {
             if (!category) {
                 const result = await adDataMapper.getByTitle(title, trimmed_cp)
                 res.status(200).json({
-                    result
+                    data : result
                 });
             } else {
                 const result = await adDataMapper.getByTitleAndCat(category, trimmed_cp, title);
                 res.status(200).json({
-                    result
+                    data : result
                 });
             }
         } catch (error) {
@@ -233,7 +230,7 @@ module.exports = {
             
             const result = await adDataMapper.deleteOneAd(id, user_id);
 
-            res.json({"msg" : "annonce supprimée"});
+            res.status(200).json({msg : "annonce supprimée"});
         }catch(error){
             console.trace(error);
             res.status(500).json({ error: `Server error, please contact an administrator` });
@@ -255,16 +252,16 @@ module.exports = {
                   });
             };
 
-            const user_id = req.user.user.user_id;
+            /*const user_id = req.user.user.user_id;
 
             if(!user_id){
                 return res.status(401).json({
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
-            };
+            };*/
 
-            const result = await adDataMapper.findById(id, user_id);
-            res.status(200).json({ result });
+            const result = await adDataMapper.findById(id/*, user_id*/);
+            res.status(200).json({ data : result });
         } catch (error) {
             console.trace(error);
             req.status(500).json({ error: `Server error, please contact an administrator` });
@@ -278,7 +275,7 @@ module.exports = {
     async getRandAds(req, res) {
         try {
             const result = await adDataMapper.getTenAds();
-            res.status(200).json({ result });
+            res.status(200).json({ data : result });
         } catch (error) {
 
             console.trace(error);

@@ -13,9 +13,9 @@ module.exports = {
     },
 
 
-    async findById(id, user_id) {
+    async findById(id/*, user_id*/) {
         const result = await client.query(`SELECT * FROM "ad" 
-        WHERE "id" = $1 AND "user_id" = $2`, [id, user_id]);
+        WHERE "id" = $1 `, [id/*, user_id*/]);
         return result.rows;
     },
 
@@ -71,9 +71,9 @@ module.exports = {
     
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-     AND "ad"."title" LIKE $1 
+     AND LOWER("ad"."title") LIKE LOWER($1) 
      
-     AND "category"."name"= $2`, ['%' + title + '%', category]);
+     AND "category"."name"= $2 ORDER BY "created_at" ASC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -99,7 +99,7 @@ module.exports = {
     
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-     AND "ad"."title" LIKE $1`, ['%' + title + '%']);
+     AND LOWER("ad"."title") LIKE LOWER($1) ORDER BY "created_at" ASC`, ['%' + title + '%']);
 
         return (result.rows);
     },
