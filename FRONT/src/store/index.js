@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
+import { persistSore } from 'redux-persist';
+
 // j'importe le reducer la logique du store : une fonction qui chargera le state selon les actions
 import reducer from 'src/reducers';
 
@@ -34,6 +36,8 @@ const enhancers = composeEnhancers(
   applyMiddleware(diaryMiddleware),
 );
 // création du store
-const store = createStore(reducer, enhancers);
+export const store = createStore(reducer, enhancers);
 
-export default store;
+export const persistor = persistSore(store)
+
+export default {store, persistor };

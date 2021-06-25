@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import loginFormReducer from './loginForm';
 
 import adFormReducer from './adForm';
@@ -23,7 +26,11 @@ import updatedProfilReducer from './updatedProfil';
 import messagingReducer from './messaging';
 
 
-
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['annoucements']
+} 
 
 const rootReducer = combineReducers({
   diary: diaryReducer,
@@ -55,4 +62,4 @@ const rootReducer = combineReducers({
   message : messagingReducer,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);
