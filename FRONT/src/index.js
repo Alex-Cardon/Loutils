@@ -17,13 +17,13 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 const rootReactElement = (
-  <BrowserRouter>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </PersistGate> 
     </Provider>
-  </BrowserRouter>
 );
 
 const target = document.getElementById('root');

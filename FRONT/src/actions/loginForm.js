@@ -21,10 +21,10 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
-export const loginSuccess = (apiData) => ({
+export const loginSuccess = (name, token) => ({
   type: LOGIN_SUCCESS,
-  name: apiData.name,
-  token: apiData.token,
+  name,
+  token,
 });
 
 export const loginError = () => ({});
