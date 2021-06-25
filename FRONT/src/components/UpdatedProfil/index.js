@@ -52,8 +52,8 @@ const UpdatedProfil = ({
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
-    <form onSubmit={formSubmitPicture} method="post" enctype="multipart/form-data">
-     {/*<div>
+    {/*<form onSubmit={formSubmitPicture} method="post" enctype="multipart/form-data">
+     <div>
         <label for="file">Sélectionner une photo de profil</label>
         <input 
           value={picture}
@@ -63,8 +63,8 @@ const UpdatedProfil = ({
       </div>
       <div>
         <button type="submit" >Envoyer</button>
-      </div>*/} 
-    </form>
+      </div>
+    </form>*/} 
     <Footer />
   </div>
 );

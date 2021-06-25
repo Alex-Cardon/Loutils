@@ -9,7 +9,7 @@ import diaryReducer from './diary';
 //! j'import mon réducer 
 import settingsFieldReducer from './settingsField';
 
-import searchBarReducer from './searchBar';
+
 import selectSearchBarReducer  from './selectSearchBar';
 import contentReducer  from './content';
 import favoritesReducer  from './favorites';
@@ -31,8 +31,6 @@ const rootReducer = combineReducers({
   user: loginFormReducer,
   //! je crée mon state 
   settings : settingsFieldReducer,
-
-  search : searchBarReducer,
 
   research : selectSearchBarReducer,
 

@@ -12,7 +12,7 @@ import './styles.scss';
   { key: 'products', text: 'Scie Borg', value: 'products' },
 ]
 
-const distance = [
+const radius = [
   { key: 'Rayon', text: 'Rayon', value: 'Rayon' },
   { key: '5', text: '5 kms', value: '5' },
   { key: '10', text: '10 kms', value: '10' },
@@ -26,7 +26,9 @@ const SelectSearchBar = ({
   onSearchLocalisationChange,
   handleResearh,
   category,
-  radius 
+  radius,
+  handleCategory,
+  handleRadius,
 }) => (
 
   <Input className='selectSearchBar'
@@ -35,14 +37,14 @@ const SelectSearchBar = ({
     type='text'
     placeholder="Nom de l'outil" action>
     <input />
-    <Select compact options={category} defaultValue='Catégories' placeholder='Catégories'/>
+    <Select onClick={handleCategory} compact options={category} defaultValue='Catégories' placeholder='Catégories' />
     <Input
       onChange={onSearchLocalisationChange}
       value={inputLocalisation}
       type='text'
       placeholder='Code Postal' action>
     </Input>
-    <Select compact options={radius} defaultValue='Rayon' placeholder='Rayon' />
+    <Select onClick={handleRadius} compact options={radius} defaultValue='Rayon' placeholder='Rayon' />
     <Button type='button' onClick={handleResearh}>Search</Button>
   </Input>
 );
@@ -55,6 +57,8 @@ SelectSearchBar.propTypes = {
   onSearchToolsChange: PropTypes.func.isRequired,
   onSearchLocalisationChange: PropTypes.func.isRequired,
   handleResearh: PropTypes.func.isRequired,
+  handleCategory: PropTypes.func.isRequired,
+  handleRadius: PropTypes.func.isRequired,
 };
 
 export default SelectSearchBar;

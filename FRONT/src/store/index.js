@@ -5,6 +5,7 @@ import reducer from 'src/reducers';
 
 import loginFormMiddleware from 'src/middlewares/loginForm';
 import signupMiddleware from 'src/middlewares/signupPage';
+import selectSearchBarMiddleware from 'src/middlewares/selectSearchBar';
 import announcementsMiddleware from 'src/middlewares/announcements';
 import contentMiddleware from 'src/middlewares/content';
 import favoritesMiddleware from 'src/middlewares/favorites';
@@ -21,6 +22,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(
   applyMiddleware(loginFormMiddleware),
   applyMiddleware(signupMiddleware),
+  applyMiddleware(selectSearchBarMiddleware),
   applyMiddleware(announcementsMiddleware),
   applyMiddleware(contentMiddleware),
   applyMiddleware(favoritesMiddleware),

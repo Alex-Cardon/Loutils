@@ -1,4 +1,4 @@
-import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS } from 'src/actions/announcements';
+import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS, DELETE_BOOKING_SUCCESS } from 'src/actions/announcements';
 
 //! state
 export const initialState = {
@@ -8,7 +8,7 @@ export const initialState = {
   description: "",
   price: "",
   loading: false,
-
+  msg:"",
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
@@ -19,15 +19,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
-      case GET_ANNOUNCEMENTS_SUCCESS:
+    case GET_ANNOUNCEMENTS_SUCCESS:
+    return {
+      ...state,
+      id: action.id,
+      image: action.image,
+      title: action.title,
+      description: action.title,
+      price: action.price,
+      loading: false,
+    };
+    case DELETE_BOOKING_SUCCESS:
       return {
-        ...state,
-        id: action.id,
-        image: action.image,
-        title: action.title,
-        description: action.title,
-        price: action.price,
-        loading: false,
+      ...state,
+      msg: action.msg,
       };
     default:
       return state;

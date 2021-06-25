@@ -3,7 +3,6 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
-
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
 import Setting from 'src/containers/SettingsPage';
@@ -25,7 +24,9 @@ import AdForm from 'src/containers/adForm';
 import Error from 'src/components/Error';
 
 
+
 import './styles.scss';
+
 
 // == Composant
 const App = () => (

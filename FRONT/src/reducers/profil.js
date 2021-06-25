@@ -1,4 +1,4 @@
-import { GET_PROFIL, GET_PROFIL_SUCCESS } from 'src/actions/profil';
+import { GET_PROFIL, GET_PROFIL_SUCCESS, DELETE_ACCOUNT_SUCCESS } from 'src/actions/profil';
 
 //! state
 export const initialState = {
@@ -8,7 +8,7 @@ export const initialState = {
   description: "",
   description: "",
   loading: false,
-
+  msg:""
 }; // TODO en construction
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +29,11 @@ const reducer = (state = initialState, action) => {
         description: state,
         loading: false,
       };
+      case DELETE_ACCOUNT_SUCCESS:
+        return {
+        ...state,
+        msg: action.msg,
+        };
     default:
       return state;
   }

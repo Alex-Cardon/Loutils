@@ -2,7 +2,14 @@ import { connect } from 'react-redux';
 
 import SelectSearchBar from 'src/components/SelectSearchBar';
 
-import { changeCategoriesInput, changeLocalisationInput, research } from 'src/actions/selectSearchBar';
+import { 
+  changeCategoriesInput, 
+  changeLocalisationInput, 
+  researchTitle, 
+  researchPostcode,
+  getCategories,
+  getRadius 
+} from 'src/actions/selectSearchBar';
 
 
 //! je recupère mes proptypes du component index.js de SignupPage 
@@ -11,10 +18,10 @@ import { changeCategoriesInput, changeLocalisationInput, research } from 'src/ac
 
 //!cela sera une donnée
 const mapStateToProps = (state) => ({
-  inputTools: state.research.tools ,
-  inputLocalisation: state.research.localisation,
-  category:state.research.category,
-  distance: state.research.distance,
+  inputTools: state.research.title ,
+  inputLocalisation: state.research.postcode,
+  categores:state.research.categories,
+  radius: state.research.radius,
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,10 +30,25 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeCategoriesInput(event.target.value));
   },
   onSearchLocalisationChange: (event) => {
+    console.log('je lance changeLocalisationInput');
     dispatch(changeLocalisationInput(event.target.value));
   },
-  handleResearh: () => {
-    dispatch(research());
+  handleResearh: (event) => {
+    event.preventDefault();
+    console.log('je lance researchTitle et researchPostcode')
+    dispatch(researchTitle());
+    dispatch(researchPostcode());
+    
+  },
+  handleCategory: (event) => {
+    event.preventDefault();
+    console.log('je lance getCategories');
+    dispatch(getCategories());
+  },
+  handleRadius: (event) => {
+    event.preventDefault();
+    console.log('je lance getRadius');
+    dispatch(getRadius());
   },
 });
 
