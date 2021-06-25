@@ -2,12 +2,10 @@ import { CHANGE_CATEGORIES_INPUT, CHANGE_LOCALISATION_INPUT } from 'src/actions/
 
 //! state
 export const initialState = {
-  tools:"",
-  localisation: "",
-  category: "",
-  distance:"",
-  
-  
+  title:"",
+  categories: "",
+  postcode: "",
+  radius:"",
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
@@ -18,13 +16,13 @@ const reducer = (state = initialState, action ) => {
     
       return {
         ...state, 
-        tools: action.value,   
+        title: action.value,   
       };
       case CHANGE_LOCALISATION_INPUT:
       
       return {
         ...state, 
-        localisation: action.value,   
+        postcode: action.value,   
       };
     default:
       return state;
@@ -32,7 +30,3 @@ const reducer = (state = initialState, action ) => {
 };
 
 export default reducer;
-
-//!
-//! Ne pas oublier de le créer dans index.js du dossier Réducers
-//!

@@ -7,7 +7,7 @@ export const getFavorites = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getFavoritesSuccess = (recipes) => ({
+export const getFavoritesSuccess = () => ({
   type: GET_FAVORITES_SUCCESS,
   id: state.id,
   image: state.image,

@@ -8,7 +8,7 @@ export const getMyResearch = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getMyResearchSuccess = (recipes) => ({
+export const getMyResearchSuccess = () => ({
   type: GET_MY_RESEARCH_SUCCESS,
   id: state.id,
   image: state.image,

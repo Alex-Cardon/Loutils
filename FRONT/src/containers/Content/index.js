@@ -1,15 +1,23 @@
 import { connect } from 'react-redux';
 
 import Content from 'src/components/Content';
-// TODO en cpours de construction
+import { getContent } from 'src/actions/content';
+
 const mapStateToprops = (state) => ({
-  id: state.announcements.id,
-  title: state.announcements.title,
-  description: state.announcements.description,
-  price: state.announcements.price,
+  /*id: state.card.id,
+  title: state.card.title,
+  description: state.card.description,
+  price: state.card.price,*/
+  content:state.card.content,
 });
 
-export default connect(mapStateToprops)(Content);
+const mapDispatchToProps = (dispatch) =>({
+  loadContent:() => {
+    dispatch(getContent());
+  }
+});
+
+export default connect(mapStateToprops, mapDispatchToProps)(Content);
 
 
 
