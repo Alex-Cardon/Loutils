@@ -12,7 +12,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 
     handleDateChange: (date) => {
-  
+      // console.log("startDate:", date[0]);
+      // console.log("endDate:", date[1]);
+      
       dispatch(inputDate(date));
     },
 

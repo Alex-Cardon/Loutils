@@ -13,6 +13,7 @@ import myResearchMiddleware from 'src/middlewares/myResearch';
 import paramsMiddleware from 'src/middlewares/params';
 import settingsPageMiddleware from 'src/middlewares/settingsPage';
 import profilMiddleware from 'src/middlewares/profil';
+import diaryMiddleware from 'src/middlewares/diary';
 
 
 
@@ -30,6 +31,7 @@ const enhancers = composeEnhancers(
   applyMiddleware(paramsMiddleware),
   applyMiddleware(settingsPageMiddleware),
   applyMiddleware(profilMiddleware),
+  applyMiddleware(diaryMiddleware),
 );
 // création du store
 const store = createStore(reducer, enhancers);

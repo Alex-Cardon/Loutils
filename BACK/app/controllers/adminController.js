@@ -10,7 +10,7 @@ module.exports = {
         try {
             const roleList = ['user', 'modo', 'admin'];
             res.status(200).json({
-                roleList
+                data : roleList
             });
         } catch (error) {
             console.log(error);
@@ -27,7 +27,7 @@ module.exports = {
         try {
             const result = await userDataMapper.getAllUsers();
             res.status(200).json({
-                result
+                data : result
             });
         } catch (error) {
             res.status(500).json({
@@ -51,7 +51,7 @@ module.exports = {
             };
             const result = await userDataMapper.findById(id);
             res.status(200).json({
-                result
+                data : result
             });
         } catch (error) {
             res.status(500).json({

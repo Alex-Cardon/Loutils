@@ -15,7 +15,7 @@ const initialState = {
 
   selectedFile:null,
 
-  date: [new Date()],
+ // date: [new Date()],
 
 };
 
@@ -49,11 +49,11 @@ const reducer = (state = initialState, action) => {
               selectedFile: action.file,
             };
 
-        case INPUT_DATE:
-          return {
-            ...state,
-            date: action.date,
-          };
+        // case INPUT_DATE:
+        //   return {
+        //     ...state,
+        //     date: action.date,
+        //   };
 
           case UPLOAD_FILE:
             return {

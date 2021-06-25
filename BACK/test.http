@@ -134,7 +134,6 @@ Content-Type: application/json
 ###JSDOC OK- Voir les messages et leurs détails de l'utilisateur X http://localhost:3000/account/2/messages
 GET http://localhost:3000/messages
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEyLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDQzNTk5NywiZXhwIjoxNjI0NDc5MTk3fQ.iOOBsRL0Gb2C5gRo8p7jD-BtYBc3N5fivj8ixiH6MLQ
-
 Content-Type: application/json
 
 ###JSDOC OK- Voir les messages envoyés par l'utilisateur X http://localhost:3000/account/2/messages
@@ -155,7 +154,7 @@ Content-Type: application/json
 }
 
 ###JSDOC - supprimer un message en tant que monsieur x
-DELETE http://localhost:3000/messages/3
+PATCH http://localhost:3000/messages/3
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEyLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDQzNTk5NywiZXhwIjoxNjI0NDc5MTk3fQ.iOOBsRL0Gb2C5gRo8p7jD-BtYBc3N5fivj8ixiH6MLQ
 Content-Type: application/json
 
@@ -349,3 +348,6 @@ Content-Type: application/json
 
 ###Supprimer un utilisateur en tant qu'administrateur
 DELETE http://localhost:3000/admin/user/5
+
+###Supprimer un utilisateur en tant qu'administrateur
+GET http://localhost:3000/download
