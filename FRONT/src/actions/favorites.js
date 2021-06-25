@@ -7,11 +7,7 @@ export const getFavorites = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getFavoritesSuccess = () => ({
+export const getFavoritesSuccess = (apiData) => ({
   type: GET_FAVORITES_SUCCESS,
-  id: state.id,
-  image: state.image,
-  title: state.title,
-  description: state.description,
-  price: state.price,
+  apiData,
 });

@@ -14,8 +14,8 @@ const loginFormMiddleware = (store) => (next) => (action) => {
           "password": state.user.password,
         })
         .then((response)=>{
-            console.log(response.data);
-            store.dispatch(loginSuccess(response.data))
+            const { name , token} = response.data
+            store.dispatch(loginSuccess(name, token))
         })
         .catch((error)=>console.log(error))
         break;

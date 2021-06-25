@@ -1,15 +1,20 @@
 import { connect } from 'react-redux';
 
+import { getFavorites } from 'src/actions/favorites';
+
 import Favorites from 'src/components/Favorites';
 // TODO en cpours de construction
 const mapStateToprops = (state) => ({
-  id: state,
-  title: state,
-  description: state,
-  price: state,
+  favorites:state.card.favorites,
 });
 
-export default connect(mapStateToprops)(Favorites);
+const mapDispatchToProps = (dispatch) =>({
+  loadFavorites:() => {
+    dispatch(getFavorites());
+  }
+});
+
+export default connect(mapStateToprops, mapDispatchToProps)(Favorites);
 
 
 

@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import loginFormReducer from './loginForm';
 
 import adFormReducer from './adForm';
@@ -21,8 +24,7 @@ import profilFieldReducer  from './profilField';
 import profilReducer from './profil';
 import updatedProfilReducer from './updatedProfil';
 import messagingReducer from './messaging';
-
-
+import persistStorageReducer from './persist';
 
 
 const rootReducer = combineReducers({
@@ -53,6 +55,7 @@ const rootReducer = combineReducers({
   picture : updatedProfilReducer,
 
   message : messagingReducer,
+  persistStorageReducer: persistStorageReducer,
 });
 
 export default rootReducer;

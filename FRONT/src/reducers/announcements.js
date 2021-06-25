@@ -2,13 +2,7 @@ import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS, DELETE_BOOKING_SUCCESS } 
 
 //! state
 export const initialState = {
-  id: "",
-  image: "",
-  title: "",
-  description: "",
-  price: "",
-  loading: false,
-  msg:"",
+  announcements: {}, 
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
@@ -17,17 +11,11 @@ const reducer = (state = initialState, action) => {
     case GET_ANNOUNCEMENTS:
       return {
         ...state,
-        loading: true,
       };
     case GET_ANNOUNCEMENTS_SUCCESS:
     return {
       ...state,
-      id: action.id,
-      image: action.image,
-      title: action.title,
-      description: action.title,
-      price: action.price,
-      loading: false,
+      announcements: action.apiData
     };
     case DELETE_BOOKING_SUCCESS:
       return {
