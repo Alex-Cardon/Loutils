@@ -26,25 +26,6 @@ import { GET_FILE_UPLOAD } from 'src/actions/loginForm';
 
 const adFormMiddleware = (store) => (next) => (action) => {
 
-  // const handleFileUpload = (event) => {
-  //   let files = event.target.files;
-
-  //   let reader = new FileReader();
-  //   reader.readAsDataURL(files[0]);
-
-  //   reader.onload = (event) => {
-  //     console.warn("img data:", event.target.result);
-
-  //     const url = "http://localhost......";
-  //     const formData = {file: event.target.result}
-  //     return postMessage(url, FormData)
-  //       .then()
-  //   }
-
-  // };
-
-
-
   switch (action.type) {
     case GET_FILE_UPLOAD: {
 
