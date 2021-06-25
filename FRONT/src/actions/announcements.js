@@ -11,11 +11,7 @@ export const getAnnouncements = () => ({
 // action lorsque la réponse arrive
 export const getAnnouncementsSuccess = () => ({
   type: GET_ANNOUNCEMENTS_SUCCESS,
-  id: state.id,
-  image: state.image,
-  title: state.title,
-  description: state.description,
-  price: state.price,
+  apiData,
 });
 
 export const deleteBooking = () => ({
