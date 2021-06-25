@@ -13,7 +13,9 @@ module.exports = {
     },
 
     async postAnImage(filename, mimetype, size, filepath) {
-        const result = await client.query(`INSERT INTO "image_files" (filename, filepath, mimetype,size) VALUES ($1, $2, $3, $4) RETURNING *`, [filename, filepath, mimetype,size]);
+        const result = await client.query(`INSERT INTO "image_files" 
+        (filename, filepath, mimetype,size) 
+        VALUES ($1, $2, $3, $4) RETURNING "id" AS "picture_id"`, [filename, filepath, mimetype,size]);
        
         if (!result.rows) {
             return null;

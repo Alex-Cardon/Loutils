@@ -14,7 +14,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "rtw18982@eoopy.com",
+    "email": "sister38a_p289s@nafxo.com",
     "password": "louloudu31"
 }
 
@@ -24,8 +24,8 @@ GET http://localhost:3000/search
 Content-Type: application/json
 
 {
-    "title": "grosse",
-    "postcode": "74200",
+    "title": "Dimitriiiiiyyy",
+    "postcode": "59000",
     "radius": "50"
 }
 
@@ -311,15 +311,17 @@ Content-Type: application/json
 DELETE http://localhost:3000/admin/user/6
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEyLCJyb2xlIjoidXNlciIsImNvbmZpcm1lZCI6dHJ1ZX0sImlhdCI6MTYyNDQzNTk5NywiZXhwIjoxNjI0NDc5MTk3fQ.iOOBsRL0Gb2C5gRo8p7jD-BtYBc3N5fivj8ixiH6MLQ
 
-###Voir les annonces pas filtrées 
+###Voir les annonces pas filtrées OK
 GET http://localhost:3000/modo
 Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJtb2RvIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0NjM1OTc5LCJleHAiOjE2MjQ2NzkxNzl9.zNaiZ1EapLErmYW_KJVuEQbNXLAPQzDIP5u--vd-y9g
 
-###Autoriser une annonce 
-POST http://localhost:3000/modo/16
-
-###Récupérrer une annonce et ses informations
-GET http://localhost:3000/modo/15
+###Autoriser une annonce OK
+POST http://localhost:3000/modo/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJtb2RvIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0NjM1OTc5LCJleHAiOjE2MjQ2NzkxNzl9.zNaiZ1EapLErmYW_KJVuEQbNXLAPQzDIP5u--vd-y9g
+###Récupérrer une annonce et ses informations ok
+GET http://localhost:3000/modo/2
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjIsInJvbGUiOiJtb2RvIiwiY29uZmlybWVkIjp0cnVlfSwiaWF0IjoxNjI0NjM1OTc5LCJleHAiOjE2MjQ2NzkxNzl9.zNaiZ1EapLErmYW_KJVuEQbNXLAPQzDIP5u--vd-y9g
 
 ###supprimer une annonce et ses informations
 DELETE http://localhost:3000/modo/16
