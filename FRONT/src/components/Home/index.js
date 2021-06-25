@@ -6,8 +6,9 @@ import Content from 'src/containers/Content';
 import Footer from 'src/components/Footer';
 import SelectSearchBar from 'src/containers/SelectSearchBar';
 
-
 import './styles.scss';
+
+
 
 const Home = () => (
   <div className='home'>

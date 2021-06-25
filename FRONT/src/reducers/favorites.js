@@ -1,16 +1,16 @@
 import { GET_FAVORITES, GET_FAVORITES_SUCCESS } from 'src/actions/favorites';
 
-//! state
+
 export const initialState = {
   id: "",
   image: "",
-  title: "",
+  name: "",
   description: "",
   price: "",
   loading: false,
 
 }; // TODO en construction
-//! direction index.js de mon reducer
+
 const reducer = (state = initialState, action) => {
   //console.log('je suis dans le reducer favorites');
   switch (action.type) {
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         id: action.id,
         image: action.image,
-        title: action.title,
+        name: action.name,
         description: action.title,
         price: action.price,
         loading: false,
@@ -35,8 +35,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-//!
-//! Ne pas oublier de le créer dans index.js du dossier Réducers
-//!
-

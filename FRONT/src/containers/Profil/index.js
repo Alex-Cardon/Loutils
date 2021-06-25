@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { deleteAccount } from 'src/actions/profil'
+
 import Profil from 'src/components/Profil';
 // TODO en cpours de construction
 const mapStateToprops = (state) => ({
@@ -8,8 +10,15 @@ const mapStateToprops = (state) => ({
   header: state,
   meta: state,
   description: state,
+  msg:state,
 });
 
-export default connect(mapStateToprops)(Profil);
+const mapDispatchToProps = (dispatch) => ({
+  handleDeleteAccount: () => {
+    dispatch(deleteAccount());
+  },
+});
+
+export default connect(mapStateToprops, mapDispatchToProps)(Profil);
 
 

@@ -12,7 +12,7 @@ import { Card } from 'semantic-ui-react';
 
 import './styles.scss';
 
-const announcements = () => (
+const announcements = ({handleDeleteBooking, begining, end, msg}) => (
   <div className='announcements'>
     <Header />
     <LoginForm />
@@ -28,13 +28,28 @@ const announcements = () => (
       {/* {
       advertissment.map(
       (ad) => (*/}
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
+      <div>
+        { msg && (
+          <p>{msg}</p>
+        )}
+        {!msg &&(
+          <div>
+            <Card
+              key="id"//{ad.id}
+              image="image"//{ad.}
+              header="title"//{ad.}
+              meta="description"//{ad.}
+              description="price"//{ad.}
+            />
+            <button onClick={handleDeleteBooking}>delete booking</button>
+            <div>
+              <p>Réservé du {begining} au {end}.</p>
+            </div>
+          </div>
+        )}
+       
+      </div>
+      
       <Card
         key="id"//{ad.id}
         image="image"//{ad.}
@@ -81,10 +96,14 @@ const announcements = () => (
 announcements.propTypes = {
   /*advertissement: PropTypes.arrayOf(
     PropTypes.shape({*/
+      begining : PropTypes.func.isRequired,
+      end : PropTypes.func.isRequired,
+      handleDeleteBooking: PropTypes.func.isRequired,
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
+      msg: PropTypes.string.isRequired,
    /* }).isRequired,
   ).isRequired,*/
 };

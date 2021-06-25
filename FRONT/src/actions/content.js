@@ -8,11 +8,7 @@ export const getContent = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getContentSuccess = (recipes) => ({
+export const getContentSuccess = (apiData) => ({
   type: GET_CONTENT_SUCCESS,
-  id: state.id,
-  image: state.image,
-  title: state.title,
-  description: state.description,
-  price: state.price,
+  apiData,
 });
