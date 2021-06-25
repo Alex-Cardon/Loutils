@@ -9,7 +9,7 @@ export const initialState = {
 };
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
-  console.log('je suis dans le reducer Content');
+  //console.log('je suis dans le reducer Content');
   switch (action.type) {
     case GET_CONTENT:
       return {

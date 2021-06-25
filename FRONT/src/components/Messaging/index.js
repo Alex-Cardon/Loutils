@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
 import Header from 'src/components/Header';
 import Messages from 'src/containers/Messages';
 import Form from 'src/containers/Form';
