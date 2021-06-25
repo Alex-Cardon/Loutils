@@ -24,13 +24,8 @@ import profilFieldReducer  from './profilField';
 import profilReducer from './profil';
 import updatedProfilReducer from './updatedProfil';
 import messagingReducer from './messaging';
+import persistStorageReducer from './persist';
 
-
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['annoucements']
-} 
 
 const rootReducer = combineReducers({
   diary: diaryReducer,
@@ -60,6 +55,7 @@ const rootReducer = combineReducers({
   picture : updatedProfilReducer,
 
   message : messagingReducer,
+  persistStorageReducer: persistStorageReducer,
 });
 
-export default persistReducer(persistConfig, rootReducer);
+export default rootReducer;
