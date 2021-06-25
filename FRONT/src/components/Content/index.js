@@ -13,6 +13,10 @@ const adResults = ({ content, loadContent }) => {
   console.log(`content dans mon composant`, content);
 
   useEffect(() => {
+    localStorage.setItem("content", JSON.stringify(content))
+  });
+
+  useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadContent();
   }, []);

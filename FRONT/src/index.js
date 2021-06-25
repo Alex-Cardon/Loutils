@@ -3,8 +3,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import {PersistGate} from 'redux-persist/integration/react';
 
-import store from 'src/store';
+import {store, persistor} from 'src/store';
+
 
 import App from 'src/components/App';
 
@@ -17,7 +19,9 @@ import 'semantic-ui-css/semantic.min.css';
 const rootReactElement = (
   <BrowserRouter>
     <Provider store={store}>
-        <App /> 
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate> 
     </Provider>
   </BrowserRouter>
 );
