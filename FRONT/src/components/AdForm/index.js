@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
+
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
+import AdFormPicture from './adFormPicture';
 import AdFormText from './adFormText';
 
 import Proptypes from 'prop-types';
@@ -33,8 +36,13 @@ const AdForm = ({
   return (
     <div className="adForm" >
       <Header />
-      <LoginForm />
+
       <h2 className="adForm__title">Decrivez ici votre outil</h2>
+      <div>
+      <AdFormPicture
+          />
+          </div>
+      <LoginForm />
       <form onSubmit={handleSubmit}>
         <div className="adForm__unit">
           <AdFormInput
@@ -106,16 +114,6 @@ const AdForm = ({
               onChange={getToolStateValue}
             />
           </div>
-        </div>
-        <div>
-          <input
-            type="file"
-            accept='.jpg, .png, .jpeg'
-            onChange={handleImageSelected}
-            className="uploadInput"
-            
-          />
-          <button onClick={uploadHandler}>Upload!</button>
         </div>
         <button
           className="adForm__button"
