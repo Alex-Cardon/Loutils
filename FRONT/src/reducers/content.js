@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
     case GET_CONTENT_SUCCESS:
       return {
         ...state,
-        content: action.apiData
+        content: action.apiData,
 
       };
     default:

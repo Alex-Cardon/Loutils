@@ -2,14 +2,14 @@ import { GET_PROFIL, GET_PROFIL_SUCCESS, DELETE_ACCOUNT_SUCCESS } from 'src/acti
 
 //! state
 export const initialState = {
-  key: "",
-  image: "",
-  header: "",
-  description: "",
-  description: "",
-  loading: false,
-  msg:""
-}; // TODO en construction
+  //key: "",
+  //image: "",
+  //header: "",
+  //description: "",
+ // description: "",
+  //msg:""
+  profil: {},
+}; 
 
 const reducer = (state = initialState, action) => {
   //console.log('je suis dans le reducer favorites');
@@ -17,17 +17,18 @@ const reducer = (state = initialState, action) => {
     case GET_PROFIL:
       return {
         ...state,
-        loading: true,
+       
       };
     case GET_PROFIL_SUCCESS:
       return {
         ...state,
-        key: state,
-        image: state,
-        header: state,
-        meta: state,
-        description: state,
-        loading: false,
+        //key: state,
+        //image: state,
+        //header: state,
+        //meta: state,
+        //description: state,
+        profil: action.apiData,
+        
       };
       case DELETE_ACCOUNT_SUCCESS:
         return {
