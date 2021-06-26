@@ -11,7 +11,6 @@ const paramsMiddleware = (store) => (next) => (action) => {
 
       axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/Params', {
 
-
         name: state.settings.name,
         email: state.settings.email,
         password: state.settings.password,
@@ -27,7 +26,7 @@ const paramsMiddleware = (store) => (next) => (action) => {
     default:
       next(action);
   }
-}
+};
 
 
 export default paramsMiddleware;

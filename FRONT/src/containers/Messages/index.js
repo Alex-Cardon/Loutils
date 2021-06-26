@@ -3,9 +3,16 @@ import { connect } from 'react-redux';
 import Messages from 'src/components/Messages';
 
 const mapStateToProps = (state) => ({
- author:state.message.author,
- content:state.message.content,
+  sender_id: state.message.sender_id,
+  recipient_id: state.message.recipient_id,
+  title: state.message.title,
 });
 
-export default connect(mapStateToProps)(Messages);
+const mapDispatchToProps = (dispatch) => ({
+  loadMessages:() => {
+    dispatch(getMessages());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
 
