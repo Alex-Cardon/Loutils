@@ -1,4 +1,4 @@
-/*import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Messaging from 'src/components/Messaging';
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messaging);
-*/
+

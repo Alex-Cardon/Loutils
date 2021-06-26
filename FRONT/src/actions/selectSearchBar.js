@@ -6,7 +6,8 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_CATEGORIES_SUCCESS = 'GET_CATEGORIES_SUCCESS';
 export const GET_RADIUS = 'GET_RADIUS';
 export const GET_RADIUS_SUCCESS = 'GET_RADIUS_SUCCESS';
-
+export const GET_SELECT = 'GET_SELECT';
+export const GET_SELECT_SUCCESS = 'GET_SELECT_SUCCESS';
 
 export const changeCategoriesInput = (value) => ({
   type: CHANGE_CATEGORIES_INPUT,
@@ -45,5 +46,16 @@ export const getRadiusSuccess = () => ({
   categories: state.categories,
   
 });
+
+
+export const getSelect = () => ({
+  type: GET_SELECT,
+});
+
+export const getsELECTSuccess = (apiData) => ({
+  type: GET_SELECT_SUCCESS,
+  apiData,
+});
+
 
 

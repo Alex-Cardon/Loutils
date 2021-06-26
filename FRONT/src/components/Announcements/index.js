@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -9,10 +9,25 @@ import Footer from 'src/components/Footer';
 
 import { Card } from 'semantic-ui-react';
 // TODO en cours de construction
-
+import Loading from 'src/components/Loading';
 import './styles.scss';
 
-const announcements = ({handleDeleteBooking, begining, end, msg}) => (
+const announcements = ({handleDeleteBooking, begining, end, msg, loadAnnouncements}) => {
+
+  const [loading, setLoader] = useState(true);
+  console.log(`content dans mon composant`, announcements);
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadAnnouncements();
+  }, []);
+
+  
+  if (loading) {
+    return <Loading />;
+  }
+
+  return (
   <div className='announcements'>
     <Header />
     <LoginForm />
@@ -25,9 +40,7 @@ const announcements = ({handleDeleteBooking, begining, end, msg}) => (
     </NavLink>
     <h1> Mes annonces</h1>
     <Card.Group className='card-group'>
-      {/* {
-      advertissment.map(
-      (ad) => (*/}
+      {announcements.data.map((obj) => {
       <div>
         { msg && (
           <p>{msg}</p>
@@ -35,11 +48,11 @@ const announcements = ({handleDeleteBooking, begining, end, msg}) => (
         {!msg &&(
           <div>
             <Card
-              key="id"//{ad.id}
-              image="image"//{ad.}
-              header="title"//{ad.}
-              meta="description"//{ad.}
-              description="price"//{ad.}
+              key={obj.id}
+              image={obj.picture_id}
+              header={obj.title}
+              meta={obj.description}
+              description={obj.price}
             />
             <button onClick={handleDeleteBooking}>delete booking</button>
             <div>
@@ -49,50 +62,13 @@ const announcements = ({handleDeleteBooking, begining, end, msg}) => (
         )}
        
       </div>
-      
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      {/*} ),
-      )
-    }*/}
+      })}   
     </Card.Group>
     <Footer />
   </div>
-);
-
+  );
+    }
+    
 announcements.propTypes = {
   /*advertissement: PropTypes.arrayOf(
     PropTypes.shape({*/

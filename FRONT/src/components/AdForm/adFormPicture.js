@@ -1,36 +1,30 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 
-// Import React FilePond
-import { FilePond, File, registerPlugin } from 'react-filepond'
+function adFormPicture() {
+  const [file, setfile] = useState(null);
 
-// Import FilePond styles
-import 'filepond/dist/filepond.min.css'
+    const send = event => {
+         const data = new FormData();
+         data.append("file", file); 
+         axios.post("http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/image", data).then(res => console.log(res));
+    };
 
-// Import the Image EXIF Orientation and Image Preview plugins
-// Note: These need to be installed separately
-// `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-
-// Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
-
-// Our app
-function App() {
-  const [files, setFiles] = useState([])
   return (
-    <div className="App">
-      <FilePond
-        files={files}
-        onupdatefiles={setFiles}
-        allowMultiple={true}
-        maxFiles={3}
-        server="/api"
-        name="files" {/* sets the file input name, it's filepond by default */}
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-      />
+    <div className="adFormPicture">
+      <header className="adFormPicture-header">
+        <form action="#">
+          <label htmlFor="file"></label>
+          <input type="file" name="image" id="id" accept=".jpg" onChange={event => {
+            const file = event.target.files[0];
+            setfile(file);
+          }} >
+          </input>
+        </form>
+        <button onClick={send}>Send</button>
+      </header>
     </div>
-  )
+  );
 }
+
+export default adFormPicture;

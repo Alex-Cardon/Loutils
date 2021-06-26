@@ -1,5 +1,4 @@
 const express = require('express');
-
 const userController = require('../controllers/userController');
 const authorizationLvl1 = require('../middlewares/authorizationLvl1');
 const authorizationLvl2 = require('../middlewares/authorizationLvl2');
@@ -20,16 +19,18 @@ const modoContoller = require('../controllers/modoContoller');
 const downloadController = require('../controllers/downloadController');
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
+const { upload } = require('../middlewares/upload');
 
 const router = express.Router();
-const maxSize = 1 * 1000 * 1000;
-const multer = require('multer');
-const imageUpload = multer({
-        dest: 'data/images',
-        limits: {
-                fileSize: maxSize
-        }
-});
+
+
+// 
+// const imageUpload = multer({
+//         storage : multer.diskStorage({
+//         dest: 'public',
+//         }),
+//         
+// });
 
 /**
  * Récupération des radius prédéfinis
@@ -72,7 +73,7 @@ router.get('/categories', categoryController.getCategories);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 404 - Une erreur redirigeant vers la page 404
  */
-router.post('/image', imageUpload.single('image'), pictureController.postImage);
+router.post('/image', upload.single('file'), pictureController.postImage);
 
 /**
  * Afficher une image

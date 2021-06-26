@@ -1,7 +1,7 @@
-import React from 'react';
+import React , { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -10,10 +10,24 @@ import Footer from 'src/components/Footer';
 
 import { Card } from 'semantic-ui-react';
 // TODO en cours de construction
-
+import Loading from 'src/components/Loading';
 import './styles.scss';
 
-const favorites = () => (
+const favorites = ({loadFavorites}) => {
+
+  const [loading, setLoader] = useState(true);
+  console.log(`content dans mon composant`, favorites);
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadFavorites();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+return(
   <div className='favorites'>
     <Header />
     <LoginForm />
@@ -27,67 +41,33 @@ const favorites = () => (
     </NavLink>
     <h1> 😍   Mes favoris   😍</h1>
     <Card.Group className='card-group'>
-      {/* {
-      advertissment.map(
-      (ad) => (*/}
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="title"//{ad.}
-        meta="description"//{ad.}
-        description="price"//{ad.}
-      />
-      {/*} ),
-      )
-    }*/}
+    {favorites.data.map((obj) => {
+        return (
+          <Card
+            key={obj.id}
+            image={obj.picture_id}
+            header={obj.title}
+            meta={obj.description}
+            description={obj.price}
+          />
+        )
+      })}
     </Card.Group>
     <Footer />
   </div>
 );
+}
 
-/*adResults.propTypes = {
+favorites.propTypes = {
   advertissement: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired
-      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      picture_id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
-};*/
+};
 
 export default favorites;
