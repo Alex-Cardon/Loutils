@@ -10,20 +10,21 @@ export const getProfil = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getProfilSuccess = (recipes) => ({
+export const getProfilSuccess = (apiData) => ({
   type: GET_PROFIL_SUCCESS,
-  key: state,
-  image: state,
-  header: state,
-  meta: state,
-  description: state,
+  //key: state,
+  //image: state,
+  //header: state,
+  //meta: state,
+  //description: state,
+  apiData,
 });
 
 export const deleteAccount = () => ({
   type: DELETE_ACCOUNT,
 });
 
-export const deleteAccountSuccess = () => ({
+export const deleteAccountSuccess = (msg) => ({
   type: DELETE_ACCOUNT_SUCCESS,
-  msg: response.msg,
+  msg,
 });

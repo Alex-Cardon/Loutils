@@ -38,7 +38,15 @@ const Setting = () => (
       to="/MyResearch"
     >
       Mes recherches
-    </NavLink>*/}
+    </NavLink>
+     <NavLink
+      className='account-navlink'
+      exact
+      to="/Params"
+    >
+      Mes parametres
+    </NavLink>
+    */}
     <NavLink
       className='account-navlink'
       exact
@@ -46,13 +54,7 @@ const Setting = () => (
     >
       Mon profil
     </NavLink>
-    <NavLink
-      className='account-navlink'
-      exact
-      to="/Params"
-    >
-      Mes parametres
-    </NavLink>
+   
   <Footer />
   </div >
 );

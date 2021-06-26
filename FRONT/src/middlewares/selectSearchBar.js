@@ -4,6 +4,7 @@ import {
   RESEARCH_BUTTON,
   changeCategoriesInput,
   changeLocalisationInput,
+  
 } from 'src/actions/selectSearchBar';
 
 
@@ -14,8 +15,8 @@ const selectSearchBarMiddleware = (store) => (next) => (action) => {
       axios.post(
         `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/search`, {
         "title": state.research.inputTools,
-        //"postcode": , 
-        //"radius": ,
+        "postcode": state.research.inputLocalisation, 
+        "radius": state.research.handleRadius,
         //"category":,
 
       })
