@@ -1,4 +1,3 @@
-
 export const CHANGE_AD_FIELD = 'CHANGE_AD_FIELD';
 export const GET_FILE_UPLOAD = 'GET_FILE_UPLOAD';
 export const CHANGE_TOOL_STATE = 'CHANGE_TOOL_STATE';
