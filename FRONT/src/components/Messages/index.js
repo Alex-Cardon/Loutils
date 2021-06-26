@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+/*import PropTypes from 'prop-types';*/
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -55,7 +55,7 @@ return(
   </div>
 );
 }
-
+/*
 Messages.propTypes = {
 
   author: PropTypes.string.isRequired,
@@ -64,6 +64,6 @@ Messages.propTypes = {
   recipient_id: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
 
-};
+};*/
 
 export default Messages;
