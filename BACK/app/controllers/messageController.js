@@ -92,7 +92,7 @@ module.exports = {
                 return next();
             }
     
-            res.status200.json({data : post})
+            res.status(200).json({data : post})
 
         }catch (error) {
             console.trace(error);
