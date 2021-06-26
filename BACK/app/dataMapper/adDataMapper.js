@@ -75,7 +75,11 @@ module.exports = {
 
      AND LOWER("ad"."title") LIKE LOWER($1) 
      
-     AND "category"."name"= $2 ORDER BY "created_at" ASC`, ['%' + title + '%', category]);
+     AND "category"."name"= $2
+
+     AND "moderated" = TRUE 
+
+     ORDER BY "created_at" DESC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -103,7 +107,11 @@ module.exports = {
     
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-     AND LOWER("ad"."title") LIKE LOWER($1) ORDER BY "created_at" ASC`, ['%' + title + '%']);
+     AND LOWER("ad"."title") LIKE LOWER($1)
+     
+     AND "moderated" = TRUE
+     
+     ORDER BY "created_at" DESC`, ['%' + title + '%']);
 
         return (result.rows);
     },
@@ -125,7 +133,7 @@ module.exports = {
     async getAllNonModAd() {
         const result = await client.query(`SELECT "ad"."id", "title" FROM "ad"
         JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-        WHERE "moderated" = FALSE ORDER BY "ad"."created_at" ASC`);
+        WHERE "moderated" = FALSE ORDER BY "ad"."created_at" DESC`);
         return result.rows;
     },
 
