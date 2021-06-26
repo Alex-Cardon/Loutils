@@ -6,7 +6,7 @@ export const initialState = {
   email: '',
   password: '',
   name: null,
-  token: null,
+  token: '',
   isOpen: false,
 };
 
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action = {}) => {
         isOpen: false,
         isLogged: false,
         name: null,
-        token: null,
+        token: '',
         
 
       };

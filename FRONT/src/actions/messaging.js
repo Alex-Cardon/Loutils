@@ -15,6 +15,7 @@ export const addMessage = (message) => ({
   message: message,
 });
 
-export const sendMessage = () => ({
+export const sendMessage = (message) => ({
   type: SEND_MESSAGE,
+  message,
 });

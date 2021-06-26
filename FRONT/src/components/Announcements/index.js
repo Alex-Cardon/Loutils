@@ -22,6 +22,7 @@ const announcements = ({handleDeleteBooking, begining, end, msg, loadAnnouncemen
     loadAnnouncements();
   }, []);
 
+  
   if (loading) {
     return <Loading />;
   }
