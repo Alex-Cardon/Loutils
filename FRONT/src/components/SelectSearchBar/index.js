@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Select, Input } from 'semantic-ui-react'
 
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 import './styles.scss';
 
@@ -49,6 +49,7 @@ const SelectSearchBar = ({
   </Input>
 );
 
+/*
 SelectSearchBar.propTypes = {
   inputTools: PropTypes.string.isRequired,
   inputLocalisation: PropTypes.string.isRequired,
@@ -59,7 +60,7 @@ SelectSearchBar.propTypes = {
   handleResearh: PropTypes.func.isRequired,
   handleCategory: PropTypes.func.isRequired,
   handleRadius: PropTypes.func.isRequired,
-};
+};*/
 
 export default SelectSearchBar;
 

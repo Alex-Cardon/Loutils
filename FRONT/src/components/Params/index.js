@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
@@ -7,12 +7,27 @@ import LoginForm from 'src/containers/LoginForm';
 import ParamsField from 'src/containers/Params/ParamsField';
 import Footer from 'src/components/Footer';
 //! 1 je fais mon component maintenant direction le sous composant ParamsField
-
+import Loading from 'src/components/Loading';
 import './styles.scss';
 
 const Params = ({ 
   handleParamsFormSubmit 
-}) => (
+}) => {
+
+  const [loading, setLoader] = useState(true);
+  console.log(`params dans mon composant`, Params);
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadParams();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+return(
+
   <div className="signup-page">
     <Header />
     <LoginForm /> 
@@ -21,7 +36,7 @@ const Params = ({
       onSubmit={handleParamsFormSubmit}
     >
       <ParamsField
-        stateKey="pseudo"
+        stateKey="name"
         type="text"
         placeholder="votre pseudo"
       />
@@ -45,7 +60,7 @@ const Params = ({
       />
 
       <ParamsField
-        stateKey="confirmPassword"
+        stateKey="newPassword"
         type="password"
         placeholder="confirmez mot de passe"
       />
@@ -55,6 +70,7 @@ const Params = ({
     <Footer />
   </div>
 );
+}
 
 Params.proptypes = {
   handleParamsFormSubmit: Proptypes.func.isRequired,

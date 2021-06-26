@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+
 //import PropTypes from 'prop-types';
 
 import { Card } from 'semantic-ui-react';
@@ -10,7 +11,7 @@ import './styles.scss';
 
 const adResults = ({ content, loadContent }) => {
   const [loading, setLoader] = useState(true);
-  console.log(`content dans mon composant`, content);
+  //console.log(`content dans mon composant`, content);
 
   useEffect(() => {
     localStorage.setItem("content", JSON.stringify(content))
@@ -44,15 +45,15 @@ const adResults = ({ content, loadContent }) => {
   );
 }
 
-
-/*adResults.propTypes = {
-  /*advertissement: PropTypes.arrayOf(
-    PropTypes.shape({*/
-//id: PropTypes.number.isRequired,
-// title: PropTypes.string.isRequired,
-//description: PropTypes.string.isRequired,
-//price: PropTypes.number.isRequired,
-/*  }).isRequired,
+/*
+adResults.propTypes = {
+  content: PropTypes.arrayOf(
+    PropTypes.shape({
+id: PropTypes.number.isRequired,
+title: PropTypes.string.isRequired,
+description: PropTypes.string.isRequired,
+price: PropTypes.number.isRequired,
+}).isRequired,
 ).isRequired,
 };*/
 

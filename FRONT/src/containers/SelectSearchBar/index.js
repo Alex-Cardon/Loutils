@@ -8,7 +8,7 @@ import {
   researchTitle, 
   researchPostcode,
   getCategories,
-  getRadius 
+  getRadius, 
 } from 'src/actions/selectSearchBar';
 
 
@@ -50,6 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('je lance getRadius');
     dispatch(getRadius());
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectSearchBar);

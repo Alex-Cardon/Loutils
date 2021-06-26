@@ -6,10 +6,12 @@ import {
 } from 'src/actions/messaging';
 
 const initialState = {
-  author: '',
-  content: '',
+  
+  messages:{
+    content: '',
+    author: '',
+  },
   inputValue: '',
-
 };
 
 const reducer = (state = initialState, action) => {

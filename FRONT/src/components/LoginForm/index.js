@@ -17,6 +17,7 @@ const LoginForm = ({
   isOpen, 
   onSettingsToggle,
 }) => {
+  console.log(isLogged)
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
@@ -27,7 +28,7 @@ const LoginForm = ({
       className={isOpen ? 'login login--open' : 'login'}
     >
 
-  <NavLink
+    <NavLink
         className={isLogged ? 'settingsPage-link settingsPage-link' : 'settingsPage-link__toggle'}
         exact
         to="/SettingsPage"
@@ -98,12 +99,11 @@ LoginForm.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool,
+  isLogged: PropTypes.bool.isRequired,
   loggedMessage: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
-  isLogged: false,
   loggedMessage: 'Connecté',
 };
 
