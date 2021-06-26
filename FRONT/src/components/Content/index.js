@@ -33,7 +33,7 @@ const adResults = ({ content, loadContent }) => {
         return (
           <Card
             key={obj.id}
-            image={obj.picture_id}
+            image={obj.filepath}
             header={obj.title}
             meta={obj.description}
             description={obj.price}
