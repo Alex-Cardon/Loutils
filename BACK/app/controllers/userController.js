@@ -1,6 +1,7 @@
 const userDataMapper = require('../dataMapper/userDataMapper');
 const bcrypt = require('bcrypt');
 const mailConf = require('../utils/emailConfirmator');
+const forgPassMail = require('../utils/forgottenPasswordEmail');
 const jwtGenerator = require('../utils/jwtGenerator');
 const jwt = require("jsonwebtoken");
 
@@ -62,16 +63,12 @@ module.exports = {
       //create user
       const newUser = await userDataMapper.createUser(name, email, hashPassword, role)
       //confirmation email
-      const mail = await mailConf.sendConfirm(newUser.id, newUser.role, newUser.email, newUser.confirmed);
+      await mailConf.sendConfirm(newUser.id, newUser.role, newUser.email, newUser.confirmed);
 
-
-      console.log('mail', mail);
-      res.status(200).json({msg : "you will recieve email in a few minutes, check your inbox mail or spam"})
-
-      
       res.status(200).json({msg:"you will recieve email in a few minutes, check your inbox mail or spam"})
 
     } catch (error) {
+      res.status(500).json({ error })
       console.log(error);
     }
   },
@@ -93,6 +90,7 @@ module.exports = {
         data : confirmed
       });
     } catch (error) {
+      res.status(500).json({ error })
       console.log(error);
     }
   },
@@ -114,9 +112,11 @@ module.exports = {
       //check user exist
       const userFound = await userDataMapper.findOneByEmail(email);
 
+      if (userFound.forg_pass) return res.status(200).json({ msg: "changePassForm" });
+
       if (!userFound) return res.status(401).json({
         error: 'Adresse mail ou mot de passe incorrect'
-      })
+      });
 
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
@@ -134,6 +134,7 @@ module.exports = {
       })
 
     } catch (error) {
+      res.status(500).json({ error })
       console.log(error);
     }
   },
@@ -148,10 +149,8 @@ module.exports = {
         res.status(200).json({data : info})
 
     } catch (error) {
-      console.trace(error);
-      res.json({
-        error
-      });
+      res.status(500).json({ error })
+      console.log(error);
     }
   },
 
@@ -182,8 +181,8 @@ module.exports = {
         })
       }
     } catch (error) {
-      console.trace(error);
-      res.json(error)
+      res.status(500).json({ error })
+      console.log(error);
     }
   },
 
@@ -231,8 +230,8 @@ module.exports = {
       };
 
     } catch (error) {
-      console.trace(error)
-      res.json(error)
+      res.status(500).json({ error })
+      console.log(error);
     }
   },
 
@@ -261,10 +260,133 @@ module.exports = {
         msg: "Account deleted"
       })
     } catch (error) {
-      console.trace(error)
-      res.json(error)
+      res.status(500).json({ error })
+      console.log(error);
     }
 
-  }
+  },
+
+  async reSendConf(req, res) {
+    try {
+      const {
+        email,
+        password
+      } = req.body;
+
+      //check user exist
+      const userFound = await userDataMapper.findOneByEmail(email);
+
+      if (!userFound) return res.status(401).json({
+        error: 'Adresse mail ou mot de passe incorrect'
+      });
+
+      //check password
+      const validPassword = await bcrypt.compare(password, userFound.password);
+
+      if (!validPassword) res.status(401).json({
+        error: 'Adresse mail ou mot de passe incorrect'
+      });
+
+      if (userFound.confirmed) return res.status(409).json({
+        error: 'Utilisateur déjà confirmé'
+      });
+
+
+      //confirmation email
+      await mailConf.sendConfirm(userFound.id, userFound.role, userFound.email, userFound.confirmed);
+
+      res.status(200).json({msg:"you will recieve email in a few minutes, check your inbox mail or spam"});
+
+    } catch (error) {
+      res.status(500).json({ error })
+      console.log(error);
+    }
+  },
+
+  async forgPassword(req, res) {
+
+    try {
+      const {
+        email,
+      } = req.body;
+
+      //check user exist
+      const userFound = await userDataMapper.findOneByEmail(email);
+
+      if (!userFound) return res.status(401).json({
+        error: 'Adresse mail enxistante'
+      })
+
+      await forgPassMail.sendForgPassEmail(userFound.id, userFound.role, userFound.email, userFound.confirmed);
+
+      res.status(200).json({msg:"you will recieve email in a few minutes, check your inbox mail or spam"});
+
+    } catch (error) {
+      res.status(500).json({ error })
+      console.log(error);
+    }
+  },
+
+  async emailConfirmPassChange(req, res) {
+    try {
+      const token = req.params.token;
+      if (!token) {
+        return res.status(403).json({
+          msg: "Accès non autorisé"
+        });
+      };
+      const verify = jwt.verify(token, process.env.JWTSECRETEMAIL);
+      if (!verify) res.status(404).json({
+        msg: "invalid token"
+      });
+      const forgPass = await userDataMapper.passwordForget(verify.user.user_id);
+      res.status(200).json({
+        msg : "Vous pouvez vous connecter avec motre email habituel pour continuer la procédure", forgPass
+      });
+    } catch (error) {
+      res.status(500).json({ error })
+      console.log(error);
+    }
+  },
+
+  async patchUserPassword(req, res) {
+    try {
+      const {
+        email,
+        password,
+        confirmPassword
+      } = req.body;
+
+
+      //check passwords
+      if(password !== confirmPassword) res.status(401).json({ "error": "not same password" });
+      if(!email){
+        return res.status(401).json({
+            msg: "Veuillez entrer une adresse email valide"
+          });
+    };
+
+      const userFound = await userDataMapper.findOneByEmail(email);
+
+      if(userFound.forg_pass === false) return res.status(401).json({ error: "Mauvaise adresse email" });
+
+
+      //hashing password
+      const saltRounds = 10;
+      const salt = await bcrypt.genSalt(saltRounds);
+      const hashPassword = await bcrypt.hash(password, salt);
+      const result = await userDataMapper.changePassword(hashPassword, userFound.id);
+
+      if (result) {
+        res.status(200).json({
+          msg: "Mot de passe changé avec succès"
+        })
+      };
+
+    } catch (error) {
+      res.status(500).json({ error })
+      console.log(error);
+    }
+  },
 
 }

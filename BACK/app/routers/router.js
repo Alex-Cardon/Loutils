@@ -449,6 +449,24 @@ router.route('/booking')
 router.get('/confirmation/:token', userController.emailConfirm); //ok
 
 /**
+ * Recevoir de nouveau un mail de confirmation
+ * @route POST /resendconfirm
+ * @param {string} email - Adresse mail de l'utilisateur
+ * @param {string} password - Mot de passe de l'utilisateur
+ * @returns {userController} 200 - Un message indiquant qu'un email de confirmation a été envoyé. 
+ * @returns {Error} 500 - Une erreur serveur
+ * @returns {Error} 401 - Une erreur indiquant que le mots de passe est érroné.
+ * @returns {Error} 409 - Une erreur indiquant que l'utilisateur est déjà confirmé.
+ */
+router.post('/resendconfirm',  userController.reSendConf);
+
+router.post('/forgpass', userController.forgPassword);
+
+router.get('/passchange/:token', userController.emailConfirmPassChange);
+
+router.post('/finalpasswordchange', userController.patchUserPassword);
+
+/**
  * Afficher les annonces non filtrées
  * @route GET /modo
  * @returns {modoController[]} 200 - La liste des annonces avec  leur identifiant de l'annonce et son titre
