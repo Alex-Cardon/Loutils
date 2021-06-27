@@ -24,7 +24,7 @@ const AdForm = ({
   description,
   toolState,
 }) => {
-  console.log("AdForm Component : onImageSelected",onImageSelected,
+  console.log("AdForm Component :onImageSelected",onImageSelected,
   "handleLogin", handleLogin,
   "getToolStateValue",getToolStateValue,
   "changeField",changeField,
