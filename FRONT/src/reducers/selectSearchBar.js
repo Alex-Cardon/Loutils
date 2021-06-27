@@ -1,16 +1,17 @@
 import {
   CHANGE_CATEGORIES_INPUT,
-  CHANGE_LOCALISATION_INPUT,
+  CHANGE_LOCALISATION,
   GET_CATEGORIES,
   GET_RADIUS,
-  
+  RESEARCH_SUCCESS,
 } from 'src/actions/selectSearchBar';
 
 //! state
 export const initialState = {
-
-  select: {},
-
+  title: '',
+  postcode: '',
+  radius: '',
+  category: '',
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
@@ -21,25 +22,37 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        select: action.value,
+        title: action.value,
       };
-    case CHANGE_LOCALISATION_INPUT:
+    case CHANGE_LOCALISATION:
 
       return {
         ...state,
-        select: action.value,
+        postcode: action.value,
       };
     case GET_RADIUS:
       return {
         ...state,
-        select: action.value,
+        radius: action.value,
       };
 
     case GET_CATEGORIES:
       return {
         ...state,
-        select: action.value,
+        category: action.value,
       };
+    case RESEARCH_SUCCESS:
+      return {
+        ...state,
+        title: action.apiData,
+        postcode: action.apiData,
+        radius: action.apiData,
+        category: action.apiData,
+        title: '',
+        postcode: '',
+        radius: '',
+        category: '',
+      }
 
     default:
       return state;
@@ -50,8 +63,7 @@ export default reducer;
 
 
 
-
-{/*  GET_CATEGORIES_SUCCESS,
+/*  GET_CATEGORIES_SUCCESS,
 GET_RADIUS_SUCCESS
 case GET_RADIUS_SUCCESS:
       return {
@@ -62,4 +74,4 @@ case GET_RADIUS_SUCCESS:
       return {
         ...state,
         select: action.apiData
-      };*/}
+      };*/

@@ -18,7 +18,7 @@ import settingsPageMiddleware from 'src/middlewares/settingsPage';
 import profilMiddleware from 'src/middlewares/profil';
 import diaryMiddleware from 'src/middlewares/diary';
 
-import rootReducer from './index'
+//import rootReducer from './index'
 
 const persistConfig = {
   key: 'root',
