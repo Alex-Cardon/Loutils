@@ -1,21 +1,21 @@
 ###JSDOC OK - Ajouter un user
-POST http://localhost:3000/register
+POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "name": "Victor",
-    "email": "haril86722@gocasin.com",
+    "name": "testing",
+    "email": "elmira39y_i57a@nafxo.com",
     "password": "louloudu31",
     "confirmPassword": "louloudu31"
 }
 
 ###JSDOC OK - Auth user
-POST http://localhost:3000/login
+POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "email": "sister38a_p289s@nafxo.com",
-    "password": "louloudu31"
+    "email": "elmira39y_i57a@nafxo.com",
+    "password": "louloudu1"
 }
 
 
@@ -279,7 +279,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOjEyLCJyb2xl
 Content-Type: application/json
 {
 
-    "image" : tournevis.jpg
+    "image" : "tournevis.jpg"
 
 }
 
@@ -353,3 +353,24 @@ DELETE http://localhost:3000/admin/user/5
 
 ###Supprimer un utilisateur en tant qu'administrateur
 GET http://localhost:3000/download
+
+
+
+###MDP oublié
+POST http://localhost:4000/forgpass
+Content-Type: application/json
+
+{
+    "email" : "elmira39y_i57a@nafxo.com"
+}
+
+
+###MDP oublié
+POST http://localhost:4000/finalpasswordchange
+Content-Type: application/json
+
+{
+    "email" : "elmira39y_i57a@nafxo.com",
+    "password": "testing21",
+    "confirmPassword": "testing21"
+}
