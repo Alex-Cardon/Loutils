@@ -7,13 +7,14 @@ import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
 import AdFormPicture from './adFormPicture';
 import AdFormText from './adFormText';
+//import adFormPicture from './adFormPicture';
 
 import Proptypes from 'prop-types';
 import './style.scss';
 
 const AdForm = ({
-  uploadHandler,
-  onImageSelected,
+  //uploadHandler,
+ // onImageSelected,
   handleLogin,
   getToolStateValue,
   changeField,
@@ -136,8 +137,20 @@ console.log(handleSubmit);
               onChange={getToolStateValue}
             />
           </div>
-          console.log("component : fin du form l414");
         </div>
+        {/* <adFormPicture /> */}
+        {/* <div>
+          <input
+            type="file"
+            accept='.jpg, .png, .jpeg'
+            onChange={handleImageSelected}
+            className="uploadInput"
+            
+          />
+          <button onClick={uploadHandler}>Upload!</button>
+          console.log("component : fin du form l414");
+        </div> */}
+
         <button
           className="adForm__button"
           type="submit"
@@ -179,8 +192,8 @@ console.log(handleSubmit);
 
 
 AdForm.proptypes = {
-  uploadHandler: Proptypes.func.isRequired,
-  onImageSelected: Proptypes.func.isRequired,
+  //uploadHandler: Proptypes.func.isRequired,
+  //onImageSelected: Proptypes.func.isRequired,
   handleLogin: Proptypes.func.isRequired,
   getToolStateValue: Proptypes.func.isRequired,
   changeField: Proptypes.func.isRequired,
