@@ -22,7 +22,7 @@ export const submitPicture = () => ({
   type: SUBMIT_PICTURE,
 });
 
-export const updatedPitureSuccess = (apiData) => ({
+export const updatedPitureSuccess = () => ({
   type: UPDATED_PICTURE_SUCCESS,
   //msg: apiData.msg,
   //token: apiData.token,

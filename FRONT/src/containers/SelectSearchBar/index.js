@@ -4,7 +4,7 @@ import SelectSearchBar from 'src/components/SelectSearchBar';
 
 import { 
   changeCategoriesInput, 
-  changeLocalisationInput, 
+  changeLocalisation, 
   researchButton, 
   getCategories,
   getRadius, 
@@ -17,10 +17,8 @@ import {
 
 //!cela sera une donnée
 const mapStateToProps = (state) => ({
-  inputTools: state.research.title ,
-  inputLocalisation: state.research.postcode,
-  categories:state.research.categories,
-  radius: state.research.radius,
+  title: state.research.inputTools ,
+  postcode: state.research.localisation,
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,11 +26,11 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('je lance changeCategoriesInput');
     dispatch(changeCategoriesInput(event.target.value));
   },
-  onSearchLocalisationChange: (event) => {
+  onSearchLocalisation: (event) => {
     console.log('je lance changeLocalisationInput');
-    dispatch(changeLocalisationInput(event.target.value));
+    dispatch(changeLocalisation(event.target.value));
   },
-  handleResearh: (event) => {
+  handleResearch: (event) => {
     event.preventDefault();
     console.log('je lance researchTitle et researchPostcode')
     dispatch(researchButton()); 
@@ -40,7 +38,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleCategory: (event) => {
     console.log('je lance getCategories');
     console.log(event.target.value),
-    console.log(event),
     dispatch(getCategories(event.target.value));
   },
   handleRadius: (event) => {
@@ -55,10 +52,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(SelectSearchBar);
 
 //! Direction les actions 
 
-{/* loadSelect:() => {
+/* loadSelect:() => {
     console.log('je lance GET_RADIUS et GET CATEGORIES');
     dispatch(getCategories());
     dispatch(getRadius());
-  }*/}
+  }*/
 
 

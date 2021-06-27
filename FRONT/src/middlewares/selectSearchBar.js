@@ -2,10 +2,10 @@ import axios from 'axios';
 
 import {
   RESEARCH_BUTTON,
-  changeCategoriesInput,
-  changeLocalisationInput,
+  researchSuccess,
   
 } from 'src/actions/selectSearchBar';
+
 
 
 const selectSearchBarMiddleware = (store) => (next) => (action) => {
@@ -14,18 +14,16 @@ const selectSearchBarMiddleware = (store) => (next) => (action) => {
       const state = store.getState();
       axios.post(
         `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/search`, {
-        "title": state.research.inputTools,
-        "postcode": state.research.inputLocalisation, 
-        "radius": state.research.handleRadius,
-        //"category":,
+        "title": state.research.title,
+        "postcode": state.research.postcode, 
+        "radius": state.research.radius,
+        "category":state.research.category,
 
       })
         .then((response) => {
           console.log('response de RESEARCH_BUTTON', response.data)
-          store.dispatch(changeCategoriesInput(response.data));
-          store.dispatch(changeLocalisationInput(response.data));
-          //store.dispatch(//(response.data));
-          // store.dispatch(//(response.data));
+          store.dispatch(researchSuccess(response.data));
+          
 
         })
         .catch((error) => console.log(error))
@@ -39,8 +37,13 @@ const selectSearchBarMiddleware = (store) => (next) => (action) => {
 
 export default selectSearchBarMiddleware;
 
+
+
+
+
+
 //! pour V2
-{/* 
+/* 
   
   
   GET_CATEGORIES,
@@ -67,9 +70,9 @@ export default selectSearchBarMiddleware;
           store.dispatch(getRadiusSuccess(response.data));
         })
         .catch((error) => console.log(error))
-      break*/}
+      break*/
 
-{/*  break
+/*  break
     case RESEARCH_POSTCODE:
       axios.post(
         `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/radius`, {
@@ -80,4 +83,4 @@ export default selectSearchBarMiddleware;
           store.dispatch(changeLocalisationInput(response.data));
           
         })
-        .catch((error) => console.log(error))*/}
+        .catch((error) => console.log(error))*/
