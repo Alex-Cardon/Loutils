@@ -9,13 +9,12 @@ const paramsMiddleware = (store) => (next) => (action) => {
       // avec getstate on apporte le state dans le MW
       const state = store.getState();
 
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/Params', {
+      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings', {
 
-
-        name: state.settings.name,
-        email: state.settings.email,
-        password: state.settings.password,
-        confirmPassword: state.settings.confirmPassword,
+        "name": state.settings.name,
+        "email": state.settings.email,
+        "password": state.settings.password,
+        "confirmPassword": state.settings.confirmPassword,
       })
         .then((response) => {
           console.log('je suis la réponse de params', response.data);
@@ -27,7 +26,7 @@ const paramsMiddleware = (store) => (next) => (action) => {
     default:
       next(action);
   }
-}
+};
 
 
 export default paramsMiddleware;

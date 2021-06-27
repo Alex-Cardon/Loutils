@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
+
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
+import AdFormPicture from './adFormPicture';
 import AdFormText from './adFormText';
 //import adFormPicture from './adFormPicture';
 
@@ -21,11 +24,25 @@ const AdForm = ({
   caution,
   description,
   toolState,
+
 }) => {
+  console.log("AdForm Component :onImageSelected",onImageSelected,
+  "handleLogin", handleLogin,
+  "getToolStateValue",getToolStateValue,
+  "changeField",changeField,
+  "toolName",toolName,
+  "image",image,
+  "price",price,
+  "caution",caution,
+  "description",description,
+  "toolState", toolState);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
+console.log(handleSubmit);
 
   const handleImageSelected = (event) => {
     const file = event.target.files[0];
@@ -34,8 +51,21 @@ const AdForm = ({
   return (
     <div className="adForm" >
       <Header />
+
+      <h2 className="adForm__title">Créez votre annonce</h2>
+      <div>
+      <AdFormPicture
+          />
+          </div>
       <LoginForm />
-      <h2 className="adForm__title">Decrivez ici votre outil</h2>
+      <NavLink
+      className='account-navlink'
+      exact
+      to="/AdForm"
+    >
+      Publier une annonce
+    </NavLink>
+    console.log("component : Publier une annonce l69");
       <form onSubmit={handleSubmit}>
         <div className="adForm__unit">
           <AdFormInput
@@ -118,7 +148,9 @@ const AdForm = ({
             
           />
           <button onClick={uploadHandler}>Upload!</button>
+          console.log("component : fin du form l414");
         </div> */}
+
         <button
           className="adForm__button"
           type="submit"
@@ -171,5 +203,6 @@ AdForm.proptypes = {
   caution: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
   toolState: Proptypes.string.isRequired,
+  handleSubmit: Proptypes.func.isRequired,
 }
 export default AdForm;

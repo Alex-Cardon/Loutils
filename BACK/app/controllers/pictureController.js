@@ -55,21 +55,27 @@ module.exports  = {
      */
 
     async postImage(req, res, next) {
+        console.log(req.file);
+    
         try {
-            const { filename, mimetype, size } = req.file;
-            const filepath = req.file.path;
+            const { mimetype, size } = req.file;
+            const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+            const filepath = 'http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/' + req.file.path;
             const postImage = await pictureDataMapper.postAnImage( filename, mimetype, size, filepath );
+
 
             if(!postImage){
                 return next();
             }
 
             res.status(200).json({data : postImage});
+        
         }catch (error) {
             console.trace(error);
             res.json({ error });
         }
 
     },
+   
 
 };

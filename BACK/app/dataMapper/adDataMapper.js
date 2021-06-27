@@ -63,9 +63,11 @@ module.exports = {
 
     async getByTitleAndCat(category, postcode, title) {
 
-        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name", "image_files"."filepath" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
+
+    JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
     
     JOIN "user" ON "ad"."user_id" = "user"."id"         
     
@@ -73,7 +75,11 @@ module.exports = {
 
      AND LOWER("ad"."title") LIKE LOWER($1) 
      
-     AND "category"."name"= $2 ORDER BY "created_at" ASC`, ['%' + title + '%', category]);
+     AND "category"."name"= $2
+
+     AND "moderated" = TRUE 
+
+     ORDER BY "created_at" DESC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -91,21 +97,29 @@ module.exports = {
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
-        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name" FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name", "image_files"."filepath" FROM "ad" 
 
     JOIN "category" ON "ad"."category_id" = "category"."id"
+
+    JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
     
     JOIN "user" ON "ad"."user_id" = "user"."id"         
     
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-     AND LOWER("ad"."title") LIKE LOWER($1) ORDER BY "created_at" ASC`, ['%' + title + '%']);
+     AND LOWER("ad"."title") LIKE LOWER($1)
+     
+     AND "moderated" = TRUE
+     
+     ORDER BY "created_at" DESC`, ['%' + title + '%']);
 
         return (result.rows);
     },
 
     async getTenAds() {
-        const result = await client.query(`SELECT * FROM "ad" ORDER BY RANDOM() LIMIT 6`)
+        const result = await client.query(`SELECT * FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+        WHERE "moderated" = TRUE ORDER BY RANDOM() LIMIT 6`)
         return result.rows;
     },
 
@@ -117,14 +131,16 @@ module.exports = {
     },
 
     async getAllNonModAd() {
-        const result = await client.query(`SELECT "id", "title" FROM "ad"
-        WHERE "moderated" = FALSE ORDER BY "created_at" ASC`);
+        const result = await client.query(`SELECT "ad"."id", "title" FROM "ad"
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+        WHERE "moderated" = FALSE ORDER BY "ad"."created_at" DESC`);
         return result.rows;
     },
 
     async ModofindById(id) {
-        const result = await client.query(`SELECT * FROM "ad" 
-        WHERE "id" = $1`, [id]);
+        const result = await client.query(`SELECT * FROM "ad"
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+        WHERE "ad"."id" = $1`, [id]);
         return result.rows;
     },
 
