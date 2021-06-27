@@ -10,10 +10,6 @@ const adFormText = ({
   onChange,
 }) => {
 
-  const handleChange = (evt) => {
-    onChange(evt.target.value, name);
-  };
-
   const inputId = `field-${name}`;
 
   return(
@@ -26,7 +22,7 @@ const adFormText = ({
       <textarea
         // React - state
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         // infos de base
         id={inputId}
         type={type}

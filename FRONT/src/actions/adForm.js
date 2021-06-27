@@ -5,6 +5,7 @@ export const SUBMIT_AD_LOGIN = 'SUBMIT_AD_LOGIN';
 export const SELECT_IMAGE = 'SELECT_IMAGE';
 export const UPLOAD_FILE = "UPLOAD_FILE";
 export const INPUT_DATE = 'INPUT_DATE';
+export const GET_TOOL_STATE_VALUE = 'GET_TOOL_STATE_VALUE';
 
 
 export const changeAdField = (newValue, name) => ({
@@ -42,4 +43,8 @@ export const uploadFile = (event) => ({
   type: UPLOAD_FILE,
   event,
 
+});
+
+export const getToolStateValue = () =>  ({
+  type: GET_TOOL_STATE_VALUE,
 });
