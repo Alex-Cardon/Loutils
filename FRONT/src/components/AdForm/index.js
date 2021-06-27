@@ -23,7 +23,7 @@ const AdForm = ({
   caution,
   description,
   toolState,
-}) => {
+  }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
@@ -37,7 +37,7 @@ const AdForm = ({
     <div className="adForm" >
       <Header />
 
-      <h2 className="adForm__title">Decrivez ici votre outil</h2>
+      <h2 className="adForm__title">Créez votre annonce</h2>
       <div>
       <AdFormPicture
           />
