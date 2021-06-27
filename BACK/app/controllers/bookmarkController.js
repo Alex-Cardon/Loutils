@@ -69,9 +69,11 @@ module.exports = {
                   });
             };
 
+            const bookmarkExist = await bookmarkDataMapper.bookmarkExist(ad_id, user_id);
 
-            const post = await bookmarkDataMapper.
-            addBookmark(ad_id, user_id);
+            if(bookmarkExist) return res.status(401).json({ error: "bookmark already exist" });
+
+            const post = await bookmarkDataMapper.addBookmark(ad_id, user_id);
             
     
             if(!post){
