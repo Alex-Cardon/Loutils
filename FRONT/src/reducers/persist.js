@@ -7,7 +7,7 @@ export const initialState = {
 }
 
 const persistStorageReducer = (state = initialState, action = {}) =>{
-  console.log('je suis dans mon persist reducer')
+  //console.log('je suis dans mon persist reducer')
   switch (action.type) {
     case LOGIN_SUCCESS : 
     console.log(action)

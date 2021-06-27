@@ -9,7 +9,7 @@ export const getAnnouncements = () => ({
 });
 
 // action lorsque la réponse arrive
-export const getAnnouncementsSuccess = () => ({
+export const getAnnouncementsSuccess = (apiData) => ({
   type: GET_ANNOUNCEMENTS_SUCCESS,
   apiData,
 });
@@ -18,7 +18,7 @@ export const deleteBooking = () => ({
   type: DELETE_BOOKING,
 });
 
-export const deleteBookingSuccess = (response) => ({
+export const deleteBookingSuccess = (msg) => ({
   type: DELETE_BOOKING_SUCCESS,
-  msg: response.msg,
+  msg,
 });

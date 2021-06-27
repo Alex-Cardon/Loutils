@@ -32,8 +32,8 @@ const adResults = ({ content, loadContent }) => {
       {content.data.map((obj) => {
         return (
           <Card
-            key={obj.id}
-            image={obj.picture_id}
+            key={obj.description}
+            image={obj.filepath}
             header={obj.title}
             meta={obj.description}
             description={obj.price}

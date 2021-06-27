@@ -1,17 +1,14 @@
-
-
-
-
 import { CHANGE_AD_FIELD, CHANGE_TOOL_STATE, SUBMIT_AD_LOGIN, INPUT_DATE, UPLOAD_FILE, SELECT_IMAGE } from 'src/actions/adForm';
 
 
 const initialState = {
-  toolName: "",
+  title: "",
   image: "",
-  price: "",
-  caution: "",
-  description:"",
-  toolState:"",
+  price:"",
+  deposit: "",
+  description: "",
+  product_state: "",
+  postcode: "",
 
   selectedFile:null,
 
@@ -39,7 +36,7 @@ const reducer = (state = initialState, action) => {
           return {
             ...state,
             // ici toolState recoit un objet au lieu de string
-            toolState: action.value,
+            product_state: action.value,
           };
 
 

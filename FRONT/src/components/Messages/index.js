@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-/*import PropTypes from 'prop-types';*/
+
+//import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -15,7 +16,7 @@ import './messages.scss';
 const Messages = ({ sender_id, recipient_id, title }) => {
 
   const [loading, setLoader] = useState(true);
-  console.log(`messages dans mon composant`, Messages);
+  console.log(`messages dans mon composant messages`, Messages);
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
@@ -33,7 +34,7 @@ return(
     <LoginForm />
     <h1> Mes messages</h1>
     <Messages.Group className='message-group'>
-    {Messages.data.map((obj) => {
+    {Message.data.map((obj) => {
       <div>
         { title && (
           <p>{title}</p>

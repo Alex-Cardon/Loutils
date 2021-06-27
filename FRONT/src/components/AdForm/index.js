@@ -23,11 +23,25 @@ const AdForm = ({
   caution,
   description,
   toolState,
-  }) => {
+
+}) => {
+  console.log("AdForm Component :onImageSelected",onImageSelected,
+  "handleLogin", handleLogin,
+  "getToolStateValue",getToolStateValue,
+  "changeField",changeField,
+  "toolName",toolName,
+  "image",image,
+  "price",price,
+  "caution",caution,
+  "description",description,
+  "toolState", toolState);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+
+console.log(handleSubmit);
 
   const handleImageSelected = (event) => {
     const file = event.target.files[0];
@@ -43,6 +57,14 @@ const AdForm = ({
           />
           </div>
       <LoginForm />
+      <NavLink
+      className='account-navlink'
+      exact
+      to="/AdForm"
+    >
+      Publier une annonce
+    </NavLink>
+    console.log("component : Publier une annonce l69");
       <form onSubmit={handleSubmit}>
         <div className="adForm__unit">
           <AdFormInput
@@ -114,6 +136,7 @@ const AdForm = ({
               onChange={getToolStateValue}
             />
           </div>
+          console.log("component : fin du form l414");
         </div>
         <button
           className="adForm__button"
@@ -167,5 +190,6 @@ AdForm.proptypes = {
   caution: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
   toolState: Proptypes.string.isRequired,
+  handleSubmit: Proptypes.func.isRequired,
 }
 export default AdForm;

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 
 import { Card } from 'semantic-ui-react';
-// TODO en cours de construction
+
 import Loading from 'src/components/Loading';
 import './styles.scss';
 
-const announcements = ({handleDeleteBooking, begining, end, msg, loadAnnouncements}) => {
-
-  const [loading, setLoader] = useState(true);
-  console.log(`content dans mon composant`, announcements);
+const announcements = ({handleDeleteBooking, begining, end, loadAnnouncements, loading, announcements }) => {
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
@@ -41,12 +38,8 @@ const announcements = ({handleDeleteBooking, begining, end, msg, loadAnnouncemen
     <h1> Mes annonces</h1>
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
-      <div>
-        { msg && (
-          <p>{msg}</p>
-        )}
-        {!msg &&(
-          <div>
+      return (
+         <div>
             <Card
               key={obj.id}
               image={obj.picture_id}
@@ -59,19 +52,17 @@ const announcements = ({handleDeleteBooking, begining, end, msg, loadAnnouncemen
               <p>Réservé du {begining} au {end}.</p>
             </div>
           </div>
-        )}
-       
-      </div>
-      })}   
+      )}
+      )}   
     </Card.Group>
     <Footer />
   </div>
   );
     }
-    
+/*    
 announcements.propTypes = {
-  /*advertissement: PropTypes.arrayOf(
-    PropTypes.shape({*/
+  advertissement: PropTypes.arrayOf(
+    PropTypes.shape({
       begining : PropTypes.func.isRequired,
       end : PropTypes.func.isRequired,
       handleDeleteBooking: PropTypes.func.isRequired,
@@ -80,7 +71,7 @@ announcements.propTypes = {
       description: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       msg: PropTypes.string.isRequired,
-   /* }).isRequired,
-  ).isRequired,*/
-};
+    }).isRequired,
+  ).isRequired,
+};*/
 export default announcements;
