@@ -1,4 +1,4 @@
-/*import { CHANGE_PICTURE_INPUT, UPDATED_PICTURE_SUCCESS } from 'src/actions/updatedProfil';
+import { CHANGE_PICTURE_INPUT, UPDATED_PICTURE_SUCCESS } from 'src/actions/updatedProfil';
 
 //! state
 export const initialState = {
@@ -37,4 +37,4 @@ const reducer = (state = initialState, action ) => {
   }
 };
 
-export default reducer;*/
+export default reducer;

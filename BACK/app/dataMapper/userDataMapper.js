@@ -81,6 +81,21 @@ module.exports = {
         SET "role" = $1
         WHERE "id" = $2 RETURNING "name", "role"`, [role, id]);
         return result.rows[0];
-    }
+    },
+
+    async passwordForget(id) {
+        const result = await client.query(`UPDATE "user"
+        SET "forg_pass" = TRUE
+        WHERE "id" = $1 RETURNING "name"`, [id]);
+        return result.rows;
+    },
+
+    async changePassword(hashPassword, id) {
+        const result = await client.query(`UPDATE "user"
+        SET "password" = $1,
+            "forg_pass" = FALSE
+        WHERE "id" = $2 RETURNING "name"`, [hashPassword, id]);
+        return result.rows;   
+    },
 
 }

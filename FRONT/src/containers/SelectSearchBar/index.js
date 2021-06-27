@@ -4,9 +4,8 @@ import SelectSearchBar from 'src/components/SelectSearchBar';
 
 import { 
   changeCategoriesInput, 
-  changeLocalisationInput, 
-  researchTitle, 
-  researchPostcode,
+  changeLocalisation, 
+  researchButton, 
   getCategories,
   getRadius, 
 } from 'src/actions/selectSearchBar';
@@ -18,10 +17,8 @@ import {
 
 //!cela sera une donnée
 const mapStateToProps = (state) => ({
-  inputTools: state.research.title ,
-  inputLocalisation: state.research.postcode,
-  categores:state.research.categories,
-  radius: state.research.radius,
+  title: state.research.inputTools ,
+  postcode: state.research.localisation,
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,30 +26,36 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('je lance changeCategoriesInput');
     dispatch(changeCategoriesInput(event.target.value));
   },
-  onSearchLocalisationChange: (event) => {
+  onSearchLocalisation: (event) => {
     console.log('je lance changeLocalisationInput');
-    dispatch(changeLocalisationInput(event.target.value));
+    dispatch(changeLocalisation(event.target.value));
   },
-  handleResearh: (event) => {
+  handleResearch: (event) => {
     event.preventDefault();
     console.log('je lance researchTitle et researchPostcode')
-    dispatch(researchTitle());
-    dispatch(researchPostcode());
-    
+    dispatch(researchButton()); 
   },
   handleCategory: (event) => {
-    event.preventDefault();
     console.log('je lance getCategories');
-    dispatch(getCategories());
+    console.log(event.target.value),
+    dispatch(getCategories(event.target.value));
   },
   handleRadius: (event) => {
-    event.preventDefault();
     console.log('je lance getRadius');
-    dispatch(getRadius());
-  },
-
+    console.log(event.target.value),
+    dispatch(getRadius(event.target.value));
+  }
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectSearchBar);
 
 //! Direction les actions 
+
+/* loadSelect:() => {
+    console.log('je lance GET_RADIUS et GET CATEGORIES');
+    dispatch(getCategories());
+    dispatch(getRadius());
+  }*/
+
+

@@ -10,3 +10,4 @@ msg_ad_id 2021-06-18T12:28:22Z alex <pierrealexandre.cardon@gmail.com> # add ad_
 msg_tab_modif 2021-06-18T12:57:58Z alex <pierrealexandre.cardon@gmail.com> # adding columns senderdelete and recipientdelete
 moderated_ad 2021-06-18T13:48:23Z alex <pierrealexandre.cardon@gmail.com> # adding column moderated to table ad
 deleteAd 2021-06-23T09:57:32Z Segolene-Danjou <segolene.danjou@gmail.com> # supprimer annonce en modo-admin
+user_add_forg_pass 2021-06-27T15:11:10Z alex <pierrealexandre.cardon@gmail.com> # adding column forgotten password

@@ -76,10 +76,11 @@ module.exports = {
      AND LOWER("ad"."title") LIKE LOWER($1) 
      
      AND "category"."name"= $2
-     
+
      AND "moderated" = TRUE 
-     
+
      ORDER BY "created_at" DESC`, ['%' + title + '%', category]);
+
 
         return (result.rows);
     },
@@ -106,7 +107,7 @@ module.exports = {
     
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
 
-     AND LOWER("ad"."title") LIKE LOWER($1) 
+     AND LOWER("ad"."title") LIKE LOWER($1)
      
      AND "moderated" = TRUE
      

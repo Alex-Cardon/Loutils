@@ -5,7 +5,7 @@ require('dotenv').config();
 
 module.exports = {
 
-    async sendConfirm(id, role, email, confirmed) {
+    async sendForgPassEmail(id, role, email, confirmed) {
          // create transport
       const transporter = await nodemailer.createTransport({
         service: 'Gmail',
@@ -28,13 +28,13 @@ module.exports = {
         expiresIn: 1200,
     });
        //create dynamic URL
-       const url = `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/confirmation/${emailToken}`;
+       const url = `http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/passchange/${emailToken}`;
 
        //send email
        await transporter.sendMail({
              to: email,
-             subject: 'Confirmation Email',
-             html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`
+             subject: 'Mot de passe oublié',
+             html: `Merci de lire les instructions jusqu'au bout avant de cliquer sur ce lien et de vous connecter au site Loutils avec le mot de passe que vous pensez juste, puis de suivre les instruction pour le changement de mot de passe: <a href="${url}">${url}</a>`
            });
     }
 

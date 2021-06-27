@@ -14,11 +14,18 @@ const Setting = () => (
   <NavLink
       className='account-navlink'
       exact
+      to="/Messagerie"
+    >
+      Ma messagerie
+    </NavLink>
+  <NavLink
+      className='account-navlink'
+      exact
       to="/Announcements"
     >
-      Mes annonces
+     Mes annonces
     </NavLink>
-    <NavLink
+    {/*<NavLink
       className='account-navlink'
       exact
       to="/Favorites"
@@ -32,6 +39,14 @@ const Setting = () => (
     >
       Mes recherches
     </NavLink>
+     <NavLink
+      className='account-navlink'
+      exact
+      to="/Params"
+    >
+      Mes parametres
+    </NavLink>
+    */}
     <NavLink
       className='account-navlink'
       exact
@@ -39,15 +54,9 @@ const Setting = () => (
     >
       Mon profil
     </NavLink>
-    <NavLink
-      className='account-navlink'
-      exact
-      to="/Params"
-    >
-      Mes parametres
-    </NavLink>
+   
   <Footer />
-  </div>
+  </div >
 );
 
 export default Setting;
