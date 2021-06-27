@@ -59,11 +59,11 @@ return(
 /*
 Messages.propTypes = {
 
-  author: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  sender_id: propTypes.number.isRequired,
-  recipient_id: propTypes.number.isRequired,
-  title: propTypes.string.isRequired,
+//   author: PropTypes.string.isRequired,
+//   content: PropTypes.string.isRequired,
+//   sender_id: propTypes.number.isRequired,
+//   recipient_id: propTypes.number.isRequired,
+//   title: propTypes.string.isRequired,
 
 };*/
 

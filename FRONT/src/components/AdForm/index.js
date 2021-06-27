@@ -23,6 +23,7 @@ const AdForm = ({
   caution,
   description,
   toolState,
+
 }) => {
   console.log("AdForm Component :onImageSelected",onImageSelected,
   "handleLogin", handleLogin,
@@ -50,7 +51,7 @@ console.log(handleSubmit);
     <div className="adForm" >
       <Header />
 
-      <h2 className="adForm__title">Decrivez ici votre outil</h2>
+      <h2 className="adForm__title">Créez votre annonce</h2>
       <div>
       <AdFormPicture
           />
