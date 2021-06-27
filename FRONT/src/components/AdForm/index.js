@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from 'react-router-dom';
 
 import Header from 'src/components/Header';
@@ -7,65 +7,24 @@ import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
 import AdFormPicture from './adFormPicture';
 import AdFormText from './adFormText';
-//import adFormPicture from './adFormPicture';
 
 import Proptypes from 'prop-types';
 import './style.scss';
 
 const AdForm = ({
-  //uploadHandler,
- // onImageSelected,
-  handleLogin,
   getToolStateValue,
-  changeField,
-  toolName,
-  image,
-  price,
-  caution,
-  description,
-  toolState,
+  handleSubmit
+}) => (
 
-}) => {
-  console.log("AdForm Component :onImageSelected",onImageSelected,
-  "handleLogin", handleLogin,
-  "getToolStateValue",getToolStateValue,
-  "changeField",changeField,
-  "toolName",toolName,
-  "image",image,
-  "price",price,
-  "caution",caution,
-  "description",description,
-  "toolState", toolState);
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    handleLogin();
-  };
-
-console.log(handleSubmit);
-
-  const handleImageSelected = (event) => {
-    const file = event.target.files[0];
-    onImageSelected(file);
-  };
-  return (
     <div className="adForm" >
       <Header />
-
-      <h2 className="adForm__title">Créez votre annonce</h2>
+      <LoginForm />
+      <h2 className="adForm__title">Decrivez ici votre outil</h2>
       <div>
       <AdFormPicture
           />
           </div>
-      <LoginForm />
-      <NavLink
-      className='account-navlink'
-      exact
-      to="/AdForm"
-    >
-      Publier une annonce
-    </NavLink>
-    console.log("component : Publier une annonce l69");
+      <h2>Publier une annonce</h2>
       <form onSubmit={handleSubmit}>
         <div className="adForm__unit">
           <AdFormInput
@@ -73,8 +32,7 @@ console.log(handleSubmit);
             type="text"
             placeholder="exemple: Perceuse"
             //onChange prend deux valeurs: event et name;
-            onChange={changeField}
-            value={toolName}
+
           />
         </div>
         <div className="adForm__unit">
@@ -82,8 +40,7 @@ console.log(handleSubmit);
             name="image"
             type="text"
             placeholder="Categories"
-            onChange={changeField}
-            value={image}
+
           />
         </div>
         <div className="adForm__unit">
@@ -91,8 +48,7 @@ console.log(handleSubmit);
             name="price"
             type="text"
             placeholder="exemple: 50 "
-            onChange={changeField}
-            value={price}
+
           />
         </div>
         <div className="adForm__unit">
@@ -100,8 +56,7 @@ console.log(handleSubmit);
             name="caution"
             type="text"
             placeholder="exemple: 50"
-            onChange={changeField}
-            value={caution}
+
           />
         </div>
         <div className="adForm__unit">
@@ -109,21 +64,18 @@ console.log(handleSubmit);
             name="description"
             type="text"
             placeholder="description "
-            onChange={changeField}
-            value={description}
+
           />
         </div>
         <div className="adForm__unit--radio">
-          <p>Loutil est plutot: {toolState} </p>
+          <p>Loutil est plutot: {getToolStateValue} </p>
           <div>
             <label hmtlfor="new">comme neuf</label>
             <input
               type="radio"
               id="new"
               name="toolState"
-              value="new"
-              // ici, avec getToolStateValue, je veux récupérer la valuer value="new"
-              onChange={getToolStateValue}
+
             />
           </div>
           <div>
@@ -132,25 +84,10 @@ console.log(handleSubmit);
               type="radio"
               id="used"
               name="toolState"
-              value="working"
-              // onChage nous retourne un tableau files
-              onChange={getToolStateValue}
+
             />
           </div>
         </div>
-        {/* <adFormPicture /> */}
-        {/* <div>
-          <input
-            type="file"
-            accept='.jpg, .png, .jpeg'
-            onChange={handleImageSelected}
-            className="uploadInput"
-            
-          />
-          <button onClick={uploadHandler}>Upload!</button>
-          console.log("component : fin du form l414");
-        </div> */}
-
         <button
           className="adForm__button"
           type="submit"
@@ -162,12 +99,8 @@ console.log(handleSubmit);
                     <Diary />
   </div>*/}
       </form>
-      
-      <Footer />
     </div>
-
-  )
-};
+);
 
 {/*  
                     <div className="App">
@@ -192,17 +125,7 @@ console.log(handleSubmit);
 
 
 AdForm.proptypes = {
-  //uploadHandler: Proptypes.func.isRequired,
-  //onImageSelected: Proptypes.func.isRequired,
-  handleLogin: Proptypes.func.isRequired,
-  getToolStateValue: Proptypes.func.isRequired,
-  changeField: Proptypes.func.isRequired,
-  toolName: Proptypes.string.isRequired,
-  image: Proptypes.string.isRequired,
-  price: Proptypes.string.isRequired,
-  caution: Proptypes.string.isRequired,
-  description: Proptypes.string.isRequired,
-  toolState: Proptypes.string.isRequired,
+  getToolStateValue: Proptypes.string.isRequired,
   handleSubmit: Proptypes.func.isRequired,
 }
 export default AdForm;
