@@ -4,13 +4,12 @@ import {
   SEND_MESSAGE,
 
 } from 'src/actions/messaging';
+import announcements from '../components/Announcements';
 
 const initialState = {
-  
-  messages:{
+    //id='',
     content: '',
     author: '',
-  },
   inputValue: '',
 };
 
@@ -28,23 +27,25 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        inputValue: '',
+        inputValue: '',   
+        content: state.inputValue,
+        //author: state.recipient,
       };
 
-    case ADD_MESSAGE:
+    // case ADD_MESSAGE:
 
-      return {
-        ...state,
-        messages: [
-          ...state.messages,
+    //   return {
+    //     ...state,
+    //     messages: [
+    //       ...state.messages,
 
-          {
+    //       {
 
-            author: action.message.author,
-            content: action.message.content,
-          },
-        ],
-      };
+    //         author: action.message.author,
+    //         content: action.message.content,
+    //       },
+    //     ],
+    //   };
 
     default:
       return state;

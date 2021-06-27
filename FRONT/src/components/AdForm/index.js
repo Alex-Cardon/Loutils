@@ -4,13 +4,14 @@ import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 import AdFormInput from './adFormInput';
 import AdFormText from './adFormText';
+//import adFormPicture from './adFormPicture';
 
 import Proptypes from 'prop-types';
 import './style.scss';
 
 const AdForm = ({
-  uploadHandler,
-  onImageSelected,
+  //uploadHandler,
+ // onImageSelected,
   handleLogin,
   getToolStateValue,
   changeField,
@@ -107,7 +108,8 @@ const AdForm = ({
             />
           </div>
         </div>
-        <div>
+        {/* <adFormPicture /> */}
+        {/* <div>
           <input
             type="file"
             accept='.jpg, .png, .jpeg'
@@ -116,7 +118,7 @@ const AdForm = ({
             
           />
           <button onClick={uploadHandler}>Upload!</button>
-        </div>
+        </div> */}
         <button
           className="adForm__button"
           type="submit"
@@ -158,8 +160,8 @@ const AdForm = ({
 
 
 AdForm.proptypes = {
-  uploadHandler: Proptypes.func.isRequired,
-  onImageSelected: Proptypes.func.isRequired,
+  //uploadHandler: Proptypes.func.isRequired,
+  //onImageSelected: Proptypes.func.isRequired,
   handleLogin: Proptypes.func.isRequired,
   getToolStateValue: Proptypes.func.isRequired,
   changeField: Proptypes.func.isRequired,
