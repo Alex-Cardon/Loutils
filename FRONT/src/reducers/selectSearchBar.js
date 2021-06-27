@@ -48,10 +48,7 @@ const reducer = (state = initialState, action) => {
         postcode: action.apiData,
         radius: action.apiData,
         category: action.apiData,
-        title: '',
-        postcode: '',
-        radius: '',
-        category: '',
+        
       }
 
     default:
