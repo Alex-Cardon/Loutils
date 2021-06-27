@@ -49,6 +49,11 @@ const mapDispatchToProps = (dispatch) => ({
     console.log("changeField",changeField);
   },
 
+  handleSubmit : (evt) => {
+    evt.preventDefault();
+    handleLogin();
+  },
+
   getToolStateValue: (value) => {
     console.log("value : ", value);
     // ici value est un objet au lieu de value="used" ou value="working"

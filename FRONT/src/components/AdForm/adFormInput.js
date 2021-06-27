@@ -8,8 +8,18 @@ const AdFormInput = ({
   name,
   placeholder,
   onChange,
-}) => {
-  const handleChange = (evt) => {
+}) => (
+  <input
+    className="settings__input"
+    value={value}
+    name={name}
+    onChange={onChange}
+    type={type} required
+    placeholder={placeholder}
+    
+  />
+);
+  /*const handleChange = (evt) => {
     onChange(evt.target.value, name);
   };
 
@@ -34,7 +44,7 @@ const AdFormInput = ({
       />
     </div>
   );
-};
+};*/
 
 AdFormInput.proptypes = {
   value: Proptypes.string.isRequired,
