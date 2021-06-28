@@ -12,6 +12,8 @@ export const initialState = {
   postcode: '',
   radius: '',
   category: '',
+  searchResult: {},
+  apiResult: false,
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
@@ -44,11 +46,8 @@ const reducer = (state = initialState, action) => {
     case RESEARCH_SUCCESS:
       return {
         ...state,
-        title: action.apiData,
-        postcode: action.apiData,
-        radius: action.apiData,
-        category: action.apiData,
-        
+        searchResult: action.apiData, 
+        apiResult: true,
       }
 
     default:

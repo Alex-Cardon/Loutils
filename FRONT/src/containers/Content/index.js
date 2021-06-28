@@ -9,6 +9,8 @@ const mapStateToprops = (state) => ({
   description: state.card.description,
   price: state.card.price,*/
   content:state.card.content,
+  apiResult : state.research.apiResult,
+  searchResult: state.research.searchResult,
 });
 
 const mapDispatchToProps = (dispatch) =>({

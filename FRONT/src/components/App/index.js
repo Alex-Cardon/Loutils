@@ -1,5 +1,6 @@
 // == Import npm
-import React from 'react';
+//import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -17,13 +18,14 @@ import Diary from 'src/containers/Diary';
 import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
 
-
+//import Loading from 'src/components/Loading';
 
 import './styles.scss';
 
 
 // == Composant
-function App(){
+function App({ content, loadContent }){
+
 
   return (
     <div className="app">
@@ -74,3 +76,21 @@ function App(){
 
 // == Export
 export default App;
+
+{/*
+  const [loading, setLoader] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("content", JSON.stringify(content))
+  });
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadContent();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+*/}

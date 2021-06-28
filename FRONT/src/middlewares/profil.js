@@ -15,7 +15,7 @@ const profilMiddleware = (store) => (next) => (action) => {
       const state = store.getState()
       axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings`, {
         headers: {
-          "token": `${store.getState().persist.token}`,
+          "token": state.user.token,
           "Accept": "application/json",
           "Content-Type": "application/json",
         },
