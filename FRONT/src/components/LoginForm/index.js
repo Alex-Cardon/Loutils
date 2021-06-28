@@ -108,3 +108,9 @@ LoginForm.defaultProps = {
 };
 
 export default LoginForm;
+
+/*
+import { Icon } from 'semantic-ui-react'
+<Icon color='red' name='window close outline' />   
+<Icon color='red' name='power off' />   
+*/
