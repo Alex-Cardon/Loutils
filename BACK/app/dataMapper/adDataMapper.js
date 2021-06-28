@@ -79,7 +79,7 @@ module.exports = {
 
      AND "moderated" = TRUE 
 
-     ORDER BY "created_at" DESC`, ['%' + title + '%', category]);
+     ORDER BY "ad"."created_at" DESC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -111,7 +111,7 @@ module.exports = {
      
      AND "moderated" = TRUE
      
-     ORDER BY "created_at" DESC`, ['%' + title + '%']);
+     ORDER BY "ad"."created_at" DESC`, ['%' + title + '%']);
 
         return (result.rows);
     },
