@@ -2,10 +2,10 @@ import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS, DELETE_BOOKING_SUCCESS } 
 
 //! state
 export const initialState = {
-  announcements: {
-    ad_id: 7,
-    recipient: 2,
-  }, 
+  begining: "", 
+  end: "", 
+  loading:false,
+  announcements:"", 
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {

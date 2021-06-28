@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
-//import PropTypes from 'prop-types';
-
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+import { useHistory } from 'react-router-dom';
 
 import Loading from 'src/components/Loading';
 
-import Message from 'src/containers/Message';
+import { List } from 'semantic-ui-react';
 
 import './messages.scss';
 
-const Messages = ({ sender_id, recipient_id, title }) => {
+
+const Messages = ({loadMessages, message}) => {
+
+  const history = useHistory();
+  const changeRoute = () => {
+  let path = "/Message";
+  history.push(path);
+};
 
   const [loading, setLoader] = useState(true);
-  console.log(`messages dans mon composant messages`, Messages);
-
+  console.log(`messages dans mon composant messages`, message);
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadMessages();
@@ -30,29 +30,19 @@ const Messages = ({ sender_id, recipient_id, title }) => {
 return(
 
   <div className="messages-list">
-    <Header />
-    <LoginForm />
-    <h1> Mes messages</h1>
-    <Messages.Group className='message-group'>
-    {Message.data.map((obj) => {
-      <div>
-        { title && (
-          <p>{title}</p>
-        )}
-        {!title &&(
-          <div>
-            <Card
-              key_sender={obj.sender_id}
-              key_recipient={obj.recipient_id}
-              header={obj.title}
-            />
-          </div>
-        )}
-      </div>
-      })}   
-  
-  </Messages.Group>
-  <Footer />
+    <h1> Mes messages : </h1>
+    <List>
+    {message.msg_recieved.map((obj) => {
+       return  (
+        <List.Item key={obj.msg_id} onClick={changeRoute} >   
+          <List.Header>{obj.sender_name}</List.Header>
+          <List.Description>{obj.title} </List.Description>
+        </List.Item>
+       )
+       
+    })}
+    </List>
+    {/* <Message /> */}
   </div>
 );
 }

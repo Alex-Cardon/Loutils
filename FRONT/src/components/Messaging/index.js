@@ -12,11 +12,11 @@ const Messaging= () => (
  
     <div className="messaging">
       <Header />
-      <h1>Annonce Scie Borg de Chris Prolls</h1>
+      <h1>Annonce Scie Borg de Chris </h1>
       <Icon color='red' name='envelope outline' />
       <Icon color='red' name='trash alternate outline' />
       <Messages />
-      <Form />
+      {/* <Form /> */}
       <Footer />
     </div>
 );
