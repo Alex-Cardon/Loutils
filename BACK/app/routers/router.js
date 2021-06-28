@@ -273,7 +273,7 @@ router.post('/login', validUserInfo, userController.login);
  * @returns {Error} 500 - Une erreur serveur
  *  @returns {Error} 400 - Une erreur indiquant que l'utilisateur doit saisir un code postal
  */
-router.get('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
+router.post('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
 
 
 /**
