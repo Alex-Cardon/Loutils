@@ -1,4 +1,8 @@
-import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS, DELETE_BOOKING_SUCCESS } from 'src/actions/announcements';
+import { 
+  GET_ANNOUNCEMENTS, 
+  GET_ANNOUNCEMENTS_SUCCESS, 
+  DELETE_BOOKING_SUCCESS 
+} from 'src/actions/announcements';
 
 //! state
 export const initialState = {

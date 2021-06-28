@@ -21,6 +21,7 @@ import profilFieldReducer  from './profilField';
 import profilReducer from './profil';
 import updatedProfilReducer from './updatedProfil';
 import messagingReducer from './messaging';
+import oneAdReducer from './oneAd';
 import persistStorageReducer from './persist';
 
 
@@ -52,6 +53,9 @@ const rootReducer = combineReducers({
   picture : updatedProfilReducer,
 
   message : messagingReducer,
+
+  oneAd : oneAdReducer,
+
   persistStorageReducer: persistStorageReducer,
 });
 

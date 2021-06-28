@@ -22,7 +22,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult, loadSearch }
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadContent();
-    //loadSearch();
+    
   }, []);
 
   if (loading) {
