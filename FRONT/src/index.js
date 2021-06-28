@@ -16,6 +16,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 
+
 const rootReactElement = (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
