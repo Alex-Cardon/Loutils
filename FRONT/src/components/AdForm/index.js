@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
@@ -31,8 +31,7 @@ const AdForm = ({
             name="toolName"
             type="text"
             placeholder="exemple: Perceuse"
-            //onChange prend deux valeurs: event et name;
-
+            
           />
         </div>
         <div className="adForm__unit">
@@ -99,9 +98,10 @@ const AdForm = ({
                     <Diary />
   </div>*/}
       </form>
+      <Footer />
     </div>
 );
-
+/* */
 {/*  
                     <div className="App">
                       <FilePond

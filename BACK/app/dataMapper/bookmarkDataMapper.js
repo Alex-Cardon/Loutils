@@ -31,6 +31,12 @@ module.exports = {
         WHERE ad_id = $1 AND user_id = $2`, [ad_id, user_id]);
 
         return result.rows[0];
+    },
+
+    async checkBookmarkExist(ad_id, user_id) {
+        const result = await client.query(`SELECT * FROM "bookmark"
+        WHERE ad_id = $1 AND user_id = $2`, [ad_id, user_id]);
+        return result.rows;
     }
 
 

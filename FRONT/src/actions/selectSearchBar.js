@@ -14,7 +14,7 @@ export const changeCategoriesInput = (value) => ({
 });
 
 export const changeLocalisation = (value) => ({
-  Type: CHANGE_LOCALISATION,
+  type: CHANGE_LOCALISATION,
   value,
  
 });

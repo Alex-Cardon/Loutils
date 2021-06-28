@@ -17,8 +17,8 @@ import {
 
 //!cela sera une donnée
 const mapStateToProps = (state) => ({
-  title: state.research.inputTools ,
-  postcode: state.research.localisation,
+  inputTools: state.research.title,
+  localisation: state.research.postcode,
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeCategoriesInput(event.target.value));
   },
   onSearchLocalisation: (event) => {
+    console.log(event.target.value)
     console.log('je lance changeLocalisationInput');
     dispatch(changeLocalisation(event.target.value));
   },

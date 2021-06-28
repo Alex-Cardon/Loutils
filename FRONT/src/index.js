@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -16,6 +16,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 
+
 const rootReactElement = (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -28,4 +29,4 @@ const rootReactElement = (
 
 const target = document.getElementById('root');
 
-render(rootReactElement, target);
+ReactDom.render(rootReactElement, target);
