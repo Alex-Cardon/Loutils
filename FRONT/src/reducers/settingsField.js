@@ -9,6 +9,7 @@ export const initialState = {
   confirmPassword: "",
   token:'',
   msg:'',
+  signUp: false,
 };
 //! récupération de l'action pour injecter dans le state 
 //! direction index.js de mon reducer
@@ -37,6 +38,7 @@ const reducer = (state = initialState, action ) => {
         email: '',
         password: '',
         confirmPassword: '',
+        signUp: true,
       };
     default:
       return state;

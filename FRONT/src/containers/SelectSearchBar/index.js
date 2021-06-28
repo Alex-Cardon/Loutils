@@ -19,6 +19,7 @@ import {
 const mapStateToProps = (state) => ({
   inputTools: state.research.title,
   localisation: state.research.postcode,
+ 
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch) => ({
@@ -45,7 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('je lance getRadius');
     console.log(event.target.value),
     dispatch(getRadius(event.target.value));
-  }
+  },
+
   
 });
 

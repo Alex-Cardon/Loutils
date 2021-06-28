@@ -23,8 +23,8 @@ const SelectSearchBar = ({
   return(
   <form className='selecSearchBar' onSubmit={handleResearch}>
     <div className='select'>
-    <input className='select-category' onChange={onSearchToolsChange} value={inputTools} type="text" id="inputTools" name="inputTools" placeholder="Nom de l'outil" />
-    <select onClick={handleCategory} name="handleCategory" id="handleCategory">
+    <input className='select-category' onChange={onSearchToolsChange} value={inputTools} type="text" id="" name="" placeholder="Nom de l'outil" required />
+    <select onChange={handleCategory} name="handleCategory" id="handleCategory" required >
       <option value="">Catégories</option>
       <option value="Plomberie">Plomberie</option>
       <option value="Peinture">Peinture</option>
@@ -37,20 +37,20 @@ const SelectSearchBar = ({
       <option value="BTP">BTP</option>
       <option value="Robin">Robin</option>
     </select>
-    <input className='select-radius' onChange={onSearchLocalisation} value={localisation} type="number" id="inputLocalisation" name="inputLocalisation" placeholder="Code postal" />
-    <select onClick={handleRadius} name="handleRadius" id="handleRadius">
+    <input className='select-radius' onChange={onSearchLocalisation} value={localisation} type="number" id="inputLocalisation" name="inputLocalisation" placeholder="Code postal" required />
+    <select onChange={handleRadius} name="handleRadius" id="handleRadius" required>
       <option value="">Rayon</option>
       <option value="5">5 kms</option>
       <option value="10">10 kms</option>
       <option value="20">20 kms</option>
       <option value="50">50 kms</option>
-      <option value="Robin">Robin</option>
+      <option value="Laser">Laser</option>
     </select>
-<button className="search-button"
-        type="submit"
-         >
-    Lotiliser 
-</button>
+    <button className="search-button"
+            type="submit"
+            >
+        Lotiliser 
+    </button>
     </div>
   </form>
 
