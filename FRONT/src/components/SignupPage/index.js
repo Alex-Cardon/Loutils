@@ -43,6 +43,7 @@ const Signup = ({
         stateKey="password"
         type="password" 
         placeholder="votre mot de passe"
+        value=""
        
       />
       <ConnectedSettingsField
