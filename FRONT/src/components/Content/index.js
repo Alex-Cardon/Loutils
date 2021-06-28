@@ -9,7 +9,7 @@ import Loading from 'src/components/Loading';
 import './styles.scss';
 
 
-const adResults = ({ content, loadContent, searchResult, apiResult, loadSearch }) => {
+const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   const [loading, setLoader] = useState(true);
   console.log(`content dans mon composant`, content);
   console.log(`searchResult dans mon composant`, searchResult);
