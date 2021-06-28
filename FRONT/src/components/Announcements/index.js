@@ -12,7 +12,14 @@ import { Card } from 'semantic-ui-react';
 import Loading from 'src/components/Loading';
 import './styles.scss';
 
-const announcements = ({handleDeleteBooking, begining, end, loadAnnouncements, loading, announcements }) => {
+const announcements = ({
+  handleDeleteBooking, 
+  begining, 
+  end, 
+  loadAnnouncements, 
+  loading, 
+  announcements 
+}) => {
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);

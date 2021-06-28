@@ -2,15 +2,23 @@ import {
   CHANGE_TEXT_INPUT,
   ADD_MESSAGE,
   SEND_MESSAGE,
+  GET_MESSAGES_SUCCESS,
 
 } from 'src/actions/messaging';
-import announcements from '../components/Announcements';
 
 const initialState = {
-    //id='',
+    messages:{},
+    sender_id:'',
+    recipient_id: "",
+    title: "",
+    created_at: "",
+    content: "",
+    has_been_read: false,
     content: '',
     author: '',
-  inputValue: '',
+    inputValue: '',
+    msg_id: '',
+    sender_name: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,7 +37,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         inputValue: '',   
         content: state.inputValue,
-        //author: state.recipient,
+      };
+
+    case GET_MESSAGES_SUCCESS:
+
+      return {
+        ...state,
+        message: action.apiData,
       };
 
     // case ADD_MESSAGE:

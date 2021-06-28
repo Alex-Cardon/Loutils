@@ -17,6 +17,7 @@ import paramsMiddleware from 'src/middlewares/params';
 import settingsPageMiddleware from 'src/middlewares/settingsPage';
 import profilMiddleware from 'src/middlewares/profil';
 import diaryMiddleware from 'src/middlewares/diary';
+import messagesMiddleware from 'src/middlewares/messaging';
 
 //import rootReducer from './index'
 
@@ -42,7 +43,8 @@ const enhancers = composeEnhancers(
     paramsMiddleware,
     settingsPageMiddleware,
     profilMiddleware,
-    diaryMiddleware
+    diaryMiddleware,
+    messagesMiddleware,
   ),
 );
 // création du store
