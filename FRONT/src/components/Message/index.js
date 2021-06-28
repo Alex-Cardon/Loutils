@@ -1,61 +1,48 @@
-import React , { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
-
-import Loading from 'src/components/Loading';
+import { Form } from 'semantic-ui-react';
 
 import './message.scss';
 
-const Message = ({ sender_id, recipient_id, title, created_at, content, has_been_read, loadMessage }) => {
-
-
-  const [loading, setLoader] = useState(true);
-  console.log(`message dans mon composant`, Message);
-
-  useEffect(() => {
-    setTimeout(() => { setLoader(!loading) }, 1000);
-    loadMessage();
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
+const Message = ({ 
+  sender_name, 
+  title, 
+  content,
+  addMsgText,
+  deleteMsgText,
+  submitMsgText,
+}) => {
 
 return(
 
   <div className='message'>
-     <Header />
-     <LoginForm />
-     <NavLink
-      className='account-navlink'
-      exact
-      to="/MessageForm"
-    >
-      <h1> Message : {title}</h1>
-    </NavLink>
-    <div className="message__author">De: {sender_id}</div>
-    <div className="message__recipient">A: {recipient_id}</div>
-    <div className="message__title">Titre: {title}</div>
-    <div className="message__created_at">Date: {created_at}</div>
-    <p className="message__content">Message: {content}</p>
-    <p className="message__has_been_read">Lu: {has_been_read}</p>
-    <Footer />
+     
+      <h1> Message : perceuse {title}</h1>
+      <Form>
+        <div className="message">
+          <p>De: Doudou {sender_name} </p>
+          <p>Perceuse performant{content}</p>
+        </div>
+        <Form.Field onSubmit={submitMsgText}  >
+          <label>Repondre</label>
+          <input placeholder='First Name' onChange={addMsgText}  />
+        </Form.Field>
+        <button onclick={deleteMsgText} >Supprimer</button>
+      </Form>
+   
   </div>
 
 );
 };
 
 Message.propTypes = {
-  sender_id: PropTypes.number.isRequired,
-  recipient_id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
+  sender_name: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  has_been_read: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  addMsgText: PropTypes.func.isRequired,
+  deleteMsgText: PropTypes.func.isRequired,
+  submitMsgText: PropTypes.func.isRequired,
 };
 
 export default Message;
