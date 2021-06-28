@@ -1,3 +1,4 @@
+
 import { 
   CHANGE_AD_FIELD, 
   CHANGE_TOOL_STATE, 
@@ -9,12 +10,13 @@ import {
 
 const initialState = {
   title: "",
-  image: "",
+  picture_id: "",
   price:"",
   deposit: "",
   description: "",
   product_state: "",
   postcode: "",
+  category_id: "",
 
   selectedFile:null,
 
@@ -32,11 +34,39 @@ const reducer = (state = initialState, action) => {
             
         };
 
+        case CHANGE_AD_FIELD_SUCCESS:
+        return {
+            ...state,
+            title: action.title,
+              price: action.price,
+              picture_id: action.picture_id,
+              product_state: action.product_state,
+              deposit: action.deposit,
+              description: action.description,
+              ad_type: action.ad_type,
+              postcode: action.postcode,
+              category_id: action.category_id,
+        };
+
         case SUBMIT_AD_LOGIN:
           return {
             ...state,
             state: action.value,
           };
+
+          case SUBMIT_AD_LOGIN_SUCCESS:
+            return {
+              ...state,
+              title: action.title,
+              price: action.price,
+              picture_id: action.picture_id,
+              product_state: action.product_state,
+              deposit: action.deposit,
+              description: action.description,
+              ad_type: action.ad_type,
+              postcode: action.postcode,
+              category_id: action.category_id,
+            };
 
         case CHANGE_TOOL_STATE:
           return {
