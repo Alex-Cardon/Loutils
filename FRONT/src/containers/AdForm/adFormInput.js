@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import SettingsField from 'src/components/AdForm/adFormInput';
+import adFormInput from 'src/components/AdForm/adFormInput';
 
 import { changeadFormInput } from 'src/actions/adFormInput';
 
@@ -10,7 +10,6 @@ import { changeadFormInput } from 'src/actions/adFormInput';
 
 //!cela sera une donnée
 const mapStateToProps = (state, ownProps) => ({
-
   value: state.settings[ownProps.stateKey],
 });
 //! cela sera une action 
@@ -25,4 +24,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsField);
+export default connect(mapStateToProps, mapDispatchToProps)(adFormInput);
