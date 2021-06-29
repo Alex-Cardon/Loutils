@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
@@ -55,6 +55,9 @@ const Signup = ({
 
       <button className="settings__submit" type="submit" >Valider</button>
       {signUp && (<Redirect from="/SignupPage" to="/" />)}
+
+<Link to="/" className="backToHomeLink">Annuler</Link>
+
     </form>
   </div>
 );
