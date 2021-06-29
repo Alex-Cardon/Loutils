@@ -28,23 +28,19 @@ const Diary = ({
  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
  const momentend = moment(end).format("dddd DD MMM YYYY");
 
-// let dateBegin= [];
-// let dateEnd= [];
-
-// if (allDates.length > 0) {
-//   const dateTest = allDates.map((date) => (
-//     dateBegin.push(date.begining),
-//     dateEnd.push(date.end)
-//   ));
-// }
 
 
-// console.log(dateBegin);
-
-const tileClassName = ({ activeStartDate, date, view }) => {
-  console.log({activeStartDate, date, view})
+ 
+const tileClassName = ({ date }) => {
   
-  const isAlreadyBooked = allDates.some((interval) => date.getDay())
+  
+  const isAlreadyBooked = allDates.some((interval) => {
+    const begining = new Date(interval.begining);
+    const end = new Date(interval.end);
+    return (date >= begining && date <= end);  
+  })
+
+  return (isAlreadyBooked) ? 'diary-booked' : null;
 }
 
     if (loading) {
@@ -57,6 +53,7 @@ const tileClassName = ({ activeStartDate, date, view }) => {
             onChange={handleDateChange}
             selectRange={true}
             tileClassName={tileClassName}
+            //tileDisabled={()=>true}
             
          />
         
