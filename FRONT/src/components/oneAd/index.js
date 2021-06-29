@@ -18,7 +18,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
     loadOneAd();
     
   }, []);
-console.log("oneAd component", oneAd);
+  console.log("oneAd component", oneAd);
   if (loading) {
     return <Loading />;
   }

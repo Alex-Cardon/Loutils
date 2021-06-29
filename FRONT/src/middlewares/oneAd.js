@@ -26,7 +26,6 @@ console.log(action.id);
       break;
   }
 };
-//console.log(response);
 console.log(oneAdMiddleware);
 
 export default oneAdMiddleware;
