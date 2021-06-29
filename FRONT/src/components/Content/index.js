@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
 import { Card } from 'semantic-ui-react';
@@ -36,24 +36,25 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
 
     {searchResult.data.map((obj) => {
       return (
+        <Link to={`/ad/${obj.id}`} className="clikingOnCard">
         <Card
           key={obj.description}
           image={obj.filepath}
           header={obj.title}
           meta={obj.description}
-          description={obj.price}
+          description={obj.price + "€ / jour"}
         />
-      )
+      </Link>)
     })}
 
   </Card.Group>)
 }
   {!apiResult && (
     <Card.Group className='card-group'>
-
   {content.data.map((obj) => {
     console.log(obj);
     return (
+      <Link to={`/ad/${obj.id}`} className="clikingOnCard">
       <Card
         key={obj.description}
         image={obj.filepath}
@@ -61,10 +62,11 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
         meta={obj.description}
         description={obj.price + "€ / jour"}
       />
+      </Link>
     )
   })}
-
-</Card.Group>)}
+</Card.Group>
+)}
    </> 
   );
   
