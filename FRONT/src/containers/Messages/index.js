@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
   sender_id: state.message.sender_id,
   recipient_id: state.message.recipient_id,
   title: state.message.title,
-  message: state.message.message,
+  messages: state.message.messages,
 });
 
 const mapDispatchToProps = (dispatch) => ({

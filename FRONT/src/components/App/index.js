@@ -1,6 +1,8 @@
+
 // == Import npm
 //import React from 'react';
 import React, { useEffect, useState } from 'react';
+
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -14,10 +16,11 @@ import MyResearch from 'src/containers/MyResearch';
 import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
 import Messaging from 'src/containers/Messaging';
-//import Message from 'src/components∕Message';
+import Message from 'src/containers/Message';
 import Diary from 'src/containers/Diary';
 import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
+
 import OneAd from 'src/containers/OneAd';
 //import Loading from 'src/components/Loading';
 
@@ -26,6 +29,7 @@ import './styles.scss';
 
 // == Composant
 function App({ content, loadContent }){
+
 
 
   return (
@@ -75,9 +79,9 @@ function App({ content, loadContent }){
         <Route excat path="/Messagerie">
           <Messaging />
         </Route>
-        {/* <Route excat path="/Message">
+        <Route exact path="/Message/:id">
           <Message />
-        </Route> */}
+        </Route>
         <Route>
           <Error />
         </Route>
@@ -86,7 +90,6 @@ function App({ content, loadContent }){
   )
 };
 
-// == Export
 export default App;
 
 {/*
