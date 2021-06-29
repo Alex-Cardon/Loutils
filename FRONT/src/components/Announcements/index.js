@@ -17,9 +17,14 @@ const announcements = ({
   begining, 
   end, 
   loadAnnouncements, 
-  loading, 
   announcements 
 }) => {
+
+  const [loading, setLoader] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("announcements", JSON.stringify(announcements))
+  });
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
@@ -59,13 +64,16 @@ const announcements = ({
               <p>Réservé du {begining} au {end}.</p>
             </div>
           </div>
-      )}
+      )
+}
       )}   
     </Card.Group>
     <Footer />
   </div>
   );
     }
+
+    //console.log("obj component", obj);
 /*    
 announcements.propTypes = {
   advertissement: PropTypes.arrayOf(

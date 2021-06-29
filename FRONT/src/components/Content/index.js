@@ -59,7 +59,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
         image={obj.filepath}
         header={obj.title}
         meta={obj.description}
-        description={obj.price}
+        description={obj.price + "€ / jour"}
       />
     )
   })}
