@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import adFormInput from 'src/components/AdForm/adFormInput';
 
-import { changeadFormInput } from 'src/actions/adFormInput';
+import { changeAdField } from 'src/actions/adForm';
 
 //! je recupère mes proptypes du component index.js de SignupPage 
 //!comme les proptypes sont func et string  
@@ -20,7 +20,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // la clé qui nous concerne (email ou password)
     // cette clé sera donc donnée en prop manuellement dans le JSX
     // qui appelle mon composant connecté
-    dispatch(changeadFormInput(ownProps.stateKey, event.target.value));
+    // dispatch(changeAdField(ownProps.stateKey, event.target.value));
+    console.log(event.target.value);
+    const newValue = (event.target.type === 'number') ? parseInt(event.target.value, 10) : event.target.value;
+    dispatch(changeAdField(newValue, event.target.name));
   },
 });
 
