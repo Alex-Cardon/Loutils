@@ -38,37 +38,4 @@ const Setting = () => (
 export default Setting;
 
 
- /*<NavLink
-      className='account-navlink'
-      exact
-      to="/Favorites"
-    >
-      Mes favoris
-    </NavLink>
-    <NavLink
-      className='account-navlink'
-      exact
-      to="/MyResearch"
-    >
-      Mes recherches
-    </NavLink>
-     <NavLink
-      className='account-navlink'
-      exact
-      to="/Params"
-    >
-      Mes parametres
-    </NavLink>
-    */}
-    <NavLink
-      className='account-navlink'
-      exact
-      to="/Profil"
-    >
-      Mon profil
-    </NavLink>
-  </div >
-);
-
-export default Setting;
 
