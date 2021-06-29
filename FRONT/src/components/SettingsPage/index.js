@@ -9,8 +9,6 @@ import './styles.scss';
 
 const Setting = () => (
   <div className='account'>
-  <Header />
-  <LoginForm /> 
   <NavLink
       className='account-navlink'
       exact
@@ -61,4 +59,16 @@ export default Setting;
     >
       Mes parametres
     </NavLink>
-    */
+    */}
+    <NavLink
+      className='account-navlink'
+      exact
+      to="/Profil"
+    >
+      Mon profil
+    </NavLink>
+  </div >
+);
+
+export default Setting;
+

@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
     end: state.diary.end,
     validate: state.diary.validate,
     loading: state.diary.loading,
+    allDates: state.diary.allDates,
     });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
