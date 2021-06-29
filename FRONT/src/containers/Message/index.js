@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
+
 import { 
   handleMsgText, 
   deleteMsgText, 
-  submitMsgText,
+  sendMsgText,
 } from 'src/actions/message';
 
 import Message from 'src/components/Message';
@@ -13,16 +14,19 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  
   addMsgText:(evt) => {
     dispatch(handleMsgText(evt.target.value));
+  },
+
+  handleMessage:(msgValue, id, idAd) => {  
+    dispatch(sendMsgText(msgValue, id, idAd));
   },
 
   deleteMsgText:() => {
     dispatch(deleteMsgText());
   },
-  submitMsgText:() => {
-    dispatch(submitMsgText());
-  }
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Message);

@@ -10,16 +10,7 @@ const initialState = {
     msgValue:"",
     inputValue: '',
     messages:{},
-    // sender_id:'',
-    // recipient_id: "",
-    // title: "",
-    // created_at: "",
-    // content: "",
-    // has_been_read: false,
-    // content: '',
-    // author: '',
-    // msg_id: '',
-    // sender_name: "",
+    
 };
 
 const reducer = (state = initialState, action) => {

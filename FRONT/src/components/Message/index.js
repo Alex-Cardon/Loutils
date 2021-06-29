@@ -1,7 +1,7 @@
 import React, {} from 'react';
 import PropTypes from 'prop-types';
 
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 
 import { useParams } from 'react-router';
 
@@ -13,20 +13,25 @@ const Message = ({
   messages,
   addMsgText,
   deleteMsgText,
-  submitMsgText,
+  handleMessage,
 }) => {
   const { id } = useParams();
   const message = messages.msg_recieved.find((message) => message.msg_id === parseInt(id, 10))
-return(
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleMessage(msgValue, message.sender_id, message.ad_id);
+  };
+  return (
   <div className='message'>
       
       <h1> Message :{message.title}</h1>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div className="message">
           <p>De:{message.sender_name} </p>
           <p>{message.content}</p>
         </div>
-        <Form.Field onSubmit={submitMsgText}  >
+        <Form.Field   >
           <label htmlFor="response">Repondre</label>
           <input 
             placeholder='Votre réponse ici' 
@@ -35,10 +40,10 @@ return(
             onChange={addMsgText}  
             value={msgValue}
           />
-          <button type="submit">validez</button>
-          <button onClick={deleteMsgText} >Supprimer</button>
+         
         </Form.Field>
-
+        <Button type="submit">validez</Button>
+        <Button onClick={deleteMsgText} >Supprimer</Button>
       </Form>
    
   </div>
@@ -51,7 +56,7 @@ Message.propTypes = {
   msgValue: PropTypes.string.isRequired,
   addMsgText: PropTypes.func.isRequired,
   deleteMsgText: PropTypes.func.isRequired,
-  submitMsgText: PropTypes.func.isRequired,
+  handleMessage: PropTypes.func.isRequired,
 };
 
 export default Message;
