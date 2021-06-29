@@ -4,6 +4,8 @@ import { GET_PROFIL, GET_PROFIL_SUCCESS, DELETE_ACCOUNT_SUCCESS } from 'src/acti
 export const initialState = {
   
   profil: {},
+  deleteAccount: false,
+ 
 }; 
 
 const reducer = (state = initialState, action) => {
@@ -12,19 +14,19 @@ const reducer = (state = initialState, action) => {
     case GET_PROFIL:
       return {
         ...state,
-       
       };
     case GET_PROFIL_SUCCESS:
       return {
         ...state,
-       
         profil: action.apiData,
-        
+    
       };
       case DELETE_ACCOUNT_SUCCESS:
         return {
         ...state,
-        msg: action.msg,
+        profil: action.msg,
+        deleteAccount: true,
+        
         };
     default:
       return state;

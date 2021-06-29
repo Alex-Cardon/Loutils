@@ -26,9 +26,11 @@ const profilMiddleware = (store) => (next) => (action) => {
       break;
     }
     case DELETE_ACCOUNT: {
-
+      const state = store.getState()  
       axios.delete(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings`, {
-        token: state.user.token
+        headers:{
+          'token': state.user.token  
+        }
       })
         .then((response) => {
           console.log('response DELETE profil dans le middleware', response.data)

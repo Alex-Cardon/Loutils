@@ -6,6 +6,8 @@ import Profil from 'src/components/Profil';
 
 const mapStateToprops = (state) => ({
   profil:state.profil.profil,
+  deleteAccount:state.profil.deleteAccount,
+ 
 });
 
 const mapDispatchToProps = (dispatch) => ({
