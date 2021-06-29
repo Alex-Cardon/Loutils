@@ -31,7 +31,6 @@ const announcementsMiddleware = (store) => (next) => (action) => {
           store.dispatch(getAnnouncementsSuccess(response.data));
         })
         .catch((error) => console.log(error))
-       
       break;
     
     case DELETE_BOOKING:

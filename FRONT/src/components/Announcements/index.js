@@ -51,12 +51,10 @@ const announcements = ({
               image={obj.filepath}
               header={obj.title}
               meta={obj.description}
-              description={obj.price + " € / jour"}
+              description={obj.price + " € / jour" + " Réservée du " + obj.begining + " au " + obj.end}
             />
-            <button onClick={handleDeleteBooking}>delete booking</button>
-            <div>
-              <p>Réservé du {obj.begining} au {obj.end}.</p>
-            </div>
+            <button class="ui button" onClick={handleDeleteBooking}>Supprimer la réservation</button>
+
           </div>
       )
 }
