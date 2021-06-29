@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
-useEffect(()=> {
+/*useEffect(()=> {
   setAsked(ref.current);
   if(localStorage.getItem('adStorageDate')){
     const date = localStorage.getItem('adStorageDate')
@@ -14,44 +14,65 @@ useEffect(()=> {
 
   // const handleFileUpload = (event) => {
   //   let files = event.target.files;
-console.log("adForm middleware ligne 17");
+console.log("adForm middleware ligne 17");*/
 
 
 import {
   CHANGE_AD_FIELD, /*quand tape input, garde les caractères dedans */
-  changeAdField,
+  changeAdFieldSuccess,
   SUBMIT_AD_LOGIN, /*permet de publier l'annonce */
-  submitAdLogin,
+  submitAdLoginSuccess,
 } from 'src/actions/adForm';
 
 const adFormMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CHANGE_AD_FIELD:
-      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/AdForm`)
+      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`)
         .then((response) => {
           console.log('response de CHANGE_AD_FIELD', response.data)
-          store.dispatch(changeAdField(response.data));
+          store.dispatch(changeAdFieldSuccess(response.data));
         })
         .catch((error) => console.log(error))
        
-      break
-        default:
+      break;
+
     case SUBMIT_AD_LOGIN:
-      axios.post(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/AdForm`)
-              .then((response) => {
+      const state = store.getState();
+      console.log(state);
+      axios.post(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`,{
+        "title": state.ad.title,
+        "price": state.ad.price,
+        "picture_id":state.ad.picture_id,
+        "product_state": state.ad.product_state,
+        "deposit": state.ad.deposit,
+        "description": state.ad.description,
+        "ad_type":state.ad.ad_type,
+        "postcode":state.ad.postcode,
+        "category_id": state.ad.category_id,
+      }).then((response) => {
                 console.log('response de SUBMIT_AD_LOGIN', response.data)//
-                store.dispatch(submitAdLogin(response.data));//
+                store.dispatch(submitAdLoginSuccess(response.data));//
               })
               .catch((error) => console.log(error))
-            break
+            break;
+    
             default:
             next(action);
-            break;
   }
 }
-
-
-
+/*
+{
+  "title": "Marteau qui martelle",
+  "price": 5,
+  "picture_id": "5",
+  "product_state": "Comme neuf",
+  "deposit": 20,
+  "description": "Mateau qui martelle, parfait pour marteller ",
+  "ad_type": "je loue",
+  "postcode":"59680",
+  "category_id": 1
+}
+*/
 
 export default adFormMiddleware;
 

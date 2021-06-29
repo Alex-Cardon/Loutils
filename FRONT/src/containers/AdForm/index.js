@@ -4,6 +4,7 @@ import AdForm from 'src/components/AdForm';
 
 import { 
   getToolStateValue, 
+  submitAdLogin
 } from 'src/actions/adForm';
 
 
@@ -15,9 +16,9 @@ const mapStateToProps = (state) => ({
 //console.log("container ad form ligne 26");
 const mapDispatchToProps = (dispatch) => ({
 
-  handleSubmit: () => {
-    dispatch();
-  
+  handleAdForm: (event) => {
+    event.preventDefault();
+    dispatch(submitAdLogin());
   },
 });
 //console.log("container ad form FIN ligne 66");

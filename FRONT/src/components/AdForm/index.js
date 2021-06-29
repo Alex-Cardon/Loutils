@@ -13,7 +13,7 @@ import './style.scss';
 
 const AdForm = ({
   getToolStateValue,
-  handleSubmit
+  handleAdForm,
 }) => (
 
     <div className="adForm" >
@@ -25,7 +25,7 @@ const AdForm = ({
           />
           </div>
       <h2>Publier une annonce</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleAdForm}>
         <div className="adForm__unit">
           <AdFormInput
             name="toolName"
@@ -37,7 +37,7 @@ const AdForm = ({
         <div className="adForm__unit">
           <AdFormInput
             name="image"
-            type="text"
+            type="select"
             placeholder="Categories"
 
           />
@@ -45,7 +45,7 @@ const AdForm = ({
         <div className="adForm__unit">
           <AdFormInput
             name="price"
-            type="text"
+            type="number"
             placeholder="exemple: 50 "
 
           />
@@ -53,8 +53,16 @@ const AdForm = ({
         <div className="adForm__unit">
           <AdFormInput
             name="caution"
-            type="text"
+            type="number"
             placeholder="exemple: 50"
+
+          />
+        </div>
+        <div className="adForm__unit">
+          <AdFormInput
+            name="code postal"
+            type="text"
+            placeholder="exemple: 59000"
 
           />
         </div>
@@ -100,28 +108,8 @@ const AdForm = ({
       </form>
       <Footer />
     </div>
+ 
 );
-/* */
-{/*  
-                    <div className="App">
-                      <FilePond
-                        ref={ref => (this.pond = ref)}
-                        files={this.state.files}
-                        allowMultiple={true}
-                        allowReorder={true}
-                        maxFiles={1}
-                        server="/api"
-                        name="files" {/* sets the file input name, it's filepond by default *//*}
-                        oninit={() => this.handleInit()}
-                        onupdatefiles={fileItems => {
-                          // Set currently active file objects to this.state
-                          this.setState({
-                            files: fileItems.map(fileItem => fileItem.file)
-                          });
-                        }}
-                      />
-                    </div>
-*/}
 
 
 AdForm.proptypes = {

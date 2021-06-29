@@ -1,5 +1,6 @@
 // == Import npm
-import React from 'react';
+//import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -13,17 +14,19 @@ import MyResearch from 'src/containers/MyResearch';
 import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
 import Messaging from 'src/containers/Messaging';
+//import Message from 'src/components∕Message';
 import Diary from 'src/containers/Diary';
 import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
 
-
+//import Loading from 'src/components/Loading';
 
 import './styles.scss';
 
 
 // == Composant
-function App(){
+function App({ content, loadContent }){
+
 
   return (
     <div className="app">
@@ -64,6 +67,9 @@ function App(){
         <Route excat path="/Messagerie">
           <Messaging />
         </Route>
+        {/* <Route excat path="/Message">
+          <Message />
+        </Route> */}
         <Route>
           <Error />
         </Route>
@@ -74,3 +80,21 @@ function App(){
 
 // == Export
 export default App;
+
+{/*
+  const [loading, setLoader] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("content", JSON.stringify(content))
+  });
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadContent();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+*/}
