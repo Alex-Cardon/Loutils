@@ -15,8 +15,7 @@ const {
 
 const {
     newBookingSchema : newBookingASchema,
-    removeBookingSchema:removeBookingASchema,
-    getBookingSchema: getBookingASchema
+    removeBookingSchema:removeBookingASchema
 } = require('./bookingSchema');
 
 const {
@@ -29,8 +28,7 @@ const {
 } = require('./bookmarkSchema');
 
 const {
-    newRatingSchema : newRatingASchema,
-    avgRatingSchema: avgRatingASchema
+    newRatingSchema : newRatingASchema
 } = require('./ratingSchema');
 
 const {
@@ -73,7 +71,6 @@ module.exports = {
 
     newBookingASchema,
     removeBookingASchema,
-    getBookingASchema,
 
     getAnImageSchema,
 
@@ -81,7 +78,6 @@ module.exports = {
     removeABookmarkSchema,
 
     newRatingASchema,
-    avgRatingASchema,
 
     messagePostMessageSchema,
     removeAMessageSchema,

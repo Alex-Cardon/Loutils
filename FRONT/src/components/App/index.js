@@ -40,13 +40,15 @@ function App({ content, loadContent }){
         <Route exact path="/AdForm">
           <AdForm />
         </Route>
-        <Route exact path="/ad">
-          <AdForm />
-        </Route>
+
+        
         <Route exact path="/ad/:id">
           <OneAd />
         </Route>
-        <Route exact path="/Diary">
+        
+
+        <Route exact path="/Diary/:id">
+
           <Diary />
         </Route>
         <Route excat path="/SettingsPage">

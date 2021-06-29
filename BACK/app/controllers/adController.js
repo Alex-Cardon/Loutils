@@ -87,8 +87,10 @@ module.exports = {
     async postAnAd(req, res){
         try{
 
-            const { title, picture_id, price,product_state, deposit, description, ad_type, postcode, category_id } = req.body;
+            const { title, picture_id, price,product_state, deposit, description, postcode, category_id } = req.body;
             
+            const ad_type = 'loue'
+
             const user_id = req.user.user.user_id
 
             if(!user_id){

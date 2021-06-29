@@ -34,8 +34,8 @@ module.exports = {
                     msg: "Veuillez vous connecter afin de voir l'annonce"
                   });
             };
-
-            const { ad_id, rating } = req.body;
+            const ad_id = req.params.id
+            const { rating } = req.body;
 
             if(rating < 1 || rating > 5) res.status(400).json({ error: "rating can not be less than 1 and more than 5" });
             
@@ -60,7 +60,7 @@ module.exports = {
      */
     async getAVGRating(req, res) {
         try {
-            const { ad_id } = req.body;
+            const ad_id = req.bparams.id;
             const result = await ratingDataMapper.getAVGRating(ad_id);
             res.status(200).json({ data : result });
         } catch (error) {
@@ -71,8 +71,9 @@ module.exports = {
 
     async updateRating(req, res) {
         try {
+            const ad_id = req.params.id;
             const user_id = req.user.user.user_id;
-            const { ad_id, rating } = req.body;
+            const { rating } = req.body;
             if(rating < 1 || rating > 5) res.status(400).json({ error: "rating can not be less than 1 and more than 5" });
             const result = await ratingDataMapper.updateRating(user_id, ad_id, rating);
             res.status(200).json({ data : result });

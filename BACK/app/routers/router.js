@@ -377,7 +377,7 @@ router.route('/savedResearch/:id(\\d+)')
          */
         .delete( authorizationLvl1, savedResearch.deleteSavedResearch);
 
-router.route('/ad/rating')
+router.route('/ad/rating/:id(\\d+)')
 
         /**
          * Récupérer la moyenne d'une annonce
@@ -402,7 +402,7 @@ router.route('/ad/rating')
         .post(validate.body(schemas.newRatingASchema), authorizationLvl1, ratingController.ratingAnAd);
 
 
-router.route('/booking')
+router.route('/booking/:id(\\d+)')
 
         /**
          * Voir les dates à laquelle l'annonce est réservée

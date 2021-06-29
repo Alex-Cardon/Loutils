@@ -17,8 +17,9 @@ import paramsMiddleware from 'src/middlewares/params';
 import settingsPageMiddleware from 'src/middlewares/settingsPage';
 import profilMiddleware from 'src/middlewares/profil';
 import diaryMiddleware from 'src/middlewares/diary';
-
+import updatedProfilMiddleware from 'src/middlewares/updatedProfil';
 import adFormMiddleware from 'src/middlewares/adForm';
+
 import oneAdMiddleware from 'src/middlewares/oneAd';
 
 import messagesMiddleware from 'src/middlewares/messaging';
@@ -52,6 +53,8 @@ const enhancers = composeEnhancers(
     adFormMiddleware,
     messagesMiddleware,
     oneAdMiddleware,
+    updatedProfilMiddleware,
+
   ),
 );
 // création du store

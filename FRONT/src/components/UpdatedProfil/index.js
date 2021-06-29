@@ -12,7 +12,7 @@ const UpdatedProfil = ({
   handleUpdatedProfilFormSubmit,
   //picture,
   //onChangePicture,
-  formSubmitPicture,
+  //formSubmitPicture,
 }) => (
   <div className="signup-page">
     <Header />
@@ -32,23 +32,6 @@ const UpdatedProfil = ({
         placeholder="votre email"
       />
 
-      {/*  <ParamsField
-        stateKey="phone"
-        type="phone"
-        placeholder="votre telephone"
-      />*/}
-
-      <ProfilField
-        stateKey="password"
-        type="password"
-        placeholder="votre mot de passe"
-      />
-
-      <ProfilField
-        stateKey="confirmPassword"
-        type="password"
-        placeholder="confirmez mot de passe"
-      />
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
@@ -75,3 +58,21 @@ UpdatedProfil.proptypes = {
 
 export default UpdatedProfil;
 
+
+      /*  <ParamsField
+        stateKey="phone"
+        type="phone"
+        placeholder="votre telephone"
+      />
+
+      <ProfilField
+        stateKey="password"
+        type="password"
+        placeholder="votre mot de passe"
+      />
+
+      <ProfilField
+        stateKey="confirmPassword"
+        type="password"
+        placeholder="confirmez mot de passe"
+      />*/

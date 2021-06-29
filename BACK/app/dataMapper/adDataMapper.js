@@ -5,10 +5,14 @@ module.exports = {
 
 
     async findByUserId(id) {
+
         const result = await client.query(`SELECT * FROM "ad" 
         JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
         WHERE "ad"."user_id" = $1`, [id]);
         SELECT * FROM "ad" 
+
+
+
         if (!result.rows) {
             return null;
         }
@@ -17,8 +21,11 @@ module.exports = {
 
 
     async findById(id) {
+
         const result = await client.query(`SELECT * FROM "ad" 
         JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+
+
         WHERE "ad"."id" = $1 `, [id]);
         return result.rows;
     },
