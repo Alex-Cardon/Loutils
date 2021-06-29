@@ -4,7 +4,6 @@ import { CHANGE_SETTINGS_INPUT, SIGNUP_SUCCESS } from 'src/actions/settingsField
 export const initialState = {
   name: "",
   email: "",
-  //phone: "",
   password: "",
   confirmPassword: "",
   token:'',
