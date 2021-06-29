@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Card, Icon, Image  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
+import Header from 'src/components/Header';
+import LoginForm from 'src/containers/LoginForm';
+import Footer from 'src/components/Footer';
 
 
 const oneAd = ({ loadOneAd, oneAd }) => {
@@ -21,6 +24,17 @@ console.log("oneAd component", oneAd);
   }
 
   return (
+    <div className='oneAd'>
+    <Header />
+    <LoginForm />
+    <NavLink
+      className='account-navlink'
+      exact
+      to="/AdForm"
+    >
+      Publier une annonce
+    </NavLink>
+    <h1> Détail de l'annonce </h1>
     <Card>
     <Image src={oneAd.filepath} wrapped ui={false} />
     <Card.Content>
@@ -46,6 +60,8 @@ console.log("oneAd component", oneAd);
       </a>
     </Card.Content>
   </Card>
+  <Footer />
+  </div>
   );
 
 }
