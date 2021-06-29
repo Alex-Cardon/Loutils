@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
           console.log(action);
             return {
             ...state,
-            allDates: [action.dates.data],
+            allDates: action.dates.data,
             loading: false,
           }
           
