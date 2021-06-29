@@ -38,13 +38,25 @@ const Diary = ({
 //   ));
 // }
 
+  useEffect(() => {
+    if(allDates.length){
+      console.log('On est dans le useCallback', allDates)
+      console.log(allDates[0].begining, new Date(allDates[0].begining))
+    }   
+
+  }, [allDates])
 
 // console.log(dateBegin);
-
 const tileClassName = ({ activeStartDate, date, view }) => {
   console.log({activeStartDate, date, view})
   
-  const isAlreadyBooked = allDates.some((interval) => date.getDay())
+  const isAlreadyBooked = allDates.some((interval) => {
+    const begining = new Date(interval.begining);
+    const end = new Date(interval.end);
+    return (date > begining && date < end);  
+  })
+
+  return (isAlreadyBooked) ? 'diary-booked' : null;
 }
 
     if (loading) {

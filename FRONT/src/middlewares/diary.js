@@ -12,11 +12,10 @@ const diaryMiddleware = (store) => (next) => (action) => {
       const state = store.getState();
       console.log('on est dans le middleware SUBMIT_DATE_VALUE')
       // avec getstate on apporte le state dans le MW
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/booking', {
+      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/booking/1', {
        
          begining: state.diary.date[0],
-         end: state.diary.date[1],
-         ad_id: 1},
+         end: state.diary.date[1],},
         {headers:{
           "Content-Type": "application/json",
           'token': state.user.token

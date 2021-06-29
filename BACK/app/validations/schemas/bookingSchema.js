@@ -4,7 +4,6 @@ const newBookingSchema = Joi.object({
     /* Réserver un outil en tant qu'utilisateur connecté */
     begining: Joi.date().iso().required(),
     end: Joi.date().iso().required(),
-    ad_id: Joi.number().positive().integer().min(1).required()
 }).required();
 
 const removeBookingSchema = Joi.object({
