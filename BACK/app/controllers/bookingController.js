@@ -31,7 +31,9 @@ module.exports = {
      */
     async boonking(req, res) {
         try {
-            const { begining, end, ad_id } = req.body;
+            const { begining, end } = req.body;
+
+            const ad_id = req.params.id;
 
             const user_id = req.user.user.user_id;
 
@@ -62,7 +64,7 @@ module.exports = {
      */
     async removeBooking(req, res) {
         try {
-            const { id } = req.body;
+            const id = req.params.id;
             const result = await bookingDataMapper.deleteBooking(id);
             if(!result) res.status(500).json({ error: "Erreur serveur, impossible de supprimer la réservation" });
             res.status(200).json({ msg: "ok" })
@@ -78,7 +80,7 @@ module.exports = {
      */
     async getBooking(req, res) {
         try {
-            const { ad_id } = req.body;
+            const ad_id = req.params.id;
             
             if(!ad_id){
                 return res.status(405).json({
