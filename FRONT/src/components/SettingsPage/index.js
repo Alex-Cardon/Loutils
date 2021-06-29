@@ -9,8 +9,6 @@ import './styles.scss';
 
 const Setting = () => (
   <div className='account'>
-  <Header />
-  <LoginForm /> 
   <NavLink
       className='account-navlink'
       exact
@@ -54,8 +52,6 @@ const Setting = () => (
     >
       Mon profil
     </NavLink>
-   
-  <Footer />
   </div >
 );
 
