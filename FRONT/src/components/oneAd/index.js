@@ -26,22 +26,23 @@ console.log("oneAd component", oneAd);
     <Card.Content>
       <Card.Header>{oneAd.title}</Card.Header>
       <Card.Meta>
-        <span className='state'>{oneAd.product_state}</span>
-        <span className='user'>{oneAd.user_id}</span>
+        <span className='state'>Etat : {oneAd.product_state}</span>
+        {/* <span className='user'>{oneAd.user_id}</span> */}
       </Card.Meta>
       <Card.Description>
-        <p>{oneAd.description}</p>
-        <p>{oneAd.price}</p>
+        <p>Description de l'outil : {oneAd.description}</p>
+        <p>Prix de la location journalière : {oneAd.price}€</p>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
       <a>
         <Icon className='postcode' />
-        {oneAd.postcode}
+        Code postal : {oneAd.postcode}
       </a>
+      <br></br>
       <a>
         <Icon className='deposit' />
-        {oneAd.deposit}
+        Caution : {oneAd.deposit}€
       </a>
     </Card.Content>
   </Card>

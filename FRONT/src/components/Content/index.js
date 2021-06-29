@@ -52,6 +52,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
     <Card.Group className='card-group'>
 
   {content.data.map((obj) => {
+    console.log(obj);
     return (
       <Card
         key={obj.description}
@@ -66,6 +67,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
 </Card.Group>)}
    </> 
   );
+  
 }
 
 /*
