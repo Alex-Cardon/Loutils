@@ -3,7 +3,7 @@ const client = require('../client');
 module.exports = {
 
     async getRecievedMsgByUserId(id) {
-        const result = await client.query(`SELECT "message"."id" AS "msg_id", "user"."id" AS "sender_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "sender_name", "title" FROM "message" JOIN 
+        const result = await client.query(`SELECT "message"."ad_id", "message"."id" AS "msg_id", "user"."id" AS "sender_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "sender_name", "title" FROM "message" JOIN 
         "user" ON "sender" = "user"."id" 
         JOIN "ad" ON "ad_id" = "ad"."id"
         WHERE "recipient" = $1 AND "recipient_deleted" = FALSE ORDER BY "message"."created_at" DESC`, [id]);
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async getSenderMessageByUserId(id) {
-        const result = await client.query(`SELECT "message"."id" AS "msg_id", "user"."id" AS "recipient_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "recipient_name", "sender" AS "sender_id", "title" FROM "message" JOIN
+        const result = await client.query(`SELECT "message"."ad_id", "message"."id" AS "msg_id", "user"."id" AS "recipient_id", "message"."content", "message"."created_at", "message"."has_been_read", "user"."name" AS "recipient_name", "sender" AS "sender_id", "title" FROM "message" JOIN
         "user" ON "recipient" = "user"."id" 
         JOIN "ad" ON "ad_id" = "ad"."id"
         WHERE "sender" = $1 AND "sender_deleted" = FALSE ORDER BY "message"."created_at" DESC`, [id]);
