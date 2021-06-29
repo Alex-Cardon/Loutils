@@ -1,24 +1,24 @@
 import {
   CHANGE_TEXT_INPUT,
-  ADD_MESSAGE,
   SEND_MESSAGE,
   GET_MESSAGES_SUCCESS,
-
 } from 'src/actions/messaging';
 
+import ADD_MSG_TEXT from 'src/actions/message';
+
 const initialState = {
-    messages:{},
-    sender_id:'',
-    recipient_id: "",
-    title: "",
-    created_at: "",
-    content: "",
-    has_been_read: false,
-    content: '',
-    author: '',
     inputValue: '',
-    msg_id: '',
-    sender_name: "",
+    messages:{},
+    // sender_id:'',
+    // recipient_id: "",
+    // title: "",
+    // created_at: "",
+    // content: "",
+    // has_been_read: false,
+    // content: '',
+    // author: '',
+    // msg_id: '',
+    // sender_name: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,23 +43,16 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        message: action.apiData,
+        messages: action.apiData,
       };
 
-    // case ADD_MESSAGE:
 
-    //   return {
-    //     ...state,
-    //     messages: [
-    //       ...state.messages,
+    case ADD_MSG_TEXT:
 
-    //       {
+      return {
+        ...state,
 
-    //         author: action.message.author,
-    //         content: action.message.content,
-    //       },
-    //     ],
-    //   };
+      };
 
     default:
       return state;

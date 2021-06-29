@@ -1,17 +1,27 @@
 import { connect } from 'react-redux';
+import { 
+  addMsgText, 
+  deleteMsgText, 
+  submitMsgText,
+} from 'src/actions/message';
 
 import Message from 'src/components/Message';
 
 const mapStateToProps = (state) => ({
-  sender_name: state.message.sender_name,
-  title: state.message.title,
-  content: content.message.content,
+  messages: state.message.messages,
 });
 
-// const mapDispatchToProps = (dispatch) => ({
-//   loadMessage:() => {
-//     dispatch(getMessage());
-//   }
-// });
+const mapDispatchToProps = (dispatch) => ({
+  addMsgText:() => {
+    dispatch(addMsgText());
+  },
 
-export default connect(mapStateToProps)(Message);
+  deleteMsgText:() => {
+    dispatch(deleteMsgText());
+  },
+  submitMsgText:() => {
+    dispatch(submitMsgText());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Message);

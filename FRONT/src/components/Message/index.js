@@ -1,34 +1,45 @@
-import React from 'react';
+import React, {} from 'react';
 import PropTypes from 'prop-types';
 
 import { Form } from 'semantic-ui-react';
 
+import { useParams } from 'react-router';
+
 import './message.scss';
 
+
 const Message = ({ 
-  sender_name, 
-  title, 
-  content,
+  messages,
+  // sender_name,
+  // title, 
+  // content,
   addMsgText,
   deleteMsgText,
   submitMsgText,
 }) => {
-
+  const { id } = useParams();
+  const message = messages.msg_recieved.find((message) => message.msg_id === parseInt(id, 10))
 return(
-
   <div className='message'>
-     
-      <h1> Message : perceuse {title}</h1>
+      
+      <h1> Message :{message.title}</h1>
       <Form>
         <div className="message">
-          <p>De: Doudou {sender_name} </p>
-          <p>Perceuse performant{content}</p>
+          <p>De:{message.sender_name} </p>
+          <p>{message.content}</p>
         </div>
         <Form.Field onSubmit={submitMsgText}  >
-          <label>Repondre</label>
-          <input placeholder='First Name' onChange={addMsgText}  />
+          <label htmlFor="response">Repondre</label>
+          <input 
+            placeholder='Votre réponse' 
+            name="response"
+            id="response"
+            onChange={addMsgText}  
+          />
+          <button type="submit">validez</button>
+          <button onClick={deleteMsgText} >Supprimer</button>
         </Form.Field>
-        <button onclick={deleteMsgText} >Supprimer</button>
+
       </Form>
    
   </div>
@@ -37,9 +48,9 @@ return(
 };
 
 Message.propTypes = {
-  sender_name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  // sender_name: PropTypes.string.isRequired,
+  // content: PropTypes.string.isRequired,
+  // title: PropTypes.string.isRequired,
   addMsgText: PropTypes.func.isRequired,
   deleteMsgText: PropTypes.func.isRequired,
   submitMsgText: PropTypes.func.isRequired,
