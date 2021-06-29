@@ -13,9 +13,9 @@ module.exports = {
     },
 
 
-    async findById(id/*, user_id*/) {
+    async findById(id) {
         const result = await client.query(`SELECT * FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-        WHERE "id" = $1 `, [id/*, user_id*/]);
+        WHERE "id" = $1 `, [id]);
         return result.rows;
     },
 
