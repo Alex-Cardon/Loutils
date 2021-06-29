@@ -14,5 +14,5 @@ const removeBookingSchema = Joi.object({
 
 
 
-module.exports = { newBookingSchema, removeBookingSchema, getBookingSchema };
+module.exports = { newBookingSchema, removeBookingSchema };
 
