@@ -7,6 +7,10 @@ import {
 } from 'src/actions/settingsField';
 //! je recupère mes proptypes du component index.js de SignupPage 
 //!comme le proptype est func cela sera une action direction le container SettingsField
+const mapStateToProps = (state) => ({
+  signUp: state.settings.signUp,
+});
+
 const mapDispatchToProps = (dispatch) => ({
     // envoi du formulaire
     handleFormSubmit: (event) => {
@@ -17,5 +21,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(SignupPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
 

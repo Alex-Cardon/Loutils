@@ -7,7 +7,7 @@ export const initialState = {
   title: "",
   description: "",
   price: "",
-  loading: false,
+  
 
 }; // TODO en construction
 //! direction index.js de mon reducer
@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
     case GET_SETTINGS_PAGE:
       return {
         ...state,
-        //loading: true,
+       
       };
       case GET_SETTINGS_PAGE_SUCCESS:
       return {
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         title: action.title,
         description: action.title,
         price: action.price,
-        //loading: false,
+        
       };
     default:
       return state;

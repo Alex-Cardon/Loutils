@@ -17,7 +17,6 @@ const LoginForm = ({
   isOpen, 
   onSettingsToggle,
 }) => {
-  //console.log(isLogged)
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();

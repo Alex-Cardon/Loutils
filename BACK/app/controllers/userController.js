@@ -121,7 +121,7 @@ module.exports = {
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
 
-      if (!validPassword) res.status(401).json({
+      if (!validPassword) return res.status(401).json({
         error: 'Adresse mail ou mot de passe incorrect'
       })
 

@@ -29,10 +29,8 @@
 }
 
 .login {
-  position: fixed;
+  position: absolute;
   display: flex;
-  top: 15px;
-  right: -435px;
   transition: right 1s ease-in;
   align-items: center;
 
