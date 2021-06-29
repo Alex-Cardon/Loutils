@@ -17,7 +17,6 @@ const LoginForm = ({
   isOpen, 
   onSettingsToggle,
 }) => {
-  //console.log(isLogged)
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
@@ -40,7 +39,7 @@ const LoginForm = ({
         exact
         to="/SignupPage"
       >
-        Inscription
+        
     </NavLink>
       <button
         className={isLogged ? 'button button__toggle' : 'button'}

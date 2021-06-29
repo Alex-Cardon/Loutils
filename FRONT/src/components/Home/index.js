@@ -12,8 +12,8 @@ import './styles.scss';
 
 const Home = () => (
   <div className='home'>
+
     <Header />
-    <LoginForm />
     <SelectSearchBar />
     <Content />
     <Footer />

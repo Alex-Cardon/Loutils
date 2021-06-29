@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
@@ -10,7 +10,8 @@ import ConnectedSettingsField from 'src/containers/SignupPage/SettingsField';
 import './styles.scss';
 
 const Signup = ({ 
-  handleFormSubmit 
+  handleFormSubmit, 
+  signUp,
 }) => (
   <div className="signup-page">
     <Header />
@@ -42,6 +43,7 @@ const Signup = ({
         stateKey="password"
         type="password" 
         placeholder="votre mot de passe"
+        value=""
        
       />
       <ConnectedSettingsField
@@ -52,7 +54,10 @@ const Signup = ({
       />
 
       <button className="settings__submit" type="submit" >Valider</button>
-      {/*<Redirect from="/SignupPage" to="/" />*/}
+      {signUp && (<Redirect from="/SignupPage" to="/" />)}
+
+<Link to="/" className="backToHomeLink">Annuler</Link>
+
     </form>
   </div>
 );

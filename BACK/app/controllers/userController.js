@@ -121,7 +121,7 @@ module.exports = {
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
 
-      if (!validPassword) res.status(401).json({
+      if (!validPassword) return res.status(401).json({
         error: 'Adresse mail ou mot de passe incorrect'
       })
 
@@ -196,13 +196,14 @@ module.exports = {
     try {
       const {
         password,
-        newPassword
+        newPassword,
+        newPasswordConfirm
       } = req.body;
       const id = req.user.user.user_id;
 
 
       //check passwords
-      if(password !== newPassword) res.status(401).json({ "error": "not same password" });
+      if(newPassword !== newPasswordConfirm) res.status(401).json({ "error": "not same password" });
       if(!id){
         return res.status(401).json({
             msg: "Veuillez vous connecter afin de mettre à jour votre mot de passe"
@@ -213,7 +214,7 @@ module.exports = {
 
       //check password
       const validPassword = await bcrypt.compare(password, userFound.password);
-      if (!validPassword) res.status(400).json({
+      if (!validPassword) return res.status(400).json({
         error: 'Mot de passe incorrect'
       });
 
@@ -252,7 +253,7 @@ module.exports = {
 
       const result = await userDataMapper.deleteUser(id);
       if (!result) {
-        res.json({
+        return res.json({
           msg: "Fail to delete"
         })
       };

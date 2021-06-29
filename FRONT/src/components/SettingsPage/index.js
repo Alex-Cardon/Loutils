@@ -9,8 +9,6 @@ import './styles.scss';
 
 const Setting = () => (
   <div className='account'>
-  <Header />
-  <LoginForm /> 
   <NavLink
       className='account-navlink'
       exact
@@ -25,28 +23,6 @@ const Setting = () => (
     >
      Mes annonces
     </NavLink>
-    {/*<NavLink
-      className='account-navlink'
-      exact
-      to="/Favorites"
-    >
-      Mes favoris
-    </NavLink>
-    <NavLink
-      className='account-navlink'
-      exact
-      to="/MyResearch"
-    >
-      Mes recherches
-    </NavLink>
-     <NavLink
-      className='account-navlink'
-      exact
-      to="/Params"
-    >
-      Mes parametres
-    </NavLink>
-    */}
     <NavLink
       className='account-navlink'
       exact
@@ -60,3 +36,6 @@ const Setting = () => (
 );
 
 export default Setting;
+
+
+

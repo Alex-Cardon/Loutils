@@ -1,11 +1,16 @@
-import { GET_ANNOUNCEMENTS, GET_ANNOUNCEMENTS_SUCCESS, DELETE_BOOKING_SUCCESS } from 'src/actions/announcements';
+import { 
+  GET_ANNOUNCEMENTS, 
+  GET_ANNOUNCEMENTS_SUCCESS, 
+  DELETE_BOOKING_SUCCESS 
+} from 'src/actions/announcements';
 
 //! state
 export const initialState = {
-  begining: "", 
+  /*begining: "", 
   end: "", 
   loading:false,
-  announcements:"", 
+  announcements:"", */
+  announcements:{},
 }; // TODO en construction
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
@@ -32,7 +37,4 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-//!
-//! Ne pas oublier de le créer dans index.js du dossier Réducers
-//!
 

@@ -5,7 +5,14 @@ module.exports = {
 
 
     async findByUserId(id) {
-        const result = await client.query(`SELECT * FROM "ad" WHERE "user_id" = $1`, [id]);
+
+        const result = await client.query(`SELECT * FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+        WHERE "ad"."user_id" = $1`, [id]);
+        SELECT * FROM "ad" 
+
+
+
         if (!result.rows) {
             return null;
         }
@@ -13,9 +20,13 @@ module.exports = {
     },
 
 
-    async findById(id/*, user_id*/) {
+    async findById(id) {
+
         const result = await client.query(`SELECT * FROM "ad" 
-        WHERE "id" = $1 `, [id/*, user_id*/]);
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+
+
+        WHERE "ad"."id" = $1 `, [id]);
         return result.rows;
     },
 
@@ -79,7 +90,7 @@ module.exports = {
 
      AND "moderated" = TRUE 
 
-     ORDER BY "created_at" DESC`, ['%' + title + '%', category]);
+     ORDER BY "ad"."created_at" DESC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -111,7 +122,7 @@ module.exports = {
      
      AND "moderated" = TRUE
      
-     ORDER BY "created_at" DESC`, ['%' + title + '%']);
+     ORDER BY "ad"."created_at" DESC`, ['%' + title + '%']);
 
         return (result.rows);
     },

@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
 import { Card } from 'semantic-ui-react';
@@ -9,9 +8,11 @@ import Loading from 'src/components/Loading';
 import './styles.scss';
 
 
-const adResults = ({ content, loadContent }) => {
+const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   const [loading, setLoader] = useState(true);
-  //console.log(`content dans mon composant`, content);
+  console.log(`content dans mon composant`, content);
+  console.log(`searchResult dans mon composant`, searchResult);
+  console.log(`apiResult dans mon composant`, apiResult);
 
   useEffect(() => {
     localStorage.setItem("content", JSON.stringify(content))
@@ -20,6 +21,7 @@ const adResults = ({ content, loadContent }) => {
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadContent();
+    
   }, []);
 
   if (loading) {
@@ -27,22 +29,47 @@ const adResults = ({ content, loadContent }) => {
   }
 
   return (
+    <>
+    {apiResult && (
+      
     <Card.Group className='card-group'>
 
-      {content.data.map((obj) => {
-        return (
-          <Card
-            key={obj.description}
-            image={obj.filepath}
-            header={obj.title}
-            meta={obj.description}
-            description={obj.price}
-          />
-        )
-      })}
+    {searchResult.data.map((obj) => {
+      return (
+        <Link to={`/ad/${obj.id}`} className="clikingOnCard">
+        <Card
+          key={obj.description}
+          image={obj.filepath}
+          header={obj.title}
+          meta={obj.description}
+          description={obj.price + "€ / jour"}
+        />
+      </Link>)
+    })}
 
-    </Card.Group>
+  </Card.Group>)
+}
+  {!apiResult && (
+    <Card.Group className='card-group'>
+  {content.data.map((obj) => {
+    console.log(obj);
+    return (
+      <Link to={`/ad/${obj.id}`} className="clikingOnCard">
+      <Card
+        key={obj.description}
+        image={obj.filepath}
+        header={obj.title}
+        meta={obj.description}
+        description={obj.price + "€ / jour"}
+      />
+      </Link>
+    )
+  })}
+</Card.Group>
+)}
+   </> 
   );
+  
 }
 
 /*

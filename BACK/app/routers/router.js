@@ -273,7 +273,7 @@ router.post('/login', validUserInfo, userController.login);
  * @returns {Error} 500 - Une erreur serveur
  *  @returns {Error} 400 - Une erreur indiquant que l'utilisateur doit saisir un code postal
  */
-router.get('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
+router.post('/search', validate.body(schemas.searchAdSchema), adController.searchAds);
 
 
 /**
@@ -377,7 +377,7 @@ router.route('/savedResearch/:id(\\d+)')
          */
         .delete( authorizationLvl1, savedResearch.deleteSavedResearch);
 
-router.route('/ad/rating')
+router.route('/ad/rating/:id(\\d+)')
 
         /**
          * Récupérer la moyenne d'une annonce
@@ -402,7 +402,7 @@ router.route('/ad/rating')
         .post(validate.body(schemas.newRatingASchema), authorizationLvl1, ratingController.ratingAnAd);
 
 
-router.route('/booking')
+router.route('/booking/:id(\\d+)')
 
         /**
          * Voir les dates à laquelle l'annonce est réservée

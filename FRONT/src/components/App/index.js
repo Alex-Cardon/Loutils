@@ -1,5 +1,8 @@
 
-import React from 'react';
+// == Import npm
+//import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -18,9 +21,16 @@ import Diary from 'src/containers/Diary';
 import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
 
+import OneAd from 'src/containers/OneAd';
+//import Loading from 'src/components/Loading';
+
 import './styles.scss';
 
-function App(){
+
+// == Composant
+function App({ content, loadContent }){
+
+
 
   return (
     <div className="app">
@@ -34,7 +44,15 @@ function App(){
         <Route exact path="/AdForm">
           <AdForm />
         </Route>
-        <Route exact path="/Diary">
+
+        
+        <Route exact path="/ad/:id">
+          <OneAd />
+        </Route>
+        
+
+        <Route exact path="/Diary/:id">
+
           <Diary />
         </Route>
         <Route excat path="/SettingsPage">
@@ -73,3 +91,21 @@ function App(){
 };
 
 export default App;
+
+{/*
+  const [loading, setLoader] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("content", JSON.stringify(content))
+  });
+
+  useEffect(() => {
+    setTimeout(() => { setLoader(!loading) }, 1000);
+    loadContent();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+*/}

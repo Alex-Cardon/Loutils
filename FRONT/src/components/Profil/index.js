@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 //import PropTypes from 'prop-types';
 
@@ -11,13 +11,13 @@ import { Card } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
 import './styles.scss';
+import photo from '/src/assets/Etienne.png';
 
 
-
-const Profil = ({ handleDeleteAccount, profil, loadProfil }) => {
+const Profil = ({ handleDeleteAccount, profil, loadProfil, deleteAccount }) => {
   const [loading, setLoader] = useState(true);
   console.log(`profil dans mon composant`, profil);
-  
+
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadProfil();
@@ -28,40 +28,39 @@ const Profil = ({ handleDeleteAccount, profil, loadProfil }) => {
   }
 
   return (
-  <div className='announcements'>
-    <Header />
-    <LoginForm />
-    <h1> Mon Profil</h1>
-    <Card.Group className='card-profil'>
-    
-      <Card
-        key="id"//{ad.id}
-        image="image"//{ad.}
-        header="Yvon FUMER-DES-GOELANDS"//{ad.}
-        meta="LouTilseur depuis 4/06/2021"//{ad.}
-        description="Coordonnées"//{ad.}
-      />
+    <div className='announcements'>
+      <Header />
+      <LoginForm />
+      <h1> Mon Profil</h1>
+      <Card.Group className='card-profil'>
+
+        <Card
+          image={photo}
+          header={profil.name}
+          meta={profil.email}
+        />
+      </Card.Group>
       <div>
-      <button onClick={handleDeleteAccount}>supprimer mon compte</button>
+        <button onClick={handleDeleteAccount}>supprimer mon compte</button>
       </div>
-    </Card.Group>
-    <NavLink
-      className=''
-      exact
-      to="/Params"
-    >
-      Modifier mon profil
-    </NavLink>
-    <Footer />
-  </div>
-);
+      <NavLink
+        className=''
+        exact
+        to="/Params"
+      >
+        Modifier mon profil
+      </NavLink>
+      <Footer />
+      {deleteAccount && (<Redirect from="/Profil" to="/" />)}
+    </div>
+  );  
 }
-{/* 
+/* 
 Profil.propTypes = {
       handleDeleteAccount: PropTypes.func.isRequired,
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
 };
-*/}
+*/
 export default Profil;

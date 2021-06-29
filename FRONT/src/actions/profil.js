@@ -12,11 +12,6 @@ export const getProfil = () => ({
 // action lorsque la réponse arrive
 export const getProfilSuccess = (apiData) => ({
   type: GET_PROFIL_SUCCESS,
-  //key: state,
-  //image: state,
-  //header: state,
-  //meta: state,
-  //description: state,
   apiData,
 });
 

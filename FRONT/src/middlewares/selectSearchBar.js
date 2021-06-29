@@ -4,6 +4,7 @@ import {
   RESEARCH_BUTTON,
   researchSuccess,
   
+
 } from 'src/actions/selectSearchBar';
 
 
@@ -21,8 +22,9 @@ const selectSearchBarMiddleware = (store) => (next) => (action) => {
 
       })
         .then((response) => {
-          console.log('response de RESEARCH_BUTTON', response.data)
+          console.log('response de RESEARCH_BUTTON', response.data.data[0])
           store.dispatch(researchSuccess(response.data));
+          
         })
         .catch((error) => {
           console.log(error)
