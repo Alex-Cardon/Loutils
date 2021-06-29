@@ -28,20 +28,24 @@ const Diary = ({
  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
  const momentend = moment(end).format("dddd DD MMM YYYY");
 
-let dateBegin= [];
-let dateEnd= [];
+// let dateBegin= [];
+// let dateEnd= [];
 
-if (allDates.length > 0) {
-  const dateTest = allDates.map((date) => (
-    dateBegin.push(date.begining),
-    dateEnd.push(date.end)
-  ));
+// if (allDates.length > 0) {
+//   const dateTest = allDates.map((date) => (
+//     dateBegin.push(date.begining),
+//     dateEnd.push(date.end)
+//   ));
+// }
+
+
+// console.log(dateBegin);
+
+const tileClassName = ({ activeStartDate, date, view }) => {
+  console.log({activeStartDate, date, view})
+  
+  const isAlreadyBooked = allDates.some((interval) => date.getDay())
 }
-
-
-console.log(dateBegin);
-
-
 
     if (loading) {
       return <Loading />;
@@ -49,9 +53,10 @@ console.log(dateBegin);
     return (
       <div className='calendar' >
          <Calendar
-          
+
             onChange={handleDateChange}
             selectRange={true}
+            tileClassName={tileClassName}
             
          />
         
