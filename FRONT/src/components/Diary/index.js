@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Loading from 'src/components/Loading'
@@ -16,17 +16,31 @@ const Diary = ({
   validate,
   loading,
   loadDates,
+  allDates,
 }) => {
 
   useEffect(() => {
     loadDates();
   }, []);
 
- console.log(date);
- console.log(begining);
+  console.log(allDates);
  moment.locale('fr')
  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
  const momentend = moment(end).format("dddd DD MMM YYYY");
+
+let dateBegin= [];
+let dateEnd= [];
+
+if (allDates.length > 0) {
+  const dateTest = allDates.map((date) => (
+    dateBegin.push(date.begining),
+    dateEnd.push(date.end)
+  ));
+}
+
+
+console.log(dateBegin);
+
 
 
     if (loading) {
@@ -38,6 +52,7 @@ const Diary = ({
           
             onChange={handleDateChange}
             selectRange={true}
+            
          />
         
         <button onClick={handleValidation}>Valider</button>
