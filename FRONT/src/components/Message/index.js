@@ -9,10 +9,8 @@ import './message.scss';
 
 
 const Message = ({ 
+  msgValue,
   messages,
-  // sender_name,
-  // title, 
-  // content,
   addMsgText,
   deleteMsgText,
   submitMsgText,
@@ -31,10 +29,11 @@ return(
         <Form.Field onSubmit={submitMsgText}  >
           <label htmlFor="response">Repondre</label>
           <input 
-            placeholder='Votre réponse' 
+            placeholder='Votre réponse ici' 
             name="response"
             id="response"
             onChange={addMsgText}  
+            value={msgValue}
           />
           <button type="submit">validez</button>
           <button onClick={deleteMsgText} >Supprimer</button>
@@ -48,9 +47,8 @@ return(
 };
 
 Message.propTypes = {
-  // sender_name: PropTypes.string.isRequired,
-  // content: PropTypes.string.isRequired,
-  // title: PropTypes.string.isRequired,
+  
+  msgValue: PropTypes.string.isRequired,
   addMsgText: PropTypes.func.isRequired,
   deleteMsgText: PropTypes.func.isRequired,
   submitMsgText: PropTypes.func.isRequired,

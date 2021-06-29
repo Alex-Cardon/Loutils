@@ -4,9 +4,10 @@ import {
   GET_MESSAGES_SUCCESS,
 } from 'src/actions/messaging';
 
-import ADD_MSG_TEXT from 'src/actions/message';
+import { HANDLE_MSG_TEXT } from 'src/actions/message';
 
 const initialState = {
+    msgValue:"",
     inputValue: '',
     messages:{},
     // sender_id:'',
@@ -47,11 +48,11 @@ const reducer = (state = initialState, action) => {
       };
 
 
-    case ADD_MSG_TEXT:
+    case HANDLE_MSG_TEXT:
 
       return {
         ...state,
-
+        msgValue: action.newMsgValue,
       };
 
     default:

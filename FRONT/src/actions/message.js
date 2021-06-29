@@ -1,7 +1,8 @@
-export const ADD_MSG_TEXT = 'ADD_MSG_TEXT';
+export const HANDLE_MSG_TEXT = 'HANDLE_MSG_TEXT';
 
-export const addMsgText = () => ({
-  type: ADD_MSG_TEXT,
+export const handleMsgText = (newMsgValue) => ({
+  type: HANDLE_MSG_TEXT,
+  newMsgValue,
 });
 
 export const deleteMsgText = () => ({
