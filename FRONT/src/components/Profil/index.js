@@ -35,10 +35,10 @@ const Profil = ({ handleDeleteAccount, profil, loadProfil }) => {
     <Card.Group className='card-profil'>
     
       <Card
-        image={filepath}
-        header={name}
-        meta={description}
-        description={coordonnées}
+        image="image"
+        header={profil.name}
+        meta={profil.email}
+        description="{coordonnées}"
       />
       <div>
       <button onClick={handleDeleteAccount}>supprimer mon compte</button>
