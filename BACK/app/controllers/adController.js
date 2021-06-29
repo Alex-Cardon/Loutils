@@ -266,7 +266,7 @@ module.exports = {
             res.status(200).json({ data : result });
         } catch (error) {
             console.trace(error);
-            req.status(500).json({ error: `Server error, please contact an administrator` });
+            res.status(500).json({ error: `Server error, please contact an administrator` });
         }
     },
 

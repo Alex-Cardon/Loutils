@@ -1,4 +1,4 @@
-import { INPUT_DATE } from 'src/actions/diary';
+import { INPUT_DATE, SAVE_FETCH_DATES } from 'src/actions/diary';
 import { SUBMIT_SUCCESS } from '../actions/diary';
 
 
@@ -9,6 +9,7 @@ const initialState = {
     end: '',
     validate: false,
     loading: true,
+    allDates: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,14 @@ const reducer = (state = initialState, action) => {
             end: action.booking.data[0].end,
             validate: true
           }
+        case SAVE_FETCH_DATES:
+          console.log(action);
+            return {
+            ...state,
+            allDates: [action.dates.data],
+            loading: false,
+          }
+          
         default:
             return state
     }

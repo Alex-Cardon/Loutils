@@ -6,6 +6,8 @@ import logo from 'src/components/Header/loutils_noir.svg';
 
 import LoginForm from 'src/components/LoginForm';
 
+import SettingsPage from 'src/components/SettingsPage';
+
 import './styles.scss';
 
 const Header = () => (
@@ -21,11 +23,7 @@ const Header = () => (
     <span></span>
     
     <ul id="menu">
-      <a href="/SignupPage"><li>Inscription</li></a>
-      <a href="#"><li>About</li></a>
-      <a href="#"><li>Info</li></a>
-      <a href="#"><li>Contact</li></a>
-      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+    <SettingsPage/>
     <LoginForm/>
     </ul>
 
