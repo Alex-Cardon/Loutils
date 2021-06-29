@@ -13,12 +13,11 @@ import {
 const oneAdMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_ONE_AD:
-      const { id } = useParams();
-      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/ad/${id}`)
-
+console.log(action.id);
+      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/ad/${action.id}`)
         .then((response) => {
-          //console.log('response de CONTENT', response.data);
-          store.dispatch(getOneAdSuccess(response.data));
+          console.log('response de ONEAD', response.data.data[0]);
+          store.dispatch(getOneAdSuccess(response.data.data[0]));
         })
         .catch((error) => console.log(error))
       break
@@ -27,5 +26,7 @@ const oneAdMiddleware = (store) => (next) => (action) => {
       break;
   }
 };
+//console.log(response);
+console.log(oneAdMiddleware);
 
 export default oneAdMiddleware;

@@ -1,61 +1,65 @@
 import React, { useEffect, useState } from 'react';
 
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-import { Card } from 'semantic-ui-react';
+import { Card, Icon, Image  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
-import './styles.scss';
 
 
-const oneAd = ({ loadOneAd }) => {
+const oneAd = ({ loadOneAd, oneAd }) => {
   const [loading, setLoader] = useState(true);
-  //console.log(`content dans mon composant`, content);
- 
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadOneAd();
     
   }, []);
-
+console.log("oneAd component", oneAd);
   if (loading) {
     return <Loading />;
   }
 
   return (
     <Card>
-    <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
+    <Image src={oneAd.filepath} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>Matthew</Card.Header>
+      <Card.Header>{oneAd.title}</Card.Header>
       <Card.Meta>
-        <span className='date'>Joined in 2015</span>
+        <span className='state'>{oneAd.product_state}</span>
+        <span className='user'>{oneAd.user_id}</span>
       </Card.Meta>
       <Card.Description>
-        Matthew is a musician living in Nashville.
+        <p>{oneAd.description}</p>
+        <p>{oneAd.price}</p>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
       <a>
-        <Icon name='user' />
-        22 Friends
+        <Icon className='postcode' />
+        {oneAd.postcode}
+      </a>
+      <a>
+        <Icon className='deposit' />
+        {oneAd.deposit}
       </a>
     </Card.Content>
   </Card>
   );
-}
 
-/*
-adResults.propTypes = {
-  content: PropTypes.arrayOf(
-    PropTypes.shape({
-id: PropTypes.number.isRequired,
-title: PropTypes.string.isRequired,
-description: PropTypes.string.isRequired,
-price: PropTypes.number.isRequired,
-}).isRequired,
-).isRequired,
-};*/
+}
+//console.log(oneAd, loadOneAd,filepath, title, product_state, user_id, description, price, postcode, deposit);
+
+oneAd.proptypes = {
+      filepath: PropTypes.string.isRequired, 
+      title: PropTypes.string.isRequired, 
+      product_state: PropTypes.string.isRequired, 
+      user_id: PropTypes.number.isRequired, 
+      description: PropTypes.string.isRequired, 
+      price: PropTypes.number.isRequired, 
+      postcode: PropTypes.string.isRequired, 
+      deposit: PropTypes.number.isRequired,
+};
 
 export default oneAd;
 

@@ -7,6 +7,7 @@ export const initialState = {
   oneAd: {},
 
 };
+
 //! direction index.js de mon reducer
 const reducer = (state = initialState, action) => {
   //console.log('je suis dans le reducer oneAd');
@@ -25,7 +26,8 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
+console.log("reducer", reducer);
+//console.log("oneAd reducer", oneAd);
 export default reducer;
 
 //!

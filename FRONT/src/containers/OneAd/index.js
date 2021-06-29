@@ -1,22 +1,23 @@
 import { connect } from 'react-redux';
 
-import Content from 'src/components/OneAd';
-import { getOneAd } from 'src/actions/OneAd';
+import oneAd from 'src/components/oneAd';
+import { getOneAd } from 'src/actions/oneAd';
+import{withRouter} from 'react-router-dom';
 
 const mapStateToprops = (state) => ({
-  
-  oneAd:state.oneAd.oneAd,
-  
-});
 
-const mapDispatchToProps = (dispatch) =>({
+  oneAd:state.oneAd.oneAd,
+});
+//console.log(state);
+
+const mapDispatchToProps = (dispatch, ownProps) =>({
   loadOneAd:() => {
-    dispatch(getOneAd());
+    dispatch(getOneAd(ownProps.match.params.id));
   }
 });
-
-export default connect(mapStateToprops, mapDispatchToProps)(Content);
-
+//console.log(dispatch);
 
 
-
+const container = connect(mapStateToprops, mapDispatchToProps)(oneAd);  
+const containerWithRouter = withRouter(container);  
+export default containerWithRouter;
