@@ -14,7 +14,7 @@ module.exports = {
 
 
     async findById(id) {
-        const result = await client.query(`SELECT * FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AD "img_id", * FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
         WHERE "ad"."id" = $1 `, [id]);
         return result.rows;
     },
