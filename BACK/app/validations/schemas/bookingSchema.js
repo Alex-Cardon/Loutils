@@ -12,10 +12,6 @@ const removeBookingSchema = Joi.object({
     id: Joi.number().integer().positive().min(1).required()
 }).required();
 
-const getBookingSchema = Joi.object({
-    // Voir les dates à laquelle l'annonce est réservée
-    id: Joi.number().integer().positive().min(1).required()
-}).required();
 
 
 module.exports = { newBookingSchema, removeBookingSchema, getBookingSchema };
