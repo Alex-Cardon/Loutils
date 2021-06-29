@@ -16,7 +16,7 @@ const Header = () => (
 <nav role="navigation">
   <div id="menuToggle">
 
-    <input type="checkbox" />
+    <input id="input" type="checkbox" />
     
     <span></span>
     <span></span>
