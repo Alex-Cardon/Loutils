@@ -23,7 +23,22 @@ const Setting = () => (
     >
      Mes annonces
     </NavLink>
-    {/*<NavLink
+    <NavLink
+      className='account-navlink'
+      exact
+      to="/Profil"
+    >
+      Mon profil
+    </NavLink>
+   
+  <Footer />
+  </div >
+);
+
+export default Setting;
+
+
+ /*<NavLink
       className='account-navlink'
       exact
       to="/Favorites"
@@ -56,3 +71,4 @@ const Setting = () => (
 );
 
 export default Setting;
+

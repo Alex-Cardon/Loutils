@@ -4,16 +4,12 @@ import UpdatedProfil from 'src/components/UpdatedProfil';
 
 import {
   submitUpdatedProfil,
-} from 'src/actions/profilField.js';
+} from 'src/actions/updatedProfil.js';
 
-import {
-  submitPicture,
-  changePictureInput,
-}from 'src/actions/updatedProfil.js';
 
 const mapStateToProps = (state) => ({
   
-  value: state.picture.value,
+  updatedProfil: state.updatedProfil.updatedProfil,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,7 +20,19 @@ const mapDispatchToProps = (dispatch) => ({
     console.log('Je lance une action SUBMIT_UPDATED_PROFIL');
     dispatch(submitUpdatedProfil());
   },
-  formSubmitPicture: (event) => {
+  
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdatedProfil);
+
+/*
+import {
+  submitPicture,
+  changePictureInput,
+}from 'src/actions/updatedProfil.js';
+
+
+formSubmitPicture: (event) => {
     // on ne veut pas que la page se recharge
     event.preventDefault();
     console.log('Je lance une action SUBMIT_pICTURE');
@@ -35,6 +43,4 @@ const mapDispatchToProps = (dispatch) => ({
     console.log(event.target.value);
     dispatch(changePictureInput(event.target.value));
   },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UpdatedProfil);
+*/
