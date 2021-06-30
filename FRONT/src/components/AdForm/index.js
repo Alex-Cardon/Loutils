@@ -53,7 +53,7 @@ const AdForm = ({
           <AdFormInput
             name="price"
             type="number"
-            placeholder="exemple: 50 "
+            placeholder="Prix de la location par jour"
 
           />
         </div>
@@ -61,7 +61,7 @@ const AdForm = ({
           <AdFormInput
             name="deposit"
             type="number"
-            placeholder="exemple: 50"
+            placeholder="Prix de la caution"
 
           />
         </div>
@@ -69,7 +69,7 @@ const AdForm = ({
           <AdFormInput
             name="postcode"
             type="text"
-            placeholder="exemple: 59000"
+            placeholder="Code postal"
 
           />
         </div>
