@@ -8,7 +8,9 @@ import Loading from 'src/components/Loading';
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
-import Diary from 'src/components/Diary';
+
+
+import './styles.scss';
 
 const announcements = ({
   handleDeleteBooking, 
@@ -31,8 +33,9 @@ const announcements = ({
 
   return (
   <div className='announcements'>
+        <LoginForm />
     <Header />
-    <LoginForm />
+
     <NavLink
       className='account-navlink'
       exact
@@ -45,7 +48,7 @@ const announcements = ({
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
       return (
-         <div>
+         <div class="card">
             <Card
               key={obj.id}
               image={obj.filepath}
@@ -54,6 +57,7 @@ const announcements = ({
               description={obj.price + " €/ jour"}
             />
             <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+
             <NavLink
       className='account-navlink'
       exact
@@ -61,6 +65,7 @@ const announcements = ({
     >
       Voir le calendrier
     </NavLink>
+
           </div>
       )
 }

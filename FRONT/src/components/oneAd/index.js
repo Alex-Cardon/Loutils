@@ -9,6 +9,7 @@ import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 
+import './oneAd.scss';
 
 const oneAd = ({ loadOneAd, oneAd }) => {
   const [loading, setLoader] = useState(true);
@@ -25,8 +26,8 @@ const oneAd = ({ loadOneAd, oneAd }) => {
 
   return (
     <div className='oneAd'>
+          <LoginForm />
     <Header />
-    <LoginForm />
     <NavLink
       className='account-navlink'
       exact
