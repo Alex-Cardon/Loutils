@@ -1,6 +1,7 @@
 .select {
   display: flex;
   justify-content: center;
+  border-radius: 5px;
   
 }
 
@@ -17,4 +18,24 @@ select{
 button{
 color: #ff000c;
 font-size: larger;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selecSearchBar {
+  border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] { 
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0; 
 }
