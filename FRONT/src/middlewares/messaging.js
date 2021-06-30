@@ -32,13 +32,17 @@ const messagesMiddleware = (store) => (next) => (action) => {
 
     case SEND_MSG_TEXT: {
       console.log("je suis dans SEND_MSG_TEXT", action.content);
-      
+      console.log("store.getState().user: ",store.getState().user);
+      const state = store.getState();
+      console.log("state:", state);
       axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages',{
         "content": action.content,
         "recipient": action.recipient,
         "ad_id":action.ad_id,
-        headers:{
-          'token': state.user.token
+      },
+        {headers:{
+          "Content-Type": "application/json",
+          "token": state.user.token
         }
       })
 
