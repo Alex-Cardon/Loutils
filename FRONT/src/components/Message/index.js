@@ -1,34 +1,49 @@
-import React from 'react';
+import React, {} from 'react';
 import PropTypes from 'prop-types';
 
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
+
+import { useParams } from 'react-router';
 
 import './message.scss';
 
+
 const Message = ({ 
-  sender_name, 
-  title, 
-  content,
+  msgValue,
+  messages,
   addMsgText,
   deleteMsgText,
-  submitMsgText,
+  handleMessage,
 }) => {
+  const { id } = useParams();
+  const message = messages.msg_recieved.find((message) => message.msg_id === parseInt(id, 10))
 
-return(
-
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleMessage(msgValue, message.sender_id, message.ad_id);
+  };
+  return (
   <div className='message'>
-     
-      <h1> Message : perceuse {title}</h1>
-      <Form>
+      
+      <h1> Message :{message.title}</h1>
+      <Form onSubmit={handleSubmit}>
         <div className="message">
-          <p>De: Doudou {sender_name} </p>
-          <p>Perceuse performant{content}</p>
+          <p>De:{message.sender_name} </p>
+          <p>{message.content}</p>
         </div>
-        <Form.Field onSubmit={submitMsgText}  >
-          <label>Repondre</label>
-          <input placeholder='First Name' onChange={addMsgText}  />
+        <Form.Field   >
+          <label htmlFor="response">Repondre</label>
+          <input 
+            placeholder='Votre réponse ici' 
+            name="response"
+            id="response"
+            onChange={addMsgText}  
+            value={msgValue}
+          />
+         
         </Form.Field>
-        <button onclick={deleteMsgText} >Supprimer</button>
+        <Button type="submit">validez</Button>
+        <Button onClick={deleteMsgText} >Supprimer</Button>
       </Form>
    
   </div>
@@ -37,12 +52,11 @@ return(
 };
 
 Message.propTypes = {
-  sender_name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  
+  msgValue: PropTypes.string.isRequired,
   addMsgText: PropTypes.func.isRequired,
   deleteMsgText: PropTypes.func.isRequired,
-  submitMsgText: PropTypes.func.isRequired,
+  handleMessage: PropTypes.func.isRequired,
 };
 
 export default Message;

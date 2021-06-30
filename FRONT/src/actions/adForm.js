@@ -15,29 +15,32 @@ export const INPUT_DATE_SUCCESS = 'INPUT_DATE_SUCCESS';
 export const GET_TOOL_STATE_VALUE = 'GET_TOOL_STATE_VALUE';
 export const GET_TOOL_STATE_VALUE_SUCCESS = 'GET_TOOL_STATE_VALUE_SUCCESS';
 
-export const changeAdField = () => ({
-  type: CHANGE_AD_FIELD
-});
-
-export const changeAdFieldSuccess = (newValue, name) => ({
-  type: CHANGE_AD_FIELD_SUCCESS,
+export const changeAdField = (newValue, name) => ({
+  type: CHANGE_AD_FIELD,
   newValue,
   name,
 });
+
+// export const changeAdFieldSuccess = (newValue, name) => ({
+//   type: CHANGE_AD_FIELD_SUCCESS,
+//   newValue,
+//   name,
+// });
 
 export const changeToolState = (value) => ({
   type: CHANGE_TOOL_STATE,
   value: value.target.value,
 });
 
-export const submitAdLogin = () => ({
+export const submitAdLogin = (newValue, name) => ({
   type: SUBMIT_AD_LOGIN,
-});
-
-export const submitAdLoginSuccess = (newValue, name) => ({
-  type: SUBMIT_AD_LOGIN_SUCCESS,
   newValue,
   name,
+});
+
+export const submitAdLoginSuccess = () => ({
+  type: SUBMIT_AD_LOGIN_SUCCESS,
+
 });
 
 

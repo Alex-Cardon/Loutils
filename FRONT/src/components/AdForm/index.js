@@ -4,9 +4,9 @@ import React from "react";
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
-import AdFormInput from './adFormInput';
-import AdFormPicture from './adFormPicture';
-import AdFormText from './adFormText';
+import AdFormInput from 'src/containers/AdForm/adFormInput';
+import AdFormPicture from 'src/containers/AdForm/adFormPicture';
+import AdFormText from 'src/containers/AdForm/adFormText';
 
 import Proptypes from 'prop-types';
 import './style.scss';
@@ -14,6 +14,7 @@ import './style.scss';
 const AdForm = ({
   getToolStateValue,
   handleAdForm,
+  onChange
 }) => (
 
     <div className="adForm" >
@@ -28,19 +29,25 @@ const AdForm = ({
       <form onSubmit={handleAdForm}>
         <div className="adForm__unit">
           <AdFormInput
-            name="toolName"
+            name="title"
             type="text"
             placeholder="exemple: Perceuse"
             
           />
         </div>
         <div className="adForm__unit">
-          <AdFormInput
-            name="image"
-            type="select"
-            placeholder="Categories"
-
-          />
+        <select onChange={onChange} name="category_id" id="handleCategory" required >
+          <option value="" disabled>Catégories</option>
+          <option value="9">Plomberie</option>
+          <option value="10">Peinture</option>
+          <option value="8">Nettoyage</option>
+          <option value="3">Mécanique</option>
+          <option value="7">Levage/Echelle</option>
+          <option value="2">Jardin</option>
+          <option value="5">Electroportatif</option>
+          <option value="4">Electricité</option>
+          <option value="6">BTP</option>
+        </select>
         </div>
         <div className="adForm__unit">
           <AdFormInput
@@ -52,7 +59,7 @@ const AdForm = ({
         </div>
         <div className="adForm__unit">
           <AdFormInput
-            name="caution"
+            name="deposit"
             type="number"
             placeholder="exemple: 50"
 
@@ -60,7 +67,7 @@ const AdForm = ({
         </div>
         <div className="adForm__unit">
           <AdFormInput
-            name="code postal"
+            name="postcode"
             type="text"
             placeholder="exemple: 59000"
 
@@ -75,22 +82,23 @@ const AdForm = ({
           />
         </div>
         <div className="adForm__unit--radio">
-          <p>Loutil est plutot: {getToolStateValue} </p>
+          <p>Loutil est plutot:  </p>
           <div>
             <label hmtlfor="new">comme neuf</label>
             <input
               type="radio"
-              id="new"
-              name="toolState"
-
+              value="new"
+              name="product_state"
+              onChange={onChange}
             />
           </div>
           <div>
             <label hmtlfor="used">En etat de marche</label>
             <input
               type="radio"
-              id="used"
-              name="toolState"
+              value="used"
+              name="product_state"
+              onChange={onChange}
 
             />
           </div>

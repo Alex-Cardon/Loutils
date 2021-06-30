@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import SettingsField from 'src/components/AdForm/adFormText';
+import adFormText from 'src/components/AdForm/adFormText';
 
-import { changeadFormText } from 'src/actions/adFormText';
+import { changeAdField } from 'src/actions/adForm';
 
 //!cela sera une donnée
 const mapStateToProps = (state, ownProps) => ({
@@ -13,8 +13,10 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   
   onChange: (event) => {
-    dispatch(changeadFormText(ownProps.stateKey, event.target.value));
+    // dispatch(changeAdField(ownProps.stateKey, event.target.value));
+    const newValue = (event.target.type === 'number') ? parseInt(event.target.value, 10) : event.target.value;
+    dispatch(changeAdField(newValue, event.target.name));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsField);
+export default connect(mapStateToProps, mapDispatchToProps)(adFormText);

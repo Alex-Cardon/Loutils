@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-//import PropTypes from 'prop-types';
+import { Card, Icon, Image  } from 'semantic-ui-react';
 
+import Loading from 'src/components/Loading';
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 
-import { Card } from 'semantic-ui-react';
-
-import Loading from 'src/components/Loading';
-import './styles.scss';
 
 const announcements = ({
   handleDeleteBooking, 
   begining, 
   end, 
   loadAnnouncements, 
-  loading, 
   announcements 
 }) => {
+
+  const [loading, setLoader] = useState(true);
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadAnnouncements();
   }, []);
-
   
   if (loading) {
     return <Loading />;
@@ -43,29 +41,31 @@ const announcements = ({
       Publier une annonce
     </NavLink>
     <h1> Mes annonces</h1>
+
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
       return (
          <div>
             <Card
               key={obj.id}
-              image={obj.picture_id}
+              image={obj.filepath}
               header={obj.title}
               meta={obj.description}
-              description={obj.price}
+              description={obj.price + " €/ jour"}
             />
-            <button onClick={handleDeleteBooking}>delete booking</button>
-            <div>
-              <p>Réservé du {begining} au {end}.</p>
-            </div>
+            <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+
           </div>
-      )}
+      )
+}
       )}   
     </Card.Group>
     <Footer />
   </div>
   );
     }
+
+    //console.log("obj component", obj);
 /*    
 announcements.propTypes = {
   advertissement: PropTypes.arrayOf(

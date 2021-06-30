@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Redirect } from 'react-router-dom';
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
 import Header from 'src/components/Header';
@@ -10,6 +10,7 @@ import './styles.scss';
 
 const UpdatedProfil = ({
   handleUpdatedProfilFormSubmit,
+  modifyAccount,
   //picture,
   //onChangePicture,
   //formSubmitPicture,
@@ -35,19 +36,7 @@ const UpdatedProfil = ({
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
-    {/*<form onSubmit={formSubmitPicture} method="post" enctype="multipart/form-data">
-     <div>
-        <label for="file">Sélectionner une photo de profil</label>
-        <input 
-          value={picture}
-          onChange={onChangePicture}
-          type="file" id="file" name="file"
-          accept="image/png, image/jpeg" />
-      </div>
-      <div>
-        <button type="submit" >Envoyer</button>
-      </div>
-    </form>*/} 
+    {modifyAccount && (<Redirect from="/UdatedProfil" to="/" />)}
     <Footer />
   </div>
 );

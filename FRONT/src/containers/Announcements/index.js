@@ -11,6 +11,7 @@ const mapStateToprops = (state) => ({
   announcements:state.announcements.announcements,
 });
 
+
 const mapDispatchToProps = (dispatch) => ({
   handleDeleteBooking: () => {
     dispatch(deleteBooking());
