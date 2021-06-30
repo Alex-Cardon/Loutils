@@ -22,7 +22,7 @@ const UpdatedProfil = ({
       onSubmit={handleUpdatedProfilFormSubmit}
     >
       <ProfilField
-        stateKey="pseudo"
+        stateKey="name"
         type="text"
         placeholder="votre pseudo"
       />

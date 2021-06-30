@@ -14,4 +14,4 @@ export const getOneAdSuccess = (apiData) => ({
   apiData,
 });
 
-console.log(getOneAd, getOneAdSuccess);
+//console.log(getOneAd, getOneAdSuccess);

@@ -9,6 +9,7 @@ const mapStateToprops = (state) => ({
   end: state.announcements.end, 
   loading:state.announcements.loading,
   announcements:state.announcements.announcements,
+  isLogged: state.user.isLogged,
 });
 
 
