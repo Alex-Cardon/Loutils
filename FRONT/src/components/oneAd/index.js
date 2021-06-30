@@ -58,6 +58,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
         <Icon className='deposit' />
         Caution : {oneAd.deposit}€
       </p>
+
       <NavLink
       className='account-navlink'
       exact

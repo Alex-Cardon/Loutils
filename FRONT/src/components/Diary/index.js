@@ -49,6 +49,12 @@ const tileClassName = ({ date }) => {
     }
     return (
       <div className='calendar' >
+<button onClick={handleValidation}>Valider</button>
+{validate &&
+<div className='calendar-result'>
+  Vous avez reservé du {momentbegin} au {momentend}
+</div>
+}
          <Calendar
 
             onChange={handleDateChange}
@@ -57,12 +63,6 @@ const tileClassName = ({ date }) => {
             
          />
         
-        <button onClick={handleValidation}>Valider</button>
-        {validate &&
-        <div className='calendar-result'>
-          Vous avez reservé du {momentbegin} au {momentend}
-        </div>
-        }
 
 <NavLink
       className='account-navlink'
