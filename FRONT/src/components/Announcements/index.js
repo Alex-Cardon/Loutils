@@ -53,7 +53,7 @@ const announcements = ({
               meta={obj.description}
               description={obj.price + " €/ jour"}
             />
-            <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+            <button class="ui button" onClick={handleDeleteBooking}>Voir les détails de l'annonce</button>
 
           </div>
       )
