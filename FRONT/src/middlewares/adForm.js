@@ -48,8 +48,7 @@ const adFormMiddleware = (store) => (next) => (action) => {
         "description": state.ad.description,
         "ad_type":state.ad.ad_type,
         "postcode":state.ad.postcode,
-        "category_id": state.ad.category_id,
-        "ad_type": "je loue",
+        "category_id": state.ad.category_id
       }, {
         headers: {
           token: state.user.token

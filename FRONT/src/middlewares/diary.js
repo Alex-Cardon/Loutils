@@ -36,7 +36,6 @@ const diaryMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response)=>{
-          console.log(response.data);
             store.dispatch(saveFetchDates(response.data));
         })
         .catch((error)=>console.log(error))
