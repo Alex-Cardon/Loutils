@@ -4,7 +4,7 @@ import {
   GET_MESSAGES_SUCCESS,
 } from 'src/actions/messaging';
 
-import { HANDLE_MSG_TEXT } from 'src/actions/message';
+import { HANDLE_MSG_TEXT, SEND_MSG_SUCCESS } from 'src/actions/message';
 
 const initialState = {
     msgValue:"",
@@ -45,6 +45,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         msgValue: action.newMsgValue,
       };
+
+    case SEND_MSG_SUCCESS:
+
+    return {
+      ...state,
+      msgValue: "",
+    }
 
     default:
       return state;
