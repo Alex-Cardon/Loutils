@@ -49,15 +49,22 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <p>
         <Icon className='postcode' />
         Code postal : {oneAd.postcode}
-      </a>
+      </p>
       <br></br>
-      <a>
+      <p>
         <Icon className='deposit' />
         Caution : {oneAd.deposit}€
-      </a>
+      </p>
+      <NavLink
+      className='account-navlink'
+      exact
+      to={`/Calendar/${oneAd.ad_id}`}
+    >
+      Voir le calendrier
+    </NavLink>
     </Card.Content>
   </Card>
   <Footer />
