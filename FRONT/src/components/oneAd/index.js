@@ -36,7 +36,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       Publier une annonce
     </NavLink>
     <h1> Détail de l'annonce </h1>
-    <Card>
+    <Card className="bidule">
     <Image src={oneAd.filepath} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{oneAd.title}</Card.Header>
@@ -49,14 +49,12 @@ const oneAd = ({ loadOneAd, oneAd }) => {
         <p>Prix de la location journalière : {oneAd.price}€</p>
       </Card.Description>
     </Card.Content>
-    <Card.Content extra>
-      <p>
-        <Icon className='postcode' />
+    <Card extra>
+      <p class="post-codeAd">
         Code postal : {oneAd.postcode}
       </p>
       <br></br>
-      <p>
-        <Icon className='deposit' />
+      <p class="depositAd">
         Caution : {oneAd.deposit}€
       </p>
       <NavLink
@@ -66,7 +64,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
     >
       Voir le calendrier
     </NavLink>
-    </Card.Content>
+    </Card>
   </Card>
   <Footer />
   </div>
