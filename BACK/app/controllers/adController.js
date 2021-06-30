@@ -195,7 +195,7 @@ module.exports = {
                 title
             } = req.body;
 
-            if (category == 'All') {
+            if (category == 'allCat') {
                 const result = await adDataMapper.getByTitle(title, trimmed_cp)
                 res.status(200).json({
                     data : result
