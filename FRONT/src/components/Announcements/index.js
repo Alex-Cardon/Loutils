@@ -8,7 +8,7 @@ import Loading from 'src/components/Loading';
 import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
-
+import Diary from 'src/components/Diary';
 
 const announcements = ({
   handleDeleteBooking, 
@@ -53,8 +53,14 @@ const announcements = ({
               meta={obj.description}
               description={obj.price + " €/ jour"}
             />
-            <button class="ui button" onClick={handleDeleteBooking}>Voir les détails de l'annonce</button>
-
+            <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+            <NavLink
+      className='account-navlink'
+      exact
+      to={`/Diary/${obj.ad_id}`}
+    >
+      Voir le calendrier
+    </NavLink>
           </div>
       )
 }
