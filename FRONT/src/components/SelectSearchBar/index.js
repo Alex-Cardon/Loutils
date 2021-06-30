@@ -26,7 +26,7 @@ const SelectSearchBar = ({
     <input className='selecSearchBar' onChange={onSearchToolsChange} value={inputTools} type="text" id="" name="" placeholder="Nom de l'outil" required />
     <select className='selecSearchBar' onChange={handleCategory} name="handleCategory" id="handleCategory" required >
       <option value="">Catégories</option>
-      <option value="">All</option>
+      <option value="allCat">All</option>
       <option value="Plomberie">Plomberie</option>
       <option value="Peinture">Peinture</option>
       <option value="Nettoyage">Nettoyage</option>

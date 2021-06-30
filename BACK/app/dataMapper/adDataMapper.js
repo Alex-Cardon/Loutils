@@ -5,7 +5,12 @@ module.exports = {
 
 
     async findByUserId(id) {
-        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath" FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" JOIN "category" ON "category_id" = "category"."id" WHERE "ad"."user_id" = $1`, [id]);
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at", "user"."id" AS "user_id" 
+        FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+        JOIN "category" ON "category_id" = "category"."id" 
+        JOIN "user" ON "ad"."user_id" = "user"."id"
+        WHERE "ad"."user_id" = $1`, [id]);
         if (!result.rows) {
             return null;
         }
@@ -14,7 +19,11 @@ module.exports = {
 
 
     async findById(id) {
-        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath" FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" JOIN "category" ON "category_id" = "category"."id"
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at", "user"."id" AS "user_id" 
+        FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+        JOIN "category" ON "category_id" = "category"."id" 
+        JOIN "user" ON "ad"."user_id" = "user"."id"
         WHERE "ad"."id" = $1 `, [id]);
         return result.rows;
     },
@@ -63,16 +72,16 @@ module.exports = {
 
     async getByTitleAndCat(category, postcode, title) {
 
-        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
-         FROM "ad" 
-        JOIN "category" ON "ad"."category_id" = "category"."id"
-        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-      JOIN "user" ON "ad"."user_id" = "user"."id"         
-    WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
-     AND LOWER("ad"."title") LIKE LOWER($1) 
-     AND "category"."name"= $2
-     AND "moderated" = TRUE 
-     ORDER BY "ad"."created_at" DESC`, ['%' + title + '%', category]);
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at", "user"."id" AS "user_id" 
+        FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+        JOIN "category" ON "category_id" = "category"."id" 
+        JOIN "user" ON "ad"."user_id" = "user"."id"         
+        WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
+        AND LOWER("ad"."title") LIKE LOWER($1) 
+        AND "category"."name"= $2
+        AND "moderated" = TRUE 
+        ORDER BY "ad"."created_at" DESC`, ['%' + title + '%', category]);
 
 
         return (result.rows);
@@ -90,11 +99,11 @@ module.exports = {
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
-        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
-     FROM "ad" 
-    JOIN "category" ON "ad"."category_id" = "category"."id"
-    JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-    JOIN "user" ON "ad"."user_id" = "user"."id"         
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at", "user"."id" AS "user_id" 
+        FROM "ad" 
+        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+        JOIN "category" ON "category_id" = "category"."id" 
+        JOIN "user" ON "ad"."user_id" = "user"."id"         
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
      AND LOWER("ad"."title") LIKE LOWER($1)
      
@@ -106,7 +115,7 @@ module.exports = {
     },
 
     async getTenAds() {
-        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at", "user"."id" AS "user_id" 
          FROM "ad" 
          JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
          JOIN "category" ON "category_id" = "category"."id" 
