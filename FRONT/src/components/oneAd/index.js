@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Card, Icon, Image  } from 'semantic-ui-react';
+import { Card, Icon, Image, Modal, Form, Button, TextArea  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
 import Header from 'src/components/Header';
@@ -13,7 +13,12 @@ import './oneAd.scss';
 
 const oneAd = ({ loadOneAd, oneAd }) => {
   const [loading, setLoader] = useState(true);
-
+  const [open, setOpen] = useState(false);
+  const [msgTxt, setMsgText] = useState('');
+  
+  const handleMessage = (evt) => {
+    console.log(msgTxt + " " + oneAd.ad_id + " " + oneAd.user_id);
+  }
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadOneAd();
@@ -64,7 +69,31 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       to={`/Calendar/${oneAd.ad_id}`}
     >
       Voir le calendrier
+      
     </NavLink>
+
+    <Modal
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+      open={open}
+      trigger={<Button>Envoyer un message</Button>}
+    >
+<Form idAnnonce = {oneAd.ad_id}  onSubmit= {handleMessage}>
+  <Form.Field
+      id='form-textarea-control-opinion'
+      control={TextArea}
+      label='Opinion'
+      placeholder='Opinion'
+      name="msgTxt"
+      value={msgTxt}
+      onChange={e => setMsgText(e.target.value)}
+  />
+  <Form.Field control={Button}>Submit</Form.Field>
+</Form>
+
+    </Modal>
+
+
     </Card>
   </Card>
   <Footer />

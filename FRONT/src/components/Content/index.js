@@ -37,6 +37,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
     <Card.Group className='card-group'>
 
     {searchResult.data.map((obj) => {
+      console.log(obj);
       return (
         
         <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
@@ -56,7 +57,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   {!apiResult && (
     <Card.Group className='card-group'>
   {content.data.map((obj) => {
-    //console.log(obj);
+    console.log(obj);
     return (
       
       <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
