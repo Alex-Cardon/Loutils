@@ -53,7 +53,6 @@ const tileClassName = ({ date }) => {
             onChange={handleDateChange}
             selectRange={true}
             tileClassName={tileClassName}
-            tileDisabled={()=>true}
             
          />
         
@@ -75,8 +74,8 @@ Diary.propTypes = {
   handleValidation: PropTypes.func.isRequired,
 };
 
-Diary.defaultProps = { 
-  date: ["2021-06-29", "2021-06-31"]
-};
+// Diary.defaultProps = { 
+//   date: ["2021-06-29", "2021-06-31"]
+// };
 
 export default Diary;
