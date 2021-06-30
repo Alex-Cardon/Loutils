@@ -16,8 +16,8 @@ const oneAd = ({ loadOneAd, oneAd }) => {
   const [open, setOpen] = useState(false);
   const [msgTxt, setMsgText] = useState('');
   
-  const handleMessage = (evt) => {
-    console.log(msgTxt + " " + oneAd.ad_id + " " + oneAd.user_id);
+  const handleMsg = (evt) => {
+    handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
   }
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
@@ -78,7 +78,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       open={open}
       trigger={<Button>Envoyer un message</Button>}
     >
-<Form idAnnonce = {oneAd.ad_id}  onSubmit= {handleMessage}>
+<Form idAnnonce = {oneAd.ad_id}  onSubmit= {handleMsg}>
   <Form.Field
       id='form-textarea-control-opinion'
       control={TextArea}

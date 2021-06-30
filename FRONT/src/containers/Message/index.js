@@ -7,6 +7,7 @@ import {
 } from 'src/actions/message';
 
 import Message from 'src/components/Message';
+import OneAd from 'src/components/oneAd';
 
 const mapStateToProps = (state) => ({
   msgValue: state.message.msgValue,
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
   
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Message);
+export default connect(mapStateToProps, mapDispatchToProps)(Message, OneAd);
