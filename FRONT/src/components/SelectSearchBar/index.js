@@ -37,7 +37,7 @@ const SelectSearchBar = ({
       <option value="Electroportatif">Electroportatif</option>
       <option value="Electricité">Electricité</option>
       <option value="BTP">BTP</option>
-      <option value="Robin">Robin</option>
+      <option value="Robin"> 🦊🏹 Robin 🦊 🏹</option>
     </select>
     <input className='selecSearchBar' onChange={onSearchLocalisation} value={localisation} type="number" id="inputLocalisation" name="inputLocalisation" placeholder="Code postal" required />
     <select className='selecSearchBar' onChange={handleRadius} name="handleRadius" id="handleRadius" required>

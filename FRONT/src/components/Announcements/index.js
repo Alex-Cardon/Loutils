@@ -6,7 +6,7 @@ import { Card, Icon, Image  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
 import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
+//import LoginForm from 'src/containers/LoginForm'; <LoginForm />
 import Footer from 'src/components/Footer';
 
 
@@ -33,7 +33,7 @@ const announcements = ({
 
   return (
   <div className='announcements'>
-        <LoginForm />
+        
     <Header />
 
     <NavLink
