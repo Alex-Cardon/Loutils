@@ -46,7 +46,7 @@ const Profil = ({ handleDeleteAccount, profil, loadProfil, deleteAccount }) => {
       <NavLink
         className=''
         exact
-        to="/Params"
+        to="/UpdatedProfil"
       >
         Modifier mon profil
       </NavLink>
