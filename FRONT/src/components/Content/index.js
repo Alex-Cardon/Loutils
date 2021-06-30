@@ -36,7 +36,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
 
     {searchResult.data.map((obj) => {
       return (
-        <Link to={`/ad/${obj.id}`} className="clikingOnCard">
+        <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard">
         <Card
           key={obj.description}
           image={obj.filepath}
@@ -54,7 +54,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   {content.data.map((obj) => {
     console.log(obj);
     return (
-      <Link to={`/ad/${obj.id}`} className="clikingOnCard">
+      <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard">
       <Card
         key={obj.description}
         image={obj.filepath}
