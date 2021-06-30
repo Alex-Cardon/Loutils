@@ -9,6 +9,7 @@ import Header from 'src/components/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 
+import './oneAd.scss';
 
 const oneAd = ({ loadOneAd, oneAd }) => {
   const [loading, setLoader] = useState(true);
@@ -25,8 +26,8 @@ const oneAd = ({ loadOneAd, oneAd }) => {
 
   return (
     <div className='oneAd'>
+          <LoginForm />
     <Header />
-    <LoginForm />
     <NavLink
       className='account-navlink'
       exact
@@ -49,15 +50,22 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <p>
         <Icon className='postcode' />
         Code postal : {oneAd.postcode}
-      </a>
+      </p>
       <br></br>
-      <a>
+      <p>
         <Icon className='deposit' />
         Caution : {oneAd.deposit}€
-      </a>
+      </p>
+      <NavLink
+      className='account-navlink'
+      exact
+      to={`/Calendar/${oneAd.ad_id}`}
+    >
+      Voir le calendrier
+    </NavLink>
     </Card.Content>
   </Card>
   <Footer />

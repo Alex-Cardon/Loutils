@@ -36,13 +36,19 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
 
     {searchResult.data.map((obj) => {
       return (
+
         <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
-        <Card
+          <div class="image-outil">
+        <Card 
+        className ="ui image center aligned"
+        verticalAlign='middle'
           image={obj.filepath}
           header={obj.title}
           meta={obj.description}
           description={obj.price + "€ / jour"}
+          
         />
+        </div>
       </Link>)
     })}
 
