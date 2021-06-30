@@ -24,6 +24,8 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
     
   }, []);
 
+  const maxTextLength = 100;
+
   if (loading) {
     return <Loading />;
   }
@@ -36,19 +38,16 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
 
     {searchResult.data.map((obj) => {
       return (
-
+        
         <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
-          <div class="image-outil">
         <Card 
-        className ="ui image center aligned"
-        verticalAlign='middle'
+
           image={obj.filepath}
           header={obj.title}
-          meta={obj.description}
+          meta={obj.description.substring(0, maxTextLength)+ "..."}
           description={obj.price + "€ / jour"}
           
         />
-        </div>
       </Link>)
     })}
 
@@ -64,7 +63,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
       <Card
         image={obj.filepath}
         header={obj.title}
-        meta={obj.description}
+        meta={obj.description.substring(0, maxTextLength)+ "..."}
         description={obj.price + "€ / jour"}
       />
       </Link>
