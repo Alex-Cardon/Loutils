@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-console.log("reducer", reducer);
+//console.log("reducer", reducer);
 //console.log("oneAd reducer", oneAd);
 export default reducer;
 

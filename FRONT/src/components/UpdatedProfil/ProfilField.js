@@ -14,7 +14,7 @@ const ProfilField = ({
     className="settings__input"
     value={value}
     onChange={onChange}
-    type={type} required
+    type={type} 
     placeholder={placeholder}
   />
 );

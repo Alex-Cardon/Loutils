@@ -26,6 +26,6 @@ console.log(action.ad_id);
       break;
   }
 };
-console.log(oneAdMiddleware);
+//console.log(oneAdMiddleware);
 
 export default oneAdMiddleware;
