@@ -34,11 +34,14 @@ const announcementsMiddleware = (store) => (next) => (action) => {
       break;
     
     case DELETE_BOOKING:
-      axios.delete(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`,
-        {ad_id: state.annoucements.id,
-        token: state.user.token
+      axios.delete(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`,{
+        ad_id: state.announcements.ad_id,
+        headers:{
+          'token': state.user.token  
+        }
       })
         .then((response) => {
+          console.log(response.data);
           store.dispatch(deleteBookingSuccess(response.data));
         })
         .catch((error) => console.log(error))
