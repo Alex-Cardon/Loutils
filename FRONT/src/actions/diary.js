@@ -11,8 +11,9 @@ type: INPUT_DATE,
   date,
 });
 
-export const submitDateValue =() => ({
+export const submitDateValue =(id) => ({
   type: SUBMIT_DATE_VALUE,
+  id
 });
 
 export const submitSuccess = (booking) => ({

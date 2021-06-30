@@ -7,7 +7,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Diary = ({
+const Calendar = ({
   handleDateChange, 
   handleValidation, 
   date, 
@@ -23,7 +23,6 @@ const Diary = ({
     loadDates();
   }, []);
 
-  console.log(allDates);
  moment.locale('fr')
  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
  const momentend = moment(end).format("dddd DD MMM YYYY");
@@ -68,15 +67,15 @@ const tileClassName = ({ date }) => {
     );
 };
 
-Diary.propTypes = {
+Calendar.propTypes = {
   showDate: PropTypes.bool.isRequired,
   date: PropTypes.array,
   handleDateChange: PropTypes.func.isRequired,
   handleValidation: PropTypes.func.isRequired,
 };
 
-Diary.defaultProps = { 
-  date: ["2021-06-29", "2021-06-31"]
-};
+// Diary.defaultProps = { 
+//   date: ["2021-06-29", "2021-06-31"]
+// };
 
-export default Diary;
+export default Calendar;

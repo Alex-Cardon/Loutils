@@ -18,15 +18,13 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 
     handleDateChange: (date) => {
-      // console.log("startDate:", date[0]);
-      // console.log("endDate:", date[1]);
       
       dispatch(inputDate(date));
     },
 
     handleValidation: () => {
       
-      dispatch(submitDateValue());
+      dispatch(submitDateValue(ownProps.match.params.id));
     },
 
     loadDates: () => {
