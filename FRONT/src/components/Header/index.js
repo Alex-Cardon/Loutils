@@ -35,15 +35,6 @@ const Header = ({ isLogged, loggedMessage }) => (
 
       </li>
     <li>
-    <NavLink
-        className={isLogged ? 'signup-link signup-link__toggle' : 'signup-link'}
-        exact
-        to="/Login"
-      >
-        Se connecter 
-    </NavLink>
-    </li>
-    <li>
       <NavLink
         className={isLogged ? 'signup-link signup-link__toggle' : 'signup-link'}
         exact
