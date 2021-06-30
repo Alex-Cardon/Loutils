@@ -56,7 +56,7 @@ const tileClassName = ({ date }) => {
       exact
       to={`/ad/${ad_id}`}
     >
-     Retourner à l'annonces
+     Retourner à l'annonce
     </NavLink>    
       </div>
       

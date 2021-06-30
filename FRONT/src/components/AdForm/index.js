@@ -2,7 +2,7 @@ import React from "react";
 //import { NavLink } from 'react-router-dom';
 
 import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
+//import LoginForm from 'src/containers/LoginForm'; <LoginForm />
 import Footer from 'src/components/Footer';
 import AdFormInput from 'src/containers/AdForm/adFormInput';
 import AdFormPicture from 'src/containers/AdForm/adFormPicture';
@@ -18,7 +18,7 @@ const AdForm = ({
 }) => (
 
     <div className="adForm" >
-            <LoginForm />
+            
       <Header />
 
       <h2 className="adForm__title">Sélectionnez votre photo</h2>

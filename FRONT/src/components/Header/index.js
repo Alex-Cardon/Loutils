@@ -37,7 +37,7 @@ const Header = ({ isLogged, loggedMessage }) => (
               exact
               to="/SignupPage"
             >
-              S'incrire
+              S'inscrire
             </NavLink>
           </li>
           <li>
