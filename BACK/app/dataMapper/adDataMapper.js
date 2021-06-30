@@ -63,13 +63,13 @@ module.exports = {
 
     async getByTitleAndCat(category, postcode, title) {
 
-        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name", "image_files"."filepath" FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
+         FROM "ad" 
         JOIN "category" ON "ad"."category_id" = "category"."id"
         JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-        JOIN "user" ON "ad"."user_id" = "user"."id"
+      JOIN "user" ON "ad"."user_id" = "user"."id"         
     WHERE "ad"."postcode" IN (` + postcode.join(',') + `)
      AND LOWER("ad"."title") LIKE LOWER($1) 
-     
      AND "category"."name"= $2
      AND "moderated" = TRUE 
      ORDER BY "ad"."created_at" DESC`, ['%' + title + '%', category]);
@@ -90,7 +90,8 @@ module.exports = {
     /*Recherche des annonces avec titre, code postal et rayon */
 
     async getByTitle(title, postcode) {
-        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name", "image_files"."filepath" FROM "ad" 
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
+     FROM "ad" 
     JOIN "category" ON "ad"."category_id" = "category"."id"
     JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
     JOIN "user" ON "ad"."user_id" = "user"."id"         
@@ -105,10 +106,11 @@ module.exports = {
     },
 
     async getTenAds() {
-        const result = await client.query(`SELECT "ad"."id", title, picture_id, price, product_state, deposit, description, ad_type, postcode, category_id, user_id, "ad"."created_at", "user"."name", "image_files"."filepath" FROM "ad" 
-        JOIN "category" ON "ad"."category_id" = "category"."id"
-        JOIN "image_files" ON "ad"."picture_id" = "image_files"."id"
-        JOIN "user" ON "ad"."user_id" = "user"."id"
+        const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath", "user"."name", "ad"."created_at"
+         FROM "ad" 
+         JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" 
+         JOIN "category" ON "category_id" = "category"."id" 
+         JOIN "user" ON "ad"."user_id" = "user"."id"
         WHERE "moderated" = TRUE ORDER BY RANDOM() LIMIT 10`)
         return result.rows;
     },
