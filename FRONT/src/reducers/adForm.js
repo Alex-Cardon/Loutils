@@ -60,15 +60,15 @@ const reducer = (state = initialState, action) => {
           case SUBMIT_AD_LOGIN_SUCCESS:
             return {
               ...state,
-              title: action.title,
-              price: action.price,
-              picture_id: action.picture_id,
-              product_state: action.product_state,
-              deposit: action.deposit,
-              description: action.description,
-              ad_type: action.ad_type,
-              postcode: action.postcode,
-              category_id: action.category_id,
+              title: '',
+              price: '',
+              picture_id: '',
+              product_state: '',
+              deposit: '',
+              description: '',
+              ad_type: '',
+              postcode: '',
+              category_id: '',
             };
 
         case CHANGE_TOOL_STATE:

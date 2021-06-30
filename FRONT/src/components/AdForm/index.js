@@ -18,9 +18,10 @@ const AdForm = ({
 }) => (
 
     <div className="adForm" >
+            <LoginForm />
       <Header />
-      <LoginForm />
-      <h2 className="adForm__title">Decrivez ici votre outil</h2>
+
+      <h2 className="adForm__title">Sélectionnez votre photo</h2>
       <div>
       <AdFormPicture
           />
@@ -53,7 +54,7 @@ const AdForm = ({
           <AdFormInput
             name="price"
             type="number"
-            placeholder="exemple: 50 "
+            placeholder="Prix de la location par jour"
 
           />
         </div>
@@ -61,7 +62,7 @@ const AdForm = ({
           <AdFormInput
             name="deposit"
             type="number"
-            placeholder="exemple: 50"
+            placeholder="Prix de la caution"
 
           />
         </div>
@@ -69,7 +70,7 @@ const AdForm = ({
           <AdFormInput
             name="postcode"
             type="text"
-            placeholder="exemple: 59000"
+            placeholder="Code postal"
 
           />
         </div>
@@ -77,7 +78,7 @@ const AdForm = ({
           <AdFormText
             name="description"
             type="text"
-            placeholder="description "
+            placeholder="description de l'outil"
 
           />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import LoginForm from 'src/containers/LoginForm';
 import Content from 'src/containers/Content';
 import Footer from 'src/components/Footer';
@@ -14,6 +14,7 @@ const Home = () => (
   <div className='home'>
 
     <Header />
+    <LoginForm />
     <SelectSearchBar />
     <Content />
     <Footer />

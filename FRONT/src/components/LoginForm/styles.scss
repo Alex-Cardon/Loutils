@@ -29,20 +29,29 @@
 }
 
 .login {
-  position: absolute;
+  position: fixed;
   display: flex;
+  top: 20px;
+  right: -180px;
+  transition: right 1s ease-in;
   align-items: center;
+  
 
   &--open {
-    right: 10px;
+    right: 30px;
   }
 
+  &-form-element {
+    display: flex;
+    flex-direction: column;
+    
+
+  }
 }
 
 .button {
   background-color: #fff;
-  border-radius: 2.5rem;
-  margin-right: 0.8rem;
+  border: none;
 
   &__toggle {
     display: none;

@@ -3,17 +3,19 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Loading from 'src/components/Loading'
 import moment from 'moment';
+import { NavLink } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Calendar = ({
+const Calendars = ({
   handleDateChange, 
   handleValidation, 
   date, 
   begining, 
   end, 
   validate,
+  ad_id,
   loading,
   loadDates,
   allDates,
@@ -27,11 +29,7 @@ const Calendar = ({
  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
  const momentend = moment(end).format("dddd DD MMM YYYY");
 
-
-
- 
 const tileClassName = ({ date }) => {
-  
   
   const isAlreadyBooked = allDates.some((interval) => {
     const begining = new Date(interval.begining);
@@ -48,26 +46,24 @@ const tileClassName = ({ date }) => {
     return (
       <div className='calendar' >
          <Calendar
-
             onChange={handleDateChange}
             selectRange={true}
             tileClassName={tileClassName}
-            tileDisabled={()=>true}
-            
-         />
-        
-        <button onClick={handleValidation}>Valider</button>
-        {validate &&
-        <div className='calendar-result'>
-          Vous avez reservé du {momentbegin} au {momentend}
-        </div>
-        }
-        
+            tileDisabled={()=>true} 
+         />   
+         <NavLink
+      className='account-navlink'
+      exact
+      to={`/ad/${ad_id}`}
+    >
+     Retourner à l'annonces
+    </NavLink>    
       </div>
+      
     );
 };
 
-Calendar.propTypes = {
+Calendars.propTypes = {
   showDate: PropTypes.bool.isRequired,
   date: PropTypes.array,
   handleDateChange: PropTypes.func.isRequired,
@@ -78,4 +74,4 @@ Calendar.propTypes = {
 //   date: ["2021-06-29", "2021-06-31"]
 // };
 
-export default Calendar;
+export default Calendars;

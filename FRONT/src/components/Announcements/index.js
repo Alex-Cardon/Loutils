@@ -10,6 +10,8 @@ import LoginForm from 'src/containers/LoginForm';
 import Footer from 'src/components/Footer';
 
 
+import './styles.scss';
+
 const announcements = ({
   handleDeleteBooking, 
   begining, 
@@ -31,8 +33,9 @@ const announcements = ({
 
   return (
   <div className='announcements'>
+        <LoginForm />
     <Header />
-    <LoginForm />
+
     <NavLink
       className='account-navlink'
       exact
@@ -45,7 +48,7 @@ const announcements = ({
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
       return (
-         <div>
+         <div class="card">
             <Card
               key={obj.id}
               image={obj.filepath}
@@ -54,6 +57,14 @@ const announcements = ({
               description={obj.price + " €/ jour"}
             />
             <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+
+            <NavLink
+      className='account-navlink'
+      exact
+      to={`/Diary/${obj.ad_id}`}
+    >
+      Voir le calendrier
+    </NavLink>
 
           </div>
       )

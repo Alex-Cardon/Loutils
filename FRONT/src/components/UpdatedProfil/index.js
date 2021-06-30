@@ -10,7 +10,7 @@ import './styles.scss';
 
 const UpdatedProfil = ({
   handleUpdatedProfilFormSubmit,
-  modifyAccount,
+  updatedProfil,
   //picture,
   //onChangePicture,
   //formSubmitPicture,
@@ -22,7 +22,7 @@ const UpdatedProfil = ({
       onSubmit={handleUpdatedProfilFormSubmit}
     >
       <ProfilField
-        stateKey="pseudo"
+        stateKey="name"
         type="text"
         placeholder="votre pseudo"
       />
@@ -36,7 +36,7 @@ const UpdatedProfil = ({
 
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
-    {modifyAccount && (<Redirect from="/UdatedProfil" to="/" />)}
+    {updatedProfil && (<Redirect from="/UdatedProfil" to="/" />)}
     <Footer />
   </div>
 );

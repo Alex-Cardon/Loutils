@@ -1,12 +1,41 @@
-.announcements {
+.account {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-bottom: 2rem;
-
+ 
+  &-navlink {
+    margin: 2rem auto;
+    border-radius: black solid 1 rem ;
 }
-.card-group {
-  display: flex;
-  margin-bottom: 2rem;
-  
+}
+.select {
+  padding: 20px !important;
+  background-color: #cdcdcd;
+box-shadow: 1px 2px 5px -2px #000000;
+}
+
+
+div.image {
+  height: 290px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+ align-items :center !important;
+ margin-left: auto !important;
+ margin-right: auto !important;
+}
+
+
+div .footer {
+  padding: 20px;
+  background-color: #cdcdcd;
+box-shadow: 1px 2px 5px -2px #000000;
+}
+
+.card{
+  //margin: 25px !important;
+}
+
+.bidule .content {
+  height:auto;
 }

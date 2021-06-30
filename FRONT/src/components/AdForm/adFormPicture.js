@@ -23,7 +23,7 @@ function adFormPicture({ updatePictureId }) {
           }} >
           </input>
         </form>
-        <button onClick={send}>Send</button>
+        <button onClick={send}>Envoyez la photo</button>
       </header>
     </div>
   );
