@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Icon } from 'semantic-ui-react'
 
 //import { Button, Select, Input } from 'semantic-ui-react'
 
@@ -48,9 +49,9 @@ const SelectSearchBar = ({
       <option value="Laser">Laser</option>
     </select>
     <button className="className='selecSearchBar'"
-            type="submit"
+            type="submit" 
             >
-        Lotiliser 
+        <Icon name='search' color='red' size='large'/>
     </button>
     </div>
   </form>
