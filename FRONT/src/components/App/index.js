@@ -20,6 +20,7 @@ import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
 import LoginForm from 'src/containers/LoginForm';
 import OneAd from 'src/containers/OneAd';
+import Calendar from 'src/containers/Calendar'
 
 
 import './styles.scss';
@@ -47,6 +48,9 @@ function App(){
         </Route>
         <Route exact path="/Diary/:id">
           <Diary />
+        </Route>
+        <Route exact path="/Calendar/:id">
+          <Calendar />
         </Route>
         <Route excat path="/Login">
           <LoginForm />

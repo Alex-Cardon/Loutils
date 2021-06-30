@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
+import { NavLink } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Loading from 'src/components/Loading'
@@ -62,6 +63,14 @@ const tileClassName = ({ date }) => {
           Vous avez reservé du {momentbegin} au {momentend}
         </div>
         }
+
+<NavLink
+      className='account-navlink'
+      exact
+      to="/Announcements"
+    >
+     Retourner aux annonces
+    </NavLink>
         
       </div>
     );
