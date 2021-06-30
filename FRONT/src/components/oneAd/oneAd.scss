@@ -1,12 +1,8 @@
-.card{
+.bidule{
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-
-.extra{
-  height: 90px;
-}
 .account-navlink{
   background-color: #ff000c;
   color: white;
@@ -15,10 +11,20 @@
   box-shadow: 1px 2px 5px -2px #000000;
 }
 
+.extra {
+
+  display: flex!important;
+  flex-direction: column!important;
+}
 
 div .footer {
   padding: 20px;
   background-color: #cdcdcd;
   box-shadow: 1px 2px 5px -2px #000000;
+}
+
+.account-navlink{
+  color: white!important;
+  margin: 0px !important;
 }
 
