@@ -1,7 +1,8 @@
 .card{
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
+
 
 .extra{
   height: 90px;
@@ -18,5 +19,6 @@
 div .footer {
   padding: 20px;
   background-color: #cdcdcd;
-box-shadow: 1px 2px 5px -2px #000000;
+  box-shadow: 1px 2px 5px -2px #000000;
 }
+
