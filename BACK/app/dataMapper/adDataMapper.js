@@ -110,7 +110,7 @@ module.exports = {
 
     async getTenAds() {
         const result = await client.query(`SELECT "ad"."id" AS "ad_id", "image_files"."id" AS "img_id", "title", "price", "product_state", "deposit", "description", "postcode", "category"."name" AS "category_name", "filepath" FROM "ad" JOIN "image_files" ON "ad"."picture_id" = "image_files"."id" JOIN "category" ON "category_id" = "category"."id"
-        WHERE "moderated" = TRUE ORDER BY RANDOM() LIMIT 6`)
+        WHERE "moderated" = TRUE ORDER BY RANDOM() LIMIT 10`)
         return result.rows;
     },
 
