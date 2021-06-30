@@ -14,11 +14,6 @@ const adFormText = ({
 
   return(
     <div className="">
-       <label
-        htmlFor={inputId}
-      >
-        {placeholder}
-      </label>
       <textarea
         // React - state
         value={value}
@@ -27,7 +22,7 @@ const adFormText = ({
         id={inputId}
         type={type}
         placeholder={placeholder}
-        name={name}
+        //name={name}
       />
     </div>
   );
