@@ -3,7 +3,7 @@
     top:0;
     left: 40%;
     padding: 1rem;
-    background-color: rgb(112, 112, 194);
+    background-color: rgb(255, 0, 0);
     opacity: .7;
     text-align: center;
 }
@@ -14,4 +14,8 @@
 
 .diary-booked{
     background: red !important;
+}
+
+.calendar {
+  display: flex;
 }
