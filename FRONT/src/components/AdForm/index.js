@@ -18,8 +18,9 @@ const AdForm = ({
 }) => (
 
     <div className="adForm" >
+            <LoginForm />
       <Header />
-      <LoginForm />
+
       <h2 className="adForm__title">Decrivez ici votre outil</h2>
       <div>
       <AdFormPicture
