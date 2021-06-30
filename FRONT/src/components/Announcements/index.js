@@ -48,15 +48,14 @@ const announcements = ({
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
       return (
-         <div class="card">
+         <div className="card" key={obj.ad_id}>
             <Card
-              key={obj.id}
               image={obj.filepath}
               header={obj.title}
               meta={obj.description}
               description={obj.price + " €/ jour"}
             />
-            <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+            <button className="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
 
             <NavLink
       className='account-navlink'
