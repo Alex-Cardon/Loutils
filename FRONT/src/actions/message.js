@@ -20,4 +20,6 @@ export const sendMsgText = (content, recipient, ad_id) => ({
 
 export const sendMsgSuccess = () => ({
   type: SEND_MSG_SUCCCESS,
+  message, 
+  isOk,
 });
