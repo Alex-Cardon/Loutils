@@ -57,8 +57,7 @@ const Message = ({
     />
         <Button onClick={notify} type="submit">validez</Button>
         <Button onClick={deleteMsgText} >Supprimer</Button>
-
-      </Form>
+        </form>
       
   </div>
 
