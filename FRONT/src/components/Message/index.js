@@ -1,7 +1,7 @@
 import React, {} from 'react';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
 import { Form, Button, TextArea } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 
@@ -10,7 +10,7 @@ import './message.scss';
 import LoginForm from 'src/containers/LoginForm'; 
 //import Footer from 'src/components/Footer'; <Footer />
 
-toast.configure()
+toast.configure()//
 
 const Message = ({ 
   msgValue,
@@ -28,7 +28,7 @@ const Message = ({
   };
   const notify = () => {
     toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
-  }
+  }//juste au dessus du retur !!!!!//
   return (
   <div className='message'>
        <LoginForm />
@@ -55,9 +55,12 @@ const Message = ({
       onChange={addMsgText}  
       value={msgValue}
     />
-        <Button onClick={notify} type="submit">validez</Button>
+        <Button onClick={notify} type="submit">validez</Button>//
         <Button onClick={deleteMsgText} >Supprimer</Button>
-        </form>
+
+      </form>
+      
+
       
   </div>
 

@@ -20,7 +20,7 @@ const initialState = {
   product_state: "",
   postcode: "",
   category_id: "",
-
+  adPosted: false,
   selectedFile:null,
 
  // date: [new Date()],
@@ -69,6 +69,7 @@ const reducer = (state = initialState, action) => {
               ad_type: '',
               postcode: '',
               category_id: '',
+              adPosted: false,
             };
 
         case CHANGE_TOOL_STATE:

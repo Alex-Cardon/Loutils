@@ -1,26 +1,29 @@
 import React from "react";
 //import { NavLink } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 //import Header from 'src/containers/Header'; <Header />
 //import LoginForm from 'src/containers/LoginForm'; <LoginForm />
 //import Footer from 'src/components/Footer'; <Footer />
 import AdFormInput from 'src/containers/AdForm/adFormInput';
 import AdFormPicture from 'src/containers/AdForm/adFormPicture';
 import AdFormText from 'src/containers/AdForm/adFormText';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 import Proptypes from 'prop-types';
 import './style.scss';
-
+toast.configure();
+const notify = () => {
+  toast.success('Votre annonce sera bientôt disponible', {position: toast.POSITION.TOP_RIGHT} )
+}
 const AdForm = ({
-  getToolStateValue,
+  // getToolStateValue,
+  adPosted,
   handleAdForm,
   onChange
 }) => (
 
     <div className="adForm" >
-            
-      
-
       <h2 className="adForm__title">Sélectionnez votre photo</h2>
       <div>
       <AdFormPicture
@@ -104,12 +107,15 @@ const AdForm = ({
             />
           </div>
         </div>
+
         <button
+        onClick={notify}
           className="adForm__button"
           type="submit"
         >
           Validez
         </button>
+        {adPosted && (<Redirect from="/AdForm" to="/Announcements" />)}
         {/*<div className="adForm__diary">
                     <h3>Choisissez la période de disponibilité de votre outil</h3>
                     <Diary />
@@ -122,7 +128,6 @@ const AdForm = ({
 
 
 AdForm.proptypes = {
-  getToolStateValue: Proptypes.string.isRequired,
   handleSubmit: Proptypes.func.isRequired,
 }
 export default AdForm;

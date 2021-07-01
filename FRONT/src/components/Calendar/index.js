@@ -58,6 +58,7 @@ const Calendars = ({
           Retourner à l'annonce
         </NavLink>
         <Calendar
+          className={['c1','c2']}
           onChange={handleDateChange}
           selectRange={true}
           tileClassName={tileClassName}
