@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import { toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
 import { Card, Icon, Image, Modal, Form, Button, TextArea  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
@@ -10,7 +11,7 @@ import Loading from 'src/components/Loading';
 //import Footer from 'src/components/Footer'; <Footer />
 
 import './oneAd.scss';
-
+toast.configure()//
 
 const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
 
@@ -32,6 +33,9 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
     return <Loading />;
   }
 
+  const notify = () => {
+    toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
+  }//juste au dessus du retur !!!!!//
   return (
     <div className='oneAd'>
     
@@ -89,12 +93,12 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
             control={TextArea}
             cols='50'
             rows='3'
-            placeholder='Ici'
             name="msgTxt"
             value={msgTxt}
             onChange={e => setMsgText(e.target.value)}
-        />
-        <Form.Field control={Button}>Envoyer</Form.Field>
+            
+        <Form.Field control={Button} onClick={notify}>Submit</Form.Field>
+
       </Form>
     </Modal>
 
