@@ -1,12 +1,17 @@
 import { connect } from 'react-redux';
-import { getContent } from 'src/actions/content';
+
 import App from 'src/components/App';
 
-
-const mapDispatchToProps = (dispatch) =>({
-  loadContent:() => {
-    dispatch(getContent());
-  }
+const mapStateToProps = (state) => ({
+  
+  isLogged: state.user.isLogged,
+  
+  
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
+
+
+
+
+

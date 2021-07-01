@@ -1,14 +1,16 @@
 import React, {} from 'react';
 import PropTypes from 'prop-types';
-
-import { Form, Button } from 'semantic-ui-react';
-
+import { toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
+import { Form, Button, TextArea } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 
 import './message.scss';
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+import LoginForm from 'src/containers/LoginForm'; 
+//import Footer from 'src/components/Footer'; <Footer />
+
+toast.configure()//
 
 const Message = ({ 
   msgValue,
@@ -24,12 +26,15 @@ const Message = ({
     evt.preventDefault();
     handleMessage(msgValue, message.sender_id, message.ad_id);
   };
+  const notify = () => {
+    toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
+  }//juste au dessus du retur !!!!!//
   return (
   <div className='message'>
        <LoginForm />
-      <Header />
+      
       <h1> Annonce : {message.title}</h1>
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <hr></hr>
         <div className="sender">
           <p className="from">De :</p>
@@ -42,21 +47,21 @@ const Message = ({
 
           </div>
           <hr></hr>
-        <Form.Field   >
-          <label htmlFor="response">Votre réponse</label>
-          <input 
-            placeholder='Votre réponse ici' 
-            name="response"
-            id="response"
-            onChange={addMsgText}  
-            value={msgValue}
-          />
-         
-        </Form.Field>
-        <Button type="submit">validez</Button>
+          <Form.Field
+      id="response"
+      control={TextArea}
+      placeholder='Votre réponse ici' 
+      name="response"
+      onChange={addMsgText}  
+      value={msgValue}
+    />
+        <Button onClick={notify} type="submit">validez</Button>//
         <Button onClick={deleteMsgText} >Supprimer</Button>
-      </Form>
-      <Footer />
+
+      </form>
+      
+
+      
   </div>
 
 );

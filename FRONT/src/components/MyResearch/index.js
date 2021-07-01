@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 //import PropTypes from 'prop-types';
 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import LoginForm from 'src/containers/LoginForm';
 import SelectSearchBar from 'src/containers/SelectSearchBar';
 import Footer from 'src/components/Footer';

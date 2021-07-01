@@ -30,3 +30,8 @@ export const getMessagesSuccess = (apiData) => ({
   type: GET_MESSAGES_SUCCESS,
   apiData,
 });
+
+export const sendMsgSuccess = (apiData) => ({
+  type: SEND_MSG_SUCCESS,
+  apiData,
+})

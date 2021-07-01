@@ -2,7 +2,7 @@ import React from 'react';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import LoginForm from 'src/containers/LoginForm';
 import ParamsField from 'src/containers/Params/ParamsField';
 import Footer from 'src/components/Footer';

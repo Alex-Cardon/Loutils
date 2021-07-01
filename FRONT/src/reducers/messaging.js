@@ -4,13 +4,13 @@ import {
   GET_MESSAGES_SUCCESS,
 } from 'src/actions/messaging';
 
-import { HANDLE_MSG_TEXT } from 'src/actions/message';
+import { HANDLE_MSG_TEXT, SEND_MSG_SUCCCESS } from 'src/actions/message';
 
 const initialState = {
     msgValue:"",
     inputValue: '',
     messages:{},
-    
+    open:false
 };
 
 const reducer = (state = initialState, action) => {
@@ -45,7 +45,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         msgValue: action.newMsgValue,
       };
-
+    case SEND_MSG_SUCCCESS:
+      return{
+        ...state,
+        msgValue: "",
+        //open:false,
+      }
     default:
       return state;
   }
