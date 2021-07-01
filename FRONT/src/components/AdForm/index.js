@@ -7,10 +7,15 @@ import { Redirect } from 'react-router-dom';
 import AdFormInput from 'src/containers/AdForm/adFormInput';
 import AdFormPicture from 'src/containers/AdForm/adFormPicture';
 import AdFormText from 'src/containers/AdForm/adFormText';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 import Proptypes from 'prop-types';
 import './style.scss';
-
+toast.configure();
+const notify = () => {
+  toast.success('Votre annonce sera bientôt disponible', {position: toast.POSITION.TOP_RIGHT} )
+}
 const AdForm = ({
   // getToolStateValue,
   adPosted,
@@ -102,7 +107,9 @@ const AdForm = ({
             />
           </div>
         </div>
+
         <button
+        onClick={notify}
           className="adForm__button"
           type="submit"
         >
