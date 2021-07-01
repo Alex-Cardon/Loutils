@@ -5,15 +5,18 @@ import Loading from 'src/components/Loading'
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 
+import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
+
 import PropTypes from 'prop-types';
 import './styles.scss';
 
 const Calendars = ({
-  handleDateChange, 
-  handleValidation, 
-  date, 
-  begining, 
-  end, 
+  handleDateChange,
+  handleValidation,
+  date,
+  begining,
+  end,
   validate,
   ad_id,
   loading,
@@ -25,42 +28,45 @@ const Calendars = ({
     loadDates();
   }, []);
 
- moment.locale('fr')
- const momentbegin = moment(begining).format("dddd DD MMM YYYY");
- const momentend = moment(end).format("dddd DD MMM YYYY");
+  moment.locale('fr')
+  const momentbegin = moment(begining).format("dddd DD MMM YYYY");
+  const momentend = moment(end).format("dddd DD MMM YYYY");
 
-const tileClassName = ({ date }) => {
-  
-  const isAlreadyBooked = allDates.some((interval) => {
-    const begining = new Date(interval.begining);
-    const end = new Date(interval.end);
-    return (date >= begining && date <= end);  
-  })
+  const tileClassName = ({ date }) => {
 
-  return (isAlreadyBooked) ? 'diary-booked' : null;
-}
+    const isAlreadyBooked = allDates.some((interval) => {
+      const begining = new Date(interval.begining);
+      const end = new Date(interval.end);
+      return (date >= begining && date <= end);
+    })
 
-    if (loading) {
-      return <Loading />;
-    }
-    return (
+    return (isAlreadyBooked) ? 'diary-booked' : null;
+  }
+
+  if (loading) {
+    return <Loading />;
+  }
+  return (
+    <>
+      <Header />
       <div className='calendar' >
-         <Calendar
-            onChange={handleDateChange}
-            selectRange={true}
-            tileClassName={tileClassName}
-            tileDisabled={()=>true} 
-         />   
-         <NavLink
-      className='account-navlink'
-      exact
-      to={`/ad/${ad_id}`}
-    >
-     Retourner à l'annonce
-    </NavLink>    
+        <NavLink
+          className='account-navlink'
+          exact
+          to={`/ad/${ad_id}`}
+        >
+          Retourner à l'annonce
+        </NavLink>
+        <Calendar
+          onChange={handleDateChange}
+          selectRange={true}
+          tileClassName={tileClassName}
+          tileDisabled={() => true}
+        />
       </div>
-      
-    );
+      <Footer />
+    </>
+  );
 };
 
 Calendars.propTypes = {

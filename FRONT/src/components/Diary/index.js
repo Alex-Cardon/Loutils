@@ -51,8 +51,10 @@ const Diary = ({
     return <Loading />;
   }
   return (
+    <>
+    <Header />
     <div className='calendar' >
-      <Header />
+      
       <div className='calendar--diary'>
         <NavLink
           className='account-navlink'
@@ -73,8 +75,10 @@ const Diary = ({
           </div>
         }
       </div>
-      <Footer />
+      
     </div>
+    <Footer />
+    </>
   );
 };
 

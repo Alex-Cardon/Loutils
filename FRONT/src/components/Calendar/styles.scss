@@ -15,3 +15,14 @@
 .diary-booked{
     background: rgb(250, 100, 100) !important;
 }
+
+.calendar {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.react-calendar {
+  margin-top: 2rem;
+}

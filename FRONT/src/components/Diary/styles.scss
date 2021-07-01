@@ -17,16 +17,12 @@
 }
 
 .calendar {
-  display: flex;
-  flex-direction: column;
-  
-  & --diary {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
+.react-calendar {
+  margin-top: 2rem;
 }
