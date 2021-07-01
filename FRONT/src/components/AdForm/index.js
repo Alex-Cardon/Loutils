@@ -1,6 +1,6 @@
 import React from "react";
 //import { NavLink } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 //import Header from 'src/containers/Header'; <Header />
 //import LoginForm from 'src/containers/LoginForm'; <LoginForm />
 //import Footer from 'src/components/Footer'; <Footer />
@@ -12,15 +12,13 @@ import Proptypes from 'prop-types';
 import './style.scss';
 
 const AdForm = ({
-  getToolStateValue,
+  // getToolStateValue,
+  adPosted,
   handleAdForm,
   onChange
 }) => (
 
     <div className="adForm" >
-            
-      
-
       <h2 className="adForm__title">Sélectionnez votre photo</h2>
       <div>
       <AdFormPicture
@@ -110,6 +108,7 @@ const AdForm = ({
         >
           Validez
         </button>
+        {adPosted && (<Redirect from="/AdForm" to="/Announcements" />)}
         {/*<div className="adForm__diary">
                     <h3>Choisissez la période de disponibilité de votre outil</h3>
                     <Diary />
@@ -122,7 +121,6 @@ const AdForm = ({
 
 
 AdForm.proptypes = {
-  getToolStateValue: Proptypes.string.isRequired,
   handleSubmit: Proptypes.func.isRequired,
 }
 export default AdForm;
