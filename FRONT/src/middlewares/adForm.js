@@ -22,6 +22,7 @@ import {
   changeAdFieldSuccess,
   SUBMIT_AD_LOGIN, /*permet de publier l'annonce */
   submitAdLoginSuccess,
+  adPosted,
 } from 'src/actions/adForm';
 
 const adFormMiddleware = (store) => (next) => (action) => {

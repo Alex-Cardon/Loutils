@@ -11,7 +11,8 @@ import { changeAdField } from 'src/actions/adForm';
 //!cela sera une donnée
 const mapStateToProps = (state, ownProps) => ({
   isLogged: state.user.isLogged,
-  value: state.settings[ownProps.stateKey],
+  //value: state.settings[ownProps.stateKey],
+  value: state.ad[ownProps.name],
 });
 //! cela sera une action 
 const mapDispatchToProps = (dispatch, ownProps) => ({
