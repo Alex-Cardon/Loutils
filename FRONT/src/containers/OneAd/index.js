@@ -8,6 +8,8 @@ const mapStateToprops = (state) => ({
   
   oneAd:state.oneAd.oneAd,
   msgTxt: state.oneAd.msgTxt,
+  messageSentFromOneAdOk: state.oneAd.messageSentFromOneAdOk,
+  isOk: state.oneAd.isOk,
 });
 //console.log(state);
 

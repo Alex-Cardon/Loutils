@@ -28,3 +28,22 @@ div .footer {
   margin: 0px !important;
 }
 
+.flash {
+  font-size: 1.2rem;
+  padding: 1.3rem 1rem;
+  opacity: 0.6;
+  position: fixed;
+  top: 110px;
+  left: auto;
+  right: auto;
+  width: auto;
+  border-radius: 10px;
+}
+
+.red {
+background-color: lightcoral;
+}
+
+.green{
+background-color: lightgreen;
+}

@@ -9,6 +9,7 @@ import {
   getOneAdSuccess,
   SEND_MESSAGE_FROM_ONE_AD,
   sendMessageFromOneAdSuccess,
+  messageSentOk
 } from 'src/actions/oneAd';
 
 const oneAdMiddleware = (store) => (next) => (action) => {
@@ -40,6 +41,10 @@ console.log(action.ad_id);
       })
       .then((response)=> {
         console.log(response.data);
+        const message = 'Le message a bien été envoyé !';
+        const isOk = true;
+        const messageSent = messageSentOk(message, isOk);
+        store.dispatch(messageSent);
       })
       .catch((error) => console.log(error));
     break;}

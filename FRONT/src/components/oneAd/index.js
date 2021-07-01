@@ -11,13 +11,21 @@ import Footer from 'src/components/Footer';
 
 import './oneAd.scss';
 
-const oneAd = ({ loadOneAd, oneAd,handleMessage }) => {
+const oneAd = ({ loadOneAd, oneAd,handleMessage, messageSentFromOneAdOk, isOk }) => {
   const [loading, setLoader] = useState(true);
   const [open, setOpen] = useState(false);
   const [msgTxt, setMsgText] = useState('');
-  
+  const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setShowMessage(false), 3000);
+  }, [showMessage]);
+  const classMessageSwap = isOk ? 'flash green' : 'flash red';
+
   const handleMsg = () => {
     handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
+    setOpen(false);
+    setShowMessage(!showMessage);
     console.log("component", msgTxt, oneAd.user_id, oneAd.ad_id );
   }
   useEffect(() => {
@@ -76,7 +84,9 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage }) => {
 
 
 
-
+    { showMessage && (
+        <h1 className={classMessageSwap}> {messageSentFromOneAdOk} </h1>
+      )}
 
     <Modal
       onClose={() => setOpen(false)}

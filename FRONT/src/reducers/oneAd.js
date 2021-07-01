@@ -1,9 +1,10 @@
-import { GET_ONE_AD, GET_ONE_AD_SUCCESS } from 'src/actions/oneAd';
+import { GET_ONE_AD, GET_ONE_AD_SUCCESS, SEND_MESSAGE_FROM_ONE_AD_SUCCESS } from 'src/actions/oneAd';
 
 
 //! state
 export const initialState = {
-
+  messageSentFromOneAdOk: "",
+  isOk: false,
   oneAd: {},
   msgTxt: "",
 };
@@ -21,6 +22,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         oneAd: action.apiData,
       };
+      case SEND_MESSAGE_FROM_ONE_AD_SUCCESS:
+        return {
+          ...state,
+          messageSentFromOneAdOk: action.message,
+          isOk: action.isOk,
+        }
     default:
       return state;
   }
