@@ -11,20 +11,21 @@ import Footer from 'src/components/Footer';
 
 import './oneAd.scss';
 
-const oneAd = ({ loadOneAd, oneAd }) => {
+const oneAd = ({ loadOneAd, oneAd,handleMessage }) => {
   const [loading, setLoader] = useState(true);
   const [open, setOpen] = useState(false);
   const [msgTxt, setMsgText] = useState('');
   
-  const handleMsg = (evt) => {
+  const handleMsg = () => {
     handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
+    console.log("component", msgTxt, oneAd.user_id, oneAd.ad_id );
   }
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadOneAd();
     
   }, []);
-  console.log("oneAd component", oneAd);
+  //console.log("oneAd component", oneAd);
   if (loading) {
     return <Loading />;
   }
@@ -72,26 +73,36 @@ const oneAd = ({ loadOneAd, oneAd }) => {
       
     </NavLink>
 
+
+
+
+
+
     <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button>Envoyer un message</Button>}
     >
-<Form idAnnonce = {oneAd.ad_id}  onSubmit= {handleMsg}>
-  <Form.Field
-      id='form-textarea-control-opinion'
-      control={TextArea}
-      label='Opinion'
-      placeholder='Opinion'
-      name="msgTxt"
-      value={msgTxt}
-      onChange={e => setMsgText(e.target.value)}
-  />
-  <Form.Field control={Button}>Submit</Form.Field>
-</Form>
-
+      <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
+         <Form.Field
+            id='form-textarea-control-opinion'
+            control={TextArea}
+            label='Envoyer'
+            placeholder='Opinion'
+            name="msgTxt"
+            value={msgTxt}
+            onChange={e => setMsgText(e.target.value)}
+        />
+        <Form.Field control={Button}>Submit</Form.Field>
+      </Form>
     </Modal>
+
+
+
+
+
+
 
 
     </Card>
