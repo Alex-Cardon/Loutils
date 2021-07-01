@@ -2,10 +2,9 @@ import {
   CHANGE_TEXT_INPUT,
   SEND_MESSAGE,
   GET_MESSAGES_SUCCESS,
-  SEND_MSG_SUCCCESS,
 } from 'src/actions/messaging';
 
-import { HANDLE_MSG_TEXT } from 'src/actions/message';
+import { HANDLE_MSG_TEXT, SEND_MSG_SUCCCESS } from 'src/actions/message';
 
 const initialState = {
     msgValue:"",
@@ -49,7 +48,8 @@ const reducer = (state = initialState, action) => {
     case SEND_MSG_SUCCCESS:
       return{
         ...state,
-        open:false,
+        msgValue: "",
+        //open:false,
       }
     default:
       return state;
