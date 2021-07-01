@@ -1,7 +1,7 @@
 import React, {} from 'react';
 import PropTypes from 'prop-types';
 
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, TextArea } from 'semantic-ui-react';
 
 import { useParams } from 'react-router';
 
@@ -29,7 +29,7 @@ const Message = ({
        <LoginForm />
       <Header />
       <h1> Annonce : {message.title}</h1>
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <hr></hr>
         <div className="sender">
           <p className="from">De :</p>
@@ -42,20 +42,17 @@ const Message = ({
 
           </div>
           <hr></hr>
-        <Form.Field   >
-          <label htmlFor="response">Votre réponse</label>
-          <input 
-            placeholder='Votre réponse ici' 
-            name="response"
-            id="response"
-            onChange={addMsgText}  
-            value={msgValue}
-          />
-         
-        </Form.Field>
+          <Form.Field
+      id="response"
+      control={TextArea}
+      placeholder='Votre réponse ici' 
+      name="response"
+      onChange={addMsgText}  
+      value={msgValue}
+    />
         <Button type="submit">validez</Button>
         <Button onClick={deleteMsgText} >Supprimer</Button>
-      </Form>
+      </form>
       <Footer />
   </div>
 
