@@ -11,6 +11,7 @@ import Message from 'src/components/Message';
 const mapStateToProps = (state) => ({
   msgValue: state.message.msgValue,
   messages: state.message.messages,
+  msgDelete: state.message.msgDelete,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,8 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(sendMsgText(msgValue, id, idAd));
   },
 
-  deleteMsgText:() => {
-    dispatch(deleteMsgText());
+  handleDelete:( msgId) => {  
+    dispatch(deleteMsgText(msgId));
   },
   
 });

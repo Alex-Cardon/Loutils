@@ -8,12 +8,14 @@ import {
 import { 
   SEND_MSG_TEXT,
   sendMsgSuccess,
+  DELETE_MSG_TEXT,
+  deleteMsgSuccess,
  } from 'src/actions/message';
 
 const messagesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
 
-    case GET_MESSAGES:
+    case GET_MESSAGES:{
       console.log(store.getState().user);
       const state = store.getState();
       axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages`, {
@@ -28,7 +30,8 @@ const messagesMiddleware = (store) => (next) => (action) => {
           store.dispatch(getMessagesSuccess(response.data));
         })
         .catch((error) => console.log(error))
-      break
+      break;
+    }
 
     case SEND_MSG_TEXT: {
       console.log("je suis dans SEND_MSG_TEXT", action.content);
@@ -50,7 +53,28 @@ const messagesMiddleware = (store) => (next) => (action) => {
           store.dispatch(sendMsgSuccess(response.data));
         })
         .catch((error) => console.log(error))
-      break
+      break;
+    }
+
+    case DELETE_MSG_TEXT: {
+
+      console.log("je suis dans DELETE_MSG", action.msgId);
+      const state = store.getState();
+      axios.patch(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages/${action.msgId}`,{
+        "msg_id":action.msgId,
+      },
+        {headers:{
+          "Content-Type": "application/json",
+          'token': state.user.token
+        }
+      })
+
+        .then((response) => {
+          console.log('delete le  MESSAGES', response.data);
+          store.dispatch(deleteMsgSuccess(response.data));
+        })
+        .catch((error) => console.log(error))
+      break;
     }
 
     default:
