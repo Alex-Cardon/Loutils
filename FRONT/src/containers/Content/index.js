@@ -4,10 +4,7 @@ import Content from 'src/components/Content';
 import { getContent } from 'src/actions/content';
 
 const mapStateToprops = (state) => ({
-  /*id: state.card.id,
-  title: state.card.title,
-  description: state.card.description,
-  price: state.card.price,*/
+  isLogged: state.user.isLogged,
   content:state.card.content,
   apiResult : state.research.apiResult,
   searchResult: state.research.searchResult,

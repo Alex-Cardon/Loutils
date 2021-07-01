@@ -7,7 +7,7 @@ const updatedProfilMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_UPDATED_PROFIL: {
       const state = store.getState();
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings', {
+      axios.update('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings', {
         
         "name": state.updatedProfil.name,
         "email": state.updatedProfil.email,

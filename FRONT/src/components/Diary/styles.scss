@@ -1,9 +1,9 @@
 .calendar-result {
     position: fixed;
-    top:0;
+    top:10px;
     left: 40%;
     padding: 1rem;
-    background-color: rgb(112, 112, 194);
+    background-color: rgb(255, 0, 0);
     opacity: .7;
     text-align: center;
 }
@@ -15,3 +15,16 @@
 .diary-booked{
     background: red !important;
 }
+
+.calendar {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.react-calendar {
+  margin-top: 2rem;
+}
+
+

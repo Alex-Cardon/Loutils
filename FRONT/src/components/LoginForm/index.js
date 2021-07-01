@@ -15,7 +15,7 @@ const LoginForm = ({
   handleLogin,
   handleLogout,
   isLogged,
-  loggedMessage,
+  //loggedMessage,
   isOpen, 
   onSettingsToggle,
 }) => {

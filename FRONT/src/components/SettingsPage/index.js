@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Header from 'src/components/Header';
+//import Header from 'src/containers/Header';
 import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Footer from 'src/components/Footer'; <Footer />
 
 import './styles.scss';
 
@@ -31,7 +31,7 @@ const Setting = () => (
       Mon profil
     </NavLink>
    
-  <Footer />
+  
   </div >
 );
 

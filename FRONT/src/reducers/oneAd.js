@@ -5,7 +5,7 @@ import { GET_ONE_AD, GET_ONE_AD_SUCCESS } from 'src/actions/oneAd';
 export const initialState = {
 
   oneAd: {},
-
+  msgTxt: "",
 };
 
 //! direction index.js de mon reducer
@@ -20,13 +20,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         oneAd: action.apiData,
-
       };
     default:
       return state;
   }
 };
-console.log("reducer", reducer);
+//console.log("reducer", reducer);
 //console.log("oneAd reducer", oneAd);
 export default reducer;
 

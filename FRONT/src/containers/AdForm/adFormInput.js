@@ -9,9 +9,13 @@ import { changeAdField } from 'src/actions/adForm';
 //! direction les actions dans signup.js 
 
 //!cela sera une donnée
-const mapStateToProps = (state, ownProps) => ({
-  value: state.settings[ownProps.stateKey],
-});
+const mapStateToProps = (state, ownProps) => {
+  console.log("Juan", state.ad);
+  return{
+    value: state.ad[ownProps.name],
+  // value: state.settings[ownProps.stateKey],
+  isLogged: state.user.isLogged,
+}};
 //! cela sera une action 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   

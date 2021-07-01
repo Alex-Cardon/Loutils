@@ -4,13 +4,19 @@ import {
   GET_MESSAGES_SUCCESS,
 } from 'src/actions/messaging';
 
+
 import { HANDLE_MSG_TEXT, SEND_MSG_SUCCESS, DELETE_MSG_SUCCESS } from 'src/actions/message';
+
 
 const initialState = {
     msgValue:"",
     inputValue: '',
     messages:{},
+
     msgDelete:false,
+
+    open:false
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -59,6 +65,7 @@ const reducer = (state = initialState, action) => {
       ...state,
       msgValue: "",
     }
+
 
     default:
       return state;

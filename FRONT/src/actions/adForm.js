@@ -66,6 +66,6 @@ export const uploadFile = (event) => ({
 
 });
 
-export const getToolStateValue = () =>  ({
-  type: GET_TOOL_STATE_VALUE,
-});
+// export const getToolStateValue = () =>  ({
+//   type: GET_TOOL_STATE_VALUE,
+// });

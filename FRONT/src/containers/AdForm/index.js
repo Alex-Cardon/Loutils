@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import AdForm from 'src/components/AdForm';
 
 import { 
-  getToolStateValue, 
+  //getToolStateValue, 
   submitAdLogin,
   changeAdField
 } from 'src/actions/adForm';
 
 
 const mapStateToProps = (state) => ({
-  getToolStateValue,
+  //getToolStateValue,
+  adPosted: state.ad.adPosted
   });
 
 

@@ -1,9 +1,41 @@
 .select {
   display: flex;
   justify-content: center;
+  border-radius: 5px;
   
 }
 
-.selectSearchBar {
+input{
+  margin: 5px !important;
+  border-radius: 2px !important;
+}
 
+select{
+  margin: 5px !important;
+  border-radius: 2px !important;
+}
+
+button{
+color: #ff000c;
+font-size: larger;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selecSearchBar {
+  border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] { 
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0; 
 }

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { Card, Icon, Image  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+//import LoginForm from 'src/containers/LoginForm'; <LoginForm />
+//import Footer from 'src/components/Footer'; <Footer />
 
 
 import './styles.scss';
@@ -33,8 +33,8 @@ const announcements = ({
 
   return (
   <div className='announcements'>
-        <LoginForm />
-    <Header />
+        
+    
 
     <NavLink
       className='account-navlink'
@@ -48,15 +48,14 @@ const announcements = ({
     <Card.Group className='card-group'>
       {announcements.data.map((obj) => {
       return (
-         <div class="card">
+         <div className="card" key={obj.ad_id}>
             <Card
-              key={obj.id}
               image={obj.filepath}
               header={obj.title}
               meta={obj.description}
               description={obj.price + " €/ jour"}
             />
-            <button class="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+            <button className="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
 
             <NavLink
       className='account-navlink'
@@ -71,7 +70,7 @@ const announcements = ({
 }
       )}   
     </Card.Group>
-    <Footer />
+    
   </div>
   );
     }

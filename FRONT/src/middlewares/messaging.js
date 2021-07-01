@@ -15,8 +15,9 @@ import {
 const messagesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
 
-    case GET_MESSAGES:{
-      console.log(store.getState().user);
+    case GET_MESSAGES:
+     // console.log(store.getState().user);
+
       const state = store.getState();
       axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages`, {
         headers:{
@@ -26,7 +27,7 @@ const messagesMiddleware = (store) => (next) => (action) => {
       })
 
         .then((response) => {
-          console.log('response de MESSAGES', response.data);
+         // console.log('response de MESSAGES', response.data);
           store.dispatch(getMessagesSuccess(response.data));
         })
         .catch((error) => console.log(error))
@@ -34,9 +35,17 @@ const messagesMiddleware = (store) => (next) => (action) => {
     }
 
     case SEND_MSG_TEXT: {
-      console.log("je suis dans SEND_MSG_TEXT", action.content);
-      console.log(store.getState().user);
+
+
+      //console.log("je suis dans SEND_MSG_TEXT", action.content);
+      
+
+     // console.log("je suis dans SEND_MSG_TEXT", action.content);
+      //console.log("store.getState().user: ",store.getState().user);
       const state = store.getState();
+      //console.log("state:", state);
+
+
       axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages',{
         "content": action.content,
         "recipient": action.recipient,
@@ -44,12 +53,14 @@ const messagesMiddleware = (store) => (next) => (action) => {
       },
         {headers:{
           "Content-Type": "application/json",
-          'token': state.user.token
+
+          "token": state.user.token
+
         }
       })
 
         .then((response) => {
-          console.log('submit le  MESSAGES', response.data);
+         // console.log('submit le  MESSAGES', response.data);
           store.dispatch(sendMsgSuccess(response.data));
         })
         .catch((error) => console.log(error))

@@ -2,9 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
-import Header from 'src/components/Header';
+//import Header from 'src/containers/Header'; <Header />
 import ProfilField from 'src/containers/UpdatedProfil/ProfilField';
-import Footer from 'src/components/Footer';
+//import Footer from 'src/components/Footer'; <Footer />
 
 import './styles.scss';
 
@@ -16,13 +16,13 @@ const UpdatedProfil = ({
   //formSubmitPicture,
 }) => (
   <div className="signup-page">
-    <Header />
+    
     <h2>Mise à jour de mon profil</h2>
     <form className="signup-page__form"
       onSubmit={handleUpdatedProfilFormSubmit}
     >
       <ProfilField
-        stateKey="pseudo"
+        stateKey="name"
         type="text"
         placeholder="votre pseudo"
       />
@@ -37,7 +37,7 @@ const UpdatedProfil = ({
       <button className="settings__submit" type="submit" >Modifier</button>
     </form>
     {updatedProfil && (<Redirect from="/UdatedProfil" to="/" />)}
-    <Footer />
+    
   </div>
 );
 

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Icon } from 'semantic-ui-react'
 
 //import { Button, Select, Input } from 'semantic-ui-react'
 
@@ -26,6 +27,7 @@ const SelectSearchBar = ({
     <input className='selecSearchBar' onChange={onSearchToolsChange} value={inputTools} type="text" id="" name="" placeholder="Nom de l'outil" required />
     <select className='selecSearchBar' onChange={handleCategory} name="handleCategory" id="handleCategory" required >
       <option value="">Catégories</option>
+      <option value="allCat">All</option>
       <option value="Plomberie">Plomberie</option>
       <option value="Peinture">Peinture</option>
       <option value="Nettoyage">Nettoyage</option>
@@ -35,7 +37,7 @@ const SelectSearchBar = ({
       <option value="Electroportatif">Electroportatif</option>
       <option value="Electricité">Electricité</option>
       <option value="BTP">BTP</option>
-      <option value="Robin">Robin</option>
+      <option value="Robin"> 🦊🏹 Robin 🦊 🏹</option>
     </select>
     <input className='selecSearchBar' onChange={onSearchLocalisation} value={localisation} type="number" id="inputLocalisation" name="inputLocalisation" placeholder="Code postal" required />
     <select className='selecSearchBar' onChange={handleRadius} name="handleRadius" id="handleRadius" required>
@@ -47,9 +49,9 @@ const SelectSearchBar = ({
       <option value="Laser">Laser</option>
     </select>
     <button className="className='selecSearchBar'"
-            type="submit"
+            type="submit" 
             >
-        Lotiliser 
+        <Icon name='search' color='red' size='large'/>
     </button>
     </div>
   </form>

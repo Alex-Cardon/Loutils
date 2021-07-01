@@ -2,6 +2,7 @@
 
 .field {
   margin: .3em .3em .3em 0;
+  padding: 0rem 3rem;
   position: relative;
 
   &-input {
@@ -37,7 +38,7 @@
       display: block;
     }
     .field-input {
-      padding: 1.4em .7em .4em;
+     padding: 1.4em .7em .4em;
     }
   }
 }

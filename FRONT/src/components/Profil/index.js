@@ -3,9 +3,9 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 //import PropTypes from 'prop-types';
 
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+//import LoginForm from 'src/containers/LoginForm'; <LoginForm />
+//import Footer from 'src/components/Footer'; <Footer />
 
 import { Card } from 'semantic-ui-react';
 
@@ -29,8 +29,8 @@ const Profil = ({ handleDeleteAccount, profil, loadProfil, deleteAccount }) => {
 
   return (
     <div className='announcements'>
-      <Header />
-      <LoginForm />
+      
+      
       <h1> Mon Profil</h1>
       <Card.Group className='card-profil'>
 
@@ -50,7 +50,7 @@ const Profil = ({ handleDeleteAccount, profil, loadProfil, deleteAccount }) => {
       >
         Modifier mon profil
       </NavLink>
-      <Footer />
+      
       {deleteAccount && (<Redirect from="/Profil" to="/" />)}
     </div>
   );  

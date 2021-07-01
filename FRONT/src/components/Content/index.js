@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
 import { Card } from 'semantic-ui-react';
@@ -10,19 +10,21 @@ import './styles.scss';
 
 const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   const [loading, setLoader] = useState(true);
-  console.log(`content dans mon composant`, content);
-  console.log(`searchResult dans mon composant`, searchResult);
-  console.log(`apiResult dans mon composant`, apiResult);
+  //console.log(`content dans mon composant`, content);
+  //console.log(`searchResult dans mon composant`, searchResult);
+  //console.log(`apiResult dans mon composant`, apiResult);
 
   useEffect(() => {
     localStorage.setItem("content", JSON.stringify(content))
   });
 
   useEffect(() => {
-    setTimeout(() => { setLoader(!loading) }, 1000);
+    setTimeout(() => { setLoader(!loading) },500);
     loadContent();
     
   }, []);
+
+  const maxTextLength = 100;
 
   if (loading) {
     return <Loading />;
@@ -35,20 +37,18 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
     <Card.Group className='card-group'>
 
     {searchResult.data.map((obj) => {
+      console.log(obj);
       return (
-        <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard">
-          <div class="image-outil">
+        
+        <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
         <Card 
-        className ="ui image center aligned"
-        verticalAlign='middle'
-          key={obj.description}
+
           image={obj.filepath}
           header={obj.title}
-          meta={obj.description}
+          meta={obj.description.substring(0, maxTextLength)+ "..."}
           description={obj.price + "€ / jour"}
           
         />
-        </div>
       </Link>)
     })}
 
@@ -59,12 +59,12 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   {content.data.map((obj) => {
     console.log(obj);
     return (
-      <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard">
+      
+      <Link to={`/ad/${obj.ad_id}`} className="clikingOnCard" key={obj.ad_id}>
       <Card
-        key={obj.description}
         image={obj.filepath}
         header={obj.title}
-        meta={obj.description}
+        meta={obj.description.substring(0, maxTextLength)+ "..."}
         description={obj.price + "€ / jour"}
       />
       </Link>

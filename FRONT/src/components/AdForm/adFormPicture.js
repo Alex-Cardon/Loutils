@@ -17,13 +17,13 @@ function adFormPicture({ updatePictureId }) {
       <header className="adFormPicture-header">
         <form action="#">
           <label htmlFor="file"></label>
-          <input type="file" name="image" id="id" accept=".jpg" onChange={event => {
+          <input type="file" name="picture_id" id="id" accept=".jpg" onChange={event => {
             const file = event.target.files[0];
             setfile(file);
           }} >
           </input>
         </form>
-        <button onClick={send}>Send</button>
+        <button onClick={send}>Envoyez la photo</button>
       </header>
     </div>
   );

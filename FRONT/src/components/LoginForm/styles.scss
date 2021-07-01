@@ -29,14 +29,13 @@
 }
 
 .login {
-  position: fixed;
+  position: absolute;
   display: flex;
-  top: 20px;
-  right: -200px;
+  top: 5px;
+  right: -260px;
   transition: right 1s ease-in;
   align-items: center;
   
-
   &--open {
     right: 30px;
   }

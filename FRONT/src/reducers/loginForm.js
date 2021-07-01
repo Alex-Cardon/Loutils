@@ -24,7 +24,7 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...state,
-        isOpen: false,
+        isOpen: !state.isOpen,
         isLogged: false,
         name: null,
         token: '',
@@ -44,10 +44,6 @@ const reducer = (state = initialState, action = {}) => {
       case TOGGLE_SETTINGS:
       return {
         ...state,
-       
-          // j'inverse isOpen
-          // par rapport a l'ancienen valeur
-          // dans le state
           isOpen: !state.isOpen,
         
       };

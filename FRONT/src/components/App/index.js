@@ -22,7 +22,8 @@ import Error from 'src/components/Error';
 import LoginForm from 'src/containers/LoginForm';
 import OneAd from 'src/containers/OneAd';
 import Calendar from 'src/containers/Calendar'
-
+import Header from 'src/containers/Header'; 
+import Footer from 'src/components/Footer'; 
 
 import './styles.scss';
 
@@ -34,6 +35,7 @@ function App(){
 
   return (
     <div className="app">
+       <Header />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -90,6 +92,7 @@ function App(){
           <Error />
         </Route>
       </Switch>
+      <Footer />
     </div>
   )
 };
