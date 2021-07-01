@@ -47,7 +47,7 @@ const messagesMiddleware = (store) => (next) => (action) => {
       },
         {headers:{
           "Content-Type": "application/json",
-          "token": state.persistStorageReducer.token
+          "token": state.user.token
         }
       })
 
