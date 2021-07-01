@@ -47,7 +47,6 @@ const adFormMiddleware = (store) => (next) => (action) => {
         "product_state": state.ad.product_state,
         "deposit": state.ad.deposit,
         "description": state.ad.description,
-        "ad_type":state.ad.ad_type,
         "postcode":state.ad.postcode,
 
         "category_id": state.ad.category_id,

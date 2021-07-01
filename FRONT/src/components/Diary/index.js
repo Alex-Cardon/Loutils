@@ -4,12 +4,16 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Loading from 'src/components/Loading'
 import moment from 'moment';
+import { toast } from 'react-toastify';//
+import 'react-toastify/dist/ReactToastify.css'//
 
 //import Header from 'src/containers/Header'; <Header />
 //import Footer from 'src/components/Footer'; <Footer />
 
 import PropTypes from 'prop-types';
 import './styles.scss';
+
+toast.configure()//
 
 const Diary = ({
   handleDateChange,
@@ -50,6 +54,9 @@ const Diary = ({
   if (loading) {
     return <Loading />;
   }
+  const notify = () => {
+    toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
+  }//juste au dessus du retur !!!!!//
   return (
     <>
     
@@ -69,13 +76,12 @@ const Diary = ({
           tileClassName={tileClassName}
         />
         <button onClick={handleValidation}>Valider</button>
-        {validate &&
+        {validate && 
           <div className='calendar-result'>
-            Vous avez reservé du {momentbegin} au {momentend}
+            Vous avez reservé du {momentbegin} au {momentend} 
           </div>
         }
       </div>
-      
     </div>
     
     </>
