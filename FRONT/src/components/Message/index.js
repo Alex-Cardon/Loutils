@@ -6,9 +6,9 @@ import { Form, Button, TextArea } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 
 import './message.scss';
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+import LoginForm from 'src/containers/LoginForm'; 
+//import Footer from 'src/components/Footer'; <Footer />
 
 toast.configure()
 
@@ -32,7 +32,7 @@ const Message = ({
   return (
   <div className='message'>
        <LoginForm />
-      <Header />
+      
       <h1> Annonce : {message.title}</h1>
       <form onSubmit={handleSubmit}>
         <hr></hr>
@@ -57,8 +57,9 @@ const Message = ({
     />
         <Button onClick={notify} type="submit">validez</Button>
         <Button onClick={deleteMsgText} >Supprimer</Button>
-      </form>
-      <Footer />
+
+      </Form>
+      
   </div>
 
 );

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Header from 'src/components/Header';
+//import Header from 'src/containers/Header'; <Header />
 import Messages from 'src/containers/Messages';
-import Form from 'src/containers/Form';
+//import Form from 'src/containers/Form';  <Footer />
 //import LoginForm from 'src/containers/LoginForm'; <LoginForm />
 import Footer from 'src/components/Footer';
 
@@ -12,13 +12,13 @@ import './styles.scss';
 const Messaging= () => ( 
  
     <div className="messaging">
-      <Header />
+      
       {/* <h1>Annonce Scie Borg de Chris </h1>
       <Icon color='red' name='envelope outline' />
       <Icon color='red' name='trash alternate outline' /> */}
       <Messages />
       {/* <Form /> */}
-      <Footer />
+     
     </div>
 );
 

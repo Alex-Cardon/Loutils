@@ -4,6 +4,7 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
+import Header from 'src/containers/Header';
 import Home from 'src/components/Home';
 import SignupPage from 'src/containers/SignupPage';
 import Setting from 'src/containers/SettingsPage';
@@ -21,7 +22,7 @@ import Error from 'src/components/Error';
 import LoginForm from 'src/containers/LoginForm';
 import OneAd from 'src/containers/OneAd';
 import Calendar from 'src/containers/Calendar'
-
+import Footer from 'src/components/Footer';
 
 import './styles.scss';
 
@@ -33,6 +34,7 @@ function App(){
 
   return (
     <div className="app">
+      <Header />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -86,6 +88,7 @@ function App(){
           <Error />
         </Route>
       </Switch>
+      <Footer />
     </div>
   )
 };

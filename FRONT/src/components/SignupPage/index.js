@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
-import Header from 'src/components/Header';
+//import Header from 'src/containers/Header';<Header />
 import ConnectedSettingsField from 'src/containers/SignupPage/SettingsField';
 //! 1 je fais mon component maintenant direction le sous composant SettingsField
 
@@ -14,7 +14,7 @@ const Signup = ({
   signUp,
 }) => (
   <div className="signup-page">
-    <Header />
+    
     <h2>Créer votre compte</h2>
     <form className="signup-page__form"
       onSubmit={handleFormSubmit}

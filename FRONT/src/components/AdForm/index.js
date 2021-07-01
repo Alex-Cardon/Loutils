@@ -1,9 +1,9 @@
 import React from "react";
 //import { NavLink } from 'react-router-dom';
 
-import Header from 'src/components/Header';
+//import Header from 'src/containers/Header'; <Header />
 //import LoginForm from 'src/containers/LoginForm'; <LoginForm />
-import Footer from 'src/components/Footer';
+//import Footer from 'src/components/Footer'; <Footer />
 import AdFormInput from 'src/containers/AdForm/adFormInput';
 import AdFormPicture from 'src/containers/AdForm/adFormPicture';
 import AdFormText from 'src/containers/AdForm/adFormText';
@@ -19,7 +19,7 @@ const AdForm = ({
 
     <div className="adForm" >
             
-      <Header />
+      
 
       <h2 className="adForm__title">Sélectionnez votre photo</h2>
       <div>
@@ -115,7 +115,7 @@ const AdForm = ({
                     <Diary />
   </div>*/}
       </form>
-      <Footer />
+      
     </div>
  
 );
