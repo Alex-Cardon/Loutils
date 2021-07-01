@@ -15,6 +15,7 @@ import Params from 'src/containers/Params';
 import UpdatedProfil from 'src/containers/UpdatedProfil';
 import Messaging from 'src/containers/Messaging';
 import Message from 'src/containers/Message';
+import Messages from 'src/containers/Messages';
 import Diary from 'src/containers/Diary';
 import AdForm from 'src/containers/AdForm';
 import Error from 'src/components/Error';
@@ -83,6 +84,9 @@ function App(){
         </Route>
         <Route exact path="/Message/:id">
           <Message />
+        </Route>
+        <Route exact path="/Messages/:id">
+          <Messages />
         </Route>
         <Route>
           <Error />
