@@ -80,27 +80,25 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
       
     </NavLink>
 
-
-
-
-
-
-    <Modal
+    <Modal className="modal_msg"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button>Envoyer un message</Button>}
     >
       <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
-         <Form.Field
+         <Form.Field 
             id='form-textarea-control-opinion'
+            label='Votre message'
             control={TextArea}
-            placeholder='Votre message'
+            cols='50'
+            rows='3'
             name="msgTxt"
             value={msgTxt}
             onChange={e => setMsgText(e.target.value)}
-        />
+            
         <Form.Field control={Button} onClick={notify}>Submit</Form.Field>
+
       </Form>
     </Modal>
 
