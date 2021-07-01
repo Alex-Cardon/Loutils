@@ -5,8 +5,8 @@ import Loading from 'src/components/Loading'
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+//import Footer from 'src/components/Footer';  <Footer />
 
 import PropTypes from 'prop-types';
 import './styles.scss';
@@ -48,7 +48,7 @@ const Calendars = ({
   }
   return (
     <>
-      <Header />
+      
       <div className='calendar' >
         <NavLink
           className='account-navlink'
@@ -64,7 +64,7 @@ const Calendars = ({
           tileDisabled={() => true}
         />
       </div>
-      <Footer />
+     
     </>
   );
 };

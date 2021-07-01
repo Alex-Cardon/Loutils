@@ -5,8 +5,8 @@ import 'react-calendar/dist/Calendar.css';
 import Loading from 'src/components/Loading'
 import moment from 'moment';
 
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+//import Footer from 'src/components/Footer'; <Footer />
 
 import PropTypes from 'prop-types';
 import './styles.scss';
@@ -52,7 +52,7 @@ const Diary = ({
   }
   return (
     <>
-    <Header />
+    
     <div className='calendar' >
       
       <div className='calendar--diary'>
@@ -77,7 +77,7 @@ const Diary = ({
       </div>
       
     </div>
-    <Footer />
+    
     </>
   );
 };

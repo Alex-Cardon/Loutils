@@ -6,9 +6,9 @@ import { Form, Button } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 
 import './message.scss';
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+import LoginForm from 'src/containers/LoginForm'; 
+//import Footer from 'src/components/Footer'; <Footer />
 
 const Message = ({ 
   msgValue,
@@ -27,7 +27,7 @@ const Message = ({
   return (
   <div className='message'>
        <LoginForm />
-      <Header />
+      
       <h1> Annonce : {message.title}</h1>
       <Form onSubmit={handleSubmit}>
         <hr></hr>
@@ -56,7 +56,7 @@ const Message = ({
         <Button type="submit">validez</Button>
         <Button onClick={deleteMsgText} >Supprimer</Button>
       </Form>
-      <Footer />
+      
   </div>
 
 );

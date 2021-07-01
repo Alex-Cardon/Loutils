@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import { Card, Icon, Image, Modal, Form, Button, TextArea  } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
-import Header from 'src/components/Header';
-import LoginForm from 'src/containers/LoginForm';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header'; <Header />
+//import LoginForm from 'src/containers/LoginForm';    <LoginForm />
+//import Footer from 'src/components/Footer'; <Footer />
 
 import './oneAd.scss';
 
-const oneAd = ({ loadOneAd, oneAd }) => {
+const oneAd = ({ loadOneAd, oneAd, isLogged }) => {
   const [loading, setLoader] = useState(true);
   const [open, setOpen] = useState(false);
   const [msgTxt, setMsgText] = useState('');
@@ -20,7 +20,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
     handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
   }
   useEffect(() => {
-    setTimeout(() => { setLoader(!loading) }, 1000);
+    setTimeout(() => { setLoader(!loading) }, 500);
     loadOneAd();
     
   }, []);
@@ -31,8 +31,8 @@ const oneAd = ({ loadOneAd, oneAd }) => {
 
   return (
     <div className='oneAd'>
-          <LoginForm />
-    <Header />
+    
+    {isLogged && (
     <NavLink
       className='account-navlink'
       exact
@@ -40,6 +40,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
     >
       Publier une annonce
     </NavLink>
+    )}
     <h1> Détail de l'annonce </h1>
     <Card className="bidule">
     <Image src={oneAd.filepath} wrapped ui={false} />
@@ -96,7 +97,7 @@ const oneAd = ({ loadOneAd, oneAd }) => {
 
     </Card>
   </Card>
-  <Footer />
+  
   </div>
   );
 

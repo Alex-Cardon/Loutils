@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import logo from 'src/components/Header/loutils_noir.svg';
 
+import { Icon } from 'semantic-ui-react';
 import './styles.scss';
 
 const Header = ({ isLogged, loggedMessage }) => (
@@ -21,7 +22,6 @@ const Header = ({ isLogged, loggedMessage }) => (
 
         <ul id="menu">
           <li>
-
             {isLogged && (
               <div className="login-form-logged">
                 <p className="login-form-message">
@@ -30,6 +30,15 @@ const Header = ({ isLogged, loggedMessage }) => (
               </div>
             )}
 
+          </li>
+          <li>
+            <NavLink
+              className='home'
+              exact
+              to="/"
+            >
+              <Icon color='red' name='home'  />
+            </NavLink>
           </li>
           <li>
             <NavLink
