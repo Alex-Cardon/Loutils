@@ -96,9 +96,9 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
             name="msgTxt"
             value={msgTxt}
             onChange={e => setMsgText(e.target.value)}
-            
+            />
 
-        control={Button} onClick={notify}>Submit</Form.Field>
+<Form.Field control={Button} onClick={notify}>Submit</Form.Field>
 
 
       </Form>
