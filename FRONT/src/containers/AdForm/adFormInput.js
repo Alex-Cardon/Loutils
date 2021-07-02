@@ -20,11 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   
   onChange: (event) => {
-    // meme idée : on récupère ownProps.stateKey pour obtenir
-    // la clé qui nous concerne (email ou password)
-    // cette clé sera donc donnée en prop manuellement dans le JSX
-    // qui appelle mon composant connecté
-    // dispatch(changeAdField(ownProps.stateKey, event.target.value));
+
     console.log(event.target.value);
     const newValue = (event.target.type === 'number') ? parseInt(event.target.value, 10) : event.target.value;
     dispatch(changeAdField(newValue, event.target.name));

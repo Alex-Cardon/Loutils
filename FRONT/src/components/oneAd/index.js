@@ -84,9 +84,11 @@ const oneAd = ({ loadOneAd, oneAd, handleMessage, isLogged, sendMsgSuccess }) =>
             rows='3'
             name="msgTxt"
             value={msgTxt}
+
             onChange={e => setMsgText(e.target.value)} 
             />
         <Form.Field control={Button} onClick={notify}>Submit</Form.Field>
+
       </Form>
     </Modal>
     </Card>
