@@ -11,7 +11,9 @@ import {
   newResearchSuccess,
 } from 'src/actions/selectSearchBar';
 
-
+import {
+  getContent
+} from 'src/actions/content';
 
 //! je recupère mes proptypes du component index.js de SignupPage 
 //!comme les proptypes sont func et string  
@@ -21,6 +23,7 @@ import {
 const mapStateToProps = (state) => ({
   inputTools: state.research.title,
   localisation: state.research.postcode,
+  apiResult: state.research.apiResult
  
 });
 //! cela sera une action 
@@ -50,9 +53,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getRadius(event.target.value));
   },
   newResearch: () => {
-    
     console.log('je lance newResearchSuccess avec newResearch')
-    dispatch(newResearchSuccess()); 
+    dispatch(newResearchSuccess());
+    dispatch(getContent()); 
   }
 
   

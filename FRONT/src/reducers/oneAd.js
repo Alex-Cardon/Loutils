@@ -1,4 +1,9 @@
-import { GET_ONE_AD, GET_ONE_AD_SUCCESS } from 'src/actions/oneAd';
+import { 
+  GET_ONE_AD, 
+  GET_ONE_AD_SUCCESS, 
+  SEND_MESSAGE_FROM_ONE_AD_SUCCESS, 
+} from 'src/actions/oneAd';
+
 
 
 //! state
@@ -6,6 +11,7 @@ export const initialState = {
 
   oneAd: {},
   msgTxt: "",
+  sendMsgSuccess: false,
 };
 
 //! direction index.js de mon reducer
@@ -21,6 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         oneAd: action.apiData,
       };
+      case SEND_MESSAGE_FROM_ONE_AD_SUCCESS:
+        return {
+          ...state,
+          sendMsgSuccess: true,
+        }
     default:
       return state;
   }
