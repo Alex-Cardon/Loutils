@@ -3,22 +3,18 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';//
 import 'react-toastify/dist/ReactToastify.css'//
-import { Card, Icon, Image, Modal, Form, Button, TextArea  } from 'semantic-ui-react';
+import { Card, Icon, Image, Modal, Form, Button, TextArea, Header } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
 //import Header from 'src/containers/Header'; <Header />
 //import LoginForm from 'src/containers/LoginForm';    <LoginForm />
 //import Footer from 'src/components/Footer'; <Footer />
-
 import './oneAd.scss';
 toast.configure()//
-
-const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
-
+const oneAd = ({ loadOneAd, oneAd, handleMessage, isLogged, sendMsgSuccess }) => {
   const [loading, setLoader] = useState(true);
   const [open, setOpen] = useState(false);
   const [msgTxt, setMsgText] = useState('');
-  
   const handleMsg = () => {
     handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
     console.log("component", msgTxt, oneAd.user_id, oneAd.ad_id );
@@ -26,19 +22,26 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 500);
     loadOneAd();
-    
   }, []);
   //console.log("oneAd component", oneAd);
   if (loading) {
     return <Loading />;
   }
 
+  const closeModal = () => {
+    setOpen(false)
+  };
+
   const notify = () => {
     toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
   }//juste au dessus du retur !!!!!//
+
+  const actionBtn = () => {
+    closeModal();
+    notify();
+  }
   return (
     <div className='oneAd'>
-    
     {isLogged && (
     <NavLink
       className='account-navlink'
@@ -70,23 +73,21 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
       <p class="depositAd">
         Caution : {oneAd.deposit}€
       </p>
-
       <NavLink
       className='account-navlink'
       exact
       to={`/Calendar/${oneAd.ad_id}`}
     >
       Voir le calendrier
-      
     </NavLink>
-
     <Modal className="modal_msg"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button>Envoyer un message</Button>}
     >
-      <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
+      <Modal.Header>{oneAd.title}</Modal.Header>
+        <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
          <Form.Field 
             id='form-textarea-control-opinion'
             label='Votre message'
@@ -96,30 +97,21 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
             name="msgTxt"
             value={msgTxt}
             onChange={e => setMsgText(e.target.value)}
-            
-
-        control={Button} onClick={notify}>Submit</Form.Field>
-
-
-      </Form>
-    </Modal>
-
-
-
-
-
-
-
-
+            />
+          <Form.Field control={Button} onClick={actionBtn}>Envoyer</Form.Field>
+          <Button 
+          onClick={closeModal}
+          color='red'
+          >Annuler</Button>
+        </Form>
+      </Modal>
     </Card>
   </Card>
-  
+  {sendMsgSuccess && (<Redirect from="/ad" to="/" />)}
   </div>
   );
-
 }
 //console.log(oneAd, loadOneAd,filepath, title, product_state, user_id, description, price, postcode, deposit);
-
 oneAd.proptypes = {
       filepath: PropTypes.string.isRequired, 
       title: PropTypes.string.isRequired, 
@@ -130,8 +122,8 @@ oneAd.proptypes = {
       postcode: PropTypes.string.isRequired, 
       deposit: PropTypes.number.isRequired,
 };
-
 export default oneAd;
+
 
 
 

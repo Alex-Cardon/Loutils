@@ -33,11 +33,13 @@ const reducer = (state = initialState, action ) => {
         password: '',
         confirmPassword: '',
       };
-      case SUBMIT_UPDATED_PROFIL:
-      return {
-        ...state, 
-        [action.settingsKey]: action.newValue,   
-      };
+
+      // case SUBMIT_UPDATED_PROFIL:
+      // return {
+      //   ...state, 
+      //   [action.settingsKey]: action.newValue,   
+      // };
+
       case SUBMIT_UPDATED_PROFIL_SUCCESS:   
       return {
         ...state,

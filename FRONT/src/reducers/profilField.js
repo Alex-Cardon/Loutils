@@ -1,4 +1,5 @@
 import { CHANGE_UPDATED_PROFIL_INPUT, UPDATED_PROFIL_SUCCESS } from 'src/actions/profilField';
+import { GET_PROFILE_INFO } from '../actions/updatedProfil';
 
 //! state
 export const initialState = {
@@ -30,6 +31,12 @@ const reducer = (state = initialState, action ) => {
         confirmPassword: '',
 
       };
+      case GET_PROFILE_INFO:
+        return {
+          ...state,
+          name: action.profil.name,
+          email: action.profil.email
+        }
     default:
       return state;
   }

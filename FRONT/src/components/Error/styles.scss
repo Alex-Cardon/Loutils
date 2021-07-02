@@ -1,13 +1,17 @@
 .error {
   line-height: 10rem;
+  display: flex;
+align-items: center;  
+flex-direction: column;
 }
 
 .container {
-  width: 100%;
+  width: 40%;
   position:relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #cdcdcdbb;
 }
 
 

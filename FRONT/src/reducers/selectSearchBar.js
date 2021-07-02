@@ -4,6 +4,7 @@ import {
   GET_CATEGORIES,
   GET_RADIUS,
   RESEARCH_SUCCESS,
+  NEW_RESEARCH_SUCCESS,
 } from 'src/actions/selectSearchBar';
 
 //! state
@@ -46,8 +47,13 @@ const reducer = (state = initialState, action) => {
     case RESEARCH_SUCCESS:
       return {
         ...state,
-        searchResult: action.apiData, 
+        searchResult: action.apiData,
         apiResult: true,
+      }
+    case NEW_RESEARCH_SUCCESS:
+      return {
+        ...state,
+        apiResult: false,
       }
 
     default:

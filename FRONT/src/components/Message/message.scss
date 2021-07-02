@@ -4,22 +4,25 @@ h1 {
 
 span {
   margin: 5px !important;
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
 }
 
 .message {
   margin-top: 20px!important;
+  width: 400px;
+  background-color: #cdcdcdbb;
 }
 
 .field {
-  //margin-top: 30px!important;
+  display: flex;
+  justify-content: center;
 }
 
 #response {
   box-shadow: 1px 2px 5px 0px #000000 !important;
-  width: 40% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  font-size: 1rem;
 }
 
 hr{
@@ -28,3 +31,23 @@ hr{
   margin-right: auto !important;
 }
 
+.message-container {
+  display: flex;
+  justify-content: center;
+}
+ .from, .message {
+   font-size: 1.5rem;
+ }
+
+.return {
+  color: rgb(73, 73, 73);
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

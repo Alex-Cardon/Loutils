@@ -17,7 +17,7 @@ const adFormText = ({
        <label
         htmlFor={inputId}
       >
-        {placeholder}
+        
       </label>
       <textarea
         // React - state

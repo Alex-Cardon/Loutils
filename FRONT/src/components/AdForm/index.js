@@ -22,7 +22,7 @@ const AdForm = ({
   handleAdForm,
   onChange
 }) => (
-
+  <div className='adFormContainer'>
     <div className="adForm" >
       <h2 className="adForm__title">Sélectionnez votre photo</h2>
       <div>
@@ -41,7 +41,7 @@ const AdForm = ({
         </div>
         <div className="adForm__unit">
         <select onChange={onChange} name="category_id" id="handleCategory" required >
-          <option value="" disabled>Catégories</option>
+          <option value="" >Catégories</option>
           <option value="9">Plomberie</option>
           <option value="10">Peinture</option>
           <option value="8">Nettoyage</option>
@@ -88,19 +88,20 @@ const AdForm = ({
         <div className="adForm__unit--radio">
           <p>Loutil est plutot:  </p>
           <div>
-            <label hmtlfor="new">comme neuf</label>
+            <label hmtlfor="comme neuf">comme neuf</label>
             <input
               type="radio"
-              value="new"
+              value="comme neuf"
               name="product_state"
               onChange={onChange}
             />
           </div>
+          
           <div>
-            <label hmtlfor="used">En etat de marche</label>
+            <label hmtlfor="En etat de marche">En etat de marche</label>
             <input
               type="radio"
-              value="used"
+              value="En etat de marche"
               name="product_state"
               onChange={onChange}
 
@@ -122,6 +123,8 @@ const AdForm = ({
   </div>*/}
       </form>
       
+    </div>
+
     </div>
  
 );

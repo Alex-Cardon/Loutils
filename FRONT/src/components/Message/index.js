@@ -1,14 +1,18 @@
-import React, {} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+
+
+
 import { toast } from 'react-toastify';//
 import 'react-toastify/dist/ReactToastify.css'//
 import { Form, Button, TextArea } from 'semantic-ui-react';
+
 import { useParams } from 'react-router';
 
 import './message.scss';
-//import Header from 'src/containers/Header'; <Header />
-import LoginForm from 'src/containers/LoginForm'; 
-//import Footer from 'src/components/Footer'; <Footer />
 
 toast.configure()//
 
@@ -16,8 +20,9 @@ const Message = ({
   msgValue,
   messages,
   addMsgText,
-  deleteMsgText,
+  handleDelete,
   handleMessage,
+  msgDelete,
 }) => {
   const { id } = useParams();
   const message = messages.msg_recieved.find((message) => message.msg_id === parseInt(id, 10))
@@ -26,12 +31,28 @@ const Message = ({
     evt.preventDefault();
     handleMessage(msgValue, message.sender_id, message.ad_id);
   };
+
+
+  const deleteMsgText = (evt) => {
+    evt.preventDefault();
+    handleDelete( message.msg_id);
+  };
+
+  let history = useHistory();
+  if(msgDelete) { 
+    console.log('je suis dans useHistory '); 
+    msgDelete = false;
+    history.push('/Messagerie');
+  }
+
+
   const notify = () => {
     toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
   }//juste au dessus du retur !!!!!//
+
   return (
-  <div className='message'>
-       <LoginForm />
+    <div className='message-container'>
+      <div className='message'>
       
       <h1> Annonce : {message.title}</h1>
       <form onSubmit={handleSubmit}>
@@ -52,26 +73,34 @@ const Message = ({
       control={TextArea}
       placeholder='Votre réponse ici' 
       name="response"
+      cols='40'
+      rows='3'
       onChange={addMsgText}  
       value={msgValue}
     />
-        <Button onClick={notify} type="submit">validez</Button>//
+    <div className='btn-container'>
+        <Button onClick={notify} type="submit">Envoyer</Button>
         <Button onClick={deleteMsgText} >Supprimer</Button>
-
+        <NavLink className='return'
+          exact
+          to="/Messagerie"
+        >
+          Retourner aux messages
+        </NavLink>
+        </div>
       </form>
-      
-
-      
+  </div>
+  
   </div>
 
 );
 };
 
 Message.propTypes = {
-  
+  msgDelete: PropTypes.bool.isRequired,
   msgValue: PropTypes.string.isRequired,
   addMsgText: PropTypes.func.isRequired,
-  deleteMsgText: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
   handleMessage: PropTypes.func.isRequired,
 };
 

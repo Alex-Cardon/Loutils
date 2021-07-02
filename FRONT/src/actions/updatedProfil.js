@@ -6,7 +6,7 @@ export const UPDATED_PICTURE_SUCCESS = 'UPDATED_PICTURE_SUCCESS';
 export const SUBMIT_UPDATED_PROFIL = 'SUBMIT_UPDATED_PROFIL';
 export const SUBMIT_UPDATED_PROFIL_SUCCESS = 'SUBMIT_UPDATED_PROFIL_SUCCESS';
 export const CHANGE_UPDATED_PROFIL_INPUT = 'CHANGE_UPDATED_PROFIL_INPUT';
-
+export const GET_PROFILE_INFO = 'GET_PROFILE_INFO';
 // Nos actions
 //! action créator pour gérer le submit du formulaire direction les actions settingsField.js
 export const handleUpdatedProfilSubmit = () => (
@@ -44,4 +44,8 @@ export const submitUpdatedProfilSuccess = (apiData) => ({
   apiData,
 });
 
+export const getProfileInfo = (profil) => ({
+  type: GET_PROFILE_INFO,
+  profil
+})
 

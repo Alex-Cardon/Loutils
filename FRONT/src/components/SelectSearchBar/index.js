@@ -17,12 +17,15 @@ const SelectSearchBar = ({
   handleResearch,
   handleCategory,
   handleRadius,
-
+  newResearch,
+  apiResult,
 }) => {
 
 
   return(
+    <div className='searchBar'>
   <form className='form' onSubmit={handleResearch}>
+    
     <div className='select'>
     <input className='selecSearchBar' onChange={onSearchToolsChange} value={inputTools} type="text" id="" name="" placeholder="Nom de l'outil" required />
     <select className='selecSearchBar' onChange={handleCategory} name="handleCategory" id="handleCategory" required >
@@ -53,8 +56,21 @@ const SelectSearchBar = ({
             >
         <Icon name='search' color='red' size='large'/>
     </button>
+    
     </div>
+   
   </form>
+  <div className='new-research'>
+    { apiResult && (
+      <button onClick={newResearch} className="className='new-research-button'"
+      type="button" 
+      >
+      <Icon name='close icon' color='red' size='small'/> Effacer la recherche
+    </button>
+    )  }
+    
+    </div>
+    </div>
 
 )};
 

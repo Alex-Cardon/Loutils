@@ -18,7 +18,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 1em;
-    width: 50%;
+    //width: 50%;
   }
   &__unit{
     margin-top: 1em;
@@ -35,18 +35,20 @@
     width: 300px;
     margin-top: 1em;
   }
+  width: 500px;
+  background-color: #cdcdcdbb;
 }
 
 
 button{
-  background-color: #cdcdcd !important;
-  padding: 5px !important;
-  border: 0 !important;
+  //background-color: #cdcdcd !important;
+  padding: 5px;
+  border: 0;
   border-radius: 2px;
-    font-size: 100% !important;
-    font: inherit !important;
-    margin-top: 10px !important;
-    vertical-align: baseline !important;
+    font-size: 100%;
+    font: inherit;
+    margin-top: 10px;
+    vertical-align: baseline;
     margin-left: auto;
     margin-right: auto;
 }
@@ -56,7 +58,7 @@ button{
   border-top: none;
   border-left: none;
   border-right: none;
-  width:15%; 
+  width:250px; 
 }
 
 #field-description{
@@ -64,11 +66,34 @@ button{
   border-top: none;
   border-left: none;
   border-right: none;
-  width:40%
+  width:300px;
+  height: 100px;
 }
 
 .adForm__unit--radio{
-width: 20% !important;
-margin-left: auto !important;
-margin-right: auto !important;
+display: flex;
+flex-direction: column;
+margin-left: auto;
+margin-right: auto;
+}
+
+.adFormContainer {
+  display: flex;
+  justify-content: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
 }

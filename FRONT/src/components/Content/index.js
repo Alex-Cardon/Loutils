@@ -15,11 +15,11 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   //console.log(`apiResult dans mon composant`, apiResult);
 
   useEffect(() => {
-    localStorage.setItem("content", JSON.stringify(content))
+    // localStorage.setItem("content", JSON.stringify(content))
   });
 
   useEffect(() => {
-    setTimeout(() => { setLoader(!loading) },500);
+    setTimeout(() => { setLoader(!loading) },1000);
     loadContent();
     
   }, []);
