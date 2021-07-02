@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';//
 import 'react-toastify/dist/ReactToastify.css'//
-import { Card, Icon, Image, Modal, Form, Button, TextArea  } from 'semantic-ui-react';
+import { Card, Icon, Image, Modal, Form, Button, TextArea, Header } from 'semantic-ui-react';
 
 import Loading from 'src/components/Loading';
 //import Header from 'src/containers/Header'; <Header />
@@ -33,9 +33,18 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
     return <Loading />;
   }
 
+  const closeModal = () => {
+    setOpen(false)
+  };
+
   const notify = () => {
     toast.success('Message envoyé', {position: toast.POSITION.TOP_RIGHT} )
   }//juste au dessus du retur !!!!!//
+
+  const actionBtn = () => {
+    closeModal();
+    notify();
+  }
   return (
     <div className='oneAd'>
     
@@ -86,7 +95,8 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
       open={open}
       trigger={<Button>Envoyer un message</Button>}
     >
-      <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
+      <Modal.Header>{oneAd.title}</Modal.Header>
+        <Form idAnnonce = {oneAd.ad_id}  idRecipient = {oneAd.user_id} onSubmit= {handleMsg}>
          <Form.Field 
             id='form-textarea-control-opinion'
             label='Votre message'
@@ -97,12 +107,13 @@ const oneAd = ({ loadOneAd, oneAd,handleMessage, isLogged }) => {
             value={msgTxt}
             onChange={e => setMsgText(e.target.value)}
             />
-
-<Form.Field control={Button} onClick={notify}>Submit</Form.Field>
-
-
-      </Form>
-    </Modal>
+          <Form.Field control={Button} onClick={actionBtn}>Envoyer</Form.Field>
+          <Button 
+          onClick={closeModal}
+          color='red'
+          >Annuler</Button>
+        </Form>
+      </Modal>
 
 
 
