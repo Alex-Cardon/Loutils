@@ -19,7 +19,7 @@ const adResults = ({ content, loadContent, searchResult, apiResult }) => {
   });
 
   useEffect(() => {
-    setTimeout(() => { setLoader(!loading) },500);
+    setTimeout(() => { setLoader(!loading) },1000);
     loadContent();
     
   }, []);
