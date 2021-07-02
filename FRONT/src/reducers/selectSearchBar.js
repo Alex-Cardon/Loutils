@@ -47,14 +47,14 @@ const reducer = (state = initialState, action) => {
     case RESEARCH_SUCCESS:
       return {
         ...state,
-        searchResult: action.apiData, 
+        searchResult: action.apiData,
         apiResult: true,
       }
-      case NEW_RESEARCH_SUCCESS:
-        return {
-          ...state,
-          apiresult: false,
-        }
+    case NEW_RESEARCH_SUCCESS:
+      return {
+        ...state,
+        apiResult: false,
+      }
 
     default:
       return state;

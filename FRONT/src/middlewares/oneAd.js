@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-import {
-  useParams
-} from "react-router-dom";
 
 import {
   GET_ONE_AD,
@@ -36,10 +33,12 @@ console.log(action.ad_id);
       {
         headers:{
           token: state.user.token,
+
         }
       })
       .then((response)=> {
         console.log(response.data);
+        store.dispatch(sendMessageFromOneAdSuccess(response.data.data[0]));
       })
       .catch((error) => console.log(error));
     break;}
