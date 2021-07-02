@@ -29,7 +29,7 @@ const updateSchema = Joi.object({
 const searchSchema = Joi.object({
     // Rechercher une/des annonces qui correspond(ent) aux critères entrés dans la barre de recherche
     title: Joi.string().required().min(3),
-    category: Joi.string().min(4),
+    category: Joi.string().min(2),
     postcode: Joi.string().regex(/0[1-9]\d{3}|[1-8]\d{4}|97[1-68]\d{2}|98[678]\d{2}|9[0-6]\d{3}/).required(),
     radius: Joi.number().integer().positive().min(0).max(50).required()
 }).required();
