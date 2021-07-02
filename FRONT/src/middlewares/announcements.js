@@ -33,11 +33,15 @@ const announcementsMiddleware = (store) => (next) => (action) => {
         .catch((error) => console.log(error))
       break;
     
-    case DELETE_BOOKING:
+    case DELETE_BOOKING: {
       console.log('state dans DELETE_BOOKING',state);
-      axios.patch(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads/${action.id}`,{
-        ad_id: state.announcements.ad_id,
-        headers:{
+      const state = store.getState();
+      axios.patch(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads/${action.adId}`,{
+        "ad_id": state.announcements.adId,
+      },
+       {
+          headers:{
+          "Content-Type": "application/json",
           'token': state.user.token  
         }
       })
@@ -48,6 +52,7 @@ const announcementsMiddleware = (store) => (next) => (action) => {
         .catch((error) => console.log(error))
           console.log(token); 
       break;
+    }
 /*
     case GET_ANNOUNCEMENTS:
       //const state = store.getState();

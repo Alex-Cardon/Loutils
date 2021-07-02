@@ -14,8 +14,9 @@ export const getAnnouncementsSuccess = (apiData) => ({
   apiData,
 });
 
-export const deleteBooking = () => ({
+export const deleteBooking = (adId) => ({
   type: DELETE_BOOKING,
+  adId,
 });
 
 export const deleteBookingSuccess = (msg) => ({
