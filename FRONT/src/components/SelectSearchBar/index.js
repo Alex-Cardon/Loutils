@@ -17,6 +17,7 @@ const SelectSearchBar = ({
   handleResearch,
   handleCategory,
   handleRadius,
+  newResearch
 
 }) => {
 
@@ -52,6 +53,11 @@ const SelectSearchBar = ({
             type="submit" 
             >
         <Icon name='search' color='red' size='large'/>
+    </button>
+    <button onSubmit={newResearch} className="className='new-research-button'"
+            type="submit" 
+            >
+        Nouvelle recherche
     </button>
     </div>
   </form>

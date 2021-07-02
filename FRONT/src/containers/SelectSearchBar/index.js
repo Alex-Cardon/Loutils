@@ -8,7 +8,9 @@ import {
   researchButton, 
   getCategories,
   getRadius, 
+  newResearchSuccess,
 } from 'src/actions/selectSearchBar';
+
 
 
 //! je recupère mes proptypes du component index.js de SignupPage 
@@ -47,6 +49,11 @@ const mapDispatchToProps = (dispatch) => ({
     console.log(event.target.value),
     dispatch(getRadius(event.target.value));
   },
+  newResearch: () => {
+    
+    console.log('je lance newResearchSuccess avec newResearch')
+    dispatch(newResearchSuccess()); 
+  }
 
   
 });

@@ -4,7 +4,7 @@ export const RESEARCH_BUTTON = 'RESEARCH_BUTTTON';
 export const RESEARCH_SUCCESS = 'RESEARCH_SUCCESS';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_RADIUS = 'GET_RADIUS';
-
+export const NEW_RESEARCH_SUCCESS = 'NEW_RESEARCH_SUCCESS';
 
 
 export const changeCategoriesInput = (value) => ({
@@ -41,6 +41,10 @@ export const getRadius = (value) => ({
   type: GET_RADIUS,
   value,
  
+});
+
+export const newResearchSuccess = () => ({
+  type: NEW_RESEARCH_SUCCESS,
 });
 
 
