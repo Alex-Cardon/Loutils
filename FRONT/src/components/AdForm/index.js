@@ -88,19 +88,19 @@ const AdForm = ({
         <div className="adForm__unit--radio">
           <p>Loutil est plutot:  </p>
           <div>
-            <label hmtlfor="new">comme neuf</label>
+            <label hmtlfor="comme neuf">comme neuf</label>
             <input
               type="radio"
-              value="new"
+              value="comme neuf"
               name="product_state"
               onChange={onChange}
             />
           </div>
           <div>
-            <label hmtlfor="used">En etat de marche</label>
+            <label hmtlfor="En etat de marche">En etat de marche</label>
             <input
               type="radio"
-              value="used"
+              value="En etat de marche"
               name="product_state"
               onChange={onChange}
 
