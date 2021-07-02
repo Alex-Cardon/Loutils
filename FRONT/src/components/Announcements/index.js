@@ -31,6 +31,11 @@ const announcements = ({
     return <Loading />;
   }
 
+  const onDeleteBooking = (evt) => {
+    evt.preventDefault();
+    handleDeleteBooking( announcements.ad_id);
+  };
+
   return (
   <div className='announcements'>
         
@@ -55,7 +60,7 @@ const announcements = ({
               meta={obj.description}
               description={obj.price + " €/ jour"}
             />
-            <button className="ui button" onClick={handleDeleteBooking}>Supprimer l'annonce</button>
+            <button className="ui button" onClick={onDeleteBooking}>Supprimer l'annonce</button>
 
             <NavLink
       className='account-navlink'

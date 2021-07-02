@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Proptypes from "prop-types";
 // j'importe mon composant connecté
@@ -11,12 +11,17 @@ import './styles.scss';
 const UpdatedProfil = ({
   handleUpdatedProfilFormSubmit,
   updatedProfil,
+  profil,
+  getProfileInfo
   //picture,
   //onChangePicture,
   //formSubmitPicture,
-}) => (
+}) => {
+  useEffect(() => {
+    getProfileInfo(profil);
+  }, [])
+  return (
   <div className="signup-page">
-    
     <h2>Mise à jour de mon profil</h2>
     <form className="signup-page__form"
       onSubmit={handleUpdatedProfilFormSubmit}
@@ -25,12 +30,14 @@ const UpdatedProfil = ({
         stateKey="name"
         type="text"
         placeholder="votre pseudo"
+
       />
 
       <ProfilField
         stateKey="email"
         type="email"
         placeholder="votre email"
+        
       />
 
 
@@ -39,9 +46,12 @@ const UpdatedProfil = ({
     {updatedProfil && (<Redirect from="/UdatedProfil" to="/" />)}
     
   </div>
-);
+)};
 
 UpdatedProfil.proptypes = {
+  email:Proptypes.string.isRequired,
+  name: Proptypes.string.isRequired,
+  onChange: Proptypes.func.isRequired,
   handleUpdatedProfilFormSubmit: Proptypes.func.isRequired,
 };
 
