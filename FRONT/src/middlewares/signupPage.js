@@ -7,7 +7,7 @@ const signupMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_SETTINGS: {
       const state = store.getState();
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/register', {
+      axios.post('http://localhost:3000/register', {
        
         "name": state.settings.name,
         "email": state.settings.email,

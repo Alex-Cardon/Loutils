@@ -17,7 +17,6 @@ const oneAd = ({ loadOneAd, oneAd, handleMessage, isLogged, sendMsgSuccess }) =>
   const [msgTxt, setMsgText] = useState('');
   const handleMsg = () => {
     handleMessage(msgTxt, oneAd.user_id, oneAd.ad_id );
-    console.log("component", msgTxt, oneAd.user_id, oneAd.ad_id );
   }
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 500);

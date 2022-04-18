@@ -12,13 +12,11 @@ const Messages = ({loadMessages, messages}) => {
 
   const history = useHistory();
   const changeRoute = (evt) => {
-    console.log("evt.target",evt.target);
   let path = "/Message";
   history.push(path);
 };
 
   const [loading, setLoader] = useState(true);
-  console.log(`messages dans mon composant messages`, messages);
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);
     loadMessages();

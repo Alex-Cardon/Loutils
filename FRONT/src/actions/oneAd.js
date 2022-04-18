@@ -14,7 +14,6 @@ export const getOneAdSuccess = (apiData) => ({
   type: GET_ONE_AD_SUCCESS,
   apiData,
 });
-console.log("action");
 export const handleMessage = (msgTxt, userId, adId) => ({
   type: SEND_MESSAGE_FROM_ONE_AD,
   msgTxt, 

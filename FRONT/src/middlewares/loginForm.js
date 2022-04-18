@@ -9,7 +9,7 @@ const loginFormMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       // avec getstate on apporte le state dans le MW
         const state = store.getState();
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/login', {
+      axios.post('http://localhost:3000/login', {
           "email": state.user.email, 
           "password": state.user.password,
         })

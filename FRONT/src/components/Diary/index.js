@@ -31,7 +31,6 @@ const Diary = ({
     loadDates();
   }, []);
 
-  console.log(allDates);
   moment.locale('fr')
   const momentbegin = moment(begining).format("dddd DD MMM YYYY");
   const momentend = moment(end).format("dddd DD MMM YYYY");

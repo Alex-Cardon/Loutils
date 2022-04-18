@@ -13,7 +13,7 @@ const profilMiddleware = (store) => (next) => (action) => {
     case GET_PROFIL: {
       
       const state = store.getState()
-      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings`, {
+      axios.get(`http://localhost:3000/account/settings`, {
         headers:{
           'token': state.user.token  
         }
@@ -27,7 +27,7 @@ const profilMiddleware = (store) => (next) => (action) => {
     }
     case DELETE_ACCOUNT: {
       const state = store.getState()  
-      axios.delete(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings`, {
+      axios.delete(`http://localhost:3000/account/settings`, {
         headers:{
           'token': state.user.token  
         }

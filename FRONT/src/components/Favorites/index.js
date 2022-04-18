@@ -16,7 +16,6 @@ import './styles.scss';
 const favorites = ({loadFavorites}) => {
 
   const [loading, setLoader] = useState(true);
-  console.log(`content dans mon composant`, favorites);
 
   useEffect(() => {
     setTimeout(() => { setLoader(!loading) }, 1000);

@@ -19,7 +19,7 @@ const messagesMiddleware = (store) => (next) => (action) => {
      // console.log(store.getState().user);
 
       const state = store.getState();
-      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages`, {
+      axios.get(`http://localhost:3000/messages`, {
         headers:{
           'token': state.user.token
           
@@ -45,7 +45,7 @@ const messagesMiddleware = (store) => (next) => (action) => {
       //console.log("state:", state);
 
 
-      axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages',{
+      axios.post('http://localhost:3000/messages',{
         "content": action.content,
         "recipient": action.recipient,
         "ad_id":action.ad_id,
@@ -69,7 +69,7 @@ const messagesMiddleware = (store) => (next) => (action) => {
 
       console.log("je suis dans DELETE_MSG", action.msgId);
       const state = store.getState();
-      axios.patch(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/messages/${action.msgId}`,{
+      axios.patch(`http://localhost:3000/messages/${action.msgId}`,{
         "msg_id":action.msgId,
       },
         {headers:{

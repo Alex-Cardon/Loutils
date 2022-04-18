@@ -40,7 +40,6 @@ const Message = ({
 
   let history = useHistory();
   if(msgDelete) { 
-    console.log('je suis dans useHistory '); 
     msgDelete = false;
     history.push('/Messagerie');
   }

@@ -9,7 +9,7 @@ const updatedProfilMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_UPDATED_PROFIL: {
       const state = store.getState();
-      axios.patch('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/settings', {
+      axios.patch('http://localhost:3000/account/settings', {
 
           "name": state.updatedProfil.name,
           "email": state.updatedProfil.email,

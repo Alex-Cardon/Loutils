@@ -10,7 +10,7 @@ import { changeAdField } from 'src/actions/adForm';
 
 //!cela sera une donnée
 const mapStateToProps = (state, ownProps) => {
-  console.log("Juan", state.ad);
+  // console.log("Juan", state.ad);
   return{
     value: state.ad[ownProps.name],
   // value: state.settings[ownProps.stateKey],

@@ -3,14 +3,16 @@ import axios from 'axios';
 
 function adFormPicture({ updatePictureId }) {
   const [file, setfile] = useState(null);
+  const [filePreview, setFilePreview] = useState(null);
 
     const send = event => {
          const data = new FormData();
          data.append("file", file); 
-         axios.post("http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/image", data).then(res => {
+         axios.post("http://localhost:3000/image", data).then(res => {
             updatePictureId(res.data.data.picture_id)
           });
     };
+
 
   return (
     <div className="adFormPicture">
@@ -19,10 +21,16 @@ function adFormPicture({ updatePictureId }) {
           <label htmlFor="file"></label>
           <input type="file" name="picture_id" id="id" accept=".jpg" onChange={event => {
             const file = event.target.files[0];
+            setFilePreview(URL.createObjectURL(event.target.files[0]));
             setfile(file);
+            // send;
           }} >
           </input>
         </form>
+        {filePreview !== null ? 
+        <img className="previewimg"  src={filePreview} alt="UploadImage" />
+      : null}
+
         <button onClick={send}>Envoyez la photo</button>
       </header>
     </div>

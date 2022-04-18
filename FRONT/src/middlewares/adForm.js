@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import {
+  useEffect
+} from 'react';
 
 /*useEffect(()=> {
   setAsked(ref.current);
@@ -18,9 +20,11 @@ console.log("adForm middleware ligne 17");*/
 
 
 import {
-  CHANGE_AD_FIELD, /*quand tape input, garde les caractères dedans */
+  CHANGE_AD_FIELD,
+  /*quand tape input, garde les caractères dedans */
   changeAdFieldSuccess,
-  SUBMIT_AD_LOGIN, /*permet de publier l'annonce */
+  SUBMIT_AD_LOGIN,
+  /*permet de publier l'annonce */
   submitAdLoginSuccess,
   adPosted,
 } from 'src/actions/adForm';
@@ -28,42 +32,47 @@ import {
 const adFormMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     // case CHANGE_AD_FIELD:
-    //   axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`)
+    //   axios.get(`http://localhost:3000/account/ads`)
     //     .then((response) => {
     //       console.log('response de CHANGE_AD_FIELD', response.data)
     //       store.dispatch(changeAdFieldSuccess(response.data));
     //     })
     //     .catch((error) => console.log(error))
-       
+
     //   break;
 
     case SUBMIT_AD_LOGIN:
       const state = store.getState();
       console.log(state);
-      axios.post(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/account/ads`,{
-        "title": state.ad.title,
-        "price": state.ad.price,
-        "picture_id":state.ad.picture_id,
-        "product_state": state.ad.product_state,
-        "deposit": state.ad.deposit,
-        "description": state.ad.description,
-        "postcode":state.ad.postcode,
 
-        "category_id": state.ad.category_id,
-
-      }, {
+      const options = {
+        method: 'POST',
+        url: 'http://localhost:3000/account/ads',
         headers: {
+          'Content-Type': 'application/json',
           token: state.user.token
+        },
+        data: {
+          title: state.ad.title,
+          price: state.ad.price,
+          picture_id: state.ad.picture_id,
+          product_state: state.ad.product_state,
+          deposit: state.ad.deposit,
+          description: state.ad.description,
+          postcode: state.ad.postcode,
+          category_id: state.ad.category_id
         }
-      }).then((response) => {
-                console.log('response de SUBMIT_AD_LOGIN', response.data)//
-                store.dispatch(submitAdLoginSuccess(response.data));//
-              })
-              .catch((error) => console.log(error))
-            break;
-    
-            default:
-            next(action);
+      };
+
+      axios.request(options).then((response) => {
+        console.log('response de SUBMIT_AD_LOGIN', response.data) //
+        store.dispatch(submitAdLoginSuccess(response.data)); //
+      })
+        .catch((error) => console.log('log error axios', error))
+      break;
+
+    default:
+      next(action);
   }
 }
 /*
@@ -96,7 +105,7 @@ export default adFormMiddleware;
         const state = store.getState();
         console.log("state",state);
 
-        axios.post('http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/ad', {
+        axios.post('http://localhost:3000/ad', {
           title: state.ad.title,
           image: state.ad.image,
           price: state.ad.price,
@@ -118,19 +127,19 @@ export default adFormMiddleware;
             console.log(response);
               store.dispatch(loginSuccess(response.data));
               setLoading(false);
-  
+
               localStorage.setItem(store, JSON.stringify(response.data));
               if(!localStorage.getItem('adStorageDate')){
                 localStorage.setItem('adStorageDate', Date.now());
               }
-  
-  
+
+
           })
           .catch((error)=>console.log(error))
           break;
         }
 
-      
+
 
     }
     default:

@@ -42,15 +42,11 @@ const AdForm = ({
         <div className="adForm__unit">
         <select onChange={onChange} name="category_id" id="handleCategory" required >
           <option value="" >Catégories</option>
-          <option value="9">Plomberie</option>
-          <option value="10">Peinture</option>
-          <option value="8">Nettoyage</option>
-          <option value="3">Mécanique</option>
-          <option value="7">Levage/Echelle</option>
-          <option value="2">Jardin</option>
-          <option value="5">Electroportatif</option>
-          <option value="4">Electricité</option>
-          <option value="6">BTP</option>
+          <option value="9">jardin</option>
+          <option value="8">élévation</option>
+          <option value="7">soudage</option>
+          <option value="5">perçage</option>
+          <option value="6">ponçage</option>
         </select>
         </div>
         <div className="adForm__unit">
@@ -98,7 +94,7 @@ const AdForm = ({
           </div>
           
           <div>
-            <label hmtlfor="En etat de marche">En etat de marche</label>
+            <label hmtlfor="En etat de marche">En état de marche</label>
             <input
               type="radio"
               value="En etat de marche"

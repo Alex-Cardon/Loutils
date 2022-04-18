@@ -11,7 +11,7 @@ const diaryMiddleware = (store) => (next) => (action) => {
     case SUBMIT_DATE_VALUE: {
       const state = store.getState();
       // avec getstate on apporte le state dans le MW
-      axios.post(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/booking/${action.id}`, 
+      axios.post(`http://localhost:3000/booking/${action.id}`, 
       {
          begining: state.diary.date[0],
          end: state.diary.date[1],},
@@ -29,7 +29,7 @@ const diaryMiddleware = (store) => (next) => (action) => {
       }
     case FETCH_DATES: {
       const state = store.getState();
-      axios.get(`http://ec2-3-237-39-254.compute-1.amazonaws.com:3000/booking/${action.id}`,
+      axios.get(`http://localhost:3000/booking/${action.id}`,
         {headers:{
           "Content-Type": "application/json",
           'token': state.user.token

@@ -52,6 +52,7 @@ const reducer = (state = initialState, action) => {
         // };
 
         case SUBMIT_AD_LOGIN:
+          console.log('action.value in reducer',action.value);
           return {
             ...state,
             state: action.value,
@@ -69,7 +70,7 @@ const reducer = (state = initialState, action) => {
               ad_type: '',
               postcode: '',
               category_id: '',
-              adPosted: false,
+              adPosted: true,
             };
 
         case CHANGE_TOOL_STATE:
