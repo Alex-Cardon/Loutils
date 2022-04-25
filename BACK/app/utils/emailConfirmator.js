@@ -34,7 +34,7 @@ module.exports = {
        await transporter.sendMail({
              to: email,
              subject: 'Confirmation Email',
-             html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`
+             html: `Merci de cliquer sur ce <a href="${url}">lien</a>, afin de finaliser votre inscription`
            });
     }
 

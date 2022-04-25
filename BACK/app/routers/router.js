@@ -19,7 +19,7 @@ const modoContoller = require('../controllers/modoContoller');
 const downloadController = require('../controllers/downloadController');
 const schemas = require('../validations/schemas');
 const validate = require('../validations/validate');
-const { upload } = require('../middlewares/upload');
+const multer  = require('../middlewares/upload');
 
 const router = express.Router();
 
@@ -73,7 +73,7 @@ router.get('/categories', categoryController.getCategories);
  * @returns {Error} 500 - Une erreur serveur
  * @returns {Error} 404 - Une erreur redirigeant vers la page 404
  */
-router.post('/image', upload.single('file'), pictureController.postImage);
+router.post('/image', multer.upload.single('file'), pictureController.postImage);
 
 /**
  * Afficher une image
